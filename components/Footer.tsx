@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Footer: React.FC = () => {
@@ -5,10 +6,14 @@ const Footer: React.FC = () => {
     <footer className="text-white py-8 mt-20 w-full flex flex-col items-center relative overflow-hidden">
       {/* Main Footer Content */}
       <div className="max-w-screen-lg w-full flex flex-col items-center space-y-4">
-        <h1 className="uppercase text-4xl font-bold tracking-widest">
+        <h1 className="uppercase hidden text-4xl font-bold tracking-widest">
           Vyara Ivanova–Ilieva
         </h1>
-
+        <img
+          src="/images/vyaraName.png"
+          className="w-2/3 py-4"
+          alt="Vyara Ivanova Ilieva"
+        />
         <div className="absolute right-44 -top-16 transform -translate-y-1/2 w-40 h-40 rounded-full bg-secondary blur-3xl"></div>
         <div className="absolute left-0 -bottom-40 transform -translate-y-1/3 w-40 h-40 rounded-full bg-secondary blur-3xl"></div>
         <div className="absolute right-1/4 -bottom-60 transform -translate-y-1/3 w-40 h-40 rounded-full bg-primary blur-3xl"></div>

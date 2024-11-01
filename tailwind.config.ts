@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        bona: ["'Bona Nova'", "serif"],
+      },
       colors: {
         dark: "#131313",
         cardBG: "#212121",
