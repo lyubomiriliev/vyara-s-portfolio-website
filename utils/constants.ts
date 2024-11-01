@@ -66,3 +66,111 @@ export const skills = [
       "Managing campaigns on META Ads Manager and Google Ads, optimizing with analytics tools.",
   },
 ];
+
+export const strengths = [
+  {
+    title: "Organizational Excellence",
+    description: "Managing multiple clients with tailored strategies.",
+    icon: "/images/organization.png",
+  },
+  {
+    title: "Versatile Expertise",
+    description:
+      "Years at Princeps Advertising Agency with 30+ years in business consulting.",
+    icon: "/images/expertise.png",
+  },
+  {
+    title: "Adaptable & Trend-Focused",
+    description: "Proactive in adopting the latest marketing trends.",
+    icon: "/images/trend.png",
+  },
+  {
+    title: "Client-Centric",
+    description: "Creating strategies tailored to brand goals and audiences.",
+    icon: "/images/centric.png",
+  },
+  {
+    title: "Always Online",
+    description:
+      "A remote work pro—because in social media, there are no holidays!",
+    icon: "/images/online.png",
+  },
+  {
+    title: "Always Online",
+    description:
+      "A remote work pro—because in social media, there are no holidays!",
+    icon: "/images/online.png",
+  },
+];
+
+export const clientsData = [
+  {
+    title: "El Shisha",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, facere!",
+    img: "../clients/client.jpg",
+    perk1: "sales increased",
+    perk2: "satisfied clients",
+    perk3: "new impressions",
+  },
+  {
+    title: "Another Client",
+    description: "Some description for another client.",
+    img: "../clients/client.jpg",
+    perk1: "reach expanded",
+    perk2: "client retention",
+    perk3: "brand recognition",
+  },
+  {
+    title: "Another Client",
+    description: "Some description for another client.",
+    img: "../clients/client.jpg",
+    perk1: "reach expanded",
+    perk2: "client retention",
+    perk3: "brand recognition",
+  },
+  {
+    title: "Another Client",
+    description: "Some description for another client.",
+    img: "../clients/client.jpg",
+    perk1: "reach expanded",
+    perk2: "client retention",
+    perk3: "brand recognition",
+  },
+];
+
+export const packages = [
+  {
+    name: "Basic Package",
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Quis penatibus et dolor nulla. Sit purus id ipsum ut egestas interdum facilisis commodo ultrices.",
+    features: [
+      "Content Creation",
+      "Platform Management",
+      "Platform Management",
+      "Platform Management",
+    ],
+  },
+  {
+    name: "Standard Package",
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Quis penatibus et dolor nulla. Sit purus id ipsum ut egestas interdum facilisis commodo ultrices.",
+    features: [
+      "Content + Ads",
+      "2 Platforms",
+      "Platform Management",
+      "Platform Management",
+    ],
+  },
+  {
+    name: "Premium Package",
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Quis penatibus et dolor nulla. Sit purus id ipsum ut egestas interdum facilisis commodo ultrices.",
+    features: [
+      "Content + Ads",
+      "Full Management",
+      "Platform Management",
+      "Platform Management",
+    ],
+  },
+];

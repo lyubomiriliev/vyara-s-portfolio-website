@@ -20,8 +20,8 @@ export default function Home() {
       <DailyTools />
       <Skills />
       <Strengths />
-      {/* <Clients /> */}
-      {/* <Packages /> */}
+      <Clients />
+      <Packages />
       {/* <Footer /> */}
     </div>
   );

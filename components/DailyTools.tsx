@@ -25,8 +25,11 @@ const DailyTools: React.FC = () => {
         </div>
       </div>
       <div className="flex mt-20 gap-6">
-        {platformsWhite.slice(0, 5).map((platform) => (
-          <div className="w-44 h-24 justify-center items-center flex bg-transparent border-[1px] border-textGray/20 rounded-3xl">
+        {platformsWhite.slice(0, 5).map((platform, index) => (
+          <div
+            key={index}
+            className="w-44 h-24 justify-center items-center flex bg-transparent border-[1px] border-textGray/20 rounded-3xl"
+          >
             <img
               className="w-full scale-75 h-12 object-fit"
               src={platform.icon}

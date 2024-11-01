@@ -1,39 +1,37 @@
-// components/Packages.tsx
 import React from "react";
-
-const packages = [
-  {
-    name: "Basic",
-    features: ["Content Creation", "Platform Management"],
-    price: "$300/month",
-  },
-  {
-    name: "Standard",
-    features: ["Content + Ads", "2 Platforms"],
-    price: "$600/month",
-  },
-  { name: "Premium", features: ["Full Management"], price: "$1200/month" },
-];
+import { packages } from "@/utils/constants";
+import SectionHeading from "./SectionHeading";
+import Button from "./Button";
 
 const Packages: React.FC = () => {
   return (
-    <section className="bg-gray-900 text-white p-16">
-      <h3 className="text-center text-4xl font-bold mb-10">Packages</h3>
-      <div className="flex flex-wrap justify-center gap-10">
+    <section className="text-white py-8">
+      <SectionHeading
+        title="Packages"
+        subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, fugit."
+      />
+      <div className="flex w-full max-w-screen-lg mx-auto justify-center gap-10 px-4">
         {packages.map((pkg, index) => (
           <div
             key={index}
-            className="bg-gray-800 p-8 rounded-lg w-64 text-center border border-gradient-to-br from-pink-500 to-purple-600 shadow-lg hover:shadow-pink-600 transition"
+            className="relative group bg-cardBG border border-textGray/20 p-8 space-y-4 rounded-xl text-center transition-transform duration-300 transform hover:scale-110 hover:border-primary"
           >
             <h4 className="text-2xl font-bold mb-3">{pkg.name}</h4>
-            <ul className="text-gray-400 mb-4">
+            <div className="bg-textGray/30 w-full h-[1px]"></div>
+            <p className="text-left text-textGray">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
+              dolor excepturi laborum atque accusantium voluptates itaque omnis
+              dolores nemo provident?
+            </p>
+            <ul className="text-white mb-4 text-left">
               {pkg.features.map((feature, i) => (
-                <li key={i} className="mb-2">
+                <li key={i} className="mb-2 flex items-center">
+                  <span className="text-primary mr-2">✔</span>
                   {feature}
                 </li>
               ))}
             </ul>
-            <p className="text-pink-500 font-bold text-xl">{pkg.price}</p>
+            <Button text="GET STARTED" variant="outline" />
           </div>
         ))}
       </div>

@@ -1,33 +1,27 @@
 import React from "react";
-
-const clients = [
-  {
-    name: "El Shisha",
-    image: "/images/client1.jpg",
-    description: "Luxury shisha brand with innovative campaigns.",
-  },
-];
+import SectionHeading from "./SectionHeading";
+import Client from "./Client";
+import { clientsData } from "../utils/constants";
 
 const Clients: React.FC = () => {
   return (
-    <section className="bg-gray-900 text-white p-12">
-      <h3 className="text-center text-3xl font-bold mb-8">Clients</h3>
-      <div className="flex flex-wrap justify-center gap-8">
-        {clients.map((client, index) => (
-          <div
-            key={index}
-            className="bg-gray-800 p-6 rounded-lg max-w-xs text-center shadow-lg"
-          >
-            <img
-              src={client.image}
-              alt={client.name}
-              className="w-32 h-32 rounded-full mx-auto mb-4"
-            />
-            <h4 className="text-xl font-bold">{client.name}</h4>
-            <p className="text-gray-400">{client.description}</p>
-          </div>
-        ))}
-      </div>
+    <section className="w-full flex flex-col justify-center items-center max-w-screen-lg px-4 mx-auto text-white py-8">
+      <SectionHeading
+        title="Clients"
+        subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, quo."
+      />
+      {clientsData.map((client, index) => (
+        <Client
+          key={index}
+          title={client.title}
+          description={client.description}
+          img={client.img}
+          perk1={client.perk1}
+          perk2={client.perk2}
+          perk3={client.perk3}
+          reverse={index % 2 !== 0} // Reverse layout for odd-indexed clients
+        />
+      ))}
     </section>
   );
 };
