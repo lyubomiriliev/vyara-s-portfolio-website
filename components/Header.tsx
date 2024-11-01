@@ -2,23 +2,20 @@ import React from "react";
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-secondary text-white p-6">
-      <nav className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Vyara Ivanova</h1>
-        <ul className="flex space-x-6">
+    <header className="text-white w-full flex py-10 items-center">
+      <nav className="flex px-6 py-4 border-[1px] border-textGray/20 bg-textGray/5 rounded-full gap-8 mx-auto items-center">
+        <ul className="flex space-x-8 text-sm uppercase">
           <li>Home</li>
           <li>About</li>
           <li>Skills</li>
+          <li>Strengths</li>
           <li>Clients</li>
-          <li>Contact</li>
+          <li>Testimonials</li>
         </ul>
-        <button className="bg-primary px-4 py-2 rounded-full">
-          Let's Talk
+        <button className="bg-primary text-bg font-bold px-4 py-2 rounded-full uppercase">
+          Contact Me
         </button>
       </nav>
-      <div className="mt-10 text-center">
-        <h2 className="text-4xl font-extrabold">Social Media Specialist</h2>
-      </div>
     </header>
   );
 };

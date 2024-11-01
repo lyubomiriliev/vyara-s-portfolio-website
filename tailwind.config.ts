@@ -1,19 +1,23 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+// tailwind.config.js
+module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        bg: "#131313",
+        cardBG: "#212121",
+        primary: "#EBB0FF",
+        secondary: "#8ADBFF",
+        textGray: "#A8A8A8",
+      },
+      boxShadow: {
+        glow: "0px 0px 20px 5px rgba(255,111,216,0.5)",
+        button: "0px 4px 15px rgba(255,111,216,0.75)",
       },
     },
   },
   plugins: [],
 };
-export default config;

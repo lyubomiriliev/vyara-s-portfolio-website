@@ -1,19 +1,30 @@
+// components/Skills.tsx
 import React from "react";
 
+const skills = [
+  {
+    title: "Content Creation",
+    description: "Creating engaging and original content.",
+  },
+  {
+    title: "Social Media Management",
+    description: "Managing multi-platform presence.",
+  },
+  { title: "SEO Optimization", description: "Improving online visibility." },
+];
+
 const Skills: React.FC = () => {
-  const skills = [
-    { name: "Social Media Marketing", description: "..." },
-    { name: "Content Creation", description: "..." },
-    { name: "SEO Optimization", description: "..." },
-  ];
   return (
-    <section className="p-6 bg-black text-white">
-      <h3 className="text-3xl font-bold text-center">Skills</h3>
-      <div className="grid grid-cols-2 gap-4 mt-4">
-        {skills.map((skill) => (
-          <div key={skill.name} className="bg-gray-800 p-4 rounded">
-            <h4 className="text-xl font-semibold">{skill.name}</h4>
-            <p>{skill.description}</p>
+    <section className="bg-gradient-to-bl from-gray-800 to-gray-900 text-white py-16 px-10">
+      <h3 className="text-center text-4xl font-bold mb-12">Skills</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {skills.map((skill, index) => (
+          <div
+            key={index}
+            className="p-6 bg-gray-800 rounded-lg shadow-lg hover:bg-gray-700 hover:shadow-xl transition transform hover:scale-105"
+          >
+            <h4 className="text-2xl font-semibold mb-2">{skill.title}</h4>
+            <p className="text-gray-300 text-lg">{skill.description}</p>
           </div>
         ))}
       </div>
