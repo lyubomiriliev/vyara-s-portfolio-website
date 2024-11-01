@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Footer: React.FC = () => {
+const Footer: React.FC = () => {
   return (
     <footer className="bg-black text-white text-center p-6">
       <p>&copy; 2024 Vyara Ivanova Ilieva. All rights reserved.</p>
