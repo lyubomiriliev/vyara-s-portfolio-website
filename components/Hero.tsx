@@ -6,7 +6,6 @@ const Hero: React.FC = () => {
   return (
     <section className="relative min-h-[100vh] flex flex-col items-center text-center text-white overflow-hidden">
       <Header />
-
       {/* Background Image with Dark Gradient Overlay */}
       <div className="absolute inset-0 -top-16 -z-20 w-full h-full overflow-hidden">
         <img
