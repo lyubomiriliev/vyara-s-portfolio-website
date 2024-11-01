@@ -9,6 +9,8 @@ import Packages from "../components/Packages";
 import Footer from "../components/Footer";
 import ExperienceSummary from "@/components/ExperienceSummary";
 import DailyTools from "@/components/DailyTools";
+import Testimonials from "@/components/Testimonials";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
@@ -22,7 +24,9 @@ export default function Home() {
       <Strengths />
       <Clients />
       <Packages />
-      {/* <Footer /> */}
+      <Testimonials />
+      <ContactForm />
+      <Footer />
     </div>
   );
 }

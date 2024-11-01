@@ -1,11 +1,6 @@
-export const ExperienceSummary: React.FC = () => {
-  const stats = [
-    { label: "Posts", count: "500+" },
-    { label: "Stories", count: "300+" },
-    { label: "Campaigns", count: "100+" },
-    { label: "Customers", count: "13+" },
-  ];
+import { stats } from "../utils/constants";
 
+export const ExperienceSummary: React.FC = () => {
   return (
     <section className="w-full max-w-screen-xl px-36 mx-auto flex justify-around text-white">
       {stats.map((stat) => (

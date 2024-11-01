@@ -10,10 +10,10 @@ const Button: React.FC<ButtonProps> = ({ text, variant = "default" }) => {
   const baseStyles = "px-8 py-2 font-bold rounded-full transition-all";
 
   const variantStyles = {
-    default: "bg-primary text-black",
+    default: "bg-primary text-black uppercase",
     outline:
       "border border-white text-white bg-transparent hover:bg-white hover:text-black uppercase",
-    gradient: "bg-gradient-to-r from-primary to-secondary text-black",
+    gradient: "bg-gradient-to-r from-primary to-secondary text-black uppercase",
   };
 
   return (

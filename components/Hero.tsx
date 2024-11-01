@@ -21,14 +21,14 @@ const Hero: React.FC = () => {
         {/* Gradient overlay */}
         <div className="absolute inset-0 top-96 bg-gradient-to-b from-transparent to-black"></div>
       </div>
-      <div className="relative z-10 flex flex-col justify-end min-h-[60vh] items-center">
+      <div className="relative z-10 flex flex-col justify-end min-h-[70vh] items-center">
         <Image
           src="/images/heroPhone.png"
           alt="Phone Image"
           width={1000}
           height={800}
           quality={100}
-          className="absolute -bottom-40 -z-20 object-cover"
+          className="absolute -bottom-24 -z-20 object-cover"
         />
         <h1 className="text-6xl md:text-7xl font-extrabold tracking-tighter leading-tight mb-4 drop-shadow-glow">
           Social Media Specialist

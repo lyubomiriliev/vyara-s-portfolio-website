@@ -1,4 +1,4 @@
-// components/About.tsx
+import Image from "next/image";
 import React from "react";
 
 const About: React.FC = () => {
@@ -7,7 +7,13 @@ const About: React.FC = () => {
       <div className="flex flex-col items-center mb-10">
         <div className="flex py-6 gap-2 flex-col justify-center items-center">
           <h2 className="uppercase font-extralight text-xl">about me</h2>
-          <h1 className="uppercase font-bold text-4xl">Vyara Ivanova Ilieva</h1>
+          <Image
+            width={400}
+            height={200}
+            src="/images/vyaraName.png"
+            className="w-full"
+            alt="Vyara Ivanova Ilieva"
+          />
           <div className="bg-textGray/20 px-6 py-1.5 mt-2 rounded-full items-center flex uppercase font-light gap-2 border-[1px] border-white">
             <div className="bg-green-300 h-1 w-1 rounded-full"></div>
             Open for work

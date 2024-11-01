@@ -16,9 +16,14 @@ module.exports = {
         pinkGlow: "#D96FEA",
         blueGlow: "#257B9F",
       },
-      boxShadow: {
-        glow: "0px 0px 20px 5px rgba(255,111,216,0.5)",
-        button: "0px 4px 15px rgba(255,111,216,0.75)",
+      keyframes: {
+        scroll: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+      },
+      animation: {
+        scroll: "scroll 20s linear infinite",
       },
     },
   },

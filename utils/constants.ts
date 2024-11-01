@@ -7,12 +7,25 @@ export const platforms = [
   { name: "LinkedIn", icon: "/icons/linkedin.png" },
 ];
 
+export const stats = [
+  { label: "Posts", count: "500+" },
+  { label: "Stories", count: "300+" },
+  { label: "Campaigns", count: "100+" },
+  { label: "Customers", count: "13+" },
+];
+
 export const platformsWhite = [
   { name: "Instagram", icon: "/icons/white/instaw.svg" },
   { name: "Facebook", icon: "/icons/white/fbw.svg" },
   { name: "Canva", icon: "/icons/white/canvaw.png" },
   { name: "TikTok", icon: "/icons/white/tiktokw.svg" },
   { name: "Meta", icon: "/icons/white/metaw.svg" },
+  { name: "LinkedIn", icon: "/icons/white/linkedinw.png" },
+];
+
+export const contactIcons = [
+  { name: "Instagram", icon: "/icons/white/instaw.svg" },
+  { name: "Facebook", icon: "/icons/white/fbw.svg" },
   { name: "LinkedIn", icon: "/icons/white/linkedinw.png" },
 ];
 
@@ -172,5 +185,39 @@ export const packages = [
       "Platform Management",
       "Platform Management",
     ],
+  },
+];
+
+export const testimonials = [
+  {
+    name: "John Doe",
+    img: "/images/review1.jpg",
+    feedback:
+      "Vyara helped us reach new heights with her social media strategies. Our engagement grew by 200% in just 3 months!",
+    role: "CEO at El Shisha",
+  },
+  {
+    name: "Jane Smith",
+    feedback:
+      "Professional and insightful! Vyara's work is exceptional, and she knows exactly what a brand needs.",
+    role: "Marketing Director at ABC Corp",
+  },
+  {
+    name: "Alex Johnson",
+    feedback:
+      "Fantastic collaboration! Her ideas are always fresh and relevant. A true social media expert!",
+    role: "Brand Manager at XYZ Ltd",
+  },
+  {
+    name: "Jane Smith",
+    feedback:
+      "Professional and insightful! Vyara's work is exceptional, and she knows exactly what a brand needs.",
+    role: "Marketing Director at ABC Corp",
+  },
+  {
+    name: "Alex Johnson",
+    feedback:
+      "Fantastic collaboration! Her ideas are always fresh and relevant. A true social media expert!",
+    role: "Brand Manager at XYZ Ltd",
   },
 ];
