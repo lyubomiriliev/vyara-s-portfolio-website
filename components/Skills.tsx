@@ -1,6 +1,7 @@
 // components/Skills.tsx
 import React from "react";
 import SectionHeading from "./SectionHeading";
+import Image from "next/image";
 
 const Skills: React.FC = () => {
   return (
@@ -14,7 +15,9 @@ const Skills: React.FC = () => {
         <div className="flex gap-4">
           <div className="flex">
             <div className="w-80 flex flex-col p-4 justify-center items-start space-y-4 rounded-xl bg-cardBG border-textGray/10 border-[1px]">
-              <img
+              <Image
+                width={600}
+                height={600}
                 src="/images/strategy.png"
                 alt="SkillIcon"
                 className="w-14 h-14 object-cover"
@@ -29,7 +32,9 @@ const Skills: React.FC = () => {
           <div className="flex flex-col gap-4 justify-center items-center">
             <div className="flex">
               <div className="w-80 h-[244px] rounded-xl flex justify-center items-start flex-col p-6 space-y-4 bg-cardBG border-textGray/10 border-[1px]">
-                <img
+                <Image
+                  width={600}
+                  height={600}
                   src="/images/strategy.png"
                   alt="SkillIcon"
                   className="w-14 h-14 object-cover"
@@ -45,7 +50,9 @@ const Skills: React.FC = () => {
             </div>
             <div className="flex">
               <div className="w-80 h-[244px] rounded-xl flex justify-center items-start flex-col p-4 space-y-4 bg-cardBG border-textGray/10 border-[1px]">
-                <img
+                <Image
+                  width={600}
+                  height={600}
                   src="/images/strategy.png"
                   alt="SkillIcon"
                   className="w-14 h-14 object-cover"
@@ -63,7 +70,9 @@ const Skills: React.FC = () => {
           <div className="flex flex-col gap-4 justify-center items-center">
             <div className="flex">
               <div className="w-80 h-[244px] rounded-xl flex justify-center items-start flex-col p-4 space-y-4 bg-cardBG border-textGray/10 border-[1px]">
-                <img
+                <Image
+                  width={600}
+                  height={600}
                   src="/images/strategy.png"
                   alt="SkillIcon"
                   className="w-14 h-14 object-cover"
@@ -79,7 +88,9 @@ const Skills: React.FC = () => {
             </div>
             <div className="flex">
               <div className="w-80 h-[244px] rounded-xl flex justify-center items-start flex-col p-4 space-y-4 bg-cardBG border-textGray/10 border-[1px]">
-                <img
+                <Image
+                  width={600}
+                  height={600}
                   src="/images/strategy.png"
                   alt="SkillIcon"
                   className="w-14 h-14 object-cover"
@@ -100,7 +111,9 @@ const Skills: React.FC = () => {
           <div className="flex gap-4 justify-center items-center">
             <div className="flex">
               <div className="w-56 h-[300px] rounded-xl bg-cardBG justify-center p-4 space-y-4 border-textGray/10 border-[1px]">
-                <img
+                <Image
+                  width={600}
+                  height={600}
                   src="/images/strategy.png"
                   alt="SkillIcon"
                   className="w-14 h-14 object-cover"
@@ -116,7 +129,9 @@ const Skills: React.FC = () => {
             </div>
             <div className="flex">
               <div className="w-72 h-[300px] rounded-xl bg-cardBG justify-center space-y-4 p-4 border-textGray/10 border-[1px]">
-                <img
+                <Image
+                  width={600}
+                  height={600}
                   src="/images/strategy.png"
                   alt="SkillIcon"
                   className="w-14 h-14 object-cover"
@@ -132,7 +147,9 @@ const Skills: React.FC = () => {
             </div>
             <div className="flex">
               <div className="w-[450px] h-[300px] rounded-xl bg-cardBG justify-center space-y-4 p-4 border-textGray/10 border-[1px]">
-                <img
+                <Image
+                  width={600}
+                  height={600}
                   src="/images/strategy.png"
                   alt="SkillIcon"
                   className="w-14 h-14 object-cover"

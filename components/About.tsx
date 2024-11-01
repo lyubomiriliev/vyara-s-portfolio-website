@@ -21,7 +21,10 @@ const About: React.FC = () => {
         </div>
 
         <div className="flex justify-center gap-20 items-center w-2/3">
-          <img
+          <Image
+            width={1000}
+            height={1000}
+            quality={100}
             src="/profile/profilepic.jpg"
             alt="Vyara Ivanova Ilieva"
             className="w-96 h-96 border-2 object-cover rounded-full mb-6 shadow-lg"

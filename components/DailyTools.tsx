@@ -1,5 +1,6 @@
 import React from "react";
 import { platformsWhite } from "../utils/constants";
+import Image from "next/image";
 
 const DailyTools: React.FC = () => {
   return (
@@ -29,7 +30,9 @@ const DailyTools: React.FC = () => {
             key={index}
             className="w-44 h-24 justify-center items-center flex bg-transparent border-[1px] border-textGray/20 rounded-3xl"
           >
-            <img
+            <Image
+              width={200}
+              height={200}
               className="w-full scale-75 h-12 object-fit"
               src={platform.icon}
               alt={platform.name}

@@ -198,24 +198,28 @@ export const testimonials = [
   },
   {
     name: "Jane Smith",
+    img: "/images/review1.jpg",
     feedback:
       "Professional and insightful! Vyara's work is exceptional, and she knows exactly what a brand needs.",
     role: "Marketing Director at ABC Corp",
   },
   {
     name: "Alex Johnson",
+    img: "/images/review1.jpg",
     feedback:
       "Fantastic collaboration! Her ideas are always fresh and relevant. A true social media expert!",
     role: "Brand Manager at XYZ Ltd",
   },
   {
     name: "Jane Smith",
+    img: "/images/review1.jpg",
     feedback:
       "Professional and insightful! Vyara's work is exceptional, and she knows exactly what a brand needs.",
     role: "Marketing Director at ABC Corp",
   },
   {
     name: "Alex Johnson",
+    img: "/images/review1.jpg",
     feedback:
       "Fantastic collaboration! Her ideas are always fresh and relevant. A true social media expert!",
     role: "Brand Manager at XYZ Ltd",

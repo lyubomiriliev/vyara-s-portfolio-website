@@ -9,7 +9,10 @@ const Footer: React.FC = () => {
         <h1 className="uppercase hidden text-4xl font-bold tracking-widest">
           Vyara Ivanova–Ilieva
         </h1>
-        <img
+        <Image
+          width={1200}
+          height={1200}
+          quality={100}
           src="/images/vyaraName.png"
           className="w-2/3 py-4"
           alt="Vyara Ivanova Ilieva"

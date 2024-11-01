@@ -1,6 +1,7 @@
 import React from "react";
 import { testimonials } from "@/utils/constants";
 import SectionHeading from "./SectionHeading";
+import Image from "next/image";
 
 export const Testimonials: React.FC = () => {
   return (
@@ -30,7 +31,9 @@ export const Testimonials: React.FC = () => {
             {/* Profile Picture and Name */}
             <div className="flex items-center w-full gap-4">
               <div className="w-12 h-12 rounded-full bg-gray-400 flex-shrink-0 overflow-hidden">
-                <img
+                <Image
+                  width={600}
+                  height={600}
                   src={testimonial.img}
                   alt={testimonial.name}
                   className="object-cover w-full h-full"

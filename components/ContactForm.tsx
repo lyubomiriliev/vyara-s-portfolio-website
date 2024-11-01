@@ -2,6 +2,7 @@ import React from "react";
 import SectionHeading from "./SectionHeading";
 import { contactIcons } from "@/utils/constants";
 import Button from "./Button";
+import Image from "next/image";
 
 const ContactForm: React.FC = () => {
   return (
@@ -26,7 +27,9 @@ const ContactForm: React.FC = () => {
           <div className="flex items-center w-full gap-6">
             {contactIcons.slice(0, 3).map((logo, index) => (
               <div className="w-10 h-10" key={index}>
-                <img
+                <Image
+                  width={600}
+                  height={600}
                   src={logo.icon}
                   alt={logo.name}
                   className="w-full h-full object-fit"

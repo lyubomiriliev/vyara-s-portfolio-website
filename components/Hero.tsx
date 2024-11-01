@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Button from "./Button";
+import Image from "next/image";
 
 const Hero: React.FC = () => {
   return (
@@ -8,7 +9,9 @@ const Hero: React.FC = () => {
       <Header />
       {/* Background Image with Dark Gradient Overlay */}
       <div className="absolute inset-0 -top-16 -z-20 w-full h-full overflow-hidden">
-        <img
+        <Image
+          layout="fill"
+          quality={100}
           src="/backgrounds/BGhero.png"
           alt="Background Image"
           className="object-cover"
@@ -17,7 +20,10 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 top-96 bg-gradient-to-b from-transparent to-black"></div>
       </div>
       <div className="relative z-10 flex flex-col justify-end min-h-[70vh] items-center">
-        <img
+        <Image
+          width={500}
+          height={800}
+          quality={100}
           src="/images/heroPhone.png"
           alt="Phone Image"
           className="absolute w-full scale-75 -top-1/2 -z-20 object-cover"

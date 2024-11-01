@@ -2,6 +2,7 @@
 import React from "react";
 import SectionHeading from "./SectionHeading";
 import { strengths } from "../utils/constants";
+import Image from "next/image";
 
 const Strengths: React.FC = () => {
   return (
@@ -19,7 +20,13 @@ const Strengths: React.FC = () => {
               className="h-60 rounded-xl bg-cardBG p-6 flex flex-col justify-around"
             >
               <div className="flex flex-col items-start gap-4">
-                <img src={strength.icon} alt="" className="w-10 h-10" />
+                <Image
+                  width={600}
+                  height={600}
+                  src={strength.icon}
+                  alt=""
+                  className="w-10 h-10"
+                />
                 <h3 className="text-xl font-semibold">{strength.title}</h3>
                 <div className="w-2/3 h-[1px] bg-textGray"></div>
               </div>
@@ -30,7 +37,10 @@ const Strengths: React.FC = () => {
 
         {/* Center Image */}
         <div className="w-96 rounded-xl overflow-hidden">
-          <img
+          <Image
+            width={1200}
+            height={1200}
+            quality={100}
             src="/images/skillsBG.jpg"
             className="object-cover w-full h-full"
             alt="Skills"
@@ -45,7 +55,13 @@ const Strengths: React.FC = () => {
               className="h-60 rounded-xl bg-cardBG p-6 flex flex-col justify-between"
             >
               <div className="flex flex-col items-start gap-4">
-                <img src={strength.icon} alt="" className="w-10 h-10" />
+                <Image
+                  width={600}
+                  height={600}
+                  src={strength.icon}
+                  alt=""
+                  className="w-10 h-10"
+                />
                 <h3 className="text-xl font-semibold">{strength.title}</h3>
                 <div className="w-2/3 h-[1px] bg-textGray"></div>
               </div>
