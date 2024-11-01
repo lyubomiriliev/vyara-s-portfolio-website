@@ -1,14 +1,6 @@
 // components/SocialMediaPlatforms.tsx
 import React from "react";
-
-const platforms = [
-  { name: "Instagram", icon: "/icons/instagram.png" },
-  { name: "Facebook", icon: "/icons/fb.png" },
-  { name: "TikTok", icon: "/icons/tiktok.png" },
-  { name: "LinkedIn", icon: "/icons/linkedin.png" },
-  { name: "Meta", icon: "/icons/meta.png" },
-  { name: "Canva", icon: "/icons/canva.png" },
-];
+import { platforms } from "../utils/constants";
 
 const SocialMediaPlatforms: React.FC = () => {
   return (

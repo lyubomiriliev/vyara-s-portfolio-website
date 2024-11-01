@@ -8,6 +8,7 @@ import Clients from "../components/Clients";
 import Packages from "../components/Packages";
 import Footer from "../components/Footer";
 import ExperienceSummary from "@/components/ExperienceSummary";
+import DailyTools from "@/components/DailyTools";
 
 export default function Home() {
   return (
@@ -16,8 +17,9 @@ export default function Home() {
       <SocialMediaPlatforms />
       <About />
       <ExperienceSummary />
-      {/* <Skills /> */}
-      {/* <Strengths /> */}
+      <DailyTools />
+      <Skills />
+      <Strengths />
       {/* <Clients /> */}
       {/* <Packages /> */}
       {/* <Footer /> */}

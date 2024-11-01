@@ -3,18 +3,17 @@ import React from "react";
 
 const About: React.FC = () => {
   return (
-    <section className="text-white py-20 px-10 text-center">
+    <section className="text-white py-10 px-10 text-center">
       <div className="flex flex-col items-center mb-10">
         <div className="flex py-6 gap-2 flex-col justify-center items-center">
           <h2 className="uppercase font-extralight text-xl">about me</h2>
-          <h1 className="uppercase font-extrabold text-4xl">
-            Vyara Ivanova Ilieva
-          </h1>
+          <h1 className="uppercase font-bold text-4xl">Vyara Ivanova Ilieva</h1>
           <div className="bg-textGray/20 px-6 py-1.5 mt-2 rounded-full items-center flex uppercase font-light gap-2 border-[1px] border-white">
             <div className="bg-green-300 h-1 w-1 rounded-full"></div>
             Open for work
           </div>
         </div>
+
         <div className="flex justify-center gap-20 items-center w-2/3">
           <img
             src="/profile/profilepic.jpg"

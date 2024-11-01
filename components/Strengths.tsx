@@ -1,27 +1,31 @@
 import React from "react";
-
-const strengths = [
-  {
-    title: "Creativity",
-    description: "Developing fresh and innovative ideas.",
-  },
-  { title: "Analytical", description: "Using data to drive decisions." },
-];
+import SectionHeading from "./SectionHeading";
 
 const Strengths: React.FC = () => {
   return (
-    <section className="bg-black text-white py-12">
-      <h3 className="text-center text-3xl font-bold mb-8">Strengths</h3>
-      <div className="flex flex-wrap justify-center gap-8">
-        {strengths.map((strength, index) => (
-          <div
-            key={index}
-            className="bg-gray-800 p-6 rounded-lg w-64 text-center"
-          >
-            <h4 className="text-xl font-bold">{strength.title}</h4>
-            <p className="text-gray-400">{strength.description}</p>
-          </div>
-        ))}
+    <section className="text-white w-full flex flex-col max-w-screen-xl mx-auto items-center py-12">
+      <SectionHeading
+        title="Strengths"
+        subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, eos?"
+      />
+      <div className="flex  gap-4">
+        <div className="flex w-72 flex-col gap-4">
+          <div className="h-60 rounded-xl bg-cardBG"></div>
+          <div className="h-60 rounded-xl bg-cardBG"></div>
+          <div className="h-60 rounded-xl bg-cardBG"></div>
+        </div>
+        <div className="w-96 rounded-xl overflow-hidden">
+          <img
+            src="/images/skillsBG.jpg"
+            className="object-cover w-full h-full"
+            alt="Skills"
+          />
+        </div>
+        <div className="flex w-72 flex-col gap-4">
+          <div className="flex-1 h-60 rounded-xl bg-cardBG"></div>
+          <div className="flex-1 h-60 rounded-xl bg-cardBG"></div>
+          <div className="flex-1 h-60 rounded-xl bg-cardBG"></div>
+        </div>
       </div>
     </section>
   );
