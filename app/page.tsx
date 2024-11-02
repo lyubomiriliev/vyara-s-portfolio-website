@@ -1,6 +1,5 @@
 // pages/index.tsx
 import Hero from "../components/Hero";
-import SocialMediaPlatforms from "../components/SocialMediaPlatforms";
 import About from "../components/About";
 import Skills from "../components/Skills";
 import Strengths from "../components/Strengths";
@@ -16,7 +15,6 @@ export default function Home() {
   return (
     <div>
       <Hero />
-      <SocialMediaPlatforms />
       <About />
       <ExperienceSummary />
       <DailyTools />

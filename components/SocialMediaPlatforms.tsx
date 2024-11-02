@@ -1,22 +1,31 @@
 import React from "react";
-import { platforms } from "../utils/constants";
 import Image from "next/image";
 
 const SocialMediaPlatforms: React.FC = () => {
   return (
-    <section className="flex h-40 justify-center items-center space-x-8 py-10 bg-gradient-to-br from-primary to-secondary text-white">
-      {platforms.map(({ name, icon }) => (
-        <div key={name} className="rounded-full">
-          <Image
-            width={1000}
-            height={200}
-            src={icon}
-            alt={name}
-            className="w-full rounded-full h-12"
-          />
-        </div>
-      ))}
-      <img src="/icons/klaviyo.png" alt="Klaviyo" className="w-40 h-12" />
+    <section className="flex relative justify-center items-center text-white py-10">
+      <div className="flex gap-20 items-center w-full animate-mobileScroll md:animate-slowScroll">
+        <Image
+          width={1200}
+          height={600}
+          unoptimized
+          src="/icons/gray/platforms2.png"
+          alt="platforms"
+          className="w-full object-cover h-16 md:h-20"
+        />
+        <Image
+          width={1160}
+          height={600}
+          unoptimized
+          src="/icons/gray/platforms2.png"
+          alt="platforms"
+          className="w-full object-cover h-16 md:h-20"
+        />
+      </div>
+      <div className="absolute -inset-8 flex z-20 justify-between pointer-events-none">
+        <div className="w-24 bg-gradient-to-r from-dark to-transparent"></div>
+        <div className="w-24 bg-gradient-to-l from-dark to-transparent"></div>
+      </div>
     </section>
   );
 };

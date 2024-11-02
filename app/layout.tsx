@@ -12,8 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="bg-dark font-bona">{children}</body>
+    <html lang="en" className="overflow-x-hidden">
+      <body className="bg-dark font-raleway overflow-x-hidden">{children}</body>
     </html>
   );
 }

@@ -9,7 +9,7 @@ const SectionHeading: React.FC<Heading> = ({ title, subTitle }) => {
   return (
     <div className="flex flex-col justify-center items-center mb-10 gap-2">
       <h3 className="text-center text-4xl font-bold uppercase">{title}</h3>
-      <p className="uppercase text-base">{subTitle}</p>
+      <p className="uppercase text-base font-light text-center">{subTitle}</p>
     </div>
   );
 };

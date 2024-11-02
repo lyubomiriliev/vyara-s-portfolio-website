@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export const Testimonials: React.FC = () => {
   return (
-    <section className="text-white py-8 relative overflow-hidden">
+    <section className="text-white py-8 relative">
       <SectionHeading
         title="Testimonials"
         subTitle="What my customers say about my work"
@@ -50,6 +50,7 @@ export const Testimonials: React.FC = () => {
           </div>
         ))}
       </div>
+      <div className="absolute -bottom-[40%] left-[40%] w-[400px] h-[400px] bg-pinkGlow rounded-full blur-6xl pointer-events-none -z-20"></div>
     </section>
   );
 };

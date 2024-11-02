@@ -14,6 +14,16 @@ export const stats = [
   { label: "Customers", count: "13+" },
 ];
 
+// utils/constants.ts
+export const headerLinks: string[] = [
+  "Home",
+  "About",
+  "Skills",
+  "Strengths",
+  "Clients",
+  "Testimonials",
+];
+
 export const platformsWhite = [
   { name: "Instagram", icon: "/icons/white/instaw.svg" },
   { name: "Facebook", icon: "/icons/white/fbw.svg" },
@@ -21,6 +31,17 @@ export const platformsWhite = [
   { name: "TikTok", icon: "/icons/white/tiktokw.svg" },
   { name: "Meta", icon: "/icons/white/metaw.svg" },
   { name: "LinkedIn", icon: "/icons/white/linkedinw.png" },
+];
+
+export const platformsGray = [
+  { name: "Instagram", icon: "/icons/gray/instagramGray.png" },
+  { name: "Facebook", icon: "/icons/gray/facebookGray.png" },
+  { name: "Canva", icon: "/icons/gray/canvaGray.png" },
+  { name: "Meta", icon: "/icons/gray/metaGray.png" },
+  { name: "Google", icon: "/icons/gray/googleGray.png" },
+  { name: "Klaviyo", icon: "/icons/gray/klaviyoGray.png" },
+  { name: "Tiktok", icon: "/icons/gray/tiktokGray.png" },
+  { name: "Linkedin", icon: "/icons/gray/linkedinGray.png" },
 ];
 
 export const contactIcons = [

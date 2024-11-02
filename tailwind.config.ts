@@ -9,6 +9,8 @@ module.exports = {
     extend: {
       fontFamily: {
         bona: ["'Bona Nova'", "serif"],
+        raleway: ["'Raleway'", "serif"],
+        arsenal: ["'Arsenal'", "serif"],
       },
       colors: {
         dark: "#131313",
@@ -26,7 +28,18 @@ module.exports = {
         },
       },
       animation: {
-        scroll: "scroll 20s linear infinite",
+        mobileScroll: "scroll 10s linear infinite",
+        slowScroll: "scroll 40s linear infinite",
+      },
+      blur: {
+        "4xl": "80px",
+        "5xl": "100px",
+        "6xl": "120px",
+      },
+      boxShadow: {
+        "glow-lg": "0 0 60px 20px rgba(255, 111, 216, 0.3)", // pinkish glow
+        "glow-xl": "0 0 80px 30px rgba(135, 206, 250, 0.4)", // bluish glow
+        "glow-xxl": "0 0 120px 40px rgba(255, 255, 255, 0.2)", // white glow for general softness
       },
     },
   },

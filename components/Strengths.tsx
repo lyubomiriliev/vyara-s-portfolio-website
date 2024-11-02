@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const Strengths: React.FC = () => {
   return (
-    <section className="text-white w-full flex flex-col max-w-screen-xl mx-auto items-center py-12">
+    <section className="text-white w-full flex flex-col max-w-screen-xl mx-auto items-center py-12 relative">
       <SectionHeading
         title="Strengths"
         subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, eos?"
@@ -70,6 +70,7 @@ const Strengths: React.FC = () => {
           ))}
         </div>
       </div>
+      <div className="absolute bottom-[45%] left-[36%] w-[400px] h-[400px] bg-pinkGlow rounded-full blur-6xl pointer-events-none -z-20"></div>
     </section>
   );
 };
