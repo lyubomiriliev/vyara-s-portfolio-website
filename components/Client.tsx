@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 interface Client {
@@ -25,7 +26,9 @@ const Client: React.FC<Client> = ({
         reverse ? "flex-row-reverse" : "flex-row"
       } items-center border-[1px] border-textGray/20 bg-cardBG rounded-xl my-4`}
     >
-      <img
+      <Image
+        width={1200}
+        height={600}
         src={img}
         className="w-1/2 h-96 md:w-60 md:h-60 object-cover p-[1px] rounded-xl"
         alt={title}
