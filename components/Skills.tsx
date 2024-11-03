@@ -282,7 +282,8 @@ const Skills: React.FC = () => {
           </div>
         </div>
         {/* Background Glow Effect */}
-        <div className="absolute bottom-[50%] left-[40%] w-[200px] h-[200px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] bg-blueGlow rounded-full blur-3xl md:blur-5xl pointer-events-none -z-20"></div>
+        <div className="absolute bottom-[63%] left-[9%] md:bottom-[50%] md:left-[40%] w-[400px] h-[400px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] bg-blueGlow/80 rounded-full blur-3xl md:blur-5xl pointer-events-none -z-20"></div>
+        <div className="absolute bottom-[20%] left-[10%] md:bottom-[50%] md:left-[40%] w-[400px] h-[400px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] bg-pinkGlow/80 rounded-full blur-3xl md:blur-5xl pointer-events-none -z-20"></div>
       </section>
     </>
   );

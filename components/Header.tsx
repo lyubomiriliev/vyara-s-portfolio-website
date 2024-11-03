@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import { headerLinks } from "@/utils/constants";
 import { FiMenu, FiX } from "react-icons/fi"; // Icons for mobile menu toggle
 import Image from "next/image";
+import Button from "./Button";
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-    console.log("Menu Open State:", !menuOpen); // Debugging to check if state toggles
   };
 
   return (
@@ -26,9 +26,7 @@ const Header: React.FC = () => {
               {link}
             </a>
           ))}
-          <button className="bg-primary text-dark font-bold px-4 py-2 rounded-full uppercase">
-            Contact Me
-          </button>
+          <Button text="Contact Me" variant="default" />
         </div>
 
         {/* Mobile Menu Toggle Button */}
@@ -61,9 +59,7 @@ const Header: React.FC = () => {
               {link}
             </a>
           ))}
-          <button className="bg-primary text-dark font-bold px-4 py-2 rounded-full uppercase">
-            Contact Me
-          </button>
+          <Button text="Contact Me" variant="outline" />
         </div>
       )}
     </header>

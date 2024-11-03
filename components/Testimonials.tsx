@@ -12,13 +12,13 @@ export const Testimonials: React.FC = () => {
       />
 
       {/* Fade-out effect on left and right sides */}
-      <div className="absolute inset-0 flex z-20 justify-between pointer-events-none">
-        <div className="w-16 bg-gradient-to-r from-dark to-transparent"></div>
-        <div className="w-16 bg-gradient-to-l from-dark to-transparent"></div>
+      <div className="absolute top-36 inset-0 flex z-20 justify-between pointer-events-none">
+        <div className="w-16 h-44 bg-gradient-to-r from-dark to-transparent"></div>
+        <div className="w-16 h-44 hidden md:flex bg-gradient-to-l from-dark to-transparent"></div>
       </div>
 
       {/* Scrolling container */}
-      <div className="flex items-center animate-scroll space-x-8">
+      <div className="flex items-center animate-mobileScroll md:animate-slowScroll space-x-8">
         {testimonials.concat(testimonials).map((testimonial, index) => (
           <div
             key={index}
@@ -50,7 +50,7 @@ export const Testimonials: React.FC = () => {
           </div>
         ))}
       </div>
-      <div className="absolute -bottom-[40%] left-[40%] w-[400px] h-[400px] bg-pinkGlow rounded-full blur-6xl pointer-events-none -z-20"></div>
+      <div className="absolute -bottom-[30%] left-[15%] md:left-[40%] w-[400px] h-[400px] bg-pinkGlow/80 rounded-full blur-6xl pointer-events-none -z-20"></div>
     </section>
   );
 };

@@ -3,9 +3,9 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="text-white py-8 mt-20 w-full flex flex-col items-center relative overflow-hidden">
+    <footer className="text-white py-4 mt-5 w-full flex flex-col items-center relative overflow-hidden">
       {/* Main Footer Content */}
-      <div className="max-w-screen-lg w-full flex flex-col items-center space-y-4">
+      <div className="max-w-screen-lg w-full px-4 flex flex-col items-center space-y-4">
         <h1 className="uppercase hidden text-4xl font-bold tracking-widest">
           Vyara Ivanova–Ilieva
         </h1>
@@ -14,15 +14,15 @@ const Footer: React.FC = () => {
           height={1200}
           quality={100}
           src="/images/vyaraName.png"
-          className="w-2/3 py-4"
+          className="w-full md:w-2/3 py-4"
           alt="Vyara Ivanova Ilieva"
         />
-        <div className="absolute right-44 -top-16 transform -translate-y-1/2 w-40 h-40 rounded-full bg-secondary blur-3xl"></div>
-        <div className="absolute left-0 -bottom-40 transform -translate-y-1/3 w-40 h-40 rounded-full bg-secondary blur-3xl"></div>
-        <div className="absolute right-1/4 -bottom-60 transform -translate-y-1/3 w-40 h-40 rounded-full bg-primary blur-3xl"></div>
-        <div className="absolute inset-0 left-[29%] -top-10 transform -translate-y-1/2 w-40 h-40 rounded-full bg-primary blur-3xl"></div>
+        <div className="absolute right-44 -top-16 transform -translate-y-1/2 w-40 h-40 rounded-full bg-blueGlow blur-3xl"></div>
+        <div className="absolute left-0 -bottom-40 transform -translate-y-1/3 w-40 h-40 rounded-full bg-blueGlow blur-3xl"></div>
+        <div className="absolute right-1/4 -bottom-60 transform -translate-y-1/3 w-40 h-40 rounded-full bg-pinkGlow blur-3xl"></div>
+        <div className="absolute inset-0 left-[29%] -top-10 transform -translate-y-1/2 w-40 h-40 rounded-full bg-pinkGlow blur-3xl"></div>
 
-        <div className="flex justify-between w-full text-sm mt-6 space-x-8 px-4">
+        <div className="flex justify-between w-full text-sm mt-6 space-x-4">
           {/* Column 1: Pages */}
           <div className="flex flex-col space-y-2">
             <h3 className="uppercase text-gray-300 font-medium">Pages</h3>

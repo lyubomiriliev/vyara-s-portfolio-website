@@ -148,7 +148,7 @@ export const clientsData = [
     perk3: "new impressions",
   },
   {
-    title: "Another Client",
+    title: "El Well",
     description: "Some description for another client.",
     img: "../clients/client.jpg",
     perk1: "reach expanded",
@@ -156,7 +156,7 @@ export const clientsData = [
     perk3: "brand recognition",
   },
   {
-    title: "Another Client",
+    title: "Pulse Homes",
     description: "Some description for another client.",
     img: "../clients/client.jpg",
     perk1: "reach expanded",
@@ -164,7 +164,23 @@ export const clientsData = [
     perk3: "brand recognition",
   },
   {
-    title: "Another Client",
+    title: "Coolfit",
+    description: "Some description for another client.",
+    img: "../clients/client.jpg",
+    perk1: "reach expanded",
+    perk2: "client retention",
+    perk3: "brand recognition",
+  },
+  {
+    title: "Fox Academy",
+    description: "Some description for another client.",
+    img: "../clients/client.jpg",
+    perk1: "reach expanded",
+    perk2: "client retention",
+    perk3: "brand recognition",
+  },
+  {
+    title: "La Maniere",
     description: "Some description for another client.",
     img: "../clients/client.jpg",
     perk1: "reach expanded",

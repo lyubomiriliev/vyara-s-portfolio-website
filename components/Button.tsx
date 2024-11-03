@@ -13,7 +13,8 @@ const Button: React.FC<ButtonProps> = ({ text, variant = "default" }) => {
     default: "bg-primary text-black uppercase",
     outline:
       "border border-white text-white bg-transparent hover:bg-white hover:text-black uppercase",
-    gradient: "bg-gradient-to-r from-primary to-secondary text-black uppercase",
+    gradient:
+      "bg-gradient-to-r from-primary to-secondary rounded-xl text-black uppercase",
   };
 
   return (

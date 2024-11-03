@@ -12,11 +12,11 @@ const Packages: React.FC = () => {
         title="Packages"
         subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, fugit."
       />
-      <div className="flex w-full max-w-screen-lg mx-auto justify-center gap-10 px-4">
+      <div className="flex flex-col  md:flex-row w-full max-w-screen-lg mx-auto justify-center gap-10 px-6 md:px-4">
         {packages.map((pkg, index) => (
           <div
             key={index}
-            className="relative group bg-cardBG border-2 border-textGray/20 p-8 space-y-4 rounded-xl text-center transition-transform duration-300 transform hover:scale-110 hover:border-primary overflow-hidden"
+            className="relative group bg-cardBG border-2 border-textGray/20 p-8 space-y-4 rounded-xl text-center transition-transform duration-300 transform md:hover:scale-110 hover:border-primary overflow-hidden"
           >
             {/* Left and Right Blurred Circles */}
             <div className="absolute -right-6 top-1/5 transform -translate-y-1/2 w-20 h-20 rounded-full bg-secondary opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-100"></div>
