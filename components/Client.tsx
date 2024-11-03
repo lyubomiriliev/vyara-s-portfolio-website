@@ -1,17 +1,17 @@
 import Image from "next/image";
 import React from "react";
 
-interface Client {
+interface ClientProps {
   title: string;
   description: string;
-  img: string;
+  img: string; // Updated to string for the image URL
   perk1: string;
   perk2: string;
   perk3: string;
   reverse?: boolean;
 }
 
-const Client: React.FC<Client> = ({
+const Client: React.FC<ClientProps> = ({
   title,
   description,
   img,
