@@ -8,20 +8,20 @@ export const platforms = [
 ];
 
 export const stats = [
-  { label: "Posts", count: "500+" },
-  { label: "Stories", count: "300+" },
-  { label: "Campaigns", count: "100+" },
-  { label: "Customers", count: "13+" },
+  { label: "Posts", count: "500" },
+  { label: "Stories", count: "300" },
+  { label: "Campaigns", count: "100" },
+  { label: "Customers", count: "13" },
 ];
 
 // utils/constants.ts
 export const headerLinks: string[] = [
   "Home",
-  "About",
-  "Skills",
+  "Services",
   "Strengths",
   "Clients",
-  "Testimonials",
+  "Portfolio",
+  "Packages",
 ];
 
 export const platformsWhite = [

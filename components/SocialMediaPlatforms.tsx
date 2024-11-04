@@ -4,17 +4,9 @@ import Image from "next/image";
 const SocialMediaPlatforms: React.FC = () => {
   return (
     <section className="flex relative justify-center items-center text-white py-10">
-      <div className="flex gap-20 items-center w-full animate-mobileScroll md:animate-slowScroll">
+      <div className="flex gap-20 items-center w-full">
         <Image
           width={1200}
-          height={600}
-          unoptimized
-          src="/icons/gray/platforms2.png"
-          alt="platforms"
-          className="w-full object-cover h-16 md:h-20"
-        />
-        <Image
-          width={1160}
           height={600}
           unoptimized
           src="/icons/gray/platforms2.png"

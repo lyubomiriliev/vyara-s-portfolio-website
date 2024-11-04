@@ -15,8 +15,8 @@ module.exports = {
       colors: {
         dark: "#131313",
         cardBG: "#212121",
-        primary: "#EBB0FF",
-        secondary: "#8ADBFF",
+        primary: "#D96FEA",
+        secondary: "#257B9F",
         textGray: "#A8A8A8",
         pinkGlow: "#D96FEA",
         blueGlow: "#257B9F",
@@ -26,10 +26,15 @@ module.exports = {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-100%)" },
         },
+        blink: {
+          "0%, 50%": { opacity: 1 },
+          "51%, 100%": { opacity: 0 },
+        },
       },
       animation: {
         mobileScroll: "scroll 10s linear infinite",
         slowScroll: "scroll 40s linear infinite",
+        blink: "blink 0.75s stepp(1, end) infinite",
       },
       blur: {
         "4xl": "80px",

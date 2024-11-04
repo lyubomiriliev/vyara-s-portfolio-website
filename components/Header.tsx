@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { headerLinks } from "@/utils/constants";
 import { FiMenu, FiX } from "react-icons/fi"; // Icons for mobile menu toggle
 import Image from "next/image";
-import Button from "./Button";
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,16 +20,15 @@ const Header: React.FC = () => {
             <a
               key={index}
               href={`#${link.toLowerCase()}`}
-              className="hover:text-primary transition-colors"
+              className="hover:text-primary hover:font-extrabold duration-300 ease-in-out transition-all"
             >
               {link}
             </a>
           ))}
-          <Button text="Contact Me" variant="default" />
         </div>
 
         {/* Mobile Menu Toggle Button */}
-        <div className="md:hidden flex items-center space-x-4 px-4 py-4 z-50">
+        <div className="md:hidden flex items-center space-x-4 px-4 py-2 z-50">
           <div className="flex items-center md:hidden">
             <Image
               width={600}
@@ -48,7 +46,7 @@ const Header: React.FC = () => {
 
       {/* Mobile Navigation */}
       {menuOpen && (
-        <div className="fixed top-0 backdrop-blur-[2px] w-full mx-auto bg-dark bg-opacity-80 flex flex-col items-center pt-24 pb-8 space-y-3 text-base uppercase">
+        <div className="fixed top-0 backdrop-blur-[2px] w-full mx-auto bg-dark bg-opacity-80 flex flex-col items-center pt-24 pb-8 space-y-5 text-base uppercase">
           {headerLinks.map((link, index) => (
             <a
               key={index}
@@ -59,7 +57,6 @@ const Header: React.FC = () => {
               {link}
             </a>
           ))}
-          <Button text="Contact Me" variant="outline" />
         </div>
       )}
     </header>
