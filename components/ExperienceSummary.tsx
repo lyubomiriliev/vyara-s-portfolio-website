@@ -31,7 +31,7 @@ export const ExperienceSummary: React.FC = () => {
       if (!isVisible) return; // Start counting only when the section is visible
 
       let start = 0;
-      const steps = Math.ceil(duration / 5);
+      const steps = Math.ceil(duration / 3);
       const increment = target / steps;
 
       const timer = setInterval(() => {
@@ -57,9 +57,9 @@ export const ExperienceSummary: React.FC = () => {
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className="text-center bg-cardBG border-[1px] border-textGray/20 w-full h-40 md:w-56 md:h-56 justify-center flex flex-col items-center rounded-2xl relative overflow-hidden"
+          className="text-center bg-cardBG border-[1px] gap-1 border-textGray/20 w-full h-40 md:w-56 md:h-56 justify-center flex flex-col items-center rounded-2xl relative overflow-hidden"
         >
-          <h4 className="text-5xl font-bold uppercase">
+          <h4 className="text-5xl font-raleway font-semibold uppercase">
             {useCountUp(Number(stat.count), 1000)}+
           </h4>
           <div className="absolute h-24 w-24 blur-3xl -top-12 rounded-full bg-blueGlow"></div>

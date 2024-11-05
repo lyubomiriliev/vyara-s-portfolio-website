@@ -8,19 +8,18 @@ export const platforms = [
 ];
 
 export const stats = [
-  { label: "Posts", count: "500" },
-  { label: "Stories", count: "300" },
-  { label: "Campaigns", count: "100" },
+  { label: "Posts & Stories", count: "32604" },
+  { label: "Designs", count: "1852" },
+  { label: "Campaigns", count: "85" },
   { label: "Customers", count: "13" },
 ];
 
-// utils/constants.ts
 export const headerLinks: string[] = [
   "Home",
   "Services",
   "Strengths",
-  "Clients",
   "Portfolio",
+  "Clients",
   "Packages",
 ];
 
@@ -148,14 +147,6 @@ export const clientsData = [
     perk3: "new impressions",
   },
   {
-    title: "El Well",
-    description: "Some description for another client.",
-    img: "/clients/client.jpg",
-    perk1: "reach expanded",
-    perk2: "client retention",
-    perk3: "brand recognition",
-  },
-  {
     title: "Pulse Homes",
     description: "Some description for another client.",
     img: "/clients/client.jpg",
@@ -165,6 +156,14 @@ export const clientsData = [
   },
   {
     title: "Coolfit",
+    description: "Some description for another client.",
+    img: "/clients/client.jpg",
+    perk1: "reach expanded",
+    perk2: "client retention",
+    perk3: "brand recognition",
+  },
+  {
+    title: "El Well",
     description: "Some description for another client.",
     img: "/clients/client.jpg",
     perk1: "reach expanded",
@@ -260,5 +259,94 @@ export const testimonials = [
     feedback:
       "Fantastic collaboration! Her ideas are always fresh and relevant. A true social media expert!",
     role: "Brand Manager at XYZ Ltd",
+  },
+];
+
+interface TimelineItem {
+  title: string;
+  subtitle: string;
+  dateRange: string;
+  skills?: string;
+}
+
+export const educationData: TimelineItem[] = [
+  {
+    title: "High School of Mathematics 'Dr Petra Beron' - Varna",
+    subtitle: "",
+    dateRange: "2013 - 2018",
+  },
+  {
+    title: "SoftUni Digital - Digital Marketing & Analytics",
+    subtitle: "",
+    dateRange: "2019 - 2020",
+  },
+  {
+    title: "New Bulgarian University Business Information Technologies",
+    subtitle: "",
+    dateRange: "2019 - 2022",
+  },
+  {
+    title: "New Bulgarian University Marketing Bachelor's Degree",
+    subtitle: "",
+    dateRange: "2020 - 2022",
+  },
+];
+
+export const experienceData: TimelineItem[] = [
+  {
+    title: "Princeps Advertising - Social Media Manager",
+    subtitle: "",
+    dateRange: "Nov 2019 - Present | 5y 1m",
+    skills:
+      "Google Drive, Social Media, E-commerce, Digital Marketing, Sales & Marketing, Content Creation, Video Editing, Online Advertising, Klaviyo, Digital Media, Facebook Marketing",
+  },
+  {
+    title: "VAPY - Social Media Marketing Manager",
+    subtitle: "",
+    dateRange: "Feb 2021 - Present | 3y 10m",
+    skills:
+      "Google Drive, Social Media, E-commerce, Digital Marketing, Sales & Marketing, Content Creation, Video Editing, Online Advertising, Klaviyo, Digital Media, Facebook Marketing",
+  },
+  {
+    title: "El Shisha - Social Media Marketing Manager",
+    subtitle: "",
+    dateRange: "Nov 2019 - Present | 5y 1m",
+    skills:
+      "Google Drive, Social Media, E-commerce, Digital Marketing, Sales & Marketing, Content Creation, Video Editing, Online Advertising, Klaviyo, Digital Media, Facebook Marketing",
+  },
+  {
+    title: "La Manière - Social Media Marketing Manager",
+    subtitle: "",
+    dateRange: "Mar 2024 - Present | 9m",
+    skills:
+      "Google Drive, Social Media, E-commerce, Digital Marketing, Sales & Marketing, Content Creation, Video Editing, Online Advertising, Klaviyo, Digital Media, Facebook Marketing",
+  },
+  {
+    title: "CoolFit - Social Media Marketing Manager",
+    subtitle: "",
+    dateRange: "Apr 2024 - Present | 8m",
+    skills:
+      "Google Drive, Social Media, E-commerce, Digital Marketing, Sales & Marketing, Content Creation, Video Editing, Online Advertising, Klaviyo, Digital Media, Facebook Marketing",
+  },
+  {
+    title: "Pulse Kids - Social Media Marketing Manager",
+    subtitle: "",
+    dateRange: "Aug 2023 - Present | 1y 4m",
+    skills:
+      "Digital Marketing, Video Editing, Klaviyo, Facebook Marketing, Social Media Graphic Design, Canva, Email Marketing, Instagram, Facebook Ads Manager, Social Media Advertising, Social Media Content Creation, Copywriting",
+  },
+  {
+    title: "Fox Academy by GERA - Social Media Marketing Manager",
+    subtitle: "",
+    dateRange: "Apr 2024 - Present | 8m",
+    skills:
+      "Digital Marketing, Video Editing, Klaviyo, Facebook Marketing, Social Media Graphic Design, Canva, Email Marketing, Instagram, Facebook Ads Manager, Social Media Advertising, Social Media Content Creation, Copywriting",
+  },
+  {
+    title: "Pulse Homes - Social Media Marketing Manager",
+    subtitle: "",
+    dateRange: "Sep 2024 - Present | 3m",
+    skills:
+      "Digital Marketing, Video Editing, Klaviyo, Facebook Marketing, Social Media Graphic Design, Canva, Email Marketing, Instagram, Facebook Ads Manager, Social Media Advertising, Social Media Content Creation, Copywriting",
   },
 ];

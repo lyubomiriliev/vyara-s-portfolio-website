@@ -17,8 +17,8 @@ const About: React.FC = () => {
             alt="Vyara Ivanova Ilieva"
           />
           {/* "Open for work" badge for larger screens */}
-          <div className="bg-textGray/20 px-6 py-1.5 mt-2 rounded-full hidden items-center md:flex uppercase font-light gap-2 border-[1px] border-white">
-            <div className="bg-green-300 h-3 w-3 rounded-full"></div>
+          <div className="bg-textGray/20 px-6 py-1.5 mt-2 rounded-full hidden items-center md:flex uppercase font-bold gap-2 border-[1px] border-white">
+            <div className="bg-green-300 h-2 w-2 rounded-full"></div>
             Open for work
           </div>
         </div>
@@ -34,7 +34,7 @@ const About: React.FC = () => {
             className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 border-2 object-cover rounded-full md:mb-6 shadow-lg"
           />
           {/* "Open for work" badge for smaller screens */}
-          <div className="bg-textGray/20 px-6 py-1.5 rounded-full flex items-center md:hidden uppercase font-light gap-2 border-[1px] border-white">
+          <div className="bg-textGray/20 px-6 py-1.5 rounded-full flex items-center md:hidden uppercase font-bold gap-2 border-[1px] border-white">
             <div className="bg-green-300 h-2 w-2 rounded-full"></div>
             Open for work
           </div>

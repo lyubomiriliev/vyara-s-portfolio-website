@@ -7,7 +7,7 @@ const Strengths: React.FC = () => {
   return (
     <section className="text-white w-full flex flex-col max-w-screen-xl mx-auto items-center py-12 relative px-4 sm:px-6 lg:px-8">
       <SectionHeading
-        title="Strengths"
+        title="Key Strengths"
         subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, eos?"
       />
 

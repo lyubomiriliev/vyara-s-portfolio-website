@@ -13,7 +13,7 @@ const Button: React.FC<ButtonProps> = ({ text, variant = "default", icon }) => {
     "px-4 py-2 font-bold rounded-full transition-all flex items-center justify-center gap-2";
 
   const variantStyles = {
-    default: "bg-primary text-black uppercase",
+    default: "bg-cyan-300 text-black uppercase",
     outline:
       "border border-white text-white bg-transparent hover:bg-white hover:text-black uppercase",
     gradient:

@@ -1,6 +1,7 @@
 import React from "react";
 import SectionHeading from "./SectionHeading";
 import Image from "next/image";
+import SocialMediaPlatforms from "./SocialMediaPlatforms";
 
 const Skills: React.FC = () => {
   return (
@@ -8,13 +9,16 @@ const Skills: React.FC = () => {
       {/* DESKTOP COMPONENT */}
       <section className="text-white py-16 hidden md:block px-10 relative">
         <SectionHeading
-          title="Skills"
+          title="Tools & Services"
           subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
           possimus?"
         />
+
+        <SocialMediaPlatforms />
+
         <div className="w-full flex flex-col py-8 justify-center items-center gap-4 max-w-screen-xl mx-auto">
           <div className="flex gap-4">
-            <div className="flex">
+            {/* <div className="flex">
               <div className="w-80 flex flex-col p-4 justify-center items-start space-y-4 rounded-xl bg-cardBG border-textGray/10 border-[1px]">
                 <Image
                   width={600}
@@ -29,7 +33,35 @@ const Skills: React.FC = () => {
                   slogans, colors, and messaging.
                 </p>
               </div>
+            </div> */}
+
+            {/* First Skill Card */}
+            <div className="group perspective w-80 h-[244px]">
+              <div className="relative w-full h-full transform-style-preserve-3d transition-transform duration-500 group-hover:rotate-y-180">
+                {/* Front Face */}
+                <div className="absolute w-full h-full backface-hidden bg-cardBG border-textGray/10 border-[1px] p-4 flex flex-col justify-center items-start space-y-4 rounded-xl">
+                  <Image
+                    width={600}
+                    height={600}
+                    src="/images/strategy.png"
+                    alt="SkillIcon"
+                    className="w-14 h-14 object-cover"
+                  />
+                  <h1 className="text-2xl uppercase font-bold">
+                    Brand Strategy
+                  </h1>
+                </div>
+
+                {/* Back Face */}
+                <div className="absolute w-full h-full bg-cardBG border-textGray/10 border-[1px] p-4 flex flex-col justify-center items-start space-y-4 rounded-xl transform rotate-y-180 backface-hidden">
+                  <p className="text-sm text-textGray">
+                    Creating cohesive brand identities with unique styles,
+                    slogans, colors, and messaging.
+                  </p>
+                </div>
+              </div>
             </div>
+
             <div className="flex flex-col gap-4 justify-center items-center">
               <div className="flex">
                 <div className="w-80 h-[244px] rounded-xl flex justify-center items-start flex-col p-6 space-y-4 bg-cardBG border-textGray/10 border-[1px]">
@@ -41,25 +73,7 @@ const Skills: React.FC = () => {
                     className="w-14 h-14 object-cover"
                   />
                   <h1 className="text-2xl uppercase font-bold">
-                    Email marketing
-                  </h1>
-                  <p className="text-sm text-textGray">
-                    Running weekly campaigns, managing databases, and optimizing
-                    for better engagement.
-                  </p>
-                </div>
-              </div>
-              <div className="flex">
-                <div className="w-80 h-[244px] rounded-xl flex justify-center items-start flex-col p-4 space-y-4 bg-cardBG border-textGray/10 border-[1px]">
-                  <Image
-                    width={600}
-                    height={600}
-                    src="/images/strategy.png"
-                    alt="SkillIcon"
-                    className="w-14 h-14 object-cover"
-                  />
-                  <h1 className="text-2xl uppercase font-bold">
-                    Email marketing
+                    Social media planning
                   </h1>
                   <p className="text-sm text-textGray">
                     Tailoring plans to drive campaigns, promotions,
@@ -67,8 +81,6 @@ const Skills: React.FC = () => {
                   </p>
                 </div>
               </div>
-            </div>
-            <div className="flex flex-col gap-4 justify-center items-center">
               <div className="flex">
                 <div className="w-80 h-[244px] rounded-xl flex justify-center items-start flex-col p-4 space-y-4 bg-cardBG border-textGray/10 border-[1px]">
                   <Image
@@ -87,6 +99,27 @@ const Skills: React.FC = () => {
                   </p>
                 </div>
               </div>
+            </div>
+            <div className="flex flex-col gap-4 justify-center items-center">
+              <div className="flex">
+                <div className="w-80 h-[244px] rounded-xl flex justify-center items-start flex-col p-4 space-y-4 bg-cardBG border-textGray/10 border-[1px]">
+                  <Image
+                    width={600}
+                    height={600}
+                    src="/images/strategy.png"
+                    alt="SkillIcon"
+                    className="w-14 h-14 object-cover"
+                  />
+                  <h1 className="text-2xl uppercase font-bold">
+                    Influencer & B2B partnerships
+                  </h1>
+                  <p className="text-sm text-textGray">
+                    Building strategic partnerships with influencers and
+                    business partners, managing contracts, campaigns, and
+                    performance to align with brand goals.
+                  </p>
+                </div>
+              </div>
               <div className="flex">
                 <div className="w-80 h-[244px] rounded-xl flex justify-center items-start flex-col p-4 space-y-4 bg-cardBG border-textGray/10 border-[1px]">
                   <Image
@@ -97,12 +130,11 @@ const Skills: React.FC = () => {
                     className="w-14 h-14 object-cover"
                   />
                   <h1 className="text-xl uppercase font-bold">
-                    Influencer & B2B partnerships
+                    Email marketing
                   </h1>
                   <p className="text-sm text-textGray">
-                    Building strategic partnerships with influencers and
-                    business partners, managing contracts, campaigns, and
-                    performance to align with brand goals.
+                    Running weekly campaigns, managing databases, and optimizing
+                    for better engagement.
                   </p>
                 </div>
               </div>
@@ -120,11 +152,11 @@ const Skills: React.FC = () => {
                     className="w-14 h-14 object-cover"
                   />
                   <h1 className="text-2xl uppercase font-bold">
-                    Content production
+                    Digital advertising & analytics
                   </h1>
                   <p className="text-sm text-textGray">
-                    Creating, editing, and posting photos/videos, ensuring
-                    alignment with brand strategy.
+                    Managing campaigns on META Ads Manager and Google Ads,
+                    optimizing with analytics tools.
                   </p>
                 </div>
               </div>
@@ -138,11 +170,11 @@ const Skills: React.FC = () => {
                     className="w-14 h-14 object-cover"
                   />
                   <h1 className="text-2xl uppercase font-bold">
-                    AI-driven marketing:
+                    SEO optimization
                   </h1>
                   <p className="text-sm text-textGray">
-                    Using AI tools to refine strategies, enhance presence, and
-                    optimize campaigns.
+                    Enhancing visibility through tailored SEO for e-commerce and
+                    services.
                   </p>
                 </div>
               </div>
@@ -156,11 +188,11 @@ const Skills: React.FC = () => {
                     className="w-14 h-14 object-cover"
                   />
                   <h1 className="text-2xl uppercase font-bold">
-                     Digital advertising & analytics
+                     AI-driven marketing
                   </h1>
                   <p className="text-sm text-textGray">
-                    Managing campaigns on META Ads Manager and Google Ads,
-                    optimizing with analytics tools.
+                    Using AI tools to refine strategies, enhance presence, and
+                    optimize campaigns.
                   </p>
                 </div>
               </div>

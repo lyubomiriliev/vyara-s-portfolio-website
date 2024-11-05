@@ -26,7 +26,6 @@ const Header: React.FC = () => {
             </a>
           ))}
         </div>
-
         {/* Mobile Menu Toggle Button */}
         <div className="md:hidden flex items-center space-x-4 px-4 py-2 z-50">
           <div className="flex items-center md:hidden">

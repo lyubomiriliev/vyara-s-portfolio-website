@@ -1,5 +1,4 @@
 import React from "react";
-import SectionHeading from "./SectionHeading";
 import { contactIcons } from "@/utils/constants";
 import Button from "./Button";
 import Image from "next/image";
@@ -7,16 +6,11 @@ import Image from "next/image";
 const ContactForm: React.FC = () => {
   return (
     <section className="text-white py-8 w-full flex justify-center items-center flex-col max-w-screen-lg mx-auto px-4">
-      <SectionHeading
-        title="Contact Me"
-        subTitle="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero, id!"
-      />
-
       <div className="w-full relative overflow-hidden bg-cardBG flex flex-col lg:flex-row border-[1px] border-textGray/20 rounded-xl px-6 md:px-12 pt-10 pb-10 lg:pb-24 lg:pt-10 gap-8 lg:gap-0">
         {/* Left Section */}
         <div className="lg:w-1/2 flex flex-col space-y-4 py-6 gap-6">
           <h1 className="uppercase text-5xl md:text-4xl lg:text-5xl font-bold">
-            Get in Touch With Me
+            Contact Me
           </h1>
           <p className="uppercase text-textGray max-w-full lg:max-w-[300px]">
             Have a question or need more information about my services? Fill out

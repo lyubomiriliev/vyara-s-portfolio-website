@@ -4,7 +4,7 @@ import Header from "./Header";
 import Button from "./Button";
 import Image from "next/image";
 
-const words = ["Specialist", "Manager", "Master", "Expert"];
+const words = ["Manager", "Expert", "Psychologist", "Master", "Nomad"];
 
 const Hero: React.FC = () => {
   const [displayedText, setDisplayedText] = useState(words[0]);
@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
   const [hasInitialized, setHasInitialized] = useState(false);
   const typingSpeed = 100;
   const deletingSpeed = 50;
-  const pauseDuration = 1500;
+  const pauseDuration = 1000;
 
   useEffect(() => {
     if (!hasInitialized) {
@@ -49,9 +49,8 @@ const Hero: React.FC = () => {
   }, [displayedText, isDeleting, currentWordIndex, hasInitialized]);
 
   return (
-    <section className="relative min-h-svh flex flex-col items-center text-center text-white md:py-28 overflow-hidden">
+    <section className="relative min-h-svh flex flex-col justify-between items-center text-center text-white md:py-28 overflow-hidden">
       <Header />
-
       {/* Background Image with Dark Gradient Overlay */}
       <div className="absolute inset-0 -top-16 -z-20 w-full h-full overflow-hidden select-none">
         <Image
@@ -74,31 +73,31 @@ const Hero: React.FC = () => {
             quality={100}
             src="/images/heroPhone.png"
             alt="Phone Image"
-            className="absolute w-full sm:w-[75%] xl:w-[40%] bottom-[210px] md:bottom-24 md:left-6 md:w-full left-2 lg:-top-32 lg:left-[30%] -z-10 object-cover"
+            className="absolute w-[95%] sm:w-[75%] bottom-[200px] left-5 md:bottom-[280px] md:left-24 md:w-[80%]  lg:w-[36%] lg:-top-[90px] lg:left-[32%] -z-10 object-cover"
           />
         </div>
-        <div className="flex flex-col justify-center items-center w-full">
-          <h1 className="text-6xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-tighter drop-shadow-lg mb-2 uppercase">
+        <div className="flex flex-col justify-centerm items-center  w-full">
+          <h1 className="text-6xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-tighter leading-tighter drop-shadow-lg uppercase">
             Social Media{" "}
-            <span className="text-primary inline-block relative min-w-7">
+            <span className="text-primary font-extrabold inline-block relative min-w-7">
               {displayedText}
               <span
                 className={`absolute top-0 -right-4
-                   w-[10px] h-full bg-primary ${
-                     isDeleting ||
-                     displayedText.length < words[currentWordIndex].length
-                       ? "animate-blink"
-                       : ""
-                   }`}
+                  w-[10px] h-full bg-primary ${
+                    isDeleting ||
+                    displayedText.length < words[currentWordIndex].length
+                      ? "animate-blink"
+                      : ""
+                  }`}
               ></span>
             </span>
           </h1>
-          <p className="text-lg md:text-justify sm:text-xl md:text-2xl max-w-2xl text-gray-300 leading-relaxed px-4">
+          <p className="text-md md:text-center font-light sm:text-xl md:text-2xl max-w-3xl text-gray-300 leading-relaxed px-4 md:px-0">
             Helping brands grow and engage with their audience through creative
             and data-driven social media strategies.
           </p>
         </div>
-        <div className="flex sm:flex-row mt-4 gap-4 items-center">
+        <div className="flex py-6 md:py-4 justify-center w-full gap-4 items-center">
           <Button text="Contact me" />
           <Button
             text="Linkedin"

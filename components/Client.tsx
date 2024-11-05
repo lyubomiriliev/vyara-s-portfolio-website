@@ -40,22 +40,22 @@ const Client: React.FC<ClientProps> = ({
           <div className="w-2/3 flex md:hidden h-[1px] mt-2 bg-primary"></div>
         </div>
         <div className="flex flex-col items-center gap-2 md:hidden">
-          <span className="text-primary uppercase text-center text-xl font-bold">
+          <span className="text-white uppercase text-center text-xl font-bold">
             40%
           </span>
           <h1 className="text-white text-sm uppercase text-center font-light">
             {perk1}
           </h1>
-          <span className="text-primary uppercase text-center text-2xl font-bold">
+          <span className="text-white uppercase text-center text-2xl font-bold">
             100+
           </span>
-          <h1 className="text-primary text-sm uppercase text-center font-light">
+          <h1 className="text-white text-sm uppercase text-center font-light">
             {perk2}
           </h1>
-          <span className="text-primary uppercase text-center text-2xl font-bold">
+          <span className="text-white uppercase text-center text-2xl font-bold">
             40%
           </span>
-          <h1 className="text-primary text-sm uppercase text-center font-light">
+          <h1 className="text-white text-sm uppercase text-center font-light">
             {perk3}
           </h1>
         </div>
@@ -63,28 +63,28 @@ const Client: React.FC<ClientProps> = ({
         {/* Client Results */}
         <div className="md:flex hidden  justify-center items-center space-x-6 gap-4 bg-textGray/20 rounded-xl p-4">
           <div className="flex justify-center items-center flex-col">
-            <span className="text-primary uppercase text-center text-2xl font-bold">
+            <span className="text-white uppercase text-center text-2xl font-bold">
               40%
             </span>
-            <h1 className="text-primary text-sm uppercase text-center font-light">
+            <h1 className="text-white text-sm uppercase text-center font-light">
               {perk1}
             </h1>
           </div>
-          <div className="w-[1px] h-10 bg-primary"></div>
+          <div className="w-[1px] h-10 bg-white"></div>
           <div className="flex justify-center items-center flex-col">
-            <span className="text-primary uppercase text-center text-2xl font-bold">
+            <span className="text-white uppercase text-center text-2xl font-bold">
               100+
             </span>
-            <h1 className="text-primary text-sm uppercase text-center font-light">
+            <h1 className="text-white text-sm uppercase text-center font-light">
               {perk2}
             </h1>
           </div>
-          <div className="w-[1px] h-10 bg-primary"></div>
+          <div className="w-[1px] h-10 bg-white"></div>
           <div className="flex justify-center items-center flex-col">
-            <span className="text-primary uppercase text-center text-2xl font-bold">
+            <span className="text-white uppercase text-center text-2xl font-bold">
               40%
             </span>
-            <h1 className="text-primary text-sm uppercase text-center font-light">
+            <h1 className="text-white text-sm uppercase text-center font-light">
               {perk3}
             </h1>
           </div>

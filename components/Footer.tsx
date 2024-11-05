@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="text-white py-4 mt-5 w-full flex flex-col items-center relative overflow-hidden">
+    <footer className="text-white w-full flex flex-col items-center relative overflow-hidden">
       {/* Main Footer Content */}
       <div className="max-w-screen-lg w-full px-4 flex flex-col items-center space-y-4">
         <h1 className="uppercase hidden text-4xl font-bold tracking-widest">
@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
           height={1200}
           quality={100}
           src="/images/vyaraName.png"
-          className="w-full md:w-2/3 py-4"
+          className="w-full md:w-2/3 pb-4 z-50"
           alt="Vyara Ivanova Ilieva"
         />
         <div className="absolute right-44 -top-16 transform -translate-y-1/2 w-40 h-40 rounded-full bg-blueGlow blur-3xl"></div>

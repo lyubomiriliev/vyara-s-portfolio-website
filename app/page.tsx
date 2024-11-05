@@ -7,9 +7,10 @@ import Clients from "../components/Clients";
 import Packages from "../components/Packages";
 import Footer from "../components/Footer";
 import ExperienceSummary from "@/components/ExperienceSummary";
-import DailyTools from "@/components/DailyTools";
 import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
+import Timeline from "@/components/Timeline";
+import Portfolio from "@/components/Portfolio";
 
 export default function Home() {
   return (
@@ -17,12 +18,13 @@ export default function Home() {
       <Hero />
       <ExperienceSummary />
       <About />
-      <DailyTools />
+      <Timeline />
       <Skills />
       <Strengths />
+      <Portfolio />
       <Clients />
-      <Packages />
       <Testimonials />
+      <Packages />
       <ContactForm />
       <Footer />
     </div>

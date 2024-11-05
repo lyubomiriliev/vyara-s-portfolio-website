@@ -11,6 +11,9 @@ module.exports = {
         bona: ["'Bona Nova'", "serif"],
         raleway: ["'Raleway'", "serif"],
         arsenal: ["'Arsenal'", "serif"],
+        montserrat: ["Montserrat", "serif"],
+        lato: ["Lato", "serif"],
+        merri: ["Merriweather Sans", "serif"],
       },
       colors: {
         dark: "#131313",
@@ -33,7 +36,7 @@ module.exports = {
       },
       animation: {
         mobileScroll: "scroll 10s linear infinite",
-        slowScroll: "scroll 40s linear infinite",
+        slowScroll: "scroll 55s linear infinite",
         blink: "blink 0.75s stepp(1, end) infinite",
       },
       blur: {

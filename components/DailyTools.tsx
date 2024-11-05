@@ -1,5 +1,4 @@
 import React from "react";
-import SocialMediaPlatforms from "./SocialMediaPlatforms";
 
 const DailyTools: React.FC = () => {
   return (
@@ -23,9 +22,7 @@ const DailyTools: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="mt-10 md:mt-20">
-        <SocialMediaPlatforms />
-      </div>
+      <div className="mt-10 md:mt-20"></div>
     </section>
   );
 };

@@ -11,7 +11,7 @@ const Clients: React.FC = () => {
         subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, quo."
       />
       {clientsData.map((client, index) => (
-        <div className="w-full border-[1px] border-textGray/20" key={index}>
+        <div className="w-full" key={index}>
           <Client
             key={index}
             title={client.title}
