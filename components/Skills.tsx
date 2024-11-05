@@ -2,6 +2,8 @@ import React from "react";
 import SectionHeading from "./SectionHeading";
 import Image from "next/image";
 import SocialMediaPlatforms from "./SocialMediaPlatforms";
+import SkillCard from "./SkillCard";
+import { skills } from "@/utils/constants";
 
 const Skills: React.FC = () => {
   return (
@@ -13,190 +15,63 @@ const Skills: React.FC = () => {
           subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
           possimus?"
         />
-
-        <SocialMediaPlatforms />
-
-        <div className="w-full flex flex-col py-8 justify-center items-center gap-4 max-w-screen-xl mx-auto">
-          <div className="flex gap-4">
-            {/* <div className="flex">
-              <div className="w-80 flex flex-col p-4 justify-center items-start space-y-4 rounded-xl bg-cardBG border-textGray/10 border-[1px]">
-                <Image
-                  width={600}
-                  height={600}
-                  src="/images/strategy.png"
-                  alt="SkillIcon"
-                  className="w-14 h-14 object-cover"
+        <div>
+          <SocialMediaPlatforms />
+        </div>
+        <div className="w-full flex flex-col items-center py-6 max-w-screen-lg mx-auto">
+          <div className="flex">
+            <div className="flex gap-4">
+              {skills.slice(0, 1).map((skill, index) => (
+                <SkillCard
+                  key={index}
+                  title={skill.title}
+                  desc={skill.description}
+                  img={skill.img}
+                  variant={index === 0 ? "large" : "desktop"}
                 />
-                <h1 className="text-2xl uppercase font-bold">Brand Strategy</h1>
-                <p className="text-sm text-textGray">
-                  Creating cohesive brand identities with unique styles,
-                  slogans, colors, and messaging.
-                </p>
-              </div>
-            </div> */}
-
-            {/* First Skill Card */}
-            <div className="group perspective w-80 h-[244px]">
-              <div className="relative w-full h-full transform-style-preserve-3d transition-transform duration-500 group-hover:rotate-y-180">
-                {/* Front Face */}
-                <div className="absolute w-full h-full backface-hidden bg-cardBG border-textGray/10 border-[1px] p-4 flex flex-col justify-center items-start space-y-4 rounded-xl">
-                  <Image
-                    width={600}
-                    height={600}
-                    src="/images/strategy.png"
-                    alt="SkillIcon"
-                    className="w-14 h-14 object-cover"
+              ))}
+              <div className="flex-col space-y-4">
+                {skills.slice(0, 2).map((skill, index) => (
+                  <SkillCard
+                    key={index}
+                    title={skill.title}
+                    desc={skill.description}
+                    img={skill.img}
+                    variant="desktop"
                   />
-                  <h1 className="text-2xl uppercase font-bold">
-                    Brand Strategy
-                  </h1>
-                </div>
-
-                {/* Back Face */}
-                <div className="absolute w-full h-full bg-cardBG border-textGray/10 border-[1px] p-4 flex flex-col justify-center items-start space-y-4 rounded-xl transform rotate-y-180 backface-hidden">
-                  <p className="text-sm text-textGray">
-                    Creating cohesive brand identities with unique styles,
-                    slogans, colors, and messaging.
-                  </p>
-                </div>
+                ))}
               </div>
-            </div>
-
-            <div className="flex flex-col gap-4 justify-center items-center">
-              <div className="flex">
-                <div className="w-80 h-[244px] rounded-xl flex justify-center items-start flex-col p-6 space-y-4 bg-cardBG border-textGray/10 border-[1px]">
-                  <Image
-                    width={600}
-                    height={600}
-                    src="/images/strategy.png"
-                    alt="SkillIcon"
-                    className="w-14 h-14 object-cover"
+              <div className="flex-col space-y-4">
+                {skills.slice(3, 5).map((skill, index) => (
+                  <SkillCard
+                    key={index}
+                    title={skill.title}
+                    desc={skill.description}
+                    img={skill.img}
+                    variant="desktop"
                   />
-                  <h1 className="text-2xl uppercase font-bold">
-                    Social media planning
-                  </h1>
-                  <p className="text-sm text-textGray">
-                    Tailoring plans to drive campaigns, promotions,
-                    partnerships, and product launches.
-                  </p>
-                </div>
-              </div>
-              <div className="flex">
-                <div className="w-80 h-[244px] rounded-xl flex justify-center items-start flex-col p-4 space-y-4 bg-cardBG border-textGray/10 border-[1px]">
-                  <Image
-                    width={600}
-                    height={600}
-                    src="/images/strategy.png"
-                    alt="SkillIcon"
-                    className="w-14 h-14 object-cover"
-                  />
-                  <h1 className="text-2xl uppercase font-bold">
-                    Creative content creation
-                  </h1>
-                  <p className="text-sm text-textGray">
-                    Producing engaging content, from concept to design,
-                    copywriting, and scheduling.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col gap-4 justify-center items-center">
-              <div className="flex">
-                <div className="w-80 h-[244px] rounded-xl flex justify-center items-start flex-col p-4 space-y-4 bg-cardBG border-textGray/10 border-[1px]">
-                  <Image
-                    width={600}
-                    height={600}
-                    src="/images/strategy.png"
-                    alt="SkillIcon"
-                    className="w-14 h-14 object-cover"
-                  />
-                  <h1 className="text-2xl uppercase font-bold">
-                    Influencer & B2B partnerships
-                  </h1>
-                  <p className="text-sm text-textGray">
-                    Building strategic partnerships with influencers and
-                    business partners, managing contracts, campaigns, and
-                    performance to align with brand goals.
-                  </p>
-                </div>
-              </div>
-              <div className="flex">
-                <div className="w-80 h-[244px] rounded-xl flex justify-center items-start flex-col p-4 space-y-4 bg-cardBG border-textGray/10 border-[1px]">
-                  <Image
-                    width={600}
-                    height={600}
-                    src="/images/strategy.png"
-                    alt="SkillIcon"
-                    className="w-14 h-14 object-cover"
-                  />
-                  <h1 className="text-xl uppercase font-bold">
-                    Email marketing
-                  </h1>
-                  <p className="text-sm text-textGray">
-                    Running weekly campaigns, managing databases, and optimizing
-                    for better engagement.
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
           </div>
-          <div className="flex gap-4">
-            <div className="flex gap-4 justify-center items-center">
-              <div className="flex">
-                <div className="w-56 h-[300px] rounded-xl bg-cardBG justify-center p-4 space-y-4 border-textGray/10 border-[1px]">
-                  <Image
-                    width={600}
-                    height={600}
-                    src="/images/strategy.png"
-                    alt="SkillIcon"
-                    className="w-14 h-14 object-cover"
-                  />
-                  <h1 className="text-2xl uppercase font-bold">
-                    Digital advertising & analytics
-                  </h1>
-                  <p className="text-sm text-textGray">
-                    Managing campaigns on META Ads Manager and Google Ads,
-                    optimizing with analytics tools.
-                  </p>
-                </div>
-              </div>
-              <div className="flex">
-                <div className="w-72 h-[300px] rounded-xl bg-cardBG justify-center space-y-4 p-4 border-textGray/10 border-[1px]">
-                  <Image
-                    width={600}
-                    height={600}
-                    src="/images/strategy.png"
-                    alt="SkillIcon"
-                    className="w-14 h-14 object-cover"
-                  />
-                  <h1 className="text-2xl uppercase font-bold">
-                    SEO optimization
-                  </h1>
-                  <p className="text-sm text-textGray">
-                    Enhancing visibility through tailored SEO for e-commerce and
-                    services.
-                  </p>
-                </div>
-              </div>
-              <div className="flex">
-                <div className="w-[450px] h-[300px] rounded-xl bg-cardBG justify-center space-y-4 p-4 border-textGray/10 border-[1px]">
-                  <Image
-                    width={600}
-                    height={600}
-                    src="/images/strategy.png"
-                    alt="SkillIcon"
-                    className="w-14 h-14 object-cover"
-                  />
-                  <h1 className="text-2xl uppercase font-bold">
-                     AI-driven marketing
-                  </h1>
-                  <p className="text-sm text-textGray">
-                    Using AI tools to refine strategies, enhance presence, and
-                    optimize campaigns.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="flex gap-4 mt-4">
+            {skills.slice(5, 9).map((skill, index) => (
+              <SkillCard
+                key={index}
+                title={skill.title}
+                desc={skill.description}
+                img={skill.img}
+                variant={
+                  index === 0
+                    ? "small"
+                    : index === 1
+                    ? "medium"
+                    : index === 2
+                    ? "medium"
+                    : "desktop"
+                }
+              />
+            ))}
           </div>
         </div>
         <div className="absolute  bottom-[50%] left-[40%] w-[400px] h-[400px] bg-blueGlow rounded-full blur-5xl pointer-events-none -z-20"></div>
@@ -208,111 +83,22 @@ const Skills: React.FC = () => {
           title="Skills"
           subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, possimus?"
         />
-        <div className="w-full flex flex-col py-8 justify-center items-center max-w-screen-xl mx-auto">
-          {/* First Row of Skills */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
-            <div className="flex flex-col p-4 w-full rounded-xl bg-cardBG border-textGray/10 border-[1px]">
-              <Image
-                width={600}
-                height={600}
-                src="/images/strategy.png"
-                alt="SkillIcon"
-                className="w-14 h-14 object-cover mb-4"
-              />
-              <h1 className="text-lg md:text-2xl uppercase font-bold">
-                Brand Strategy
-              </h1>
-              <p className="text-xs md:text-sm text-textGray mt-2">
-                Creating cohesive brand identities with unique styles, slogans,
-                colors, and messaging.
-              </p>
-            </div>
-            <div className="flex flex-col p-4 w-full rounded-xl bg-cardBG border-textGray/10 border-[1px]">
-              <Image
-                width={600}
-                height={600}
-                src="/images/strategy.png"
-                alt="SkillIcon"
-                className="w-14 h-14 object-cover mb-4"
-              />
-              <h1 className="text-lg md:text-2xl uppercase font-bold">
-                Email Marketing
-              </h1>
-              <p className="text-xs md:text-sm text-textGray mt-2">
-                Running weekly campaigns, managing databases, and optimizing for
-                better engagement.
-              </p>
-            </div>
-            <div className="flex flex-col p-4 w-full rounded-xl bg-cardBG border-textGray/10 border-[1px]">
-              <Image
-                width={600}
-                height={600}
-                src="/images/strategy.png"
-                alt="SkillIcon"
-                className="w-14 h-14 object-cover mb-4"
-              />
-              <h1 className="text-lg md:text-2xl uppercase font-bold">
-                Creative Content Creation
-              </h1>
-              <p className="text-xs md:text-sm text-textGray mt-2">
-                Producing engaging content, from concept to design, copywriting,
-                and scheduling.
-              </p>
-            </div>
-          </div>
-
-          {/* Second Row of Skills */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-4">
-            <div className="flex flex-col p-4 w-full rounded-xl bg-cardBG border-textGray/10 border-[1px]">
-              <Image
-                width={600}
-                height={600}
-                src="/images/strategy.png"
-                alt="SkillIcon"
-                className="w-14 h-14 object-cover mb-4"
-              />
-              <h1 className="text-lg md:text-2xl uppercase font-bold">
-                Content Production
-              </h1>
-              <p className="text-xs md:text-sm text-textGray mt-2">
-                Creating, editing, and posting photos/videos, ensuring alignment
-                with brand strategy.
-              </p>
-            </div>
-            <div className="flex flex-col p-4 w-full rounded-xl bg-cardBG border-textGray/10 border-[1px]">
-              <Image
-                width={600}
-                height={600}
-                src="/images/strategy.png"
-                alt="SkillIcon"
-                className="w-14 h-14 object-cover mb-4"
-              />
-              <h1 className="text-lg md:text-2xl uppercase font-bold">
-                AI-Driven Marketing
-              </h1>
-              <p className="text-xs md:text-sm text-textGray mt-2">
-                Using AI tools to refine strategies, enhance presence, and
-                optimize campaigns.
-              </p>
-            </div>
-            <div className="flex flex-col p-4 w-full rounded-xl bg-cardBG border-textGray/10 border-[1px]">
-              <Image
-                width={600}
-                height={600}
-                src="/images/strategy.png"
-                alt="SkillIcon"
-                className="w-14 h-14 object-cover mb-4"
-              />
-              <h1 className="text-lg md:text-2xl uppercase font-bold">
-                Digital Advertising & Analytics
-              </h1>
-              <p className="text-xs md:text-sm text-textGray mt-2">
-                Managing campaigns on META Ads Manager and Google Ads,
-                optimizing with analytics tools.
-              </p>
-            </div>
-          </div>
+        <div>
+          <SocialMediaPlatforms />
         </div>
+        <div className="w-full flex flex-col items-center justify-center">
+          {skills.map((skill, index) => (
+            <div className="w-full mt-4" key={index}>
+              <SkillCard
+                title={skill.title}
+                desc={skill.description}
+                variant="mobile"
+                img={skill.img}
+              />
+            </div>
+          ))}
+        </div>
+
         {/* Background Glow Effect */}
         <div className="absolute bottom-[63%] left-[9%] md:bottom-[50%] md:left-[40%] w-[400px] h-[400px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] bg-blueGlow/80 rounded-full blur-3xl md:blur-5xl pointer-events-none -z-20"></div>
         <div className="absolute bottom-[20%] left-[10%] md:bottom-[50%] md:left-[40%] w-[400px] h-[400px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] bg-pinkGlow/80 rounded-full blur-3xl md:blur-5xl pointer-events-none -z-20"></div>

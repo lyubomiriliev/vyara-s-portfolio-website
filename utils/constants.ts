@@ -33,14 +33,18 @@ export const platformsWhite = [
 ];
 
 export const platformsGray = [
-  { name: "Instagram", icon: "/icons/gray/instagramGray.png" },
-  { name: "Facebook", icon: "/icons/gray/facebookGray.png" },
-  { name: "Canva", icon: "/icons/gray/canvaGray.png" },
-  { name: "Meta", icon: "/icons/gray/metaGray.png" },
-  { name: "Google", icon: "/icons/gray/googleGray.png" },
-  { name: "Klaviyo", icon: "/icons/gray/klaviyoGray.png" },
-  { name: "Tiktok", icon: "/icons/gray/tiktokGray.png" },
-  { name: "Linkedin", icon: "/icons/gray/linkedinGray.png" },
+  { name: "Instagram", icon: "/tools/insta1.png" },
+  { name: "Facebook", icon: "/tools/facebook1.png" },
+  { name: "Canva", icon: "/tools/canva1.png" },
+  { name: "Meta", icon: "/tools/meta1.png" },
+  { name: "Google", icon: "/tools/drive1.png" },
+  { name: "Klaviyo", icon: "/tools/klaviyo1.png" },
+  { name: "Tiktok", icon: "/tools/tiktok1.png" },
+  { name: "Linkedin", icon: "/tools/linkedin1.png" },
+  { name: "ChatGpt", icon: "/tools/gpt1.png" },
+  { name: "Capcut", icon: "/tools/capcut1.png" },
+  { name: "Captions", icon: "/tools/captions1.png" },
+  { name: "Viber", icon: "/tools/viber1.png" },
 ];
 
 export const contactIcons = [
@@ -81,22 +85,22 @@ export const skills = [
       "Running weekly campaigns, managing databases, and optimizing for better engagement.",
   },
   {
-    title: "Content Production",
-    img: "/images/production.png",
-    description:
-      "Creating, editing, and posting photos/videos, ensuring alignment with brand strategy.",
-  },
-  {
-    title: "AI-Driven Marketing",
-    img: "/images/ai.png",
-    description:
-      "Using AI tools to refine strategies, enhance presence, and optimize campaigns.",
-  },
-  {
-    title: "Digital Advertising & Analytics",
+    title: "Digital advertising & analytics",
     img: "/images/advertising.png",
     description:
       "Managing campaigns on META Ads Manager and Google Ads, optimizing with analytics tools.",
+  },
+  {
+    title: "SEO optimization",
+    img: "/images/seo.png",
+    description:
+      "Enhancing visibility through tailored SEO for e-commerce and services.",
+  },
+  {
+    title: "AI-driven marketing",
+    img: "/images/ai.png",
+    description:
+      "Using AI tools to refine strategies, enhance presence, and optimize campaigns.",
   },
 ];
 

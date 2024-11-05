@@ -33,6 +33,14 @@ module.exports = {
           "0%, 50%": { opacity: 1 },
           "51%, 100%": { opacity: 0 },
         },
+        flip: {
+          "0%": { transform: "rotateY(0deg)" },
+          "100%": { transform: "rotateY(180deg)" },
+        },
+        flipBack: {
+          "0%": { transform: "rotateY(180deg)" },
+          "100%": { transform: "rotateY(0deg)" },
+        },
       },
       animation: {
         mobileScroll: "scroll 10s linear infinite",
