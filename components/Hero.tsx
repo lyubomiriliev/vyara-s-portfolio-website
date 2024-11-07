@@ -98,11 +98,12 @@ const Hero: React.FC = () => {
           </p>
         </div>
         <div className="flex py-6 md:py-4 justify-center w-full gap-4 items-center">
-          <Button text="Contact me" />
+          <Button text="Contact me" icon="/icons/contact.png" />
           <Button
             text="Linkedin"
             variant="outline"
             icon="/icons/white/linkedinw.png"
+            hoverIcon="/icons/linkedin.png"
           />
         </div>
       </div>

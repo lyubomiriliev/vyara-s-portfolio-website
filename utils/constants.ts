@@ -23,6 +23,8 @@ export const headerLinks: string[] = [
   "Packages",
 ];
 
+export const portfolioLinks: string[] = ["Videos", "Designs", "Emails"];
+
 export const platformsWhite = [
   { name: "Instagram", icon: "/icons/white/instaw.svg" },
   { name: "Facebook", icon: "/icons/white/fbw.svg" },
@@ -35,16 +37,16 @@ export const platformsWhite = [
 export const platformsGray = [
   { name: "Instagram", icon: "/tools/insta1.png" },
   { name: "Facebook", icon: "/tools/facebook1.png" },
-  { name: "Canva", icon: "/tools/canva1.png" },
-  { name: "Meta", icon: "/tools/meta1.png" },
-  { name: "Google", icon: "/tools/drive1.png" },
-  { name: "Klaviyo", icon: "/tools/klaviyo1.png" },
   { name: "Tiktok", icon: "/tools/tiktok1.png" },
   { name: "Linkedin", icon: "/tools/linkedin1.png" },
+  { name: "Canva", icon: "/tools/canva1.png" },
+  { name: "Klaviyo", icon: "/tools/klaviyo1.png" },
+  { name: "Meta", icon: "/tools/meta1.png" },
   { name: "ChatGpt", icon: "/tools/gpt1.png" },
+  { name: "PhotoRoom", icon: "/tools/photoroom.png" },
   { name: "Capcut", icon: "/tools/capcut1.png" },
   { name: "Captions", icon: "/tools/captions1.png" },
-  { name: "Viber", icon: "/tools/viber1.png" },
+  { name: "Google", icon: "/tools/drive1.png" },
 ];
 
 export const contactIcons = [
@@ -55,28 +57,22 @@ export const contactIcons = [
 
 export const skills = [
   {
-    title: "Brand Strategy",
-    img: "/images/strategy.png",
-    description:
-      "Creating cohesive brand identities with unique styles, slogans, colors, and messaging.",
-  },
-  {
     title: "Social Media Planning",
     img: "/images/planning.png",
     description:
       "Tailoring plans to drive campaigns, promotions, partnerships, and product launches.",
   },
   {
-    title: "Creative Content Creation",
+    title: "Video content creation",
     img: "/images/content.png",
     description:
       "Producing engaging content, from concept to design, copywriting, and scheduling.",
   },
   {
-    title: "Influencer & B2B Partnerships",
-    img: "/images/partnerships.png",
+    title: "Digital ads & analytics",
+    img: "/images/advertising.png",
     description:
-      "Building strategic partnerships with influencers and business partners to align with brand goals.",
+      "Managing campaigns on META Ads Manager and Google Ads, optimizing with analytics tools.",
   },
   {
     title: "Email Marketing",
@@ -85,22 +81,28 @@ export const skills = [
       "Running weekly campaigns, managing databases, and optimizing for better engagement.",
   },
   {
-    title: "Digital advertising & analytics",
-    img: "/images/advertising.png",
+    title: "Brand Strategy",
+    img: "/images/strategy.png",
     description:
-      "Managing campaigns on META Ads Manager and Google Ads, optimizing with analytics tools.",
-  },
-  {
-    title: "SEO optimization",
-    img: "/images/seo.png",
-    description:
-      "Enhancing visibility through tailored SEO for e-commerce and services.",
+      "Creating cohesive brand identities with unique styles, slogans, colors, and messaging.",
   },
   {
     title: "AI-driven marketing",
     img: "/images/ai.png",
     description:
       "Using AI tools to refine strategies, enhance presence, and optimize campaigns.",
+  },
+  {
+    title: "Influencer & B2B Partnerships",
+    img: "/images/partnerships.png",
+    description:
+      "Building strategic partnerships with influencers and business partners to align with brand goals.",
+  },
+  {
+    title: "Search Engine Optimization",
+    img: "/images/seo.png",
+    description:
+      "Enhancing visibility through tailored SEO for e-commerce and services.",
   },
 ];
 
@@ -146,6 +148,7 @@ export const clientsData = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, facere!",
     img: "/clients/client.jpg",
+    logo: "/clients/elshisha.png",
     perk1: "sales increased",
     perk2: "satisfied clients",
     perk3: "new impressions",
@@ -154,6 +157,7 @@ export const clientsData = [
     title: "Pulse Homes",
     description: "Some description for another client.",
     img: "/clients/client.jpg",
+    logo: "/clients/pulsehomes.png",
     perk1: "reach expanded",
     perk2: "client retention",
     perk3: "brand recognition",
@@ -162,6 +166,7 @@ export const clientsData = [
     title: "Coolfit",
     description: "Some description for another client.",
     img: "/clients/client.jpg",
+    logo: "/clients/coolfit.png",
     perk1: "reach expanded",
     perk2: "client retention",
     perk3: "brand recognition",
@@ -170,6 +175,7 @@ export const clientsData = [
     title: "El Well",
     description: "Some description for another client.",
     img: "/clients/client.jpg",
+    logo: "/clients/elwell.png",
     perk1: "reach expanded",
     perk2: "client retention",
     perk3: "brand recognition",
@@ -178,6 +184,7 @@ export const clientsData = [
     title: "Fox Academy",
     description: "Some description for another client.",
     img: "/clients/client.jpg",
+    logo: "/clients/foxacademy.png",
     perk1: "reach expanded",
     perk2: "client retention",
     perk3: "brand recognition",
@@ -186,6 +193,7 @@ export const clientsData = [
     title: "La Maniere",
     description: "Some description for another client.",
     img: "/clients/client.jpg",
+    logo: "/clients/lamaniere.png",
     perk1: "reach expanded",
     perk2: "client retention",
     perk3: "brand recognition",
@@ -225,6 +233,41 @@ export const packages = [
       "Platform Management",
       "Platform Management",
     ],
+  },
+];
+
+export const clientLogos = [
+  {
+    name: "El Shisha",
+    img: "/clients/elshisha.png",
+  },
+  {
+    name: "El Well",
+    img: "/clients/elwell.png",
+  },
+  {
+    name: "Coolfit",
+    img: "/clients/coolfit.png",
+  },
+  {
+    name: "Fox Academy",
+    img: "/clients/foxacademy.png",
+  },
+  {
+    name: "La Maniere",
+    img: "/clients/lamaniere.png",
+  },
+  {
+    name: "Pulse Kids",
+    img: "/clients/pulsekids.png",
+  },
+  {
+    name: "Pulse Homes",
+    img: "/clients/pulsehomes2.png",
+  },
+  {
+    name: "Vapy",
+    img: "/clients/vapy.png",
   },
 ];
 

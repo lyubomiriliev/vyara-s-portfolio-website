@@ -52,7 +52,7 @@ const Timeline: React.FC = () => {
               key={index}
               className={`relative flex items-center ${
                 index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-              } mb-4`}
+              }`}
             >
               {/* Timeline Dot */}
               <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary" />

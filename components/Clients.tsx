@@ -10,13 +10,14 @@ const Clients: React.FC = () => {
         title="Clients"
         subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, quo."
       />
-      {clientsData.map((client, index) => (
+      {clientsData.slice(0, 3).map((client, index) => (
         <div className="w-full" key={index}>
           <Client
             key={index}
             title={client.title}
             description={client.description}
             img={client.img}
+            logo={client.logo}
             perk1={client.perk1}
             perk2={client.perk2}
             perk3={client.perk3}

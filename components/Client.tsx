@@ -5,6 +5,7 @@ interface ClientProps {
   title: string;
   description: string;
   img: string; // Updated to string for the image URL
+  logo: string;
   perk1: string;
   perk2: string;
   perk3: string;
@@ -15,6 +16,7 @@ const Client: React.FC<ClientProps> = ({
   title,
   description,
   img,
+  logo,
   perk1,
   perk2,
   perk3,
@@ -24,7 +26,7 @@ const Client: React.FC<ClientProps> = ({
     <div
       className={`w-full h-96 md:h-60 flex ${
         reverse ? "flex-row-reverse" : "flex-row"
-      } items-center border-[1px] border-textGray/20 bg-cardBG rounded-xl my-4`}
+      } items-center border-[1px] border-textGray/20 bg-gradient-to-tr from-cardBG via-cardBG/90 to-cardBG/30 rounded-xl my-4`}
     >
       <Image
         width={1200}
@@ -35,7 +37,16 @@ const Client: React.FC<ClientProps> = ({
       />
       <div className="flex w-full px-4 md:px-12 mx-auto gap-2 md:gap-5 flex-col">
         <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-3 md:mb-0">
-          <h1 className="text-xl md:text-4xl font-bold uppercase">{title}</h1>
+          <div className="flex items-center gap-4">
+            <h1 className="text-xl md:text-4xl font-bold uppercase">{title}</h1>
+            <Image
+              width={600}
+              height={600}
+              src={logo}
+              alt={title}
+              className="w-20"
+            />
+          </div>
           <p className="text-sm text-center max-w-s">{description}</p>
           <div className="w-2/3 flex md:hidden h-[1px] mt-2 bg-primary"></div>
         </div>

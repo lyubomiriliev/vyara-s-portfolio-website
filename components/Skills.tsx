@@ -15,7 +15,7 @@ const Skills: React.FC = () => {
           subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
           possimus?"
         />
-        <div>
+        <div className="flex">
           <SocialMediaPlatforms />
         </div>
         <div className="w-full flex flex-col items-center py-6 max-w-screen-lg mx-auto">
@@ -31,7 +31,7 @@ const Skills: React.FC = () => {
                 />
               ))}
               <div className="flex-col space-y-4">
-                {skills.slice(0, 2).map((skill, index) => (
+                {skills.slice(1, 3).map((skill, index) => (
                   <SkillCard
                     key={index}
                     title={skill.title}
@@ -63,11 +63,11 @@ const Skills: React.FC = () => {
                 img={skill.img}
                 variant={
                   index === 0
-                    ? "small"
+                    ? "desktop"
                     : index === 1
-                    ? "medium"
+                    ? "desktop"
                     : index === 2
-                    ? "medium"
+                    ? "desktop"
                     : "desktop"
                 }
               />
@@ -78,17 +78,17 @@ const Skills: React.FC = () => {
       </section>
 
       {/* MOBILE COMPONENT */}
-      <section className="text-white block md:hidden py-10 md:py-16 px-4 md:px-10 relative">
+      <section className="text-white block md:hidden px-4 relative">
         <SectionHeading
-          title="Skills"
+          title="Tools & Services"
           subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, possimus?"
         />
         <div>
           <SocialMediaPlatforms />
         </div>
-        <div className="w-full flex flex-col items-center justify-center">
+        <div className="w-full grid grid-cols-2 gap-4 items-center py-6 justify-center">
           {skills.map((skill, index) => (
-            <div className="w-full mt-4" key={index}>
+            <div className="w-full" key={index}>
               <SkillCard
                 title={skill.title}
                 desc={skill.description}
