@@ -23,6 +23,45 @@ export const headerLinks: string[] = [
   "Packages",
 ];
 
+export const videosData: string[] = [
+  "/videos/video1.mp4",
+  "/videos/video2.mp4",
+  "/videos/video3.mp4",
+  "/videos/video4.mp4",
+  "/videos/video5.mp4",
+  "/videos/video6.mp4",
+  "/videos/video7.mp4",
+  "/videos/video8.mp4",
+  "/videos/video9.mp4",
+  "/videos/video10.mp4",
+];
+
+export const designsData: string[] = [
+  "/videos/design1.mp4",
+  "/videos/design2.mp4",
+  "/videos/design3.mp4",
+  "/videos/design4.mp4",
+  "/videos/design5.mp4",
+  "/videos/design6.mp4",
+  "/videos/design7.mp4",
+  "/videos/design8.mp4",
+  "/videos/design9.mp4",
+  "/videos/design10.mp4",
+];
+
+export const emailsData: string[] = [
+  "/videos/email1.mp4",
+  "/videos/email2.mp4",
+  "/videos/email3.mp4",
+  "/videos/email4.mp4",
+  "/videos/email5.mp4",
+  "/videos/email6.mp4",
+  "/videos/email7.mp4",
+  "/videos/email8.mp4",
+  "/videos/email9.mp4",
+  "/videos/email10.mp4",
+];
+
 export const portfolioLinks: string[] = ["Videos", "Designs", "Emails"];
 
 export const platformsWhite = [
@@ -147,7 +186,7 @@ export const clientsData = [
     title: "El Shisha",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, facere!",
-    img: "/clients/client.jpg",
+    img: "/clients/elshisha2.png",
     logo: "/clients/elshisha.png",
     perk1: "sales increased",
     perk2: "satisfied clients",
@@ -156,8 +195,8 @@ export const clientsData = [
   {
     title: "Pulse Homes",
     description: "Some description for another client.",
-    img: "/clients/client.jpg",
-    logo: "/clients/pulsehomes.png",
+    img: "/clients/pulsehomes3.png",
+    logo: "/clients/pulsehomes2.png",
     perk1: "reach expanded",
     perk2: "client retention",
     perk3: "brand recognition",
@@ -165,7 +204,7 @@ export const clientsData = [
   {
     title: "Coolfit",
     description: "Some description for another client.",
-    img: "/clients/client.jpg",
+    img: "/clients/coolfit2.png",
     logo: "/clients/coolfit.png",
     perk1: "reach expanded",
     perk2: "client retention",
@@ -174,7 +213,7 @@ export const clientsData = [
   {
     title: "El Well",
     description: "Some description for another client.",
-    img: "/clients/client.jpg",
+    img: "/clients/elwell2.png",
     logo: "/clients/elwell.png",
     perk1: "reach expanded",
     perk2: "client retention",
@@ -183,7 +222,7 @@ export const clientsData = [
   {
     title: "Fox Academy",
     description: "Some description for another client.",
-    img: "/clients/client.jpg",
+    img: "/clients/foxacademy2.png",
     logo: "/clients/foxacademy.png",
     perk1: "reach expanded",
     perk2: "client retention",
@@ -192,7 +231,7 @@ export const clientsData = [
   {
     title: "La Maniere",
     description: "Some description for another client.",
-    img: "/clients/client.jpg",
+    img: "/clients/lamaniere2.png",
     logo: "/clients/lamaniere.png",
     perk1: "reach expanded",
     perk2: "client retention",

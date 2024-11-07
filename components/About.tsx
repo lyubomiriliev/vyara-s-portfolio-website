@@ -28,8 +28,8 @@ const About: React.FC = () => {
           <Image
             width={1000}
             height={1000}
-            quality={100}
-            src="/profile/profilepic.jpg"
+            unoptimized
+            src="/profile/profilepic2.jpg"
             alt="Vyara Ivanova Ilieva"
             className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 border-2 object-cover rounded-full md:mb-6 shadow-lg"
           />

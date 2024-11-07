@@ -3,17 +3,17 @@
 import React, { useState } from "react";
 import SectionHeading from "./SectionHeading";
 import { portfolioLinks } from "@/utils/constants";
-import Posts from "./Posts";
+import Designs from "./Designs";
 
 const Portfolio = () => {
-  const [postsOpen, setPostsOpen] = useState(true);
+  const [designsOpen, setDesignsOpen] = useState(true);
 
   const centerCardIndex = Math.floor(portfolioLinks.length / 2);
   const [selectedCardIndex, setSelectedCardIndex] = useState(centerCardIndex);
 
   const handleCardClick = (index: number) => {
     setSelectedCardIndex(index);
-    setPostsOpen(!postsOpen);
+    setDesignsOpen(!designsOpen);
   };
 
   return (
@@ -23,7 +23,7 @@ const Portfolio = () => {
         subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, praesentium."
       />
       <div className="flex flex-col w-full max-w-screen-lg mx-auto justify-center items-center text-white px-4 md:px-0">
-        <div className="w-full h-90 grid grid-cols-3 justify-center items-center p-4 gap-10 relative rounded-lg">
+        <div className="w-full grid grid-cols-3 justify-center items-center p-2 gap-4 lg:gap-10 relative rounded-lg">
           {portfolioLinks.map((link, index) => (
             <div
               onClick={() => handleCardClick(index)}
@@ -34,12 +34,12 @@ const Portfolio = () => {
               }`}
               key={index}
             >
-              <h1 className="text-2xl uppercase">{link}</h1>
+              <h1 className="text-lg lg:text-2xl uppercase">{link}</h1>
               <div className="absolute h-24 w-24 blur-3xl -top-12 rounded-full bg-pinkGlow "></div>
             </div>
           ))}
         </div>
-        {postsOpen && <Posts />}
+        {designsOpen && <Designs />}
       </div>
     </section>
   );

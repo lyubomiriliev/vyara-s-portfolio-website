@@ -8,7 +8,7 @@ const Skills: React.FC = () => {
   return (
     <>
       {/* DESKTOP COMPONENT */}
-      <section className="text-white py-16 hidden md:block px-10 relative">
+      <section className="text-white py-16 hidden lg:block px-10 relative">
         <SectionHeading
           title="Tools & Services"
           subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
@@ -77,7 +77,7 @@ const Skills: React.FC = () => {
       </section>
 
       {/* MOBILE COMPONENT */}
-      <section className="text-white block md:hidden px-4 relative">
+      <section className="text-white block lg:hidden px-4 relative">
         <SectionHeading
           title="Tools & Services"
           subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, possimus?"

@@ -6,20 +6,20 @@ import StrengthCard from "./StrengthCard";
 
 const Strengths: React.FC = () => {
   return (
-    <section className="text-white w-full flex flex-col max-w-screen-xl mx-auto items-center py-12 relative px-4 sm:px-6 lg:px-8">
+    <section className="text-white py-8 justify-center items-center flex flex-col mx-auto max-w-screen-lg">
       <SectionHeading
         title="Key Strengths"
         subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, eos?"
       />
 
       {/* Main Container */}
-      <div className="relative flex justify-center items-center w-full lg:flex-row gap-8 py-10">
+      <div className="flex flex-col justify-center items-center lg:flex-row w-full gap-8 md:gap-6 lg:gap-8">
         {/* Left Side Strengths */}
-        <div className="flex flex-col gap-6 items-end w-1/3">
+        <div className="flex flex-col gap-8 items-center lg:items-end justify-center w-full md:w-2/3 lg:w-1/3">
           {strengths.slice(0, 3).map((strength, index) => (
             <div
               key={index}
-              className="relative flex items-center rounded-lg shadow-lg text-center w-full max-w-[350px]"
+              className="flex items-center text-center w-[80%] ml-8 lg:ml-0 lg:w-full lg:max-w-[350px]"
             >
               <StrengthCard
                 title={strength.title}
@@ -33,20 +33,15 @@ const Strengths: React.FC = () => {
               />
             </div>
           ))}
-          <div className="flex flex-col">
-            <div className="bg-white w-44 h-[3px] rotate-[20deg] -z-10 absolute top-[120px] left-1/3"></div>
-            <div className="bg-white w-44 h-[3px] -z-10 absolute bottom-56 left-1/3"></div>
-            <div className="bg-white w-44 h-[3px] -rotate-[20deg] -z-10 absolute bottom-[120px] left-1/3"></div>
-          </div>
         </div>
 
         {/* Center Circle with Image */}
-        <div className="relative flex items-center justify-center">
+        <div className="relative hidden lg:flex items-center justify-center">
           <div className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-2 border-primary shadow-lg">
             <Image
               src="/images/skillsBG.jpg"
-              width={400}
-              height={400}
+              width={800}
+              height={800}
               alt="Skills"
               className="object-cover w-full h-full"
             />
@@ -54,11 +49,11 @@ const Strengths: React.FC = () => {
         </div>
 
         {/* Right Side Strengths */}
-        <div className="flex flex-col gap-6 items-start w-1/3">
+        <div className="flex flex-col gap-8 items-center lg:items-start md:mr-0 justify-center w-full md:w-2/3 lg:w-1/3">
           {strengths.slice(3, 6).map((strength, index) => (
             <div
               key={index}
-              className="relative flex items-end rounded-lg shadow-lg text-center w-full max-w-[350px]"
+              className="flex items-center text-center w-[80%] mr-8 lg:mr-0 lg:w-full lg:max-w-[350px]"
             >
               <StrengthCard
                 title={strength.title}
@@ -73,11 +68,6 @@ const Strengths: React.FC = () => {
               />
             </div>
           ))}
-          <div className="flex">
-            <div className="bg-white w-44 h-[3px] rotate-[160deg] -z-10 absolute top-[120px] right-1/3"></div>
-            <div className="bg-white w-44 h-[3px] -z-10 absolute bottom-56 right-1/3"></div>
-            <div className="bg-white w-44 h-[3px] -rotate-[160deg] -z-10 absolute bottom-[120px] right-1/3"></div>
-          </div>
         </div>
       </div>
 

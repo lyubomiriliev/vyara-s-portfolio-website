@@ -33,7 +33,7 @@ const Timeline: React.FC = () => {
               <div>
                 <p className="text-base text-primary">{item.dateRange}</p>
               </div>
-              <div className="text-center w-full px-4">
+              <div className="text-center w-full">
                 <h3 className="text-lg md:text-xl font-semibold text-white">
                   {item.title}
                 </h3>
