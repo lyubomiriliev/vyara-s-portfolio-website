@@ -30,17 +30,19 @@ const Packages: React.FC = () => {
         {packages.map((pkg, index) => (
           <div
             key={index}
-            ref={(el) => (cardRefs.current[index] = el!)} // Set the ref for each card
+            ref={(el) => {
+              cardRefs.current[index] = el!; // Set the ref for each card
+            }} // Adjusted ref function to have no return value
             onClick={() => handleCardClick(index)} // Call scroll handler on click
             onMouseEnter={() => setHoveredCardIndex(index)}
             onMouseLeave={() => setHoveredCardIndex(centerCardIndex)}
             className={`relative group bg-cardBG border-2 p-8 space-y-4 rounded-xl text-center transition-transform duration-300 transform overflow-hidden
-              ${
-                hoveredCardIndex === index
-                  ? "scale-110 border-primary"
-                  : "border-textGray/20"
-              }
-            `}
+             ${
+               hoveredCardIndex === index
+                 ? "scale-110 border-primary"
+                 : "border-textGray/20"
+             }
+           `}
           >
             {/* Left and Right Blurred Circles */}
             <div
