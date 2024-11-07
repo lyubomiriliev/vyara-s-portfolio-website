@@ -26,17 +26,22 @@ const Timeline: React.FC = () => {
                 className={`absolute ${
                   index % 2 === 0
                     ? "top-full mt-[19px]"
-                    : "bottom-full mb-[9px]"
+                    : "bottom-full mb-[8px]"
                 } w-4 h-4 rounded-full bg-primary`}
               />
 
               <div>
-                <p className="text-base text-primary">{item.dateRange}</p>
+                <p className="text-base font-semibold text-white">
+                  {item.dateRange}
+                </p>
               </div>
               <div className="text-center w-full">
-                <h3 className="text-lg md:text-xl font-semibold text-white">
+                <h3 className="text-lg md:text-xl font-semibold text-primary">
                   {item.title}
                 </h3>
+                <span className="text-sm md-text-xl lg:text-xl font-light">
+                  {item.span}
+                </span>
               </div>
             </div>
           ))}
@@ -58,14 +63,19 @@ const Timeline: React.FC = () => {
               <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary" />
 
               <div
-                className={`w-1/2 px-4 ${
+                className={`w-1/2 ${
                   index % 2 === 0 ? "text-right pr-6" : "text-left pl-6"
                 }`}
               >
                 <h3 className="text-lg font-semibold text-primary">
                   {item.title}
                 </h3>
-                <p className="text-sm text-white">{item.dateRange}</p>
+                <span className="text-sm md-text-xl lg:text-xl font-light">
+                  {item.span}
+                </span>
+                <p className="text-sm text-white font-semibold">
+                  {item.dateRange}
+                </p>
               </div>
             </div>
           ))}

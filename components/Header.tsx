@@ -15,35 +15,51 @@ const Header: React.FC = () => {
   const handleScrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      const headerOffset = 80; // Adjust to your header height
-    const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
-    const offsetPosition = elementPosition - headerOffset;
+      const headerOffset = 60; // Adjust to your header height
+      const elementPosition =
+        section.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerOffset;
 
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth"
-    });
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
       setMenuOpen(false); // Close the menu after navigating
     }
   };
 
   return (
-    <header className="text-white w-full max-w-screen-xl mx-auto py-6 px-0 md:px-0 md:py-10 relative z-50">
-      <nav className="flex justify-between md:justify-center items-center">
+    <header className="text-white w-full mx-auto py-6 px-0 md:px-0 md:py-10 relative z-50">
+      <nav className="flex justify-center items-center">
         {/* Desktop Navigation */}
-        <div className="hidden md:flex border-[1px] border-textGray/30 bg-cardBG/30 backdrop-blur-[0.2rem] p-4 rounded-full items-center space-x-8 text-sm uppercase fixed top-6 z-50">
-          {headerLinks.map((link, index) => (
-            <button
-              key={index}
-              onClick={() => handleScrollToSection(link.toLowerCase())}
-              className="hover:text-primary hover:font-extrabold duration-300 ease-in-out transition-all"
-            >
-              {link}
-            </button>
-          ))}
+        <div className="flex items-center justify-between w-full top-6 fixed px-4">
+          {/* Logo aligned to the left */}
+          <div className="flex-shrink-0">
+            <Image
+              width={1200}
+              height={800}
+              src="/images/vyaraName.png"
+              alt="VyaraIvanova-Ilieva"
+              className="w-96 hidden lg:block"
+            />
+          </div>
+
+          {/* Centered Menu */}
+          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 border-[1px] border-textGray/30 bg-cardBG/30 backdrop-blur-[0.2rem] px-6 py-4 rounded-full items-center space-x-8 text-sm uppercase z-50">
+            {headerLinks.map((link, index) => (
+              <button
+                key={index}
+                onClick={() => handleScrollToSection(link.toLowerCase())}
+                className="hover:text-primary hover:font-extrabold duration-300 ease-in-out transition-all uppercase"
+              >
+                {link}
+              </button>
+            ))}
+          </div>
         </div>
+
         {/* Mobile Menu Toggle Button */}
-        <div className="md:hidden flex items-center space-x-4 px-4 py-2 z-50">
+        <div className="md:hidden flex items-center w-[90%] fixed top-6 border-[1px] border-textGray/30 bg-cardBG/30 backdrop-blur-[0.2rem] rounded-full space-x-4 px-4 py-2 z-50">
           <div className="flex items-center md:hidden">
             <Image
               width={600}

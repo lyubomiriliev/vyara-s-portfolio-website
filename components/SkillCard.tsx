@@ -1,5 +1,6 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 
 interface SkillCardProps {
@@ -15,6 +16,8 @@ const SkillCard: React.FC<SkillCardProps> = ({
   img,
   variant = "desktop",
 }) => {
+  const [flipped, setFlipped] = useState(false);
+
   const baseStyle = "group";
 
   const variantStyles = {
@@ -25,9 +28,26 @@ const SkillCard: React.FC<SkillCardProps> = ({
     small: "w-[258px] h-60 group",
   };
 
+  const handleFlip = () => {
+    if (variant === "mobile") {
+      setFlipped(!flipped);
+    }
+  };
+
   return (
-    <div className={clsx(baseStyle, variantStyles[variant])}>
-      <div className="relative w-full h-full [transform-style:preserve-3d] transition-all duration-500 group-hover:[transform:rotateY(180deg)]">
+    <div
+      className={clsx(baseStyle, variantStyles[variant])}
+      onClick={handleFlip}
+    >
+      <div
+        className={clsx(
+          "relative w-full h-full [transform-style:preserve-3d] transition-all duration-500",
+          {
+            "[transform:rotateY(180deg)]": flipped, // Apply flip on click for mobile
+            "group-hover:[transform:rotateY(180deg)]": variant !== "mobile", // Apply flip on hover for non-mobile
+          }
+        )}
+      >
         {/* Front Face */}
         <div className="absolute w-full h-full bg-cardBG border-textGray/10 border-[1px] p-5 flex flex-col justify-center text-center md:text-left items-center md:items-start space-y-4 rounded-xl [backface-visibility:hidden] overflow-hidden">
           <Image
@@ -49,7 +69,9 @@ const SkillCard: React.FC<SkillCardProps> = ({
 
         {/* Back Face */}
         <div className="absolute w-full h-full bg-cardBG border-textGray/10 border-[1px] p-4 flex flex-col justify-center items-start space-y-4 rounded-xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
-          <p className="text-sm text-textGray">{desc}</p>
+          <p className="text-base md:text-md lg:text-md text-center text-white">
+            {desc}
+          </p>
         </div>
       </div>
     </div>
