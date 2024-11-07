@@ -1,6 +1,5 @@
 import React from "react";
 import SectionHeading from "./SectionHeading";
-import Image from "next/image";
 import SocialMediaPlatforms from "./SocialMediaPlatforms";
 import SkillCard from "./SkillCard";
 import { skills } from "@/utils/constants";

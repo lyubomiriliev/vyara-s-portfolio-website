@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { clientsData } from "@/utils/constants";
 import Image from "next/image";
 
