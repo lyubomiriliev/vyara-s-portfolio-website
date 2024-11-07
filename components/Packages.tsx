@@ -21,7 +21,7 @@ const Packages: React.FC = () => {
   };
 
   return (
-    <section className="text-white py-8 relative">
+    <section id="packages" className="text-white py-8 relative">
       <SectionHeading
         title="Packages"
         subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, fugit."

@@ -17,7 +17,7 @@ const Portfolio = () => {
   };
 
   return (
-    <section className="text-white py-8">
+    <section id="portfolio" className="text-white py-8">
       <SectionHeading
         title="Portfolio"
         subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, praesentium."

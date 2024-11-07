@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
   }, [displayedText, isDeleting, currentWordIndex, hasInitialized]);
 
   return (
-    <section className="relative min-h-svh flex flex-col justify-between items-center text-center text-white md:py-28 overflow-hidden">
+    <section id="home" className="relative min-h-svh flex flex-col justify-between items-center text-center text-white md:py-28 overflow-hidden">
       <Header />
       {/* Background Image with Dark Gradient Overlay */}
       <div className="absolute inset-0 -top-16 -z-20 w-full h-full overflow-hidden select-none">

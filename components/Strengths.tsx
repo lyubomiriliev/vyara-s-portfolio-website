@@ -6,7 +6,7 @@ import StrengthCard from "./StrengthCard";
 
 const Strengths: React.FC = () => {
   return (
-    <section className="text-white py-8 justify-center items-center flex flex-col mx-auto max-w-screen-lg">
+    <section id="strengths" className="text-white py-8 justify-center items-center flex flex-col mx-auto max-w-screen-lg">
       <SectionHeading
         title="Key Strengths"
         subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, eos?"

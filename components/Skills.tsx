@@ -8,7 +8,7 @@ const Skills: React.FC = () => {
   return (
     <>
       {/* DESKTOP COMPONENT */}
-      <section className="text-white py-16 hidden lg:block px-10 relative">
+      <section id="services" className="text-white py-16 hidden lg:block px-10 relative">
         <SectionHeading
           title="Tools & Services"
           subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,

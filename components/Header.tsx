@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { headerLinks } from "@/utils/constants";
-import { FiMenu, FiX } from "react-icons/fi"; // Icons for mobile menu toggle
+import { FiMenu, FiX } from "react-icons/fi";
 import Image from "next/image";
 
 const Header: React.FC = () => {
@@ -11,19 +11,35 @@ const Header: React.FC = () => {
     setMenuOpen(!menuOpen);
   };
 
+  // Function to handle scrolling to the correct section
+  const handleScrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const headerOffset = 80; // Adjust to your header height
+    const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+      setMenuOpen(false); // Close the menu after navigating
+    }
+  };
+
   return (
     <header className="text-white w-full max-w-screen-xl mx-auto py-6 px-0 md:px-0 md:py-10 relative z-50">
       <nav className="flex justify-between md:justify-center items-center">
         {/* Desktop Navigation */}
         <div className="hidden md:flex border-[1px] border-textGray/30 bg-cardBG/30 backdrop-blur-[0.2rem] p-4 rounded-full items-center space-x-8 text-sm uppercase fixed top-6 z-50">
           {headerLinks.map((link, index) => (
-            <a
+            <button
               key={index}
-              href={`#${link.toLowerCase()}`}
+              onClick={() => handleScrollToSection(link.toLowerCase())}
               className="hover:text-primary hover:font-extrabold duration-300 ease-in-out transition-all"
             >
               {link}
-            </a>
+            </button>
           ))}
         </div>
         {/* Mobile Menu Toggle Button */}
@@ -47,14 +63,13 @@ const Header: React.FC = () => {
       {menuOpen && (
         <div className="fixed top-0 backdrop-blur-[2px] w-full mx-auto bg-dark bg-opacity-80 flex flex-col items-center pt-24 pb-8 space-y-5 text-base uppercase">
           {headerLinks.map((link, index) => (
-            <a
+            <button
               key={index}
-              href={`#${link.toLowerCase()}`}
+              onClick={() => handleScrollToSection(link.toLowerCase())}
               className="hover:text-primary transition-colors"
-              onClick={() => setMenuOpen(false)} // Close menu on link click
             >
               {link}
-            </a>
+            </button>
           ))}
         </div>
       )}
