@@ -32,17 +32,7 @@ const Header: React.FC = () => {
     <header className="text-white w-full mx-auto py-6 px-0 md:px-0 md:py-10 relative z-50">
       <nav className="flex justify-center items-center">
         {/* Desktop Navigation */}
-        <div className="flex items-center justify-between w-full top-6 fixed px-4">
-          {/* Logo aligned to the left */}
-          <div className="flex-shrink-0">
-            <Image
-              width={1200}
-              height={800}
-              src="/images/vyaraName.png"
-              alt="VyaraIvanova-Ilieva"
-              className="w-96 hidden lg:block"
-            />
-          </div>
+        <div className="flex items-center justify-between w-full top-9 fixed px-4">
 
           {/* Centered Menu */}
           <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 border-[1px] border-textGray/30 bg-cardBG/30 backdrop-blur-[0.2rem] px-6 py-4 rounded-full items-center space-x-8 text-sm uppercase z-50">
