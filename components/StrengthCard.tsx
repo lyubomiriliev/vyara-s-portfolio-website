@@ -20,7 +20,7 @@ const StrengthCard: React.FC<StrengthCardProps> = ({
     <div
       className={`flex ${
         reverse ? "flex-row-reverse" : "flex-row"
-      } items-center relative shadow-lg rounded-lg px-4 py-2 ${bgColor} w-full max-w-md`}
+      } items-center relative shadow-lg rounded-lg px-4 py-4 lg:py-8 ${bgColor} w-full max-w-md`}
     >
       {/* Icon with Circle */}
       <div
@@ -41,7 +41,7 @@ const StrengthCard: React.FC<StrengthCardProps> = ({
       <div
         className={`flex flex-col justify-center ${
           reverse ? "items-start" : "items-end"
-        } h-20 ${reverse ? "pr-12 text-left" : "pl-12 text-right"}`}
+        } h-20 ${reverse ? "pr-10 text-left" : "pl-10 text-right"}`}
       >
         <h3 className="text-white font-bold text-lg">{title}</h3>
         <p className="text-white text-sm mt-1">{description}</p>

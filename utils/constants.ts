@@ -147,37 +147,40 @@ export const skills = [
 
 export const strengths = [
   {
-    title: "Organizational Excellence",
-    description: "Managing multiple clients with tailored strategies.",
-    icon: "/images/organization.png",
-  },
-  {
-    title: "Versatile Expertise",
-    description:
-      "Years at Princeps Advertising Agency with 30+ years in business consulting.",
-    icon: "/images/expertise.png",
-  },
-  {
-    title: "Adaptable & Trend-Focused",
-    description: "Proactive in adopting the latest marketing trends.",
-    icon: "/images/trend.png",
-  },
-  {
     title: "Client-Centric",
-    description: "Creating strategies tailored to brand goals and audiences.",
+    description:
+      "Flexibly managing work for multiple clients across diverse fields, ensuring tailored strategies.",
     icon: "/images/centric.png",
   },
   {
-    title: "Always Online",
+    title: "Effective Communicator",
     description:
-      "A remote work pro—because in social media, there are no holidays!",
-    icon: "/images/online.png",
+      "Easily understands client needs and conveys ideas clearly, ensuring smooth workflow.",
+    icon: "/images/communication.png",
+  },
+  {
+    title: "Organized and Structured",
+    description:
+      "Exceptionally organized in task management, content & files categorization, ensuring a clear digital workspace.",
+    icon: "/images/organization.png",
+  },
+  {
+    title: "Adaptable & Trend-Focused",
+    description:
+      "Staying ahead by quickly adapting to the latest trends and innovations in social media.",
+    icon: "/images/trend.png",
   },
   {
     title: "Always Online",
     description:
       "A remote work pro—because in social media, there are no holidays!",
     icon: "/images/online.png",
+  },
+  {
+    title: "Experienced Insight",
+    description:
+      "Gained valuable industry knowledge through working at a 30+ year marketing & advertising agency.",
+    icon: "/images/expertise.png",
   },
 ];
 
