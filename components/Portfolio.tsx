@@ -4,16 +4,29 @@ import React, { useState } from "react";
 import SectionHeading from "./SectionHeading";
 import { portfolioLinks } from "@/utils/constants";
 import Designs from "./Designs";
+import Emails from "./Emails";
+import Videos from "./Videos";
 
 const Portfolio = () => {
-  const [designsOpen, setDesignsOpen] = useState(true);
-
   const centerCardIndex = Math.floor(portfolioLinks.length / 2);
+
   const [selectedCardIndex, setSelectedCardIndex] = useState(centerCardIndex);
 
   const handleCardClick = (index: number) => {
-    setSelectedCardIndex(index);
-    setDesignsOpen(!designsOpen);
+    setSelectedCardIndex((prevIndex) => (prevIndex === index ? -1 : index));
+  };
+
+  const renderSelectedComponent = () => {
+    switch (selectedCardIndex) {
+      case 0:
+        return <Videos />;
+      case 1:
+        return <Designs />;
+      case 2:
+        return <Emails />;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -39,7 +52,7 @@ const Portfolio = () => {
             </div>
           ))}
         </div>
-        {designsOpen && <Designs />}
+        <div className="mt-4 w-full">{renderSelectedComponent()}</div>
       </div>
     </section>
   );
