@@ -29,8 +29,8 @@ const Portfolio = () => {
               onClick={() => handleCardClick(index)}
               className={`${
                 selectedCardIndex === index
-                  ? "h-24 bg-cardBG border-2 border-primary scale-110 transition-all duration-500 ease-in-out p-2 items-center justify-center flex rounded-lg relative overflow-hidden"
-                  : "h-24 bg-cardBG p-2 items-center justify-center flex rounded-lg relative overflow-hidden"
+                  ? "h-12 bg-cardBG border-2 border-primary scale-110 transition-all duration-500 ease-in-out p-2 items-center justify-center flex rounded-lg relative overflow-hidden"
+                  : "h-12 bg-cardBG p-2 items-center justify-center flex rounded-lg relative overflow-hidden"
               }`}
               key={index}
             >

@@ -6,7 +6,10 @@ import StrengthCard from "./StrengthCard";
 
 const Strengths: React.FC = () => {
   return (
-    <section id="strengths" className="text-white py-8 justify-center items-center flex flex-col mx-auto max-w-screen-lg">
+    <section
+      id="strengths"
+      className="text-white py-8 justify-center items-center flex flex-col mx-auto max-w-screen-lg"
+    >
       <SectionHeading
         title="Key Strengths"
         subTitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, eos?"
@@ -36,7 +39,7 @@ const Strengths: React.FC = () => {
         </div>
 
         {/* Center Circle with Image */}
-        {/* <div className="relative hidden lg:flex items-center justify-center">
+        <div className="relative hidden lg:flex items-center justify-center">
           <div className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-2 border-primary shadow-lg">
             <Image
               src="/images/skillsBG.jpg"
@@ -46,7 +49,7 @@ const Strengths: React.FC = () => {
               className="object-cover w-full h-full"
             />
           </div>
-        </div> */}
+        </div>
 
         {/* Right Side Strengths */}
         <div className="flex flex-col gap-8 items-center lg:items-start md:mr-0 justify-center w-full md:w-2/3 lg:w-1/3">
@@ -61,8 +64,8 @@ const Strengths: React.FC = () => {
                 icon={strength.icon}
                 bgColor={
                   index % 2 === 0
-                  ? "bg-gradient-to-r from-cyan-500 to-cyan-300"
-                  : "bg-gradient-to-r from-darkPrimary to-primary"
+                    ? "bg-gradient-to-r from-cyan-500 to-cyan-300"
+                    : "bg-gradient-to-r from-darkPrimary to-primary"
                 } // Alternate colors
                 reverse
               />

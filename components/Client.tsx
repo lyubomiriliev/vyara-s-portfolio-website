@@ -24,7 +24,7 @@ const Client: React.FC<ClientProps> = ({
 }) => {
   return (
     <div
-      className={`w-full mx-auto lg:w-full py-4 md:h-60 flex ${
+      className={`w-full mx-auto lg:w-full py-4 h-[240px] md:h-60 flex ${
         reverse ? "flex-row-reverse" : "flex-row"
       } items-center border-[1px] border-textGray/20 bg-gradient-to-tr from-cardBG via-cardBG/80 to-cardBG/70 rounded-xl my-4`}
     >
