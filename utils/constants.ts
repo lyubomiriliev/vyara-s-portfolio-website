@@ -28,35 +28,29 @@ export const videosData: string[] = [
   "/videos/video2.mp4",
   "/videos/video3.mp4",
   "/videos/video4.mp4",
-  "/videos/video5.mp4",
-  "/videos/video6.mp4",
-  "/videos/video7.mp4",
 ];
 
 export const designsData: string[] = [
-  "/videos/design1.png",
-  "/videos/design2.png",
-  "/videos/design3.png",
-  "/videos/design4.png",
-  "/videos/design5.png",
-  "/videos/design6.png",
-  "/videos/design7.png",
-  "/videos/design8.png",
-  "/videos/design9.png",
-  "/videos/design10.png",
+  "/designs/design1.jpg",
+  "/designs/design2.jpg",
+  "/designs/design3.jpg",
+  "/designs/design4.jpg",
+  "/designs/design5.jpg",
+  "/designs/design6.jpg",
+  "/designs/design7.jpg",
 ];
 
 export const emailsData: string[] = [
-  "/videos/email1.png",
-  "/videos/email2.png",
-  "/videos/email3.png",
-  "/videos/email4.png",
-  "/videos/email5.png",
-  "/videos/email6.png",
-  "/videos/email7.png",
-  "/videos/email8.png",
-  "/videos/email9.png",
-  "/videos/email10.png",
+  "/emails/email1.png",
+  "/emails/email2.png",
+  "/emails/email3.png",
+  "/emails/email4.png",
+  "/emails/email5.png",
+  "/emails/email6.png",
+  "/emails/email7.png",
+  "/emails/email8.png",
+  "/emails/email9.png",
+  "/emails/email10.png",
 ];
 
 export const portfolioLinks: string[] = ["Videos", "Designs", "Emails"];

@@ -1,6 +1,5 @@
 import React from "react";
 import { videosData } from "@/utils/constants";
-import Image from "next/image";
 
 const Videos: React.FC = () => {
   return (
@@ -8,9 +7,16 @@ const Videos: React.FC = () => {
       {videosData.map((video, index) => (
         <div
           key={index}
-          className="bg-cardBG rounded-lg p-2 flex w-full h-[400px]"
+          className="bg-cardBG rounded-2xl p-2 flex w-full h-[400px] items-center justify-center"
         >
-          <Image width={600} height={600} src={video} alt="PortfolioVideo" />
+          <video
+            className="w-full h-full object-fit rounded-2xl"
+            controls // Allows user control (play, pause, volume, etc.)
+            src={video} // URL for video source
+            preload="metadata" // Preloads metadata for faster loading
+          >
+            Your browser does not support the video tag.
+          </video>
         </div>
       ))}
     </section>
