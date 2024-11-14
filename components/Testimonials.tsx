@@ -13,8 +13,8 @@ export const Testimonials: React.FC = () => {
 
       {/* Fade-out effect on left and right sides */}
       <div className="absolute top-36 inset-0 flex z-20 justify-between pointer-events-none">
-        <div className="w-16 h-44 bg-gradient-to-r from-dark to-transparent"></div>
-        <div className="w-16 h-44 hidden md:flex bg-gradient-to-l from-dark to-transparent"></div>
+        <div className="w-14 h-44 bg-gradient-to-r from-dark to-transparent"></div>
+        <div className="w-14 h-44 hidden md:flex bg-gradient-to-l from-dark to-transparent"></div>
       </div>
 
       {/* Scrolling container */}

@@ -78,15 +78,10 @@ const Clients: React.FC = () => {
           </motion.div>
         </AnimatePresence>
       </div>
-      <div className="w-full flex justify-center gap-2">
-        <div className="w-4 h-4 rounded-full bg-white"></div>
-        <div className="w-4 h-4 rounded-full bg-white"></div>
-      </div>
-
       {/* Left Arrow */}
       <button
         onClick={handlePrevious}
-        className="absolute left-16 top-1/2 transform -translate-y-1/2 bg-primary text-white p-2 rounded-full shadow-lg hover:bg-primary/80 transition-all duration-300"
+        className="absolute hidden md:flex left-16 top-1/2 transform -translate-y-1/2 bg-primary text-white p-2 rounded-full shadow-lg hover:bg-primary/80 transition-all duration-300"
         aria-label="Previous"
       >
         <ChevronLeftIcon className="text-3xl" />
@@ -95,7 +90,7 @@ const Clients: React.FC = () => {
       {/* Right Arrow */}
       <button
         onClick={handleNext}
-        className="absolute right-16 top-1/2 transform -translate-y-1/2 bg-primary text-white p-2 rounded-full shadow-lg hover:bg-primary/80 transition-all duration-300"
+        className="absolute hidden md:flex right-16 top-1/2 transform -translate-y-1/2 bg-primary text-white p-2 rounded-full shadow-lg hover:bg-primary/80 transition-all duration-300"
         aria-label="Next"
       >
         <ChevronRightIcon className="text-3xl" />
