@@ -40,7 +40,7 @@ const Strengths: React.FC = () => {
 
         {/* Center Circle with Image */}
         <div className="relative hidden lg:flex items-center justify-center">
-          <div className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-2 border-primary shadow-lg">
+          <div className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-full rounded-2xl overflow-hidden border-2 border-primary shadow-lg">
             <Image
               src="/images/skillsBG.jpg"
               width={800}
