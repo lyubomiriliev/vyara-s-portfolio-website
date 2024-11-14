@@ -3,11 +3,11 @@ import { videosData } from "@/utils/constants";
 
 const Videos: React.FC = () => {
   return (
-    <section className="w-full grid grid-cols-2 md:grid-cols-3 lg:flex justify-center items-center max-w-screen-lg gap-4 lg:gap-0 py-8">
+    <section className="w-full grid grid-cols-2 md:grid-cols-3 lg:flex justify-center items-center max-w-screen-lg gap-4 lg:gap-4 py-8">
       {videosData.map((video, index) => (
         <div
           key={index}
-          className="bg-cardBG rounded-2xl flex w-full h-[400px] items-center justify-center"
+          className="bg-cardBG rounded-2xl flex w-full items-center justify-center"
         >
           <video
             className="w-full h-full object-fit rounded-2xl"

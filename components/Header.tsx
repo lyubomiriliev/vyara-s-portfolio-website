@@ -33,7 +33,6 @@ const Header: React.FC = () => {
       <nav className="flex justify-center items-center">
         {/* Desktop Navigation */}
         <div className="flex items-center justify-between w-full top-9 fixed px-4">
-
           {/* Centered Menu */}
           <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 border-[1px] border-textGray/30 bg-cardBG/30 backdrop-blur-[0.2rem] px-6 py-4 rounded-full items-center space-x-8 text-sm uppercase z-50">
             {headerLinks.map((link, index) => (
@@ -50,7 +49,10 @@ const Header: React.FC = () => {
 
         {/* Mobile Menu Toggle Button */}
         <div className="md:hidden flex items-center w-[90%] fixed top-6 border-[1px] border-textGray/30 bg-cardBG/30 backdrop-blur-[0.2rem] rounded-full space-x-4 px-4 py-2 z-50">
-          <div className="flex items-center md:hidden">
+          <div
+            onClick={() => handleScrollToSection("home")}
+            className="flex items-center md:hidden"
+          >
             <Image
               width={600}
               height={300}

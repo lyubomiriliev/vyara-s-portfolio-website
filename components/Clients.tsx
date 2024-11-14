@@ -28,7 +28,7 @@ const Clients: React.FC = () => {
 
   // Animation variants for fade effect
   const parentVariants = {
-    animate: { transition: { staggerChildren: 0.4 } },
+    animate: { transition: { staggerChildren: 0.3 } },
   };
   const childVariants = {
     initial: { opacity: 0, y: 20 },

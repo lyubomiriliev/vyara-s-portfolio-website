@@ -34,10 +34,17 @@ const SkillCard: React.FC<SkillCardProps> = ({
     }
   };
 
+  const handleUnFlip = () => {
+    if (variant === "mobile") {
+      setFlipped(false);
+    }
+  };
+
   return (
     <div
       className={clsx(baseStyle, variantStyles[variant])}
       onClick={handleFlip}
+      onMouseLeave={handleUnFlip}
     >
       <div
         className={clsx(

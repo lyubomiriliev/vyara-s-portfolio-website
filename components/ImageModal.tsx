@@ -3,6 +3,8 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { FiX } from "react-icons/fi";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
 interface ModalProps {
   isOpen: boolean;
@@ -49,6 +51,15 @@ const ImageModal: React.FC<ModalProps> = ({
         onClick={(e) => e.stopPropagation()}
         className="relative w-11/12 md:w-2/3 lg:w-1/3 bg-cardBG p-4 rounded-lg shadow-lg"
       >
+        <div className="absolute inset-0 -top-10 w-full flex justify-between">
+          <button onClick={onPrevImage}>
+            <ChevronLeftIcon className="text-4xl bg-cardBG rounded-full left-0 absolute" />
+          </button>
+          <button onClick={onNextImage}>
+            <ChevronRightIcon className="text-4xl bg-cardBG rounded-full right-0 absolute" />
+          </button>
+        </div>
+
         <button
           onClick={onClose}
           className="absolute top-2 right-2 bg-cardBG p-1 rounded-xl text-white text-2xl font-bold hover:text-gray-400"

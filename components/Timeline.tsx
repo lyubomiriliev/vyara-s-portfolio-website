@@ -18,7 +18,7 @@ const Timeline: React.FC = () => {
                 index % 2 === 0 ? "mt-8" : "mt-8"
               } ${index % 2 === 0 ? "flex-col" : "flex-col-reverse"}`}
               style={{
-                top: index % 2 === 0 ? "-6rem" : "3.5rem",
+                top: index % 2 === 0 ? "-5.2rem" : "2.6rem",
               }}
             >
               {/* Timeline Dot */}
@@ -35,7 +35,7 @@ const Timeline: React.FC = () => {
                   {item.dateRange}
                 </p>
               </div>
-              <div className="text-center w-full">
+              <div className="text-center w-full whitespace-nowrap">
                 <h3 className="text-lg md:text-xl font-semibold text-primary">
                   {item.title}
                 </h3>
@@ -57,7 +57,7 @@ const Timeline: React.FC = () => {
               key={index}
               className={`relative flex items-center ${
                 index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-              }`}
+              } -my-3`}
             >
               {/* Timeline Dot */}
               <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary" />

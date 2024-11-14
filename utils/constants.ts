@@ -38,6 +38,13 @@ export const designsData: string[] = [
   "/designs/design5.jpg",
   "/designs/design6.jpg",
   "/designs/design7.jpg",
+  "/designs/design1.jpg",
+  "/designs/design2.jpg",
+  "/designs/design3.jpg",
+  "/designs/design4.jpg",
+  "/designs/design5.jpg",
+  "/designs/design6.jpg",
+  "/designs/design7.jpg",
 ];
 
 export const emailsData: string[] = [
