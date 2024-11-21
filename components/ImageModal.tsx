@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { FiX } from "react-icons/fi";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import Image from "next/image";
 
 interface ModalProps {
   isOpen: boolean;
@@ -21,8 +22,6 @@ const ImageModal: React.FC<ModalProps> = ({
   onPrevImage,
   onNextImage,
 }) => {
-  if (!isOpen) return null; // Don't render if modal is not open
-
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowLeft") {
@@ -37,6 +36,8 @@ const ImageModal: React.FC<ModalProps> = ({
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [onClose, onPrevImage, onNextImage]);
+
+  if (!isOpen) return null; // Don't render if modal is not open
 
   return (
     <motion.div
@@ -66,7 +67,9 @@ const ImageModal: React.FC<ModalProps> = ({
         >
           <FiX size={28} />
         </button>
-        <img
+        <Image
+          width={800}
+          height={800}
           src={imageSrc}
           alt="Enlarged Design"
           className="w-full h-full object-cover rounded-lg"
