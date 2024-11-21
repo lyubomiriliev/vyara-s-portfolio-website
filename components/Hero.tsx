@@ -79,11 +79,13 @@ const Hero: React.FC = () => {
       {/* Background Image with Dark Gradient Overlay */}
       <div className="absolute inset-0 -top-16 -z-20 w-full h-full overflow-hidden select-none">
         <Image
-          layout="fill"
+          priority
+          width={1200}
+          height={600}
           unoptimized
           src="/backgrounds/BGHero.avif"
           alt="Background Image"
-          className="object-cover"
+          className="w-full object-cover"
         />
         <div className="absolute inset-0 top-96 bg-gradient-to-b from-transparent to-black"></div>
       </div>
