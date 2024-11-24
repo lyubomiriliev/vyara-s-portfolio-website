@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { contactIcons } from "@/utils/constants";
 import Button from "./Button";
@@ -77,7 +79,13 @@ const ContactForm: React.FC = () => {
               className="p-2 rounded-xl bg-textGray/15 pl-3 mb-2 text-sm md:text-base h-32 md:h-40 resize-none"
               placeholder="Tell me about your business"
             ></textarea>
-            <Button text="Submit" variant="gradient" />
+            <Button
+              onClick={async () => {
+                await fetch("api/emails", { method: "POST" });
+              }}
+              text="Submit"
+              variant="gradient"
+            />
           </form>
         </div>
       </div>
