@@ -6,6 +6,7 @@ import Image from "next/image";
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSession, setActiveSession] = useState("home");
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -20,6 +21,7 @@ const Header: React.FC = () => {
         section.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - headerOffset;
 
+      setActiveSession(sectionId); // Update active session when clicked
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",
@@ -39,7 +41,11 @@ const Header: React.FC = () => {
               <button
                 key={index}
                 onClick={() => handleScrollToSection(link.toLowerCase())}
-                className="hover:text-primary hover:font-extrabold duration-300 ease-in-out transition-all uppercase"
+                className={`hover:text-primary transition-colors ${
+                  activeSession === link.toLowerCase()
+                    ? "text-primary font-bold"
+                    : "text-white"
+                }`}
               >
                 {link}
               </button>
@@ -74,7 +80,11 @@ const Header: React.FC = () => {
             <button
               key={index}
               onClick={() => handleScrollToSection(link.toLowerCase())}
-              className="hover:text-primary transition-colors"
+              className={`hover:text-primary ${
+                activeSession === link.toLowerCase()
+                  ? "text-primary font-bold"
+                  : "text-white transition-colors"
+              }`}
             >
               {link}
             </button>

@@ -9,7 +9,7 @@ interface ButtonProps {
   variant?: "default" | "outline" | "gradient";
   icon?: string;
   hoverIcon?: string;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 const Button: React.FC<ButtonProps> = ({

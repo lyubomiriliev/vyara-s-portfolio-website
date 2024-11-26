@@ -99,7 +99,7 @@ const Hero: React.FC = () => {
             unoptimized
             src="/images/heroPhone.png"
             alt="Phone Image"
-            className="absolute w-[95%] sm:w-[75%] bottom-[200px] left-5 md:bottom-[280px] md:left-24 md:w-[80%]  lg:w-[36%] lg:-top-[120px] lg:left-[32%] -z-10 object-cover"
+            className="absolute w-[95%] sm:w-[75%] bottom-[200px] left-5 md:bottom-[280px] md:left-24 md:w-[80%]  lg:w-[41%] lg:-top-[120px] lg:left-[32%] -z-10 object-cover"
           />
         </div>
 

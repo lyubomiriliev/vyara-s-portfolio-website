@@ -15,12 +15,12 @@ export const stats = [
 ];
 
 export const headerLinks: string[] = [
-  "Home",
-  "Services",
-  "Strengths",
-  "Portfolio",
-  "Clients",
-  "Packages",
+  "HOME",
+  "SERVICES",
+  "STRENGTHS",
+  "PORTFOLIO",
+  "CLIENTS",
+  "PACKAGES",
 ];
 
 export const videosData: string[] = [

@@ -1,11 +1,60 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { contactIcons } from "@/utils/constants";
 import Button from "./Button";
 import Image from "next/image";
+import ToastNotification from "./ToastContainer";
 
 const ContactForm: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [toastOpen, setToastOpen] = useState(false);
+  const [toastTitle, setToastTitle] = useState("");
+  const [toastDescription, setToastDescription] = useState("");
+
+  const showToast = (title: string, description: string) => {
+    setToastTitle(title);
+    setToastDescription(description);
+    setToastOpen(true);
+  };
+
+  const handleContact = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (!email || !firstName || !lastName || !message) {
+      showToast("Error", "Please fill all the fields");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          firstName: firstName,
+          lastName: lastName,
+          message: message,
+        }),
+      });
+
+      if (response.ok) {
+        showToast("Success", "Email sent successfully");
+      } else {
+        throw new Error("Error sending email");
+      }
+    } catch (error) {
+      console.error("Network Error:", error);
+      showToast("Error", "Email failed to send");
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -49,15 +98,28 @@ const ContactForm: React.FC = () => {
               className="uppercase text-sm md:text-base"
               htmlFor="firstName"
             >
+              Email
+            </label>
+            <input
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="p-2 rounded-xl bg-textGray/15 pl-3 text-sm md:text-base"
+              type="text"
+            />
+            <label
+              className="uppercase text-sm md:text-base"
+              htmlFor="firstName"
+            >
               First Name
             </label>
             <input
               id="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
               className="p-2 rounded-xl bg-textGray/15 pl-3 text-sm md:text-base"
-              placeholder="Vyara"
               type="text"
             />
-
             <label
               className="uppercase text-sm md:text-base"
               htmlFor="lastName"
@@ -66,8 +128,9 @@ const ContactForm: React.FC = () => {
             </label>
             <input
               id="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
               className="p-2 rounded-xl bg-textGray/15 pl-3 text-sm md:text-base"
-              placeholder="Ivanova"
               type="text"
             />
 
@@ -76,19 +139,21 @@ const ContactForm: React.FC = () => {
             </label>
             <textarea
               id="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               className="p-2 rounded-xl bg-textGray/15 pl-3 mb-2 text-sm md:text-base h-32 md:h-40 resize-none"
               placeholder="Tell me about your business"
             ></textarea>
-            <Button
-              onClick={async () => {
-                await fetch("api/emails", { method: "POST" });
-              }}
-              text="Submit"
-              variant="gradient"
-            />
+            <Button onClick={handleContact} text="Submit" variant="gradient" />
           </form>
         </div>
       </div>
+      <ToastNotification
+        title={toastTitle}
+        description={toastDescription}
+        open={toastOpen}
+        setOpen={setToastOpen}
+      />
     </section>
   );
 };
