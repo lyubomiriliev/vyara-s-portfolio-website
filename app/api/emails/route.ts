@@ -1,5 +1,4 @@
 import Welcome from "@/app/emails/Welcome";
-import { m } from "framer-motion";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import React from "react";
 import * as Toast from "@radix-ui/react-toast";
 
 interface ToastNotificationProps {

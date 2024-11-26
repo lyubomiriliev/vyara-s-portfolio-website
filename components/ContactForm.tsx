@@ -7,10 +7,12 @@ import Image from "next/image";
 import ToastNotification from "./ToastContainer";
 
 const ContactForm: React.FC = () => {
-  const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [message, setMessage] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    message: "",
+  });
 
   const [toastOpen, setToastOpen] = useState(false);
   const [toastTitle, setToastTitle] = useState("");
@@ -22,8 +24,20 @@ const ContactForm: React.FC = () => {
     setToastOpen(true);
   };
 
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value, // Dynamically update the corresponding field
+    }));
+  };
+
   const handleContact = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    const { email, firstName, lastName, message } = formData;
 
     if (!email || !firstName || !lastName || !message) {
       showToast("Error", "Please fill all the fields");
@@ -36,16 +50,12 @@ const ContactForm: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email: email,
-          firstName: firstName,
-          lastName: lastName,
-          message: message,
-        }),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         showToast("Success", "Email sent successfully");
+        setFormData({ email: "", firstName: "", lastName: "", message: "" });
       } else {
         throw new Error("Error sending email");
       }
@@ -98,12 +108,12 @@ const ContactForm: React.FC = () => {
               className="uppercase text-sm md:text-base"
               htmlFor="firstName"
             >
-              Email
+              Email*
             </label>
             <input
               id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handleInputChange}
               className="p-2 rounded-xl bg-textGray/15 pl-3 text-sm md:text-base"
               type="text"
             />
@@ -111,12 +121,12 @@ const ContactForm: React.FC = () => {
               className="uppercase text-sm md:text-base"
               htmlFor="firstName"
             >
-              First Name
+              First Name*
             </label>
             <input
               id="firstName"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={formData.firstName}
+              onChange={handleInputChange}
               className="p-2 rounded-xl bg-textGray/15 pl-3 text-sm md:text-base"
               type="text"
             />
@@ -124,23 +134,23 @@ const ContactForm: React.FC = () => {
               className="uppercase text-sm md:text-base"
               htmlFor="lastName"
             >
-              Last Name
+              Last Name*
             </label>
             <input
               id="lastName"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              value={formData.lastName}
+              onChange={handleInputChange}
               className="p-2 rounded-xl bg-textGray/15 pl-3 text-sm md:text-base"
               type="text"
             />
 
             <label className="uppercase text-sm md:text-base" htmlFor="message">
-              Message
+              Message*
             </label>
             <textarea
               id="message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              value={formData.message}
+              onChange={handleInputChange}
               className="p-2 rounded-xl bg-textGray/15 pl-3 mb-2 text-sm md:text-base h-32 md:h-40 resize-none"
               placeholder="Tell me about your business"
             ></textarea>
