@@ -81,11 +81,11 @@ const Hero: React.FC = () => {
         <Image
           priority
           width={1200}
-          height={600}
+          height={800}
           unoptimized
           src="/backgrounds/BGHero.avif"
           alt="Background Image"
-          className="w-full object-cover"
+          className="w-full h-screen lg:h-full object-cover"
         />
         <div className="absolute inset-0 top-96 bg-gradient-to-b from-transparent to-black"></div>
       </div>
