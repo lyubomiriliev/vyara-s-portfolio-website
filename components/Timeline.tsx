@@ -7,14 +7,14 @@ const Timeline: React.FC = () => {
       {/* Education Section */}
       <div className=" flex flex-col">
         {/* Desktop Horizontal Timeline */}
-        <div className="hidden md:flex relative items-center justify-center max-w-screen-lg mx-auto">
+        <div className="hidden md:flex relative items-center justify-center max-w-screen-md mx-auto">
           {/* Main Timeline Line */}
           <div className="absolute w-full h-[2px] bg-primary top-1/2" />
 
           {educationData.map((item, index) => (
             <div
               key={index}
-              className={`relative flex flex-col items-center text-center ${
+              className={`relative flex flex-col items-center text-center w-[190px] ${
                 index % 2 === 0 ? "mt-8" : "mt-8"
               } ${index % 2 === 0 ? "flex-col" : "flex-col-reverse"}`}
               style={{
@@ -30,18 +30,20 @@ const Timeline: React.FC = () => {
                 } w-4 h-4 rounded-full bg-primary`}
               />
 
-              <div>
-                <p className="text-base font-semibold text-white">
-                  {item.dateRange}
-                </p>
-              </div>
-              <div className="text-center w-full whitespace-nowrap">
-                <h3 className="text-lg md:text-xl font-semibold text-primary">
-                  {item.title}
-                </h3>
-                <span className="text-sm md-text-xl lg:text-xl font-light">
-                  {item.span}
-                </span>
+              <div className="flex flex-col items-center justify-center text-center">
+                <div>
+                  <p className="text-base font-semibold text-white">
+                    {item.dateRange}
+                  </p>
+                </div>
+                <div className="text-center w-full whitespace-nowrap">
+                  <h3 className="text-lg md:text-xl font-semibold text-primary">
+                    {item.title}
+                  </h3>
+                  <span className="text-sm md-text-xl lg:text-xl font-light">
+                    {item.span}
+                  </span>
+                </div>
               </div>
             </div>
           ))}

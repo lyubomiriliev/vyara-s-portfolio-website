@@ -14,7 +14,7 @@ const SocialMediaPlatforms: React.FC = () => {
               unoptimized
               src={logo.icon}
               alt={logo.name}
-              className="w-[200px] object-cover"
+              className="w-[200px] object-cover opacity-75"
             />
           </div>
         ))}

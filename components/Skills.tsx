@@ -22,7 +22,7 @@ const Skills: React.FC = () => {
         </div>
         <div className="w-full flex flex-col items-center py-6 max-w-screen-lg mx-auto">
           <div className="flex">
-            <div className="flex gap-4">
+            <div className="flex gap-4 cursor-pointer">
               {skills.slice(0, 1).map((skill, index) => (
                 <SkillCard
                   key={index}
