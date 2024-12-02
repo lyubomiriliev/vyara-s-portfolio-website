@@ -7,7 +7,7 @@ import Image from "next/image";
 interface ButtonProps {
   text: string;
   variant?: "default" | "outline" | "gradient";
-  type: "button" | "submit" | "reset";
+  type?: "button" | "submit" | "reset";
   icon?: string;
   hoverIcon?: string;
   disabled?: boolean;
