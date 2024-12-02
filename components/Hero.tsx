@@ -126,11 +126,13 @@ const Hero: React.FC = () => {
         </div>
         <div className="flex py-6 md:py-4 justify-center w-full gap-4 items-center">
           <Button
+            type="button"
             onClick={() => handleScrollToSection("contact")}
             text="Contact me"
             icon="/icons/contact.png"
           />
           <Button
+            type="button"
             onClick={handleLinkedInClick}
             text="Linkedin"
             variant="outline"
