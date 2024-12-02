@@ -62,9 +62,19 @@ const Designs: React.FC = () => {
       </div>
       <div className="flex items-center justify-center flex-col">
         {visibleDesigns < designsData.length ? (
-          <Button text="Show More" variant="default" onClick={handleShowMore} />
+          <Button
+            type="button"
+            text="Show More"
+            variant="default"
+            onClick={handleShowMore}
+          />
         ) : (
-          <Button text="Show Less" variant="default" onClick={handleShowLess} />
+          <Button
+            type="button"
+            text="Show Less"
+            variant="default"
+            onClick={handleShowLess}
+          />
         )}
       </div>
       {isModalOpen && (
