@@ -7,15 +7,19 @@ import Image from "next/image";
 interface ButtonProps {
   text: string;
   variant?: "default" | "outline" | "gradient";
+  type: "button" | "submit" | "reset";
   icon?: string;
   hoverIcon?: string;
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  disabled?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
   text,
   variant = "default",
   icon,
+  type,
+  disabled = false,
   hoverIcon,
   onClick,
 }) => {
@@ -34,9 +38,15 @@ const Button: React.FC<ButtonProps> = ({
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div
+    <button
+      type={type}
       onClick={onClick}
-      className={clsx(baseStyles, variantStyles[variant])}
+      disabled={disabled}
+      className={clsx(
+        baseStyles,
+        variantStyles[variant],
+        disabled && "cursor-not-allowed opacity-50"
+      )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -49,8 +59,8 @@ const Button: React.FC<ButtonProps> = ({
           className="w-6 h-6 object-cover"
         />
       )}
-      <button className="uppercase">{text}</button>
-    </div>
+      {text}
+    </button>
   );
 };
 
