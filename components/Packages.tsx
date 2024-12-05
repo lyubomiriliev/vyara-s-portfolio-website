@@ -76,7 +76,7 @@ const Packages: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <Button text="GET STARTED" variant="outline" />
+            <Button type="button" text="GET STARTED" variant="outline" />
           </div>
         ))}
       </div>
