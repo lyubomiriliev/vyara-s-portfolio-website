@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { headerLinks } from "@/utils/constants";
 import { FiMenu, FiX } from "react-icons/fi";
 import Image from "next/image";
@@ -11,6 +11,32 @@ const Header: React.FC = () => {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = headerLinks.map((link) =>
+        document.getElementById(link.toLowerCase())
+      );
+
+      // Find the currently visible section
+      let currentSection = "home"; // Default section
+      sections.forEach((section) => {
+        if (section) {
+          const sectionTop = section.getBoundingClientRect().top;
+          if (sectionTop <= window.innerHeight / 2) {
+            currentSection = section.id; // Update to the current section's ID
+          }
+        }
+      });
+
+      setActiveSession(currentSection);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Function to handle scrolling to the correct section
   const handleScrollToSection = (sectionId: string) => {

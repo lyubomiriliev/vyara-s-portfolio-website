@@ -91,7 +91,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="z-10 flex flex-col justify-end items-center min-h-[70vh] px-4 md:px-0 select-none">
+      <div className="w-full z-10 flex flex-col justify-end items-center min-h-[70vh] px-4 md:px-0 select-none">
         <div>
           <Image
             width={1200}
@@ -99,26 +99,33 @@ const Hero: React.FC = () => {
             unoptimized
             src="/images/heroPhone.png"
             alt="Phone Image"
-            className="absolute w-[95%] sm:w-[75%] bottom-[200px] left-5 md:bottom-[280px] md:left-24 md:w-[80%] lg:w-[39%] lg:-top-[100px] lg:left-[32%] -z-10 object-cover"
+            className="absolute w-[95%] sm:w-[75%] bottom-[200px] left-5 md:bottom-[280px] md:left-24 md:w-[80%] lg:w-[39%] lg:-top-[108px] lg:left-[32%] -z-10 object-cover"
           />
         </div>
 
-        <div className="flex flex-col justify-centerm items-center  w-full">
-          <h1 className="text-6xl max-w-[390px] mx-auto justify-center items-center overflow-hidden sm:text-5xl md:text-6xl lg:text-6xl font-extralight tracking-tighter leading-tighter drop-shadow-lg uppercase">
-            Social Media{" "}
-            <span className="text-primary text-[55px] font-extrabold inline-block relative min-w-7">
-              {displayedText}
-              <span
-                className={`absolute top-0 -right-4
-                  w-[10px] h-full bg-primary ${
+        <div className="flex flex-col w-full justify-center items-center">
+          <div className="w-full h-28 lg:h-40 flex flex-col justify-start items-center">
+            <div>
+              <h1 className="text-6xl max-w-[480px] mx-auto justify-center items-center overflow-hidden sm:text-5xl md:text-6xl lg:text-6xl font-extralight tracking-tighter leading-tighter drop-shadow-lg uppercase">
+                Social Media{" "}
+              </h1>
+            </div>
+            <div className="uppercase -mt-4">
+              <span className="text-primary text-[50px] lg:text-[85px] font-extrabold inline-block relative min-w-7">
+                {displayedText}
+                <span
+                  className={`absolute top-4 lg:top-7 -right-4
+                  w-[8px] h-[60%] bg-primary ${
                     isDeleting ||
                     displayedText.length < words[currentWordIndex].length
                       ? "animate-blink"
                       : ""
                   }`}
-              ></span>
-            </span>
-          </h1>
+                ></span>
+              </span>
+            </div>
+          </div>
+
           <p className="text-md md:text-center font-light text-center sm:text-xl md:text-2xl max-w-3xl text-gray-300 leading-relaxed px-4 md:px-0">
             Helping brands grow and engage with their audience through creative
             and data-driven social media strategies.
