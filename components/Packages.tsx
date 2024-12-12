@@ -36,7 +36,7 @@ const Packages: React.FC = () => {
             onClick={() => handleCardClick(index)} // Call scroll handler on click
             onMouseEnter={() => setHoveredCardIndex(index)}
             onMouseLeave={() => setHoveredCardIndex(centerCardIndex)}
-            className={`relative group bg-cardBG border-2 p-8 space-y-4 rounded-xl text-center transition-transform duration-300 transform overflow-hidden
+            className={`relative group bg-cardBG border-2 p-8 space-y-4 flex flex-col rounded-xl text-center transition-transform duration-300 transform overflow-hidden
              ${
                hoveredCardIndex === index
                  ? "scale-110 border-primary"

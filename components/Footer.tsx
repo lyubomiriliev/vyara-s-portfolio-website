@@ -29,11 +29,12 @@ const Footer: React.FC = () => {
             <ul className="space-y-1 text-textGray">
               <li>Home</li>
               <li>About Me</li>
-              <li>Skills</li>
+              <li>Services</li>
               <li>Strengths</li>
-              <li>Packages</li>
+              <li>Portfolio</li>
               <li>Clients</li>
               <li>Testimonials</li>
+              <li>Packages</li>
             </ul>
           </div>
 
@@ -50,19 +51,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 3: Info */}
-          <div className="flex flex-col space-y-2">
-            <h3 className="uppercase text-gray-300 font-medium">Info</h3>
-            <ul className="space-y-1 text-textGray">
-              <li>FAQ</li>
-              <li>Testimonials</li>
-              <li>Features</li>
-              <li>Why Me</li>
-              <li>Expertise</li>
-            </ul>
-          </div>
-
-          {/* Column 4: Clients */}
+          {/* Column 3: Clients */}
           <div className="flex flex-col space-y-2">
             <h3 className="uppercase text-white font-medium">Clients</h3>
             <ul className="space-y-1 text-textGray">
@@ -78,8 +67,21 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Bottom Copyright Text */}
-      <div className="text-center text-sm text-white mt-8 uppercase">
-        &copy; 2024 lyubomir.dev. All rights reserved.
+      <div className="text-center flex flex-col text-sm text-white mt-8 uppercase">
+        <p>
+          &copy; {new Date().getFullYear()} VyaraDigital. All rights reserved.
+        </p>
+        <p>
+          Website created by{" "}
+          <a
+            href="https://lyubomir-iliev-portfolio.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline"
+          >
+            Lyubomir.Dev
+          </a>
+        </p>
       </div>
     </footer>
   );

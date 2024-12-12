@@ -30,8 +30,8 @@ const Strengths: React.FC = () => {
                 icon={strength.icon}
                 bgColor={
                   index % 2 === 0
-                    ? "bg-gradient-to-r from-primary to-darkPrimary"
-                    : "bg-gradient-to-r from-cyan-300 to-cyan-500"
+                    ? "bg-gradient-to-r from-primary to-darkPrimary lg:hover:scale-105 transition-all duration-200 ease-out"
+                    : "bg-gradient-to-r from-cyan-300 to-cyan-500 lg:hover:scale-105 transition-all duration-200 ease-out"
                 } // Alternate colors
               />
             </div>
@@ -64,8 +64,8 @@ const Strengths: React.FC = () => {
                 icon={strength.icon}
                 bgColor={
                   index % 2 === 0
-                    ? "bg-gradient-to-r from-cyan-500 to-cyan-300"
-                    : "bg-gradient-to-r from-darkPrimary to-primary"
+                    ? "bg-gradient-to-r from-cyan-500 to-cyan-300 lg:hover:scale-105 transition-all duration-200 ease-out"
+                    : "bg-gradient-to-r from-darkPrimary to-primary lg:hover:scale-105 transition-all duration-200 ease-out"
                 } // Alternate colors
                 reverse
               />

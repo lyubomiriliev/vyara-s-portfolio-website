@@ -81,7 +81,7 @@ const Clients: React.FC = () => {
       {/* Left Arrow */}
       <button
         onClick={handlePrevious}
-        className="absolute hidden md:flex left-16 top-1/2 transform -translate-y-1/2 bg-primary text-white p-2 rounded-full shadow-lg hover:bg-primary/80 transition-all duration-300"
+        className="absolute hidden md:flex left-16 top-[57%] transform -translate-y-1/2 bg-primary text-white p-2 rounded-full shadow-lg hover:bg-primary/80 transition-all duration-300"
         aria-label="Previous"
       >
         <ChevronLeftIcon className="text-3xl" />
@@ -90,7 +90,7 @@ const Clients: React.FC = () => {
       {/* Right Arrow */}
       <button
         onClick={handleNext}
-        className="absolute hidden md:flex right-16 top-1/2 transform -translate-y-1/2 bg-primary text-white p-2 rounded-full shadow-lg hover:bg-primary/80 transition-all duration-300"
+        className="absolute hidden md:flex right-16 top-[57%] transform -translate-y-1/2 bg-primary text-white p-2 rounded-full shadow-lg hover:bg-primary/80 transition-all duration-300"
         aria-label="Next"
       >
         <ChevronRightIcon className="text-3xl" />

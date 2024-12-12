@@ -43,7 +43,7 @@ const Portfolio = () => {
               className={`${
                 selectedCardIndex === index
                   ? "h-12 cursor-pointer bg-cardBG border-2 border-primary scale-110 transition-all duration-500 ease-in-out p-2 items-center justify-center flex rounded-lg relative overflow-hidden"
-                  : "h-12 cursor-pointer bg-cardBG p-2 items-center justify-center flex rounded-lg relative overflow-hidden"
+                  : "h-12 cursor-pointer bg-cardBG  hover:border-[1px] hover:border-primary p-2 items-center justify-center flex rounded-lg relative overflow-hidden"
               }`}
               key={index}
             >

@@ -32,7 +32,7 @@ const Button: React.FC<ButtonProps> = ({
     outline:
       "border border-white text-white bg-transparent hover:bg-white hover:text-black uppercase cursor-pointer",
     gradient:
-      "bg-gradient-to-r from-primary to-secondary rounded-xl text-black uppercase text-white cursor-pointer",
+      "bg-gradient-to-r from-primary to-secondary rounded-xl text-black uppercase text-white cursor-pointer z-10",
   };
 
   const [isHovered, setIsHovered] = useState(false);
