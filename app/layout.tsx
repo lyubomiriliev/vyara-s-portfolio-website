@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Vyara Ivanova-Ilieva | SMM",
@@ -13,8 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overflow-x-hidden">
-      <body className="bg-dark font-raleway overflow-x-hidden">{children}</body>
+    <html lang="en" className="overflow-x-hidden m-0 p-0 font-raleway">
+      <body className="overflow-x-hidden m-0 p-0 font-raleway bg-dark">
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

@@ -1,10 +1,44 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 const About: React.FC = () => {
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.6 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.7,
+        staggerChildren: 0.3, // Delay between each child animation
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 100 },
+    show: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
+  };
+
+  const titleVariant = {
+    hidden: { opacity: 0, scale: 0.7 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 1.2, ease: "easeInOut" },
+    },
+  };
+
   return (
     <section className="text-white md:py-10 lg:py-16 relative">
-      <div className="flex flex-col items-center mb-10">
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={containerVariants}
+        className="flex flex-col items-center mb-10"
+      >
         <div className="flex py-6 gap-2 flex-col justify-center items-center">
           <h2 className="uppercase font-extralight text-lg md:text-xl lg:text-2xl">
             about me
@@ -48,7 +82,7 @@ const About: React.FC = () => {
             multi-platform strategies and content creation.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Background Glow Effects */}
       <div className="absolute bottom-[32%] left-[50%] w-[200px] h-[200px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] bg-blueGlow rounded-full blur-3xl md:blur-5xl lg:blur-6xl opacity-40 pointer-events-none -z-20"></div>

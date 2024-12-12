@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { headerLinks } from "@/utils/constants";
 import { FiMenu, FiX } from "react-icons/fi";
 import Image from "next/image";
@@ -8,28 +7,6 @@ import Image from "next/image";
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSession, setActiveSession] = useState("home");
-
-  const parentVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.7 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 1,
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const childrenVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 1, ease: "easeOut" },
-    },
-  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -80,8 +57,8 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="text-white w-full mx-auto py-6 px-0 md:px-0 md:py-10 relative lg:z-50">
-      <nav className="flex justify-center items-center">
+    <header className="text-white w-full mx-auto py-6 px-0 md:px-0 md:py-0 relative lg:z-50">
+      <nav className="flex justify-center bg-red-300 items-center">
         {/* Desktop Navigation */}
         <div className="flex items-center justify-between w-full top-9 fixed px-4">
           {/* Centered Menu */}
