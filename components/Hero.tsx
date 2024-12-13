@@ -3,7 +3,11 @@ import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { AnimatePresence } from "framer-motion";
+import {
+  containerVariants,
+  itemVariants,
+  titleVariant,
+} from "@/utils/animations";
 
 const words = ["Manager", "Expert", "Psychologist", "Master", "Nomad"];
 
@@ -15,32 +19,6 @@ const Hero: React.FC = () => {
   const typingSpeed = 100;
   const deletingSpeed = 50;
   const pauseDuration = 1000;
-
-  const containerVariants = {
-    hidden: { opacity: 0, scale: 0.6 },
-    show: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.7,
-        staggerChildren: 0.3, // Delay between each child animation
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 100 },
-    show: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
-  };
-
-  const titleVariant = {
-    hidden: { opacity: 0, scale: 0.7 },
-    show: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 1.2, ease: "easeInOut" },
-    },
-  };
 
   useEffect(() => {
     if (!hasInitialized) {
@@ -100,7 +78,7 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="relative min-h-svh flex flex-col justify-between items-center text-center text-white py-28 md:py-56 overflow-hidden"
+      className="relative h-screen flex flex-col justify-between items-center text-center text-white py-28 md:py-56 overflow-hidden"
     >
       {/* Background Image with Dark Gradient Overlay */}
       <div className="absolute inset-0 -top-16 -z-20 w-full h-full overflow-hidden select-none">

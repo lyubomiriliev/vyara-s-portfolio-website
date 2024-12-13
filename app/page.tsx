@@ -5,7 +5,6 @@ import Skills from "../components/Skills";
 import Strengths from "../components/Strengths";
 import Clients from "../components/Clients";
 import Packages from "../components/Packages";
-import Footer from "../components/Footer";
 import ExperienceSummary from "@/components/ExperienceSummary";
 import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";

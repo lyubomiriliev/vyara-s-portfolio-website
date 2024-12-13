@@ -1,5 +1,8 @@
+"use client";
 import React from "react";
 import { educationData } from "@/utils/constants";
+import { motion } from "framer-motion";
+import { containerVariants, titleVariant } from "@/utils/animations";
 
 const Timeline: React.FC = () => {
   return (
@@ -9,10 +12,18 @@ const Timeline: React.FC = () => {
         {/* Desktop Horizontal Timeline */}
         <div className="hidden md:flex relative items-center justify-center max-w-screen-md mx-auto">
           {/* Main Timeline Line */}
-          <div className="absolute w-full h-[2px] bg-primary top-1/2" />
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            variants={titleVariant}
+            className="absolute w-full h-[2px] bg-primary top-1/2"
+          />
 
           {educationData.map((item, index) => (
-            <div
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              variants={containerVariants}
               key={index}
               className={`relative flex flex-col items-center text-center w-[190px] ${
                 index % 2 === 0 ? "mt-8" : "mt-8"
@@ -30,7 +41,12 @@ const Timeline: React.FC = () => {
                 } w-4 h-4 rounded-full bg-primary`}
               />
 
-              <div className="flex flex-col items-center justify-center text-center">
+              <motion.div
+                initial="hidden"
+                whileInView="show"
+                variants={titleVariant}
+                className="flex flex-col items-center justify-center text-center"
+              >
                 <div>
                   <p className="text-base font-semibold text-white">
                     {item.dateRange}
@@ -44,8 +60,8 @@ const Timeline: React.FC = () => {
                     {item.span}
                   </span>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
 
