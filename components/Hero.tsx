@@ -100,13 +100,13 @@ const Hero: React.FC = () => {
           initial="hidden"
           animate="show"
           variants={containerVariants}
-          className="absolute w-[95%] sm:w-[75%] bottom-[300px] left-5 md:bottom-[280px] md:left-24 md:w-[80%] lg:w-[39%] lg:-top-[108px] lg:left-[32%] -z-10"
+          className="absolute w-[95%] sm:w-[75%] mt-20 bottom-[300px] left-5 md:bottom-[280px] md:left-24 md:w-[80%] lg:w-[39%] lg:-top-[108px] lg:left-[32%] -z-10"
         >
           <Image
             width={1200}
             height={1600}
             unoptimized
-            src="/images/heroPhone.png"
+            src="/images/AVIVA.svg.svg"
             alt="Phone Image"
             className="object-cover"
           />
