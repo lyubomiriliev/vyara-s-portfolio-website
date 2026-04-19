@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/animations";
@@ -68,11 +69,11 @@ function TestimonialCard({ item }: { item: TestimonialItem }) {
       {/* Author */}
       <div className="flex items-center gap-3 pt-4 border-t border-white/[0.07]">
         {item.photo ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={item.photo}
             alt={item.name}
-            loading="lazy"
+            width={36}
+            height={36}
             className="w-9 h-9 rounded-full object-cover flex-shrink-0"
           />
         ) : (

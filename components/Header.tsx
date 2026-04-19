@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -159,10 +160,11 @@ export default function Header() {
         >
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 mr-2">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/aviva-digital-white-logo.png"
               alt="Aviva Digital"
+              width={120}
+              height={64}
               className="h-16 mt-2 w-auto object-contain"
             />
           </Link>
@@ -368,10 +370,11 @@ export default function Header() {
       >
         <div className="flex items-center justify-between px-5 h-14">
           <Link href="/">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/aviva-digital-white-logo.png"
               alt="Aviva Digital"
+              width={100}
+              height={40}
               className="h-10 w-auto object-contain"
             />
           </Link>

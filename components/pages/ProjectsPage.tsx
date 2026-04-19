@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useLang } from '@/lib/LanguageContext'
 
@@ -161,7 +162,6 @@ export default function ProjectsPage() {
     pauseTimerRef.current = setTimeout(() => setIsPaused(false), 8000)
   }
 
-  const activeProject = projects.find(p => p.id === activeId) ?? projects[0]
   const activeIndex = projects.findIndex(p => p.id === activeId)
 
   const prev = () => {
@@ -216,15 +216,15 @@ export default function ProjectsPage() {
                 >
                   {/* Background image */}
                   <motion.div
-                    className="absolute inset-0"
+                    className="absolute inset-0 overflow-hidden"
                     animate={{ scale: isActive ? 1.0 : 1.05 }}
                     transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={project.thumbnail}
                       alt={project.name}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                       style={{ filter: 'brightness(0.75)' }}
                     />
                   </motion.div>
@@ -251,11 +251,11 @@ export default function ProjectsPage() {
                       >
                         {/* Logo */}
                         <div className="relative w-16 h-16 flex-shrink-0">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
+                          <Image
                             src={project.logo}
                             alt={project.name}
-                            className="w-full h-full object-contain"
+                            fill
+                            className="object-contain"
                             style={{ filter: 'brightness(0) invert(1)', opacity: 0.9 }}
                           />
                         </div>
@@ -293,12 +293,12 @@ export default function ProjectsPage() {
                         </span>
 
                         {/* Logo */}
-                        <div className="w-28 h-20 mb-4 flex items-center">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
+                        <div className="relative w-28 h-20 mb-4 flex items-center">
+                          <Image
                             src={project.logo}
                             alt={project.name}
-                            className="max-w-full max-h-full object-contain"
+                            fill
+                            className="object-contain"
                             style={{ filter: 'brightness(0) invert(1)' }}
                           />
                         </div>
@@ -334,10 +334,11 @@ export default function ProjectsPage() {
                         {project.id !== 'mbcenter' && (
                           <div className="absolute bottom-8 right-8 flex flex-col items-end gap-1.5">
                             <span className="text-white/40 text-xs font-medium tracking-[0.12em] uppercase">Powered by Princeps Group</span>
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
+                            <Image
                               src="/websites/princeps-logo.png"
                               alt="Princeps Group"
+                              width={120}
+                              height={40}
                               className="h-10 w-auto object-contain"
                               style={{ opacity: 0.85 }}
                             />
@@ -379,7 +380,7 @@ export default function ProjectsPage() {
           <div className="flex items-center justify-between mt-8">
             {/* Progress dots */}
             <div className="flex items-center gap-2">
-              {projects.map((p, i) => (
+              {projects.map((p) => (
                 <button
                   key={p.id}
                   onClick={() => { pauseAutoplay(); setActiveId(p.id) }}
@@ -436,11 +437,11 @@ export default function ProjectsPage() {
                 boxShadow: '0 24px 80px rgba(0,0,0,0.6)',
               }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={mobileProject.thumbnail}
                 alt={mobileProject.name}
-                className="absolute inset-0 w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
               <div
                 className="absolute inset-0"
@@ -455,12 +456,12 @@ export default function ProjectsPage() {
                   {mobileProject.category}
                 </span>
 
-                <div className="w-14 h-10 mb-3 flex items-center">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                <div className="relative w-14 h-10 mb-3">
+                  <Image
                     src={mobileProject.logo}
                     alt={mobileProject.name}
-                    className="max-w-full max-h-full object-contain"
+                    fill
+                    className="object-contain"
                     style={{ filter: 'brightness(0) invert(1)' }}
                   />
                 </div>

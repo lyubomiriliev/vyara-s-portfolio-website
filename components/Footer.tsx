@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   InstagramIcon,
   FacebookIcon,
@@ -147,10 +148,11 @@ export default function Footer() {
           {/* Brand + social */}
           <div className="flex flex-col gap-6 max-w-[220px]">
             <Link href="/">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/aviva-digital-white-logo.png"
                 alt="Aviva Digital"
+                width={160}
+                height={96}
                 className="h-24 w-auto object-contain opacity-100"
               />
             </Link>

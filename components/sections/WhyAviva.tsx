@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { Brain, RefreshCw, TrendingUp } from "lucide-react";
 import { fadeUp, staggerContainer, scaleIn } from "@/lib/animations";
@@ -88,10 +89,11 @@ export default function WhyAviva() {
           opacity: 0.6,
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="/background-images/tool-stack.png"
           alt=""
+          width={800}
+          height={1200}
           className="h-full w-auto object-cover"
           style={{ filter: "none" }}
         />
@@ -311,12 +313,12 @@ export default function WhyAviva() {
                   className="group flex items-center justify-center"
                   title={logo.name}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={logo.src}
                     alt={logo.name}
-                    loading="lazy"
-                    className="h-7 object-contain opacity-30 grayscale group-hover:opacity-80 group-hover:grayscale-0 transition-all duration-400 mx-auto"
+                    width={120}
+                    height={28}
+                    className="h-7 w-auto object-contain opacity-30 grayscale group-hover:opacity-80 group-hover:grayscale-0 transition-all duration-400 mx-auto"
                   />
                 </motion.div>
               ))}

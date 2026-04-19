@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ButtonPrimary } from "@/components/ui/ButtonPrimary";
@@ -77,12 +78,11 @@ function ClientCard({
       <div className="relative grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-0">
         {/* Left — image */}
         <div className="relative aspect-square lg:aspect-auto lg:min-h-[520px] overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={client.image}
             alt={client.name}
-            loading="lazy"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
           <div
             aria-hidden
@@ -189,12 +189,12 @@ export default function ClientsPage() {
         style={{ minHeight: "100svh" }}
       >
         {/* Background image */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="/background-images/floating-wave.png"
           alt=""
           aria-hidden
-          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+          fill
+          className="object-cover object-center pointer-events-none"
           style={{ filter: "brightness(0.45) saturate(1.1)" }}
         />
         {/* Dark vignette */}
@@ -496,11 +496,11 @@ export default function ClientsPage() {
                     }}
                   />
 
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src="/background-images/rule-your-brand.png"
                     alt="Rule your brand"
-                    className="absolute inset-0 w-full h-full object-cover object-center"
+                    fill
+                    className="object-cover object-center"
                     style={{ filter: "brightness(0.8) saturate(1.1)" }}
                   />
                 </div>

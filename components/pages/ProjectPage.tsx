@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { Project } from '@/data/projects'
@@ -57,11 +58,11 @@ export default function ProjectPageContent({ project }: { project: Project }) {
           className="rounded-2xl overflow-hidden mb-12 w-full bg-bg-secondary"
           style={{ aspectRatio: '16/9' }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={project.coverImage}
             alt={project.title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
         </motion.div>
 
@@ -77,18 +78,18 @@ export default function ProjectPageContent({ project }: { project: Project }) {
                 {project.images.slice(1).map((img, i) => (
                   <motion.div
                     key={i}
-                    className="rounded-xl overflow-hidden bg-bg-secondary"
+                    className="relative rounded-xl overflow-hidden bg-bg-secondary"
                     style={{ aspectRatio: '1/1' }}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.08 }}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={img}
                       alt={`${project.title} ${i + 2}`}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </motion.div>
                 ))}

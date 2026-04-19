@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLang } from "@/lib/LanguageContext";
 
 const logos = [
@@ -40,13 +41,12 @@ export default function MarqueeBanner() {
               key={i}
               className="flex-shrink-0 px-14 flex items-center justify-center"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={logo.src}
                 alt={logo.name}
-                loading="lazy"
+                width={180}
+                height={56}
                 className="h-14 w-auto object-contain opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all duration-300"
-                style={{ maxWidth: "180px" }}
               />
             </div>
           ))}

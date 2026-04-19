@@ -75,7 +75,7 @@ function TypewriterCycle({
       }
     }
     return () => clearTimeout(timeout);
-  }, [displayed, phase, index, words]);
+  }, [displayed, phase, index, words, started]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <span

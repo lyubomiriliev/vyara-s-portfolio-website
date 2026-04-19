@@ -4,9 +4,9 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
 import { staggerContainer, fadeUp, scaleIn } from '@/lib/animations'
 import { projects, projectCategories } from '@/data/projects'
-import { useLang } from '@/lib/LanguageContext'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 
 type Category = typeof projectCategories[number]
@@ -70,8 +70,8 @@ export default function WorkPage() {
               exit={{ opacity: 0, transition: { duration: 0.15 } }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.05] rounded-2xl overflow-hidden border border-white/[0.05]"
             >
-              {filtered.map((project, i) => (
-                <ProjectCard key={project.slug} project={project} index={i} />
+              {filtered.map((project) => (
+                <ProjectCard key={project.slug} project={project} />
               ))}
             </motion.div>
           </AnimatePresence>
@@ -118,12 +118,12 @@ export default function WorkPage() {
                 transition={{ delay: i * 0.04 }}
                 className="break-inside-avoid group relative overflow-hidden rounded-xl cursor-pointer"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={item.src}
                   alt=""
-                  loading="lazy"
-                  className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  width={600}
+                  height={800}
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
               </motion.div>
@@ -138,24 +138,20 @@ export default function WorkPage() {
 
 function ProjectCard({
   project,
-  index,
 }: {
   project: { slug: string; title: string; client: string; category: string; coverImage: string; year?: string }
-  index: number
 }) {
-  const { t } = useLang()
 
   return (
     <motion.div variants={scaleIn} className="relative bg-bg-primary group">
       <Link href={`/work/${project.slug}`} className="block">
         {/* Image */}
         <div className="relative overflow-hidden aspect-[4/3]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={project.coverImage}
             alt={project.title}
-            loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
           />
           {/* Dim on hover for text readability */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500" />

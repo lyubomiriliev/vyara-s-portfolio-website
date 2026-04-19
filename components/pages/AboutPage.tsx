@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Brain,
   RefreshCw,
@@ -109,21 +110,13 @@ export default function AboutPage() {
       {/* ── Hero — full-bleed wallpaper + left text ── */}
       <section className="relative overflow-hidden min-h-screen flex items-center">
         {/* Full-bleed wallpaper — shifted right so subject is visible */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="/background-images/aviva-digital-wallpaper.png"
           alt=""
           aria-hidden
-          className="absolute pointer-events-none select-none"
-          style={{
-            top: 0,
-            left: "20%",
-            width: "85%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "left center",
-            filter: "brightness(0.65) saturate(1.15)",
-          }}
+          fill
+          className="pointer-events-none select-none object-cover object-left-center"
+          style={{ filter: "brightness(0.65) saturate(1.15)" }}
         />
 
         {/* Strong left vignette — text zone dark, image breathes right */}
@@ -332,10 +325,11 @@ export default function AboutPage() {
             opacity: 0.6,
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/background-images/tool-stack.png"
             alt=""
+            width={800}
+            height={1200}
             className="h-full w-auto object-cover"
             style={{ filter: "none" }}
           />
@@ -540,12 +534,12 @@ export default function AboutPage() {
                 className="group flex items-center justify-center"
                 title={logo.name}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={logo.src}
                   alt={logo.name}
-                  loading="lazy"
-                  className="h-7 object-contain opacity-30 grayscale group-hover:opacity-80 group-hover:grayscale-0 transition-all duration-300 mx-auto"
+                  width={120}
+                  height={28}
+                  className="h-7 w-auto object-contain opacity-30 grayscale group-hover:opacity-80 group-hover:grayscale-0 transition-all duration-300 mx-auto"
                 />
               </motion.div>
             ))}
@@ -556,12 +550,12 @@ export default function AboutPage() {
       {/* ── Our Process — ai-master-wallpaper.png background ── */}
       <section className="relative overflow-hidden section-padding">
         {/* Full-bleed wallpaper */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="/background-images/ai-prompt.png"
           alt=""
           aria-hidden
-          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
+          fill
+          className="object-cover object-center pointer-events-none select-none"
           style={{ filter: "brightness(0.35) saturate(1.2)" }}
         />
 

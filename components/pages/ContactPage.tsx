@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -10,13 +11,10 @@ import {
   AlertCircle,
   Loader2,
   ArrowRight,
-  Clock,
-  MessageSquare,
   ChevronDown,
 } from "lucide-react";
 import {
   fadeUp,
-  staggerContainer,
   scaleIn,
   slideInLeft,
 } from "@/lib/animations";
@@ -28,14 +26,8 @@ import { useLang } from "@/lib/LanguageContext";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
-const quickStatIcons = [Clock, MessageSquare, CheckCircle];
-
 export default function ContactPage() {
   const { t } = useLang();
-  const quickStats = t.contactQuickStats.map((s, i) => ({
-    ...s,
-    icon: quickStatIcons[i],
-  }));
   const [formStatus, setFormStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -91,9 +83,11 @@ export default function ContactPage() {
           className="absolute top-0 right-0 w-[75%] h-full pointer-events-none hidden lg:block"
           style={{ zIndex: 1 }}
         >
-          <img
+          <Image
             src="/background-images/working-wallpaper.png"
             alt=""
+            width={1200}
+            height={900}
             className="w-full h-full object-cover object-center"
             style={{
               opacity: 0.55,
@@ -375,9 +369,11 @@ export default function ContactPage() {
                   }}
                 />
                 <div className="relative z-10">
-                  <img
+                  <Image
                     src="/aviva-digital-white-logo.png"
                     alt="Aviva Digital"
+                    width={140}
+                    height={56}
                     className="h-14 w-auto mb-5"
                   />
                   <p className="text-white/60 text-sm leading-relaxed">
