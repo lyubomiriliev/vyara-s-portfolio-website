@@ -1,30 +1,25 @@
-// pages/index.tsx
-import Hero from "../components/Hero";
-import About from "../components/About";
-import Skills from "../components/Skills";
-import Strengths from "../components/Strengths";
-import Clients from "../components/Clients";
-import Packages from "../components/Packages";
-import ExperienceSummary from "@/components/ExperienceSummary";
-import Testimonials from "@/components/Testimonials";
-import ContactForm from "@/components/ContactForm";
-import Timeline from "@/components/Timeline";
-import Portfolio from "@/components/Portfolio";
+import Hero from "@/components/sections/Hero";
+import ServicesPreview from "@/components/sections/ServicesPreview";
+import Clients from "@/components/sections/Clients";
+import PortfolioPreview from "@/components/sections/PortfolioPreview";
+import WhyAviva from "@/components/sections/WhyAviva";
+import MarqueeBanner from "@/components/sections/MarqueeBanner";
+import Testimonials from "@/components/sections/Testimonials";
+import CTABanner from "@/components/sections/CTABanner";
+import ContactFormSection from "@/components/sections/ContactFormSection";
 
 export default function Home() {
   return (
-    <div>
+    <main>
       <Hero />
-      <ExperienceSummary />
-      <About />
-      <Timeline />
-      <Skills />
-      <Strengths />
-      <Portfolio />
+      <MarqueeBanner />
+      <ServicesPreview />
+      <PortfolioPreview />
       <Clients />
+      <WhyAviva />
       <Testimonials />
-      <Packages />
-      <ContactForm />
-    </div>
+      <CTABanner />
+      <ContactFormSection />
+    </main>
   );
 }
