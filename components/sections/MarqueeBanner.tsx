@@ -23,9 +23,7 @@ export default function MarqueeBanner() {
   if (logos.length === 0) return null;
   return (
     <section className="relative py-16 border-y border-white/[0.06] overflow-hidden">
-      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/30 text-center mb-12">
-        {t.marquee.label}
-      </p>
+
       {/* Outer masks left/right edges */}
       <div
         className="overflow-hidden w-full"

@@ -69,10 +69,10 @@ export const translations = {
       label: "WHAT WE DO",
       title: "Every Service Your Brand Needs",
       sub: "From AI-generated content to custom web applications — we handle it all.",
-      seeAll: "See All 18 Services →",
+      seeAll: "See All 14 Services →",
       learnMore: "Learn More →",
       getStarted: "Get Started →",
-      across3: "18 services across 3 disciplines",
+      across3: "14 services across 3 disciplines",
       allServices: "All Services",
       columns: [
         { label: "Marketing & Social" },
@@ -161,9 +161,10 @@ export const translations = {
       sending: "Sending...",
       successMsg: "Message sent! We'll be in touch soon.",
       errorMsg: "Something went wrong. Please try again.",
+      fullName: "Full Name",
       firstName: "First Name",
       lastName: "Last Name",
-      firstNamePlaceholder: "Your first name",
+      firstNamePlaceholder: "Your full name",
       lastNamePlaceholder: "Your last name",
       emailAddress: "Email Address",
       emailPlaceholder2: "you@company.com",
@@ -178,7 +179,7 @@ export const translations = {
       successSub: "We'll get back to you within 24 hours.",
       sendAnother: "Send another message →",
       errorFull:
-        "Something went wrong. Please try again or email us directly at info@avivadigital.bg.",
+        "Something went wrong. Please try again or email us directly at office@avivadigital.bg.",
       infoTagline:
         "AI-powered strategies. Human creativity. Full-circle digital solutions.",
       emailLabel: "Email",
@@ -265,7 +266,7 @@ export const translations = {
         title: "Every Service Your Brand Needs to",
         titleGradient: "Dominate Online",
         description:
-          "From AI-powered marketing to custom web applications — 18 services across marketing, creative and development.",
+          "From AI-powered marketing to custom web applications — 14 services across marketing, creative and development.",
       },
       work: {
         label: "OUR WORK",
@@ -482,6 +483,239 @@ export const translations = {
       },
     ],
 
+    // Service dropdown
+    serviceDropdown: {
+      categories: {
+        marketing: "Marketing & Social",
+        creative: "Creative & Content",
+        web: "Web & Development",
+      },
+      services: {
+        socialMedia: "Social Media Management",
+        aiMarketing: "AI-Powered Marketing",
+        metaAds: "Meta Ads Campaigns",
+        graphicPrint: "Graphic Design (Print)",
+        graphicDigital: "Graphic Design (Digital)",
+        videoFilming: "Video Filming & Editing",
+        websiteDev: "Website Development",
+        customSolutions: "Custom Solutions",
+        ecommerce: "E-commerce Websites",
+      },
+    },
+
+    // Services list (full data for /services page)
+    categoriesList: [
+      { id: "marketing", label: "Digital Marketing" },
+      { id: "creative", label: "Design & Video" },
+      { id: "web", label: "Web & Development" },
+    ],
+    servicesList: [
+      {
+        id: "social-media-management",
+        title: "Social Media Management",
+        description:
+          "Strategic content, scheduling and community management across all platforms.",
+        benefits: [
+          "Daily content creation",
+          "Community engagement",
+          "Analytics reporting",
+          "Platform strategy",
+        ],
+      },
+      {
+        id: "ai-powered-marketing",
+        title: "AI-Powered Marketing",
+        description:
+          "Machine learning-driven campaigns that adapt and optimize in real time.",
+        benefits: [
+          "Predictive audience targeting",
+          "Real-time optimization",
+          "AI copywriting",
+          "Performance forecasting",
+        ],
+      },
+      {
+        id: "meta-ads-campaigns",
+        title: "Meta Ads Campaigns",
+        description:
+          "High-converting Facebook and Instagram ad campaigns with precise targeting.",
+        benefits: [
+          "Campaign strategy",
+          "A/B testing",
+          "Retargeting funnels",
+          "ROAS optimization",
+        ],
+      },
+      {
+        id: "email-marketing",
+        title: "Email Marketing",
+        description:
+          "Automated sequences and campaigns that nurture leads and drive sales.",
+        benefits: [
+          "Automation flows",
+          "List segmentation",
+          "A/B testing",
+          "Deliverability optimization",
+        ],
+      },
+      {
+        id: "graphic-design",
+        title: "Graphic Design",
+        description:
+          "Digital creatives — brand-consistent design that stops the scroll.",
+        benefits: [
+          "Brand consistency",
+          "Digital formats",
+          "Animated assets",
+          "Unlimited revisions",
+        ],
+      },
+      {
+        id: "print-materials",
+        title: "Print Materials",
+        description:
+          "Brochures, banners, packaging and all print collateral, pixel-perfect.",
+        benefits: [
+          "Brand consistency",
+          "Print-ready files",
+          "Multiple formats",
+          "Unlimited revisions",
+        ],
+      },
+      {
+        id: "video-filming",
+        title: "Video Filming",
+        description:
+          "Professional video production for ads, brand stories and social content.",
+        benefits: [
+          "4K production",
+          "On-location shoots",
+          "Scriptwriting",
+          "Multi-platform formats",
+        ],
+      },
+      {
+        id: "video-editing",
+        title: "Video Editing",
+        description:
+          "Post-production, color grading, captions and platform-optimized exports.",
+        benefits: [
+          "Color grading",
+          "Motion graphics",
+          "Caption overlays",
+          "Platform optimization",
+        ],
+      },
+      {
+        id: "copywriting",
+        title: "Copywriting",
+        description:
+          "Compelling copy for ads, websites, social media and email — words that convert.",
+        benefits: [
+          "Ad & landing page copy",
+          "Social media captions",
+          "Email sequences",
+          "Brand voice guidelines",
+        ],
+      },
+      {
+        id: "ai-image-generation",
+        title: "AI Image Generation",
+        description:
+          "Photorealistic AI visuals — brand-consistent imagery produced in minutes, not days.",
+        benefits: [
+          "Photorealistic image outputs",
+          "Brand-consistent style",
+          "Multiple aspect ratios",
+          "Unlimited variations",
+        ],
+      },
+      {
+        id: "ai-video-generation",
+        title: "AI Video Generation",
+        description:
+          "Cinematic AI video sequences — hours of production compressed into minutes of output.",
+        benefits: [
+          "Cinematic AI video",
+          "Brand-consistent style",
+          "Multiple aspect ratios",
+          "Platform-optimized exports",
+        ],
+      },
+      {
+        id: "seo-optimization",
+        title: "SEO Optimization",
+        description:
+          "Technical and content SEO to dominate search rankings in your niche.",
+        benefits: [
+          "Keyword research",
+          "On-page optimization",
+          "Link building",
+          "Monthly reporting",
+        ],
+      },
+      {
+        id: "custom-websites-nextjs",
+        title: "Custom Websites",
+        description:
+          "Bespoke React / Next.js builds with performance-first architecture.",
+        benefits: [
+          "99+ Lighthouse score",
+          "TypeScript codebase",
+          "Static export",
+          "CI/CD ready",
+        ],
+      },
+      {
+        id: "online-store-ecommerce",
+        title: "Online Store / E-commerce",
+        description:
+          "Full e-commerce solutions — Shopify stores, custom builds, payment, inventory and logistics integrations.",
+        benefits: [
+          "Shopify & custom builds",
+          "Payment gateways",
+          "Inventory management",
+          "Order automation",
+        ],
+      },
+      {
+        id: "web-applications",
+        title: "Web Applications",
+        description:
+          "Cross-platform apps built with React Native and Electron.",
+        benefits: [
+          "Cross-platform",
+          "Offline support",
+          "Push notifications",
+          "App store ready",
+        ],
+      },
+      {
+        id: "saas-solutions",
+        title: "SaaS Solutions",
+        description:
+          "Scalable SaaS products from MVP to production-ready platform.",
+        benefits: [
+          "Scalable architecture",
+          "Auth & billing",
+          "Dashboard UI",
+          "API integrations",
+        ],
+      },
+      {
+        id: "hosting-domain",
+        title: "Hosting & Domain",
+        description:
+          "Fast, secure hosting and domain management — your site, always online and always performing.",
+        benefits: [
+          "Managed hosting setup",
+          "Domain registration & DNS",
+          "SSL certificates",
+          "Uptime monitoring",
+        ],
+      },
+    ],
+
     // Language
     language: "Language",
   },
@@ -547,7 +781,7 @@ export const translations = {
         },
         {
           title: "Резултати, не обещания",
-          body: "Работим с данни. Следим какво работи, оптимизираме и мащабираме — и ти виждаш всичко.",
+          body: "Работим с данни. Следим какво работи, оптимизираме и мащабираме — и вие виждате всичко.",
         },
       ],
     },
@@ -555,12 +789,12 @@ export const translations = {
     // ServicesPreview
     services: {
       label: "КАКВО ПРАВИМ",
-      title: "Всичко, от което брандът ти се нуждае",
+      title: "Всичко, от което брандът ви се нуждае",
       sub: "От AI съдържание до уеб разработка — работим по целия процес, не само по части от него.",
-      seeAll: "Виж всичките 18 услуги →",
+      seeAll: "Виж всичките 14 услуги →",
       learnMore: "Научи повече →",
       getStarted: "Започни →",
-      across3: "18 услуги в 3 направления",
+      across3: "14 услуги в 3 направления",
       allServices: "Всички услуги",
       columns: [
         { label: "Маркетинг и социални мрежи" },
@@ -612,7 +846,7 @@ export const translations = {
       showcaseSub:
         "Разгледай клиентите, с които сме работили — от хотелиерство и недвижими имоти до лични брандове и технологии.",
       caseStudy: "Казус",
-      ctaTitle: "Искаш и твоят бранд",
+      ctaTitle: "Искате ли и вашият бранд",
       ctaTitleAccent: "да расте така?",
       ctaSub:
         "Безплатна 30-минутна стратегическа среща. Без ангажимент. Конкретни идеи.",
@@ -629,7 +863,7 @@ export const translations = {
     testimonials: {
       label: "ОТЗИВИ",
       title: "Какво казват",
-      titleAccent: "нашиите клиенти",
+      titleAccent: "нашите клиенти",
     },
 
     // CTABanner
@@ -646,32 +880,33 @@ export const translations = {
     contactForm: {
       label: "СВЪРЖИ СЕ С НАС",
       title: "Нека поговорим",
-      sub: "Имаш идея или проект? Попълни формата и ще се свържем с теб до 24 часа.",
-      namePlaceholder: "Твоето име",
-      emailPlaceholder: "Твоят имейл",
-      messagePlaceholder: "Разкажи ни за проекта си...",
+      sub: "Имате идея или проект? Попълнете формата и ще се свържем с вас до 24 часа.",
+      namePlaceholder: "Вашето име",
+      emailPlaceholder: "Вашият имейл",
+      messagePlaceholder: "Разкажете ни за проекта си...",
       submit: "Изпрати съобщение",
       sending: "Изпращане...",
       successMsg: "Съобщението е изпратено! Скоро ще се чуем.",
       errorMsg: "Нещо се обърка. Опитай пак.",
+      fullName: "Вашето име",
       firstName: "Собствено име",
       lastName: "Фамилия",
-      firstNamePlaceholder: "Твоето собствено име",
-      lastNamePlaceholder: "Твоята фамилия",
+      firstNamePlaceholder: "Вашите имена",
+      lastNamePlaceholder: "Вашата фамилия",
       emailAddress: "Имейл адрес",
-      emailPlaceholder2: "ти@компания.com",
+      emailPlaceholder2: "вие@компания.com",
       phone: "Телефон",
-      phonePlaceholder: "Твоят телефон",
+      phonePlaceholder: "Вашият телефон",
       company: "Компания",
       companyPlaceholder: "Название на компанията (по желание)",
-      serviceInterest: "Интересуваш се от",
+      serviceInterest: "Интересувате се от",
       selectService: "Избери услуга...",
       message: "Съобщение",
       successTitle: "Съобщението е изпратено!",
-      successSub: "Ще се свържем с теб до 24 часа.",
+      successSub: "Ще се свържем с вас до 24 часа.",
       sendAnother: "Изпрати ново съобщение →",
       errorFull:
-        "Нещо се обърка. Опитай пак или ни пиши директно на info@avivadigital.bg.",
+        "Нещо се обърка. Опитайте отново или ни пишете директно на info@avivadigital.bg.",
       infoTagline:
         "AI стратегии. Истинска креативност. Дигитални решения от А до Я.",
       emailLabel: "Имейл",
@@ -695,9 +930,9 @@ export const translations = {
       techStack: "Технологии",
       liveProject: "Виж сайта →",
       viewDetails: "Виж детайли →",
-      ctaTitle: "Искаш сайт, който",
+      ctaTitle: "Искате сайт, който",
       ctaTitleAccent: "наистина работи?",
-      ctaSub: "Разкажи ни за проекта си и ще се свържем с теб до 24 часа.",
+      ctaSub: "Разкажете ни за проекта си и ще се свържем с вас до 24 часа.",
       ctaButton: "Започни проекта →",
     },
 
@@ -713,10 +948,10 @@ export const translations = {
       teamTitleAccent: "в едно",
       processTitle: "Как",
       processTitleMid: "работим",
-      processTitleAccent: "с теб",
+      processTitleAccent: "с вас",
       role: "Креативен директор",
       bio: "Виара е човекът зад стратегията и визията на Aviva Digital. С опит в AI маркетинга, социалните мрежи и управлението на брандове, тя ръководи екипа към резултати, които се усещат — не просто изглеждат добре.",
-      ctaTitle: "Искаш да работим заедно?",
+      ctaTitle: "Искате ли да работим заедно?",
       ctaButton: "Започни проект →",
     },
 
@@ -731,7 +966,7 @@ export const translations = {
       readyToGrow: "Готови за растеж?",
       letsBuilt: "Нека изградим нещо",
       extraordinary: "по-добро заедно.",
-      freeAudit: "Поискай безплатен одит на дигиталното ти присъствие.",
+      freeAudit: "Поискайте безплатен одит на дигиталното ви присъствие.",
       freeAuditCta: "Безплатен одит →",
       services: "Услуги",
       company: "Компания",
@@ -754,10 +989,10 @@ export const translations = {
     pageHeroes: {
       services: {
         label: "КАКВО ПРАВИМ",
-        title: "Всичко, от което брандът ти се нуждае, за да",
+        title: "Всичко, от което брандът ви се нуждае, за да",
         titleGradient: "доминира онлайн",
         description:
-          "От AI маркетинг до уеб разработка — 18 услуги в три направления, всички под един покрив.",
+          "От AI маркетинг до уеб разработка — 14 услуги в три направления, всички под един покрив.",
       },
       work: {
         label: "НАШЕТО ПОРТФОЛИО",
@@ -972,6 +1207,239 @@ export const translations = {
           "Качеството на съдържанието и скоростта на изпълнение са невероятни. Общността ни нарасна с 30% органично — без преки пътища.",
         name: "Sofia Georgieva",
         role: "CMO на Fox Academy",
+      },
+    ],
+
+    // Service dropdown
+    serviceDropdown: {
+      categories: {
+        marketing: "Маркетинг и социални мрежи",
+        creative: "Креатив и съдържание",
+        web: "Уеб и разработка",
+      },
+      services: {
+        socialMedia: "Управление на социални мрежи",
+        aiMarketing: "AI маркетинг",
+        metaAds: "Meta реклами",
+        graphicPrint: "Графичен дизайн (печат)",
+        graphicDigital: "Графичен дизайн (дигитален)",
+        videoFilming: "Заснемане и монтаж на видео",
+        websiteDev: "Изграждане на уебсайтове",
+        customSolutions: "Персонализирани решения",
+        ecommerce: "Е-commerce уебсайтове",
+      },
+    },
+
+    // Services list (full data for /services page)
+    categoriesList: [
+      { id: "marketing", label: "Дигитален маркетинг" },
+      { id: "creative", label: "Дизайн и видео" },
+      { id: "web", label: "Уебсайтове и приложения" },
+    ],
+    servicesList: [
+      {
+        id: "social-media-management",
+        title: "Управление на социални мрежи",
+        description:
+          "Стратегическо съдържание, планиране и управление на общност във всички платформи.",
+        benefits: [
+          "Ежедневно създаване на съдържание",
+          "Ангажиране на общността",
+          "Анализ и отчети",
+          "Платформена стратегия",
+        ],
+      },
+      {
+        id: "ai-powered-marketing",
+        title: "Маркетинг с изкуствен интелект",
+        description:
+          "Кампании, задвижвани от машинно обучение, които се адаптират и оптимизират в реално време.",
+        benefits: [
+          "Предиктивно таргетиране на аудитория",
+          "Оптимизация в реално време",
+          "AI копирайтинг",
+          "Прогнозиране на резултати",
+        ],
+      },
+      {
+        id: "meta-ads-campaigns",
+        title: "Meta Ads кампании",
+        description:
+          "Високоефективни рекламни кампании във Facebook и Instagram с прецизно таргетиране.",
+        benefits: [
+          "Стратегия на кампанията",
+          "A/B тестване",
+          "Ретаргетинг фунии",
+          "ROAS оптимизация",
+        ],
+      },
+      {
+        id: "email-marketing",
+        title: "Имейл маркетинг",
+        description:
+          "Автоматизирани последователности и кампании, които изграждат доверие и генерират продажби.",
+        benefits: [
+          "Автоматизирани потоци",
+          "Сегментиране на списъци",
+          "A/B тестване",
+          "Оптимизация на доставяемост",
+        ],
+      },
+      {
+        id: "graphic-design",
+        title: "Графичен дизайн",
+        description:
+          "Дигитални визии — дизайн, съответстващ на бранда, който спира скролването.",
+        benefits: [
+          "Консистентност на бранда",
+          "Дигитални формати",
+          "Анимирани активи",
+          "Неограничени корекции",
+        ],
+      },
+      {
+        id: "print-materials",
+        title: "Печатни материали",
+        description:
+          "Брошури, банери, опаковки и всички печатни материали — перфектни до последния пиксел.",
+        benefits: [
+          "Консистентност на бранда",
+          "Файлове готови за печат",
+          "Множество формати",
+          "Неограничени корекции",
+        ],
+      },
+      {
+        id: "video-filming",
+        title: "Видео заснемане",
+        description:
+          "Професионална видеопродукция за реклами, brand истории и съдържание за социални мрежи.",
+        benefits: [
+          "4K продукция",
+          "Снимки на локация",
+          "Писане на сценарий",
+          "Формати за всички платформи",
+        ],
+      },
+      {
+        id: "video-editing",
+        title: "Видео обработка",
+        description:
+          "Постпродукция, цветова корекция, субтитри и експорт, оптимизиран за всяка платформа.",
+        benefits: [
+          "Цветова корекция",
+          "Motion graphics",
+          "Субтитри",
+          "Платформена оптимизация",
+        ],
+      },
+      {
+        id: "copywriting",
+        title: "Копирайтинг",
+        description:
+          "Убедителни текстове за реклами, уебсайтове, социални мрежи и имейли — думи, които конвертират.",
+        benefits: [
+          "Текстове за реклами и landing pages",
+          "Надписи за социални мрежи",
+          "Имейл последователности",
+          "Насоки за бранд глас",
+        ],
+      },
+      {
+        id: "ai-image-generation",
+        title: "AI генериране на изображения",
+        description:
+          "Фотореалистични AI визии — изображения, съответстващи на бранда, създадени за минути, не за дни.",
+        benefits: [
+          "Фотореалистични изображения",
+          "Стил, съответстващ на бранда",
+          "Множество съотношения на екрана",
+          "Неограничени вариации",
+        ],
+      },
+      {
+        id: "ai-video-generation",
+        title: "AI генериране на видео",
+        description:
+          "Кинематографични AI видео последователности — часове продукция, компресирани в минути изпълнение.",
+        benefits: [
+          "Кинематографично AI видео",
+          "Стил, съответстващ на бранда",
+          "Множество съотношения на екрана",
+          "Оптимизиран експорт за платформи",
+        ],
+      },
+      {
+        id: "seo-optimization",
+        title: "SEO оптимизация",
+        description:
+          "Техническо и съдържателно SEO за доминиране в резултатите от търсене във вашата ниша.",
+        benefits: [
+          "Проучване на ключови думи",
+          "On-page оптимизация",
+          "Изграждане на връзки",
+          "Месечни отчети",
+        ],
+      },
+      {
+        id: "custom-websites-nextjs",
+        title: "Персонализирани уебсайтове",
+        description:
+          "Уникални React / Next.js разработки с архитектура, ориентирана към производителност.",
+        benefits: [
+          "99+ Lighthouse резултат",
+          "TypeScript кодова база",
+          "Статичен експорт",
+          "CI/CD готовност",
+        ],
+      },
+      {
+        id: "online-store-ecommerce",
+        title: "Онлайн магазин / E-commerce",
+        description:
+          "Пълни e-commerce решения — Shopify магазини, персонализирани разработки, плащания, склад и логистика.",
+        benefits: [
+          "Shopify и персонализирани разработки",
+          "Платежни портали",
+          "Управление на склад",
+          "Автоматизация на поръчки",
+        ],
+      },
+      {
+        id: "web-applications",
+        title: "Уеб приложения",
+        description:
+          "Кросплатформени приложения, изградени с React Native и Electron.",
+        benefits: [
+          "Кросплатформеност",
+          "Офлайн поддръжка",
+          "Push известия",
+          "Готовност за App Store",
+        ],
+      },
+      {
+        id: "saas-solutions",
+        title: "SaaS решения",
+        description:
+          "Мащабируеми SaaS продукти — от MVP до производствено-готова платформа.",
+        benefits: [
+          "Мащабируема архитектура",
+          "Автентикация & фактуриране",
+          "Dashboard интерфейс",
+          "API интеграции",
+        ],
+      },
+      {
+        id: "hosting-domain",
+        title: "Хостинг & домейн",
+        description:
+          "Бърз и сигурен хостинг и управление на домейн — вашият сайт винаги онлайн и винаги с висока производителност.",
+        benefits: [
+          "Настройка на управляван хостинг",
+          "Регистрация на домейн и DNS",
+          "SSL сертификати",
+          "Мониторинг на наличност",
+        ],
       },
     ],
 

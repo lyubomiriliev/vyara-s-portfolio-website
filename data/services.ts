@@ -3,6 +3,7 @@ export type ServiceCategory = "marketing" | "creative" | "web";
 export interface Service {
   id: string;
   category: ServiceCategory;
+  categories: ServiceCategory[];
   categoryLabel: string;
   icon: string; // Lucide icon name as string
   title: string;
@@ -11,11 +12,12 @@ export interface Service {
 }
 
 export const services: Service[] = [
-  // Marketing & Social
+  // Дигитален маркетинг
   {
     id: "social-media-management",
     category: "marketing",
-    categoryLabel: "Marketing & Social",
+    categories: ["marketing"],
+    categoryLabel: "Дигитален маркетинг",
     icon: "Share2",
     title: "Social Media Management",
     description:
@@ -30,7 +32,8 @@ export const services: Service[] = [
   {
     id: "ai-powered-marketing",
     category: "marketing",
-    categoryLabel: "Marketing & Social",
+    categories: ["marketing", "ai"],
+    categoryLabel: "Дигитален маркетинг",
     icon: "Brain",
     title: "AI-Powered Marketing",
     description:
@@ -45,7 +48,8 @@ export const services: Service[] = [
   {
     id: "meta-ads-campaigns",
     category: "marketing",
-    categoryLabel: "Marketing & Social",
+    categories: ["marketing"],
+    categoryLabel: "Дигитален маркетинг",
     icon: "Target",
     title: "Meta Ads Campaigns",
     description:
@@ -58,24 +62,10 @@ export const services: Service[] = [
     ],
   },
   {
-    id: "influencer-marketing",
-    category: "marketing",
-    categoryLabel: "Marketing & Social",
-    icon: "Users",
-    title: "Influencer Marketing",
-    description:
-      "Partnerships with the right voices to amplify your brand authentically.",
-    benefits: [
-      "Influencer sourcing",
-      "Campaign management",
-      "Content approval",
-      "Performance tracking",
-    ],
-  },
-  {
     id: "email-marketing",
     category: "marketing",
-    categoryLabel: "Marketing & Social",
+    categories: ["marketing"],
+    categoryLabel: "Дигитален маркетинг",
     icon: "Mail",
     title: "Email Marketing",
     description:
@@ -87,28 +77,30 @@ export const services: Service[] = [
       "Deliverability optimization",
     ],
   },
+  // Дизайн и видео
   {
-    id: "seo-optimization",
-    category: "marketing",
-    categoryLabel: "Marketing & Social",
-    icon: "Search",
-    title: "SEO Optimization",
+    id: "graphic-design",
+    category: "creative",
+    categories: ["creative"],
+    categoryLabel: "Дизайн и видео",
+    icon: "Palette",
+    title: "Graphic Design",
     description:
-      "Technical and content SEO to dominate search rankings in your niche.",
+      "Digital creatives — brand-consistent design that stops the scroll.",
     benefits: [
-      "Keyword research",
-      "On-page optimization",
-      "Link building",
-      "Monthly reporting",
+      "Brand consistency",
+      "Digital formats",
+      "Animated assets",
+      "Unlimited revisions",
     ],
   },
-  // Creative & Content
   {
-    id: "graphic-design-print",
+    id: "print-materials",
     category: "creative",
-    categoryLabel: "Creative & Content",
+    categories: ["creative"],
+    categoryLabel: "Дизайн и видео",
     icon: "Printer",
-    title: "Graphic Design (Print)",
+    title: "Print Materials",
     description:
       "Brochures, banners, packaging and all print collateral, pixel-perfect.",
     benefits: [
@@ -119,24 +111,10 @@ export const services: Service[] = [
     ],
   },
   {
-    id: "graphic-design-digital",
-    category: "creative",
-    categoryLabel: "Creative & Content",
-    icon: "Monitor",
-    title: "Graphic Design (Digital)",
-    description:
-      "Social creatives, web banners, and UI assets built for scroll-stopping impact.",
-    benefits: [
-      "Social media sizes",
-      "Animated assets",
-      "Brand guidelines",
-      "Fast turnaround",
-    ],
-  },
-  {
     id: "video-filming",
     category: "creative",
-    categoryLabel: "Creative & Content",
+    categories: ["creative"],
+    categoryLabel: "Дизайн и видео",
     icon: "Video",
     title: "Video Filming",
     description:
@@ -151,7 +129,8 @@ export const services: Service[] = [
   {
     id: "video-editing",
     category: "creative",
-    categoryLabel: "Creative & Content",
+    categories: ["creative"],
+    categoryLabel: "Дизайн и видео",
     icon: "Film",
     title: "Video Editing",
     description:
@@ -164,55 +143,76 @@ export const services: Service[] = [
     ],
   },
   {
+    id: "copywriting",
+    category: "marketing",
+    categories: ["marketing"],
+    categoryLabel: "Дигитален маркетинг",
+    icon: "PenLine",
+    title: "Copywriting",
+    description:
+      "Compelling copy for ads, websites, social media and email — words that convert.",
+    benefits: [
+      "Ad & landing page copy",
+      "Social media captions",
+      "Email sequences",
+      "Brand voice guidelines",
+    ],
+  },
+  // AI
+  {
     id: "ai-image-generation",
     category: "creative",
-    categoryLabel: "Creative & Content",
-    icon: "Image",
+    categories: ["creative"],
+    categoryLabel: "Дизайн и видео",
+    icon: "ImagePlay",
     title: "AI Image Generation",
     description:
-      "Photorealistic AI visuals and product shots — hours of shooting, minutes of output.",
+      "Photorealistic AI visuals — brand-consistent imagery produced in minutes, not days.",
     benefits: [
-      "Photorealistic outputs",
-      "Product visualization",
+      "Photorealistic image outputs",
       "Brand-consistent style",
-      "Rapid iteration",
+      "Multiple aspect ratios",
+      "Unlimited variations",
     ],
   },
   {
     id: "ai-video-generation",
     category: "creative",
-    categoryLabel: "Creative & Content",
+    categories: ["creative"],
+    categoryLabel: "Дизайн и видео",
     icon: "Clapperboard",
     title: "AI Video Generation",
     description:
-      "Cinematic AI video sequences for ads, reels and property showcases.",
+      "Cinematic AI video sequences — hours of production compressed into minutes of output.",
     benefits: [
-      "Cinematic quality",
-      "Custom style transfer",
-      "Fast delivery",
+      "Cinematic AI video",
+      "Brand-consistent style",
       "Multiple aspect ratios",
+      "Platform-optimized exports",
     ],
   },
-  // Web & Development
+  // Уеб & Разработка
   {
-    id: "website-creation",
-    category: "web",
-    categoryLabel: "Web & Development",
-    icon: "Globe",
-    title: "E-Commerce Website Creation",
+    id: "seo-optimization",
+    category: "marketing",
+    categories: ["marketing", "web"],
+    categoryLabel: "Дигитален маркетинг",
+    icon: "Search",
+    title: "SEO Optimization",
     description:
-      "Fast, beautiful websites built for conversion and search performance.",
+      "Technical and content SEO to dominate search rankings in your niche.",
     benefits: [
-      "Mobile-first design",
-      "SEO optimized",
-      "CMS integration",
-      "Performance audited",
+      "Keyword research",
+      "On-page optimization",
+      "Link building",
+      "Monthly reporting",
     ],
   },
   {
     id: "custom-websites-nextjs",
     category: "web",
-    categoryLabel: "Web & Development",
+    categories: ["web"],
+    categoryLabel: "Уеб & Разработка",
     icon: "Code2",
     title: "Custom Websites",
     description:
@@ -225,39 +225,26 @@ export const services: Service[] = [
     ],
   },
   {
-    id: "shopify-websites",
-    category: "web",
-    categoryLabel: "Web & Development",
-    icon: "ShoppingBag",
-    title: "Shopify Websites",
-    description:
-      "Custom Shopify themes and apps that turn visitors into customers.",
-    benefits: [
-      "Custom theme dev",
-      "App integrations",
-      "Conversion CRO",
-      "Analytics setup",
-    ],
-  },
-  {
     id: "online-store-ecommerce",
     category: "web",
-    categoryLabel: "Web & Development",
+    categories: ["web"],
+    categoryLabel: "Уеб & Разработка",
     icon: "Store",
     title: "Online Store / E-commerce",
     description:
-      "Full e-commerce solutions with payment, inventory and logistics integrations.",
+      "Full e-commerce solutions — Shopify stores, custom builds, payment, inventory and logistics integrations.",
     benefits: [
+      "Shopify & custom builds",
       "Payment gateways",
       "Inventory management",
       "Order automation",
-      "Multi-currency",
     ],
   },
   {
     id: "web-applications",
     category: "web",
-    categoryLabel: "Web & Development",
+    categories: ["web"],
+    categoryLabel: "Уеб & Разработка",
     icon: "Smartphone",
     title: "Web Applications",
     description: "Cross-platform apps built with React Native and Electron.",
@@ -271,7 +258,8 @@ export const services: Service[] = [
   {
     id: "saas-solutions",
     category: "web",
-    categoryLabel: "Web & Development",
+    categories: ["web"],
+    categoryLabel: "Уеб & Разработка",
     icon: "Layers",
     title: "SaaS Solutions",
     description:
@@ -283,10 +271,26 @@ export const services: Service[] = [
       "API integrations",
     ],
   },
+  {
+    id: "hosting-domain",
+    category: "web",
+    categories: ["web"],
+    categoryLabel: "Уеб & Разработка",
+    icon: "Server",
+    title: "Хостинг & домейн",
+    description:
+      "Бърз и сигурен хостинг и управление на домейн — вашият сайт винаги онлайн и винаги с висока производителност.",
+    benefits: [
+      "Настройка на управляван хостинг",
+      "Регистрация на домейн и DNS",
+      "SSL сертификати",
+      "Мониторинг на наличност",
+    ],
+  },
 ];
 
 export const categories = [
-  { id: "marketing", label: "Marketing & Social" },
-  { id: "creative", label: "Creative & Content" },
-  { id: "web", label: "Web & Development" },
+  { id: "marketing", label: "Дигитален маркетинг" },
+  { id: "creative", label: "Дизайн и видео" },
+  { id: "web", label: "Уебсайтове и приложения" },
 ] as const;

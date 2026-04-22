@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useRef, useEffect, FormEvent } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -13,15 +13,10 @@ import {
   ArrowRight,
   ChevronDown,
 } from "lucide-react";
-import {
-  fadeUp,
-  scaleIn,
-  slideInLeft,
-} from "@/lib/animations";
+import { fadeUp, scaleIn, slideInLeft } from "@/lib/animations";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ButtonPrimary } from "@/components/ui/ButtonPrimary";
 import { Glow } from "@/components/ui/Glow";
-import { services, categories } from "@/data/services";
 import { useLang } from "@/lib/LanguageContext";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
@@ -30,6 +25,33 @@ export default function ContactPage() {
   const { t } = useLang();
   const [formStatus, setFormStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const toggleService = (title: string) => {
+    setSelectedServices((prev) =>
+      prev.includes(title) ? prev.filter((s) => s !== title) : [...prev, title],
+    );
+  };
+
+  const removeService = (title: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setSelectedServices((prev) => prev.filter((s) => s !== title));
+  };
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -101,7 +123,7 @@ export default function ContactPage() {
         </div>
 
         <div className="container relative z-10">
-          <div className="max-w-4xl mx-auto flex flex-col gap-6">
+          <div className="max-w-5xl mx-auto flex flex-col gap-6">
             {/* Form */}
             <motion.div
               variants={slideInLeft}
@@ -166,18 +188,18 @@ export default function ContactPage() {
                     </p>
                   </div>
 
-                  {/* Name row */}
+                  {/* Row 1: Name + Phone */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
                       <label
-                        htmlFor="firstName"
+                        htmlFor="name"
                         className="text-xs text-white/50 uppercase tracking-wider font-medium"
                       >
-                        {t.contactForm.firstName} *
+                        {t.contactForm.fullName} *
                       </label>
                       <input
-                        id="firstName"
-                        name="firstName"
+                        id="name"
+                        name="name"
                         required
                         placeholder={t.contactForm.firstNamePlaceholder}
                         className="form-field"
@@ -185,107 +207,222 @@ export default function ContactPage() {
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label
-                        htmlFor="lastName"
+                        htmlFor="phone"
                         className="text-xs text-white/50 uppercase tracking-wider font-medium"
                       >
-                        {t.contactForm.lastName} *
+                        {t.contactForm.phone} *
                       </label>
                       <input
-                        id="lastName"
-                        name="lastName"
+                        id="phone"
+                        name="phone"
+                        type="tel"
                         required
-                        placeholder={t.contactForm.lastNamePlaceholder}
+                        placeholder={t.contactForm.phonePlaceholder}
                         className="form-field"
                       />
                     </div>
                   </div>
 
-                  {/* Email */}
-                  <div className="flex flex-col gap-1.5">
-                    <label
-                      htmlFor="email"
-                      className="text-xs text-white/50 uppercase tracking-wider font-medium"
-                    >
-                      {t.contactForm.emailAddress} *
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder={t.contactForm.emailPlaceholder2}
-                      className="form-field"
-                    />
-                  </div>
-
-                  {/* Phone */}
-                  <div className="flex flex-col gap-1.5">
-                    <label
-                      htmlFor="phone"
-                      className="text-xs text-white/50 uppercase tracking-wider font-medium"
-                    >
-                      {t.contactForm.phone}
-                    </label>
-                    <input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      placeholder={t.contactForm.phonePlaceholder}
-                      className="form-field"
-                    />
-                  </div>
-
-                  {/* Company */}
-                  <div className="flex flex-col gap-1.5">
-                    <label
-                      htmlFor="company"
-                      className="text-xs text-white/50 uppercase tracking-wider font-medium"
-                    >
-                      {t.contactForm.company}
-                    </label>
-                    <input
-                      id="company"
-                      name="company"
-                      placeholder={t.contactForm.companyPlaceholder}
-                      className="form-field"
-                    />
-                  </div>
-
-                  {/* Service interest */}
-                  <div className="flex flex-col gap-1.5">
-                    <label
-                      htmlFor="service"
-                      className="text-xs text-white/50 uppercase tracking-wider font-medium"
-                    >
-                      {t.contactForm.serviceInterest}
-                    </label>
-                    <div className="relative">
-                      <select
-                        id="service"
-                        name="service"
-                        className="form-field appearance-none pr-10"
-                        defaultValue=""
+                  {/* Row 2: Email + Company */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1.5">
+                      <label
+                        htmlFor="email"
+                        className="text-xs text-white/50 uppercase tracking-wider font-medium"
                       >
-                        <option value="" disabled>
-                          {t.contactForm.selectService}
-                        </option>
-                        {categories.map((cat) => (
-                          <optgroup key={cat.id} label={cat.label}>
-                            {services
-                              .filter((s) => s.category === cat.id)
-                              .map((s) => (
-                                <option key={s.id} value={s.title}>
-                                  {s.title}
-                                </option>
-                              ))}
-                          </optgroup>
-                        ))}
-                      </select>
-                      <ChevronDown
-                        size={16}
-                        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white/40"
+                        {t.contactForm.emailAddress} *
+                      </label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        placeholder={t.contactForm.emailPlaceholder2}
+                        className="form-field"
                       />
                     </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label
+                        htmlFor="company"
+                        className="text-xs text-white/50 uppercase tracking-wider font-medium"
+                      >
+                        {t.contactForm.company}
+                      </label>
+                      <input
+                        id="company"
+                        name="company"
+                        placeholder={t.contactForm.companyPlaceholder}
+                        className="form-field"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Service interest — multi-select dropdown */}
+                  <div className="flex flex-col gap-1.5" ref={dropdownRef}>
+                    <label className="text-xs text-white/50 uppercase tracking-wider font-medium">
+                      {t.contactForm.serviceInterest}
+                    </label>
+
+                    {/* Hidden inputs for form submission */}
+                    {selectedServices.map((s) => (
+                      <input key={s} type="hidden" name="service" value={s} />
+                    ))}
+
+                    {/* Trigger */}
+                    <button
+                      type="button"
+                      onClick={() => setDropdownOpen((o) => !o)}
+                      className="form-field flex items-center justify-between gap-2 text-left cursor-pointer"
+                    >
+                      <span
+                        className={
+                          selectedServices.length === 0
+                            ? "text-white/30 text-sm"
+                            : "text-white/80 text-sm"
+                        }
+                      >
+                        {selectedServices.length === 0
+                          ? t.contactForm.selectService
+                          : `${selectedServices.length} service${selectedServices.length > 1 ? "s" : ""} selected`}
+                      </span>
+                      <ChevronDown
+                        size={16}
+                        className={`text-white/40 flex-shrink-0 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
+                      />
+                    </button>
+
+                    {/* Selected tags */}
+                    {selectedServices.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mt-1">
+                        {selectedServices.map((s) => (
+                          <span
+                            key={s}
+                            className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium"
+                            style={{
+                              background:
+                                "linear-gradient(135deg, rgba(224,64,160,0.2), rgba(155,89,245,0.15))",
+                              border: "1px solid rgba(224,64,160,0.4)",
+                              color: "#fff",
+                            }}
+                          >
+                            {s}
+                            <button
+                              type="button"
+                              onClick={(e) => removeService(s, e)}
+                              className="ml-0.5 text-white/50 hover:text-white transition-colors cursor-pointer"
+                            >
+                              ×
+                            </button>
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Dropdown panel */}
+                    {dropdownOpen && (
+                      <div
+                        className="mt-1 rounded-[12px] overflow-hidden"
+                        style={{
+                          background: "rgba(18,18,26,0.97)",
+                          border: "1px solid rgba(255,255,255,0.1)",
+                          backdropFilter: "blur(20px)",
+                          boxShadow: "0 16px 48px rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        {(() => {
+                          const catIds: Record<string, string[]> = {
+                            marketing: [
+                              "social-media-management",
+                              "ai-powered-marketing",
+                              "meta-ads-campaigns",
+                              "influencer-marketing",
+                              "email-marketing",
+                              "seo-optimization",
+                            ],
+                            creative: [
+                              "graphic-design-print",
+                              "graphic-design-digital",
+                              "video-filming",
+                              "video-editing",
+                              "ai-image-generation",
+                              "ai-video-generation",
+                            ],
+                            web: [
+                              "website-creation",
+                              "custom-websites-nextjs",
+                              "shopify-websites",
+                              "online-store-ecommerce",
+                              "web-applications",
+                              "saas-solutions",
+                            ],
+                          };
+                          return t.categoriesList.map((cat, idx) => (
+                            <div key={cat.id}>
+                              {idx > 0 && (
+                                <div className="h-px bg-white/[0.06]" />
+                              )}
+                              <div className="px-3 pt-3 pb-1">
+                                <span className="text-[10px] uppercase tracking-widest text-white/30 font-semibold">
+                                  {cat.label}
+                                </span>
+                              </div>
+                              <div className="grid grid-cols-3 gap-1 px-3 pb-2">
+                                {t.servicesList
+                                  .filter((s) => catIds[cat.id]?.includes(s.id))
+                                  .map((s) => {
+                                    const active = selectedServices.includes(
+                                      s.title,
+                                    );
+                                    return (
+                                      <button
+                                        key={s.id}
+                                        type="button"
+                                        onClick={() => toggleService(s.title)}
+                                        className="flex items-center justify-between gap-1 px-3 py-2 rounded-lg text-xs transition-colors duration-150 cursor-pointer text-left"
+                                        style={{
+                                          color: active
+                                            ? "#fff"
+                                            : "rgba(255,255,255,0.6)",
+                                          background: active
+                                            ? "rgba(224,64,160,0.15)"
+                                            : "rgba(255,255,255,0.03)",
+                                          border: active
+                                            ? "1px solid rgba(224,64,160,0.35)"
+                                            : "1px solid rgba(255,255,255,0.06)",
+                                        }}
+                                        onMouseEnter={(e) => {
+                                          if (!active)
+                                            (
+                                              e.currentTarget as HTMLButtonElement
+                                            ).style.background =
+                                              "rgba(255,255,255,0.07)";
+                                        }}
+                                        onMouseLeave={(e) => {
+                                          if (!active)
+                                            (
+                                              e.currentTarget as HTMLButtonElement
+                                            ).style.background =
+                                              "rgba(255,255,255,0.03)";
+                                        }}
+                                      >
+                                        <span className="leading-snug">
+                                          {s.title}
+                                        </span>
+                                        {active && (
+                                          <span className="text-accent-pink text-sm leading-none flex-shrink-0">
+                                            ✓
+                                          </span>
+                                        )}
+                                      </button>
+                                    );
+                                  })}
+                              </div>
+                              <div className="pb-1" />
+                            </div>
+                          ));
+                        })()}
+                      </div>
+                    )}
                   </div>
 
                   {/* Message */}
@@ -416,10 +553,10 @@ export default function ContactPage() {
                       {t.contactForm.emailLabel}
                     </p>
                     <a
-                      href="mailto:info@avivadigital.bg"
+                      href="mailto:office@avivadigital.bg"
                       className="text-sm text-white hover:text-accent-pink transition-colors"
                     >
-                      info@avivadigital.bg
+                      office@avivadigital.bg
                     </a>
                   </div>
                 </div>

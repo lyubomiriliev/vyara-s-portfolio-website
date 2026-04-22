@@ -54,6 +54,7 @@ export default function ServicesPreview() {
         opacity={0.16}
         position="right center"
         vignetteIntensity={0.7}
+        blur={4}
       />
       {/* Background glows */}
       <Glow color="pink" size={700} className="top-1/2 right-1/4" />

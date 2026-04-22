@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,8 +9,9 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ButtonPrimary } from "@/components/ui/ButtonPrimary";
 import ScrollStack, { ScrollStackItem } from "@/components/ui/ScrollStack";
 import { CurvedLoop } from "@/components/ui/CurvedLoop";
+import { Glow } from "@/components/ui/Glow";
 import { useLang } from "@/lib/LanguageContext";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight, Sparkles, Star } from "lucide-react";
 
 interface ClientStoryMeta {
   id: string;
@@ -39,6 +41,174 @@ const clientsMeta: ClientStoryMeta[] = [
   { id: "christian-andon", name: "Christian Andon", image: "/instagrams/christian-andon.png", metrics: [{ value: "+250%" }, { value: "+180%" }, { value: "12x" }],   accent: "#E040A0", accentRgb: "rgba(224,64,160," },
   { id: "dongfeng",        name: "Dongfeng",        image: "/instagrams/dongfeng.png",        metrics: [{ value: "+65%" },  { value: "+120%" }, { value: "3.1x" }],  accent: "#9B59F5", accentRgb: "rgba(155,89,245," },
 ];
+
+const testimonialsMeta = [
+  { photo: "/images/review1.jpg", accent: "#E040A0", border: "rgba(224,64,160,0.3)", glow: "rgba(224,64,160,0.12)", stars: 5 },
+  { photo: null,                  accent: "#9B59F5", border: "rgba(155,89,245,0.3)", glow: "rgba(155,89,245,0.12)", stars: 5 },
+  { photo: null,                  accent: "#FFB76C", border: "rgba(255,183,108,0.3)", glow: "rgba(255,183,108,0.12)", stars: 5 },
+  { photo: null,                  accent: "#E040A0", border: "rgba(224,64,160,0.3)", glow: "rgba(224,64,160,0.12)", stars: 5 },
+  { photo: null,                  accent: "#9B59F5", border: "rgba(155,89,245,0.3)", glow: "rgba(155,89,245,0.12)", stars: 5 },
+  { photo: null,                  accent: "#FFB76C", border: "rgba(255,183,108,0.3)", glow: "rgba(255,183,108,0.12)", stars: 5 },
+];
+
+interface TestimonialItem {
+  name: string;
+  role: string;
+  quote: string;
+  photo: string | null;
+  accent: string;
+  border: string;
+  glow: string;
+  stars: number;
+}
+
+function TestimonialCard({ item }: { item: TestimonialItem }) {
+  return (
+    <div
+      className="group relative flex-shrink-0 w-[640px] md:w-[720px] min-h-[260px] rounded-[20px] p-10 flex flex-col gap-4 cursor-default transition-transform duration-300 hover:-translate-y-2"
+      style={{
+        background: `linear-gradient(135deg, ${item.glow}, rgba(255,255,255,0.03))`,
+        border: `1px solid ${item.border}`,
+      }}
+    >
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[20px]"
+        style={{ background: `radial-gradient(circle at 50% 0%, ${item.glow} 0%, transparent 65%)` }}
+      />
+      <div
+        className="absolute top-0 left-8 right-8 h-[1px] opacity-40 group-hover:opacity-100 transition-opacity duration-500"
+        style={{ background: `linear-gradient(90deg, transparent, ${item.accent}, transparent)` }}
+      />
+      <div className="flex gap-1">
+        {Array.from({ length: item.stars }).map((_, i) => (
+          <Star key={i} size={13} fill={item.accent} style={{ color: item.accent }} />
+        ))}
+      </div>
+      <p className="text-white/80 text-base leading-relaxed flex-1">&ldquo;{item.quote}&rdquo;</p>
+      <div className="flex items-center gap-3 pt-4 border-t border-white/[0.07]">
+        {item.photo ? (
+          <Image src={item.photo} alt={item.name} width={36} height={36} className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
+        ) : (
+          <div
+            className="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-sm flex-shrink-0"
+            style={{ background: `radial-gradient(circle, ${item.glow}, rgba(255,255,255,0.05))`, border: `1px solid ${item.border}`, color: item.accent }}
+          >
+            {item.name[0]}
+          </div>
+        )}
+        <div>
+          <div className="text-sm font-semibold text-white leading-tight">{item.name}</div>
+          <div className="text-xs text-white/40 mt-0.5">{item.role}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MarqueeRow({ items, reverse = false }: { items: TestimonialItem[]; reverse?: boolean }) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  return (
+    <div
+      className="relative"
+      style={{ overflowX: "hidden", overflowY: "visible" }}
+      onMouseEnter={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "paused"; }}
+      onMouseLeave={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "running"; }}
+    >
+      <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+        style={{ background: "linear-gradient(to right, #0A0A0F, transparent)" }} />
+      <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+        style={{ background: "linear-gradient(to left, #0A0A0F, transparent)" }} />
+      <div
+        ref={trackRef}
+        className="flex gap-5 w-max py-4"
+        style={{ animation: `marquee${reverse ? "Reverse" : ""} ${reverse ? "160s" : "130s"} linear infinite` }}
+      >
+        {items.map((item, i) => (
+          <TestimonialCard key={`${item.name}-${i}`} item={item} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const clientLogos = [
+  { logo: "/clients/elshisha.png",          name: "El Shisha",    accent: "#E040A0" },
+  { logo: "/clients/pulsehomes2.png",        name: "Pulse Homes",  accent: "#FFB76C" },
+  { logo: "/clients/coolfit.png",            name: "CoolFit",      accent: "#9B59F5" },
+  { logo: "/clients/elwell.png",             name: "ElWell",       accent: "#E040A0" },
+  { logo: "/clients/foxacademy.png",         name: "Fox Academy",  accent: "#FFB76C" },
+  { logo: "/clients/lamaniere.png",          name: "La Manière",   accent: "#9B59F5" },
+  { logo: "/clients/vapy.png",               name: "Vapy",         accent: "#E040A0" },
+  { logo: "/clients/pulsekids.png",          name: "Pulse Kids",   accent: "#FFB76C" },
+  { logo: "/clients/smart-strips-logo.png",  name: "Smart Strips", accent: "#9B59F5" },
+  { logo: "/clients/fine-design-logo.png",   name: "Fine Design",  accent: "#E040A0" },
+  { logo: "/clients/dongfeng-logo-white.png",name: "Dongfeng",     accent: "#FFB76C" },
+  { logo: "/clients/chris-logo.png",         name: "Chris",        accent: "#9B59F5" },
+  { logo: "/clients/fitty-logo.png",         name: "Fitty",        accent: "#FFB76C" },
+  { logo: "/clients/under1roof-logo.png",    name: "Under 1 Roof", accent: "#9B59F5" },
+  { logo: "/clients/mbc-logo-white.png",     name: "MBC",          accent: "#E040A0" },
+];
+
+function useRandomPop(count: number, inView: boolean) {
+  const [activeSet, setActiveSet] = useState<Set<number>>(new Set());
+  const timeouts = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const rafId = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const clearAll = () => {
+      if (rafId.current) clearTimeout(rafId.current);
+      timeouts.current.forEach(clearTimeout);
+      timeouts.current = [];
+    };
+
+    if (!inView) {
+      clearAll();
+      setActiveSet(new Set());
+      return;
+    }
+
+    const popBatch = () => {
+      const batchSize = Math.random() < 0.4 ? 3 : 2;
+      const picks: number[] = [];
+      while (picks.length < batchSize) {
+        const n = Math.floor(Math.random() * count);
+        if (!picks.includes(n)) picks.push(n);
+      }
+      picks.forEach((idx, i) => {
+        const staggerDelay = i * (700 + Math.random() * 800);
+        const tOn = setTimeout(() => {
+          setActiveSet((prev) => new Set([...prev, idx]));
+        }, staggerDelay);
+        timeouts.current.push(tOn);
+        const holdMs = 1800 + Math.random() * 600;
+        const tOff = setTimeout(() => {
+          setActiveSet((prev) => {
+            const next = new Set(prev);
+            next.delete(idx);
+            return next;
+          });
+        }, staggerDelay + holdMs);
+        timeouts.current.push(tOff);
+      });
+    };
+
+    const schedule = () => {
+      const delay = 2500 + Math.random() * 1000;
+      rafId.current = setTimeout(() => {
+        popBatch();
+        schedule();
+      }, delay);
+    };
+
+    popBatch();
+    schedule();
+
+    return clearAll;
+  }, [count, inView]);
+
+  return activeSet;
+}
 
 function ClientCard({
   client,
@@ -169,6 +339,31 @@ function ClientCard({
 
 export default function ClientsPage() {
   const { t } = useLang();
+  const logoGridRef = useRef<HTMLDivElement>(null);
+  const [logoGridInView, setLogoGridInView] = useState(false);
+
+  useEffect(() => {
+    const el = logoGridRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => setLogoGridInView(entry.isIntersecting),
+      { threshold: 0.1 },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const activeSet = useRandomPop(clientLogos.length, logoGridInView);
+
+  const testimonials: TestimonialItem[] = testimonialsMeta.map((meta, i) => ({
+    ...meta,
+    ...t.testimonialQuotes[i],
+  }));
+  const row1 = [...testimonials, ...testimonials];
+  const row2 = [
+    ...testimonials.slice(3), ...testimonials.slice(0, 3),
+    ...testimonials.slice(3), ...testimonials.slice(0, 3),
+  ];
 
   const clients: ClientStory[] = clientsMeta.map((meta, i) => {
     const story = t.clientStories[i];
@@ -323,6 +518,140 @@ export default function ClientsPage() {
               </ScrollStackItem>
             ))}
           </ScrollStack>
+        </div>
+      </section>
+
+      {/* Testimonials marquee — no title */}
+      <section className="relative overflow-hidden pt-6 pb-6">
+        <style>{`
+          @keyframes marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          @keyframes marqueeReverse {
+            0%   { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+          }
+        `}</style>
+        <Glow color="pink" size={600} className="top-1/2 left-1/3" />
+        <Glow color="orange" size={400} className="bottom-0 right-1/4" />
+        <div className="relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+          >
+            <MarqueeRow items={row1} />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.4, 0, 0.2, 1] }}
+          >
+            <MarqueeRow items={row2} reverse />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Client logo grid */}
+      <section className="relative overflow-hidden pt-8 pb-16">
+        <Glow color="pink" size={600} className="top-1/2 left-1/3" />
+        <Glow color="orange" size={500} className="bottom-1/4 right-1/4" />
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none opacity-[0.02]"
+          style={{
+            backgroundImage: "radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
+        <div className="container relative z-10">
+          <motion.div
+            ref={logoGridRef}
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="grid grid-cols-3 sm:grid-cols-5 gap-4"
+          >
+            {clientLogos.map((client, i) => {
+              const isPopped = activeSet.has(i);
+              return (
+                <motion.div
+                  key={client.name}
+                  variants={fadeUp}
+                  custom={i}
+                  animate={isPopped ? { y: -8, scale: 1.06 } : { y: 0, scale: 1 }}
+                  transition={{
+                    y: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+                    scale: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+                  }}
+                  whileHover={{
+                    y: -8,
+                    scale: 1.06,
+                    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+                  }}
+                  className="group relative flex items-center justify-center rounded-[18px] glass-card p-6 aspect-[3/2] cursor-default overflow-hidden"
+                  style={{
+                    transition: "box-shadow 0.6s ease, border-color 0.6s ease",
+                    borderColor: isPopped ? `${client.accent}50` : undefined,
+                    boxShadow: isPopped
+                      ? `0 8px 32px ${client.accent}30, 0 0 0 1px ${client.accent}40, inset 0 1px 0 rgba(255,255,255,0.08)`
+                      : undefined,
+                  }}
+                >
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[18px] transition-opacity duration-500"
+                    style={{
+                      background: `linear-gradient(90deg, transparent, ${client.accent}, transparent)`,
+                      opacity: isPopped ? 1 : 0,
+                    }}
+                  />
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[18px] opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+                    style={{
+                      background: `linear-gradient(90deg, transparent, ${client.accent}, transparent)`,
+                    }}
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 pointer-events-none rounded-[18px] transition-opacity duration-500"
+                    style={{
+                      background: `radial-gradient(circle at 50% 0%, ${client.accent}18, transparent 70%)`,
+                      opacity: isPopped ? 1 : 0,
+                    }}
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none rounded-[18px]"
+                    style={{
+                      background: `radial-gradient(circle at 50% 0%, ${client.accent}15, transparent 70%)`,
+                    }}
+                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <motion.img
+                    src={client.logo}
+                    alt={client.name}
+                    loading="lazy"
+                    className="h-10 w-auto max-w-full object-contain"
+                    animate={{
+                      opacity: isPopped ? 1 : 0.45,
+                      filter: isPopped
+                        ? "brightness(1.15) grayscale(0)"
+                        : "brightness(1) grayscale(0.3)",
+                    }}
+                    whileHover={{
+                      opacity: 1,
+                      filter: "brightness(1.15) grayscale(0)",
+                    }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                  />
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
       </section>
 

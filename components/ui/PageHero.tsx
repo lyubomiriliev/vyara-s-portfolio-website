@@ -1,14 +1,16 @@
 import { SectionLabel } from './SectionLabel'
 import { Glow } from './Glow'
+import { ReactNode } from 'react'
 
 interface PageHeroProps {
   label: string
   title: string
   titleGradient?: string
   description: string
+  children?: ReactNode
 }
 
-export function PageHero({ label, title, titleGradient, description }: PageHeroProps) {
+export function PageHero({ label, title, titleGradient, description, children }: PageHeroProps) {
   const titleWithout = titleGradient ? title.replace(titleGradient, '').trim() : title
   return (
     <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-20">
@@ -19,13 +21,17 @@ export function PageHero({ label, title, titleGradient, description }: PageHeroP
         <h1 className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white mt-3 mb-5 leading-[1.05]">
           {titleWithout}
           {titleGradient && (
-            <span className="text-gradient-warm"> {titleGradient}</span>
+            <>
+              <br />
+              <span className="text-gradient-warm">{titleGradient}</span>
+            </>
           )}
         </h1>
         <p className="text-lg text-white/60 leading-relaxed max-w-xl mx-auto">
           {description}
         </p>
       </div>
+      {children}
     </section>
   )
 }

@@ -4,13 +4,6 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Sparkles,
-  Code2,
-  Megaphone,
-  Palette,
-  ArrowUpRight,
-} from "lucide-react";
 import { staggerContainer } from "@/lib/animations";
 import { ButtonPrimary } from "@/components/ui/ButtonPrimary";
 import { ButtonOutline } from "@/components/ui/ButtonOutline";
@@ -229,82 +222,6 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Floating cards ── */}
-
-      {/* Top right — AI Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className="absolute top-[16%] right-[6%] hidden lg:block z-10"
-      >
-        <FloatingCard
-          icon={<Sparkles size={14} />}
-          label={t.hero.floatingCards.aiContent.label}
-          value={t.hero.floatingCards.aiContent.value}
-          detail="AI-powered posts, reels & stories"
-          accent="#E040A0"
-          delay={0}
-          href="/services"
-        />
-      </motion.div>
-
-      {/* Middle left — Web Dev */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="absolute top-[40%] left-[5%] hidden lg:block z-10"
-      >
-        <FloatingCard
-          icon={<Code2 size={14} />}
-          label={t.hero.floatingCards.webDev.label}
-          value={t.hero.floatingCards.webDev.value}
-          detail="Next.js · React · Webflow"
-          accent="#9B59F5"
-          delay={1}
-          floatDir="up"
-          href="/services"
-        />
-      </motion.div>
-
-      {/* Bottom right — Paid Ads */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
-        className="absolute bottom-[20%] right-[10%] hidden lg:block z-10"
-      >
-        <FloatingCard
-          icon={<Megaphone size={14} />}
-          label={t.hero.floatingCards.paidAds.label}
-          value={t.hero.floatingCards.paidAds.value}
-          detail="Meta · Google · TikTok Ads"
-          accent="#FFB76C"
-          delay={2}
-          href="/services"
-        />
-      </motion.div>
-
-      {/* Bottom left — Brand Design */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.0 }}
-        className="absolute bottom-[26%] left-[4%] hidden xl:block z-10"
-      >
-        <FloatingCard
-          icon={<Palette size={14} />}
-          label={t.hero.floatingCards.brandDesign.label}
-          value={t.hero.floatingCards.brandDesign.value}
-          detail="Logos · UI · Brand kits"
-          accent="#9B59F5"
-          delay={0.5}
-          floatDir="up"
-          href="/services"
-        />
-      </motion.div>
-
       {/* ── Main content ── */}
       <div className="container relative z-20 flex flex-col min-h-screen py-20">
         {/* Left-aligned text block — max ~55% width so the hand stays visible */}
@@ -386,99 +303,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  );
-}
-
-function FloatingCard({
-  icon,
-  label,
-  value,
-  detail,
-  accent,
-  delay,
-  floatDir = "down",
-  href,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  detail: string;
-  accent: string;
-  delay: number;
-  floatDir?: "up" | "down";
-  href: string;
-}) {
-  const yKeyframes = floatDir === "up" ? [0, 10, 0] : [0, -12, 0];
-  return (
-    <Link href={href} className="block group/card">
-      <div className="relative">
-        {/* Soft outer glow */}
-        <motion.div
-          aria-hidden
-          className="absolute inset-0 rounded-2xl pointer-events-none"
-          animate={{ opacity: [0.3, 0.65, 0.3] }}
-          transition={{
-            duration: 4.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay,
-          }}
-          style={{
-            background: `radial-gradient(ellipse, ${accent}50 0%, transparent 70%)`,
-            filter: "blur(24px)",
-            transform: "scale(1.7)",
-          }}
-        />
-        {/* Card */}
-        <motion.div
-          animate={{ y: yKeyframes }}
-          transition={{
-            duration: 6.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay,
-          }}
-          className="relative px-5 py-4 rounded-2xl min-w-[180px]"
-          style={{
-            background:
-              "linear-gradient(160deg, rgba(22,22,34,0.88), rgba(10,10,16,0.94))",
-            backdropFilter: "blur(24px) saturate(180%)",
-            border: `1px solid ${accent}35`,
-            boxShadow: `0 10px 40px rgba(0,0,0,0.45), 0 0 28px ${accent}20, inset 0 1px 0 rgba(255,255,255,0.07)`,
-            transition: "box-shadow 0.3s ease, border-color 0.3s ease",
-          }}
-        >
-          {/* Label row */}
-          <div className="flex items-center gap-2 text-white/50 text-[11px] mb-2 uppercase tracking-wider">
-            <span style={{ color: accent }}>{icon}</span>
-            {label}
-          </div>
-          {/* Main value */}
-          <div
-            className="font-display font-bold text-xl mb-1"
-            style={{ color: accent }}
-          >
-            {value}
-          </div>
-          {/* Detail line */}
-          <div className="text-white/35 text-[11px] flex items-center gap-1">
-            {detail}
-            <ArrowUpRight
-              size={10}
-              className="opacity-0 group-hover/card:opacity-60 transition-opacity"
-              style={{ color: accent }}
-            />
-          </div>
-          {/* Bottom accent line */}
-          <div
-            aria-hidden
-            className="absolute bottom-0 left-4 right-4 h-px opacity-40 group-hover/card:opacity-80 transition-opacity"
-            style={{
-              background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
-            }}
-          />
-        </motion.div>
-      </div>
-    </Link>
   );
 }

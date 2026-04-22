@@ -1,200 +1,215 @@
-'use client'
+"use client";
 
-import { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Link from 'next/link'
-import Image from 'next/image'
-import { ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
-import { useLang } from '@/lib/LanguageContext'
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import {
+  ArrowRight,
+  ExternalLink,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { useLang } from "@/lib/LanguageContext";
+import { ProcessSection } from "./ProcessSection";
 
 interface WebProject {
-  id: string
-  name: string
-  client: string
-  logo: string
-  thumbnail: string
-  description: { en: string; bg: string }
-  url: string
-  category: string
-  accentColor: string
-  tech: string[]
+  id: string;
+  name: string;
+  client: string;
+  logo: string;
+  thumbnail: string;
+  description: { en: string; bg: string };
+  url: string;
+  category: string;
+  accentColor: string;
+  tech: string[];
 }
 
 const projects: WebProject[] = [
   {
-    id: 'mbcenter',
-    name: 'MB Center',
-    client: 'MB Center',
-    logo: '/websites/mbc-logo-black.png',
-    thumbnail: '/websites/images/mbcenter.webp',
+    id: "mbcenter",
+    name: "MB Center",
+    client: "MB Center",
+    logo: "/websites/mbc-logo-black.png",
+    thumbnail: "/websites/images/mbcenter.webp",
     description: {
-      en: 'Premium automotive service centre website with multi-language support, service booking flow, and a refined brand experience built for luxury clientele.',
-      bg: 'Уебсайт за премиум автомобилен сервиз с многоезична поддръжка, система за резервации и изискано брандиране за луксозна клиентела.',
+      en: "Premium automotive service centre website with multi-language support, service booking flow, and a refined brand experience built for luxury clientele.",
+      bg: "Уебсайт за премиум автомобилен сервиз с многоезична поддръжка, система за резервации и изискано брандиране за луксозна клиентела.",
     },
-    url: 'https://mbcenter.bg/bg/',
-    category: 'Business Website',
-    accentColor: '#1a1a2e',
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'i18n'],
+    url: "https://mbcenter.bg/bg/",
+    category: "Auto Service",
+    accentColor: "#1a1a2e",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "i18n"],
   },
   {
-    id: 'robohub',
-    name: 'RoboHub Pro',
-    client: 'RoboHub Pro',
-    logo: '/websites/robohub-logo.png',
-    thumbnail: '/websites/images/robohub.webp',
+    id: "robohub",
+    name: "RoboHub Pro",
+    client: "RoboHub Pro",
+    logo: "/websites/robohub-logo.png",
+    thumbnail: "/websites/images/robohub.webp",
     description: {
-      en: 'A cutting-edge platform for robotics and automation products, featuring an immersive product showcase, technical specs display, and seamless e-commerce integration.',
-      bg: 'Платформа за роботика и автоматизация с продуктова витрина, технически спецификации и безпроблемна e-commerce интеграция.',
+      en: "A cutting-edge platform for robotics and automation products, featuring an immersive product showcase, technical specs display, and seamless e-commerce integration.",
+      bg: "Платформа за роботика и автоматизация с продуктова витрина, технически спецификации и безпроблемна e-commerce интеграция.",
     },
-    url: 'https://robohubpro.com/en/',
-    category: 'E-Commerce',
-    accentColor: '#0f1729',
-    tech: ['Next.js', 'Framer Motion', 'TypeScript', 'Stripe'],
+    url: "https://robohubpro.com/en/",
+    category: "Automation",
+    accentColor: "#0f1729",
+    tech: ["Next.js", "Framer Motion", "TypeScript", "Stripe"],
   },
   {
-    id: 'activegym',
-    name: 'Active Gym',
-    client: 'Active Gym',
-    logo: '/websites/active-gym-logo.webp',
-    thumbnail: '/websites/images/activegym.webp',
+    id: "activegym",
+    name: "Active Gym",
+    client: "Active Gym",
+    logo: "/websites/active-gym-logo.webp",
+    thumbnail: "/websites/images/activegym.webp",
     description: {
-      en: 'High-energy fitness brand website with class schedules, membership plans, and a performance-first design that drives gym sign-ups and member retention.',
-      bg: 'Уебсайт за фитнес бранд с програми за тренировки, членски планове и дизайн, ориентиран към конверсии.',
+      en: "High-energy fitness brand website with class schedules, membership plans, and a performance-first design that drives gym sign-ups and member retention.",
+      bg: "Уебсайт за фитнес бранд с програми за тренировки, членски планове и дизайн, ориентиран към конверсии.",
     },
-    url: 'https://activegym.eu/en/',
-    category: 'Fitness & Health',
-    accentColor: '#1a0a0a',
-    tech: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'CMS'],
+    url: "https://activegym.eu/en/",
+    category: "Fitness & Health",
+    accentColor: "#1a0a0a",
+    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "CMS"],
   },
   {
-    id: 'pulsePadel',
-    name: 'Pulse Padel',
-    client: 'Pulse Padel',
-    logo: '/websites/pulse-padel-logo.png',
-    thumbnail: '/websites/images/pulse-padel.webp',
+    id: "pulsePadel",
+    name: "Pulse Padel",
+    client: "Pulse Padel",
+    logo: "/websites/pulse-padel-logo.png",
+    thumbnail: "/websites/images/pulse-padel.webp",
     description: {
-      en: 'Dynamic sports club website for an elite padel venue — online court booking, tournament management, and a brand identity that captures the energy of the sport.',
-      bg: 'Уебсайт за елитен падел клуб с онлайн резервации на кортове, управление на турнири и брандиране, което предава енергията на спорта.',
+      en: "Dynamic sports club website for an elite padel venue — online court booking, tournament management, and a brand identity that captures the energy of the sport.",
+      bg: "Уебсайт за елитен падел клуб с онлайн резервации на кортове, управление на турнири и брандиране, което предава енергията на спорта.",
     },
-    url: 'https://pulse-padel.com/',
-    category: 'Sports & Recreation',
-    accentColor: '#0a1a0f',
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Booking API'],
+    url: "https://pulse-padel.com/",
+    category: "Sports",
+    accentColor: "#0a1a0f",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Booking API"],
   },
   {
-    id: 'smartstrips',
-    name: 'Smart Strips',
-    client: 'Smart Strips',
-    logo: '/websites/smart-strips-logo.png',
-    thumbnail: '/websites/images/smart-strips.jpg',
+    id: "smartstrips",
+    name: "Smart Strips",
+    client: "Smart Strips",
+    logo: "/websites/smart-strips-logo.png",
+    thumbnail: "/websites/images/smart-strips.jpg",
     description: {
-      en: 'Modern e-commerce store for smart LED lighting products — product configurator, comparison tools, and a clean UX that converts browsers into buyers.',
-      bg: 'Модерен e-commerce магазин за смарт LED осветление с конфигуратор на продукти и изчистен UX, ориентиран към продажби.',
+      en: "Modern e-commerce store for smart LED lighting products — product configurator, comparison tools, and a clean UX that converts browsers into buyers.",
+      bg: "Модерен e-commerce магазин за смарт LED осветление с конфигуратор на продукти и изчистен UX, ориентиран към продажби.",
     },
-    url: 'https://smartstrips.bg/bg',
-    category: 'E-Commerce',
-    accentColor: '#0a0a1a',
-    tech: ['Next.js', 'Shopify', 'Tailwind CSS', 'Analytics'],
+    url: "https://smartstrips.bg/bg",
+    category: "E-Commerce",
+    accentColor: "#0a0a1a",
+    tech: ["Next.js", "Shopify", "Tailwind CSS", "Analytics"],
   },
   {
-    id: 'pawsheaven',
+    id: "pawsheaven",
     name: "Paws Heaven",
     client: "Paws Heaven",
-    logo: '/websites/paws-heaven-logo.png',
-    thumbnail: '/websites/images/paws-heaven.webp',
+    logo: "/websites/paws-heaven-logo.png",
+    thumbnail: "/websites/images/paws-heaven.webp",
     description: {
-      en: 'Warm and inviting pet care platform with service booking, grooming gallery, and trust-building design that connects pet owners with expert care.',
-      bg: 'Платформа за грижи за домашни любимци с резервации, галерия и дизайн, изграждащ доверие между собственици и специалисти.',
+      en: "Warm and inviting pet care platform with service booking, grooming gallery, and trust-building design that connects pet owners with expert care.",
+      bg: "Платформа за грижи за домашни любимци с резервации, галерия и дизайн, изграждащ доверие между собственици и специалисти.",
     },
-    url: 'https://paws-heaven.com/',
-    category: 'Pet Care',
-    accentColor: '#1a0f0a',
-    tech: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'EmailJS'],
+    url: "https://paws-heaven.com/",
+    category: "Pet Care",
+    accentColor: "#1a0f0a",
+    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "EmailJS"],
   },
   {
-    id: 'trending',
-    name: 'Trending.bg',
-    client: 'Trending.bg',
-    logo: '/websites/trending-logo.png',
-    thumbnail: '/websites/images/trending.jpg',
+    id: "trending",
+    name: "Trending.bg",
+    client: "Trending.bg",
+    logo: "/websites/trending-logo.png",
+    thumbnail: "/websites/images/trending.jpg",
     description: {
-      en: 'High-traffic Bulgarian news and lifestyle media platform — blazing fast load times, SEO-optimised architecture, and a clean editorial design for maximum engagement.',
-      bg: 'Медийна платформа с висок трафик — светкавично бърза, SEO-оптимизирана архитектура и изчистен редакционен дизайн за максимален ангажимент.',
+      en: "Luxury perfume decanter boutique — an elegant e-commerce experience for high-end fragrance enthusiasts, featuring curated collections, rich product storytelling, and a refined aesthetic that matches the exclusivity of the brand.",
+      bg: "Бутик за луксозни парфюмни декантери — изискано e-commerce изживяване за ценители на висококласни аромати с богато продуктово представяне и елегантна естетика.",
     },
-    url: 'https://trending.bg/',
-    category: 'Media & News',
-    accentColor: '#0f0a1a',
-    tech: ['Next.js', 'TypeScript', 'CMS', 'CDN'],
+    url: "https://trending.bg/",
+    category: "E-COMMERCE",
+    accentColor: "#0f0a1a",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "E-Commerce"],
   },
-]
+];
 
 export default function ProjectsPage() {
-  const { t, locale } = useLang()
-  const [activeId, setActiveId] = useState(projects[0].id)
-  const [isMobile, setIsMobile] = useState(false)
-  const [mobileIndex, setMobileIndex] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const { t, locale } = useLang();
+  const [activeId, setActiveId] = useState(projects[0].id);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   // Auto-advance every 3 seconds, pauses on user interaction
   useEffect(() => {
-    if (isPaused) return
+    if (isPaused) return;
     const interval = setInterval(() => {
-      setActiveId(current => {
-        const idx = projects.findIndex(p => p.id === current)
-        return projects[(idx + 1) % projects.length].id
-      })
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [isPaused])
+      setActiveId((current) => {
+        const idx = projects.findIndex((p) => p.id === current);
+        return projects[(idx + 1) % projects.length].id;
+      });
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   const pauseAutoplay = () => {
-    setIsPaused(true)
-    if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current)
-    pauseTimerRef.current = setTimeout(() => setIsPaused(false), 8000)
-  }
+    setIsPaused(true);
+    if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    pauseTimerRef.current = setTimeout(() => setIsPaused(false), 8000);
+  };
 
-  const activeIndex = projects.findIndex(p => p.id === activeId)
+  const activeIndex = projects.findIndex((p) => p.id === activeId);
 
   const prev = () => {
-    pauseAutoplay()
+    pauseAutoplay();
     if (isMobile) {
-      setMobileIndex(i => Math.max(0, i - 1))
+      setMobileIndex((i) => Math.max(0, i - 1));
     } else {
-      const newIndex = (activeIndex - 1 + projects.length) % projects.length
-      setActiveId(projects[newIndex].id)
+      const newIndex = (activeIndex - 1 + projects.length) % projects.length;
+      setActiveId(projects[newIndex].id);
     }
-  }
+  };
 
   const next = () => {
-    pauseAutoplay()
+    pauseAutoplay();
     if (isMobile) {
-      setMobileIndex(i => Math.min(projects.length - 1, i + 1))
+      setMobileIndex((i) => Math.min(projects.length - 1, i + 1));
     } else {
-      const newIndex = (activeIndex + 1) % projects.length
-      setActiveId(projects[newIndex].id)
+      const newIndex = (activeIndex + 1) % projects.length;
+      setActiveId(projects[newIndex].id);
     }
-  }
+  };
 
-  const mobileProject = projects[mobileIndex]
+  const mobileProject = projects[mobileIndex];
 
   return (
     <>
       {/* Desktop slider */}
       <section className="hidden md:block section-padding">
-        <div className="w-full px-6 xl:px-12 2xl:px-20">
+        <motion.div
+          className="w-full px-6 xl:px-12 2xl:px-20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
+        >
           {/* Slider row */}
-          <div ref={containerRef} className="flex gap-3 h-[780px] items-stretch">
+          <div
+            ref={containerRef}
+            className="flex gap-3 h-[780px] items-stretch"
+          >
             {projects.map((project) => {
-              const isActive = project.id === activeId
+              const isActive = project.id === activeId;
               return (
                 <motion.div
                   key={project.id}
@@ -204,13 +219,16 @@ export default function ProjectsPage() {
                     opacity: isActive ? 1 : 0.72,
                   }}
                   transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
-                  onClick={() => { pauseAutoplay(); setActiveId(project.id) }}
+                  onClick={() => {
+                    pauseAutoplay();
+                    setActiveId(project.id);
+                  }}
                   className="relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0"
                   style={{
                     minWidth: isActive ? 0 : 116,
                     boxShadow: isActive
-                      ? '0 24px 80px rgba(0,0,0,0.6), 0 0 40px rgba(224,64,160,0.18)'
-                      : '0 4px 24px rgba(0,0,0,0.4)',
+                      ? "0 24px 80px rgba(0,0,0,0.6), 0 0 40px rgba(224,64,160,0.18)"
+                      : "0 4px 24px rgba(0,0,0,0.4)",
                   }}
                   whileHover={!isActive ? { opacity: 0.9, scale: 1.01 } : {}}
                 >
@@ -225,7 +243,7 @@ export default function ProjectsPage() {
                       alt={project.name}
                       fill
                       className="object-cover"
-                      style={{ filter: 'brightness(0.75)' }}
+                      style={{ filter: "brightness(0.75)" }}
                     />
                   </motion.div>
 
@@ -234,10 +252,26 @@ export default function ProjectsPage() {
                     className="absolute inset-0"
                     style={{
                       background: isActive
-                        ? 'linear-gradient(to top, rgba(8,4,2,0.96) 0%, rgba(8,4,2,0.6) 45%, rgba(0,0,0,0.15) 75%, transparent 100%)'
-                        : 'linear-gradient(to top, rgba(8,4,2,0.93) 0%, rgba(8,4,2,0.55) 55%, rgba(0,0,0,0.1) 100%)',
+                        ? "linear-gradient(to top, rgba(8,4,2,0.96) 0%, rgba(8,4,2,0.6) 45%, rgba(0,0,0,0.15) 75%, transparent 100%)"
+                        : "linear-gradient(to top, rgba(8,4,2,0.93) 0%, rgba(8,4,2,0.55) 55%, rgba(0,0,0,0.1) 100%)",
                     }}
                   />
+
+                  {/* Top-left category badge — flush to corner, only bottom-right rounded */}
+                  <div
+                    className="absolute top-0 left-0 z-20 text-[12px] font-bold tracking-[0.16em] uppercase px-4 py-2"
+                    style={{
+                      background: "rgba(10,10,15,0.82)",
+                      border: "1px solid rgba(255,255,255,0.12)",
+                      borderTop: "none",
+                      borderLeft: "none",
+                      borderBottomRightRadius: "10px",
+                      color: "rgba(255,255,255,0.65)",
+                      backdropFilter: "blur(8px)",
+                    }}
+                  >
+                    {project.category}
+                  </div>
 
                   {/* Inactive state — logo + vertical label */}
                   <AnimatePresence>
@@ -256,13 +290,20 @@ export default function ProjectsPage() {
                             alt={project.name}
                             fill
                             className="object-contain"
-                            style={{ filter: 'brightness(0) invert(1)', opacity: 0.9 }}
+                            style={{
+                              filter: "brightness(0) invert(1)",
+                              opacity: 0.9,
+                            }}
                           />
                         </div>
                         {/* Vertical name */}
                         <span
                           className="text-white/70 text-[13px] font-semibold tracking-[0.18em] uppercase whitespace-nowrap"
-                          style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(180deg)' }}
+                          style={{
+                            writingMode: "vertical-rl",
+                            textOrientation: "mixed",
+                            transform: "rotate(180deg)",
+                          }}
                         >
                           {project.name}
                         </span>
@@ -277,21 +318,13 @@ export default function ProjectsPage() {
                         initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 8 }}
-                        transition={{ duration: 0.4, delay: 0.15, ease: [0.4, 0, 0.2, 1] }}
+                        transition={{
+                          duration: 0.4,
+                          delay: 0.15,
+                          ease: [0.4, 0, 0.2, 1],
+                        }}
                         className="absolute inset-0 flex flex-col justify-end p-8"
                       >
-                        {/* Category pill */}
-                        <span
-                          className="self-start text-[11px] font-bold tracking-[0.18em] uppercase px-4 py-1.5 rounded-full mb-5"
-                          style={{
-                            background: 'rgba(224,64,160,0.18)',
-                            border: '1px solid rgba(224,64,160,0.4)',
-                            color: '#f472b6',
-                          }}
-                        >
-                          {project.category}
-                        </span>
-
                         {/* Logo */}
                         <div className="relative w-28 h-20 mb-4 flex items-center">
                           <Image
@@ -299,7 +332,7 @@ export default function ProjectsPage() {
                             alt={project.name}
                             fill
                             className="object-contain"
-                            style={{ filter: 'brightness(0) invert(1)' }}
+                            style={{ filter: "brightness(0) invert(1)" }}
                           />
                         </div>
 
@@ -310,19 +343,20 @@ export default function ProjectsPage() {
 
                         {/* Description */}
                         <p className="text-white/60 text-base leading-relaxed mb-5 max-w-sm">
-                          {project.description[locale as 'en' | 'bg'] ?? project.description.en}
+                          {project.description[locale as "en" | "bg"] ??
+                            project.description.en}
                         </p>
 
                         {/* Tech */}
                         <div className="flex flex-wrap gap-1.5 mb-6">
-                          {project.tech.map(t => (
+                          {project.tech.map((t) => (
                             <span
                               key={t}
                               className="text-xs px-3 py-1 rounded-md font-medium"
                               style={{
-                                background: 'rgba(255,255,255,0.08)',
-                                color: 'rgba(255,255,255,0.55)',
-                                border: '1px solid rgba(255,255,255,0.1)',
+                                background: "rgba(255,255,255,0.08)",
+                                color: "rgba(255,255,255,0.55)",
+                                border: "1px solid rgba(255,255,255,0.1)",
                               }}
                             >
                               {t}
@@ -331,9 +365,11 @@ export default function ProjectsPage() {
                         </div>
 
                         {/* Princeps branding */}
-                        {project.id !== 'mbcenter' && (
+                        {project.id !== "mbcenter" && (
                           <div className="absolute bottom-8 right-8 flex flex-col items-end gap-1.5">
-                            <span className="text-white/40 text-xs font-medium tracking-[0.12em] uppercase">Powered by Princeps Group</span>
+                            <span className="text-white/40 text-xs font-medium tracking-[0.12em] uppercase">
+                              Powered by Princeps Group
+                            </span>
                             <Image
                               src="/websites/princeps-logo.png"
                               alt="Princeps Group"
@@ -353,7 +389,10 @@ export default function ProjectsPage() {
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
                             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white whitespace-nowrap transition-all duration-200 hover:opacity-90 hover:scale-[1.03] active:scale-[0.97] flex-shrink-0"
-                            style={{ background: 'linear-gradient(135deg, #E040A0, #9B59F5)' }}
+                            style={{
+                              background:
+                                "linear-gradient(135deg, #E040A0, #FFB76C)",
+                            }}
                           >
                             <ExternalLink size={14} strokeWidth={2.5} />
                             Visit Website
@@ -362,7 +401,9 @@ export default function ProjectsPage() {
                             href="/contact"
                             onClick={(e) => e.stopPropagation()}
                             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white/60 hover:text-white whitespace-nowrap transition-colors duration-200 flex-shrink-0"
-                            style={{ border: '1px solid rgba(255,255,255,0.12)' }}
+                            style={{
+                              border: "1px solid rgba(255,255,255,0.12)",
+                            }}
                           >
                             Similar Project
                             <ArrowRight size={13} strokeWidth={2.5} />
@@ -372,7 +413,7 @@ export default function ProjectsPage() {
                     )}
                   </AnimatePresence>
                 </motion.div>
-              )
+              );
             })}
           </div>
 
@@ -383,14 +424,18 @@ export default function ProjectsPage() {
               {projects.map((p) => (
                 <button
                   key={p.id}
-                  onClick={() => { pauseAutoplay(); setActiveId(p.id) }}
+                  onClick={() => {
+                    pauseAutoplay();
+                    setActiveId(p.id);
+                  }}
                   className="transition-all duration-300 rounded-full cursor-pointer"
                   style={{
                     width: p.id === activeId ? 28 : 8,
                     height: 8,
-                    background: p.id === activeId
-                      ? 'linear-gradient(135deg, #E040A0, #9B59F5)'
-                      : 'rgba(255,255,255,0.18)',
+                    background:
+                      p.id === activeId
+                        ? "linear-gradient(135deg, #E040A0, #FFB76C)"
+                        : "rgba(255,255,255,0.18)",
                   }}
                   aria-label={`Go to ${p.name}`}
                 />
@@ -402,7 +447,10 @@ export default function ProjectsPage() {
               <button
                 onClick={prev}
                 className="w-10 h-10 rounded-full flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200 cursor-pointer"
-                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
+                style={{
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                }}
                 aria-label="Previous project"
               >
                 <ChevronLeft size={18} />
@@ -410,14 +458,17 @@ export default function ProjectsPage() {
               <button
                 onClick={next}
                 className="w-10 h-10 rounded-full flex items-center justify-center text-white/60 hover:text-white transition-colors duration-200 cursor-pointer"
-                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
+                style={{
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                }}
                 aria-label="Next project"
               >
                 <ChevronRight size={18} />
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Mobile carousel */}
@@ -434,7 +485,7 @@ export default function ProjectsPage() {
               className="relative rounded-2xl overflow-hidden"
               style={{
                 height: 480,
-                boxShadow: '0 24px 80px rgba(0,0,0,0.6)',
+                boxShadow: "0 24px 80px rgba(0,0,0,0.6)",
               }}
             >
               <Image
@@ -445,13 +496,20 @@ export default function ProjectsPage() {
               />
               <div
                 className="absolute inset-0"
-                style={{ background: 'linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.45) 60%, rgba(10,10,15,0.15) 100%)' }}
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.45) 60%, rgba(10,10,15,0.15) 100%)",
+                }}
               />
 
               <div className="absolute inset-0 flex flex-col justify-end p-7">
                 <span
                   className="self-start text-[10px] font-bold tracking-[0.18em] uppercase px-3 py-1 rounded-full mb-3"
-                  style={{ background: 'rgba(155,89,245,0.2)', border: '1px solid rgba(155,89,245,0.35)', color: '#c084fc' }}
+                  style={{
+                    background: "rgba(155,89,245,0.2)",
+                    border: "1px solid rgba(155,89,245,0.35)",
+                    color: "#c084fc",
+                  }}
                 >
                   {mobileProject.category}
                 </span>
@@ -462,13 +520,16 @@ export default function ProjectsPage() {
                     alt={mobileProject.name}
                     fill
                     className="object-contain"
-                    style={{ filter: 'brightness(0) invert(1)' }}
+                    style={{ filter: "brightness(0) invert(1)" }}
                   />
                 </div>
 
-                <h3 className="font-display text-2xl font-bold text-white mb-2">{mobileProject.name}</h3>
+                <h3 className="font-display text-2xl font-bold text-white mb-2">
+                  {mobileProject.name}
+                </h3>
                 <p className="text-white/60 text-sm leading-relaxed mb-5">
-                  {mobileProject.description[locale as 'en' | 'bg'] ?? mobileProject.description.en}
+                  {mobileProject.description[locale as "en" | "bg"] ??
+                    mobileProject.description.en}
                 </p>
 
                 <div className="flex items-center gap-3">
@@ -477,7 +538,9 @@ export default function ProjectsPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white"
-                    style={{ background: 'linear-gradient(135deg, #E040A0, #9B59F5)' }}
+                    style={{
+                      background: "linear-gradient(135deg, #E040A0, #FFB76C)",
+                    }}
                   >
                     <ExternalLink size={13} />
                     Visit
@@ -485,7 +548,7 @@ export default function ProjectsPage() {
                   <Link
                     href="/contact"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white/60"
-                    style={{ border: '1px solid rgba(255,255,255,0.12)' }}
+                    style={{ border: "1px solid rgba(255,255,255,0.12)" }}
                   >
                     Similar Project
                   </Link>
@@ -505,9 +568,10 @@ export default function ProjectsPage() {
                   style={{
                     width: i === mobileIndex ? 24 : 7,
                     height: 7,
-                    background: i === mobileIndex
-                      ? 'linear-gradient(135deg, #E040A0, #9B59F5)'
-                      : 'rgba(255,255,255,0.18)',
+                    background:
+                      i === mobileIndex
+                        ? "linear-gradient(135deg, #E040A0, #FFB76C)"
+                        : "rgba(255,255,255,0.18)",
                   }}
                   aria-label={`Go to project ${i + 1}`}
                 />
@@ -518,7 +582,10 @@ export default function ProjectsPage() {
                 onClick={prev}
                 disabled={mobileIndex === 0}
                 className="w-9 h-9 rounded-full flex items-center justify-center text-white/60 hover:text-white disabled:opacity-30 transition-all cursor-pointer"
-                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
+                style={{
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                }}
               >
                 <ChevronLeft size={16} />
               </button>
@@ -526,7 +593,10 @@ export default function ProjectsPage() {
                 onClick={next}
                 disabled={mobileIndex === projects.length - 1}
                 className="w-9 h-9 rounded-full flex items-center justify-center text-white/60 hover:text-white disabled:opacity-30 transition-all cursor-pointer"
-                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
+                style={{
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                }}
               >
                 <ChevronRight size={16} />
               </button>
@@ -535,41 +605,67 @@ export default function ProjectsPage() {
         </div>
       </section>
 
+      {/* Process section */}
+      <ProcessSection locale={locale} />
+
       {/* CTA */}
       <section className="section-padding">
         <div className="container">
           <motion.div
-            variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
+            variants={{
+              hidden: { opacity: 0, y: 24 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+            }}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             className="relative rounded-3xl overflow-hidden p-12 text-center"
             style={{
-              background: 'linear-gradient(135deg, rgba(224,64,160,0.12), rgba(155,89,245,0.12), rgba(74,158,255,0.08))',
-              border: '1px solid rgba(255,255,255,0.08)',
+              background:
+                "linear-gradient(135deg, rgba(224,64,160,0.18) 0%, rgba(255,183,108,0.18) 100%)",
+              border: "1px solid rgba(255,183,108,0.15)",
             }}
           >
             <div
               className="absolute inset-0 opacity-20 pointer-events-none"
-              style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 100%, rgba(155,89,245,0.5), transparent)' }}
+              style={{
+                background:
+                  "radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255,183,108,0.4), transparent)",
+              }}
             />
             <p
               className="text-xs font-bold tracking-[0.2em] uppercase mb-4"
-              style={{ background: 'linear-gradient(135deg, #E040A0, #9B59F5)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+              style={{
+                background: "linear-gradient(135deg, #E040A0, #FFB76C)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
             >
               {t.projects.pageLabel}
             </p>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-3 leading-tight">
-              {t.projects.ctaTitle}{' '}
-              <span style={{ background: 'linear-gradient(135deg, #E040A0, #9B59F5)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              {t.projects.ctaTitle}{" "}
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #E040A0, #FFB76C)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
                 {t.projects.ctaTitleAccent}
               </span>
             </h2>
-            <p className="text-white/55 max-w-lg mx-auto mb-8">{t.projects.ctaSub}</p>
+            <p className="text-white/55 max-w-lg mx-auto mb-8">
+              {t.projects.ctaSub}
+            </p>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.03] active:scale-[0.97]"
-              style={{ background: 'linear-gradient(135deg, #E040A0, #9B59F5)' }}
+              style={{
+                background: "linear-gradient(135deg, #E040A0, #FFB76C)",
+              }}
             >
               {t.projects.ctaButton}
               <ArrowRight size={16} strokeWidth={2.5} />
@@ -578,5 +674,5 @@ export default function ProjectsPage() {
         </div>
       </section>
     </>
-  )
+  );
 }

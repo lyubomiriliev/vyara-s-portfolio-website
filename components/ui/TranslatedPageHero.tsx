@@ -2,6 +2,7 @@
 
 import { useLang } from '@/lib/LanguageContext'
 import { PageHero } from './PageHero'
+import { ServicesHeroFloatingCards } from './ServicesHeroFloatingCards'
 
 type HeroKey = keyof ReturnType<typeof useLang>['t']['pageHeroes']
 
@@ -14,6 +15,8 @@ export function TranslatedPageHero({ heroKey }: { heroKey: HeroKey }) {
       title={h.title}
       titleGradient={h.titleGradient}
       description={h.description}
-    />
+    >
+      {heroKey === 'services' && <ServicesHeroFloatingCards />}
+    </PageHero>
   )
 }

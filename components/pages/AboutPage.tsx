@@ -18,6 +18,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ButtonPrimary } from "@/components/ui/ButtonPrimary";
 import { Glow } from "@/components/ui/Glow";
 import { useLang } from "@/lib/LanguageContext";
+import ToolsGrid from "@/components/ui/ToolsGrid";
 
 const cardMeta = [
   {
@@ -43,28 +44,6 @@ const cardMeta = [
   },
 ];
 
-const toolLogos = [
-  { name: "ChatGPT", src: "/tools/gpt1.png" },
-  { name: "Claude AI", src: "/tools/claude1.png" },
-  { name: "Gemini", src: "/tools/gemini1.png" },
-  { name: "Instagram", src: "/tools/insta1.png" },
-  { name: "Facebook", src: "/tools/facebook1.png" },
-  { name: "Meta", src: "/tools/meta1.png" },
-  { name: "TikTok", src: "/tools/tiktok1.png" },
-  { name: "LinkedIn", src: "/tools/linkedin1.png" },
-  { name: "Canva", src: "/tools/canva1.png" },
-  { name: "Viber", src: "/tools/viber1.png" },
-  { name: "CapCut", src: "/tools/capcut1.png" },
-  { name: "Captions", src: "/tools/captions1.png" },
-  { name: "PhotoRoom", src: "/tools/photoroom.png" },
-  { name: "Klaviyo", src: "/tools/klaviyo1.png" },
-  { name: "Google Drive", src: "/tools/drive1.png" },
-  { name: "VSCode", src: "/tools/vscode1.png" },
-  { name: "Cursor", src: "/tools/cursor1.png" },
-  { name: "Next.js", src: "/tools/next1.png" },
-  { name: "React", src: "/tools/react1.png" },
-  { name: "Supabase", src: "/tools/supabase1.png" },
-];
 
 const processMeta = [
   {
@@ -513,37 +492,9 @@ export default function AboutPage() {
             <div className="flex-1 h-px bg-white/[0.06]" />
           </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-40px" }}
-            className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-x-8 gap-y-6 items-center justify-items-center py-10 px-8 rounded-3xl mb-16"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
-              border: "1px solid rgba(255,255,255,0.06)",
-              backdropFilter: "blur(8px)",
-            }}
-          >
-            {toolLogos.map((logo, i) => (
-              <motion.div
-                key={logo.name}
-                variants={fadeUp}
-                custom={i}
-                className="group flex items-center justify-center"
-                title={logo.name}
-              >
-                <Image
-                  src={logo.src}
-                  alt={logo.name}
-                  width={120}
-                  height={28}
-                  className="h-7 w-auto object-contain opacity-30 grayscale group-hover:opacity-80 group-hover:grayscale-0 transition-all duration-300 mx-auto"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+          <div className="mb-16">
+            <ToolsGrid variant="bordered" />
+          </div>
         </div>
       </section>
 
@@ -752,23 +703,24 @@ export default function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="relative overflow-hidden rounded-[28px] p-10 md:p-20 text-center max-w-3xl mx-auto"
+            className="relative overflow-hidden rounded-[28px] p-14 md:p-28 text-center max-w-5xl mx-auto"
             style={{
               background:
                 "linear-gradient(135deg, rgba(224,64,160,0.07), rgba(155,89,245,0.07), rgba(74,158,255,0.05))",
               border: "1px solid rgba(224,64,160,0.2)",
             }}
           >
-            <div
+            <video
               aria-hidden
-              className="absolute inset-0 pointer-events-none rounded-[28px] overflow-hidden"
-              style={{
-                backgroundImage: "url(/background-images/increase.png)",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                opacity: 0.4,
-              }}
-            />
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover rounded-[28px] pointer-events-none"
+              style={{ opacity: 0.4 }}
+            >
+              <source src="/videos/ai-master-video.mp4" type="video/mp4" />
+            </video>
             <div
               aria-hidden
               className="absolute inset-0 pointer-events-none rounded-[28px]"

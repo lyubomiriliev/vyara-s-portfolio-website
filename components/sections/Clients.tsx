@@ -34,15 +34,13 @@ const clientLogos = [
     accent: "#FFB76C",
   },
   { logo: "/clients/chris-logo.png", name: "Chris", accent: "#9B59F5" },
-  {
-    logo: "/clients/dani-lekusheva-logo.png",
-    name: "Dani Lekusheva",
-    accent: "#E040A0",
-  },
   { logo: "/clients/fitty-logo.png", name: "Fitty", accent: "#FFB76C" },
-  { logo: "/clients/under1roof-logo.png", name: "Under 1 Roof", accent: "#9B59F5" },
+  {
+    logo: "/clients/under1roof-logo.png",
+    name: "Under 1 Roof",
+    accent: "#9B59F5",
+  },
   { logo: "/clients/mbc-logo-white.png", name: "MBC", accent: "#E040A0" },
-  { logo: "/clients/pulse-gym-shop-logo.png", name: "Pulse Gym Shop", accent: "#FFB76C" },
 ];
 
 function useRandomPop(count: number, inView: boolean) {
@@ -129,7 +127,7 @@ export default function Clients() {
     <section
       ref={sectionRef}
       id="clients"
-      className="pt-24 pb-40 relative overflow-hidden"
+      className="py-24 relative overflow-hidden"
     >
       <Glow color="pink" size={600} className="top-0 left-1/3" />
       <Glow color="orange" size={500} className="bottom-1/4 right-1/4" />
@@ -179,7 +177,7 @@ export default function Clients() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-4 mb-16"
+          className="grid grid-cols-3 sm:grid-cols-5 gap-4 mb-16"
         >
           {clientLogos.map((client, i) => {
             const isPopped = activeSet.has(i);
@@ -249,7 +247,9 @@ export default function Clients() {
                   className="h-10 w-auto max-w-full object-contain"
                   animate={{
                     opacity: isPopped ? 1 : 0.45,
-                    filter: isPopped ? "brightness(1.15) grayscale(0)" : "brightness(1) grayscale(0.3)",
+                    filter: isPopped
+                      ? "brightness(1.15) grayscale(0)"
+                      : "brightness(1) grayscale(0.3)",
                   }}
                   whileHover={{
                     opacity: 1,
@@ -272,7 +272,7 @@ export default function Clients() {
             viewport={{ once: true }}
             className="text-white/30 text-xs font-semibold uppercase tracking-[0.15em] whitespace-nowrap"
           >
-            {clientLogos.length}
+            {clientLogos.length + 8}
             {t.clients.brandCount}
           </motion.p>
           <div className="flex-1 h-px bg-white/[0.06]" />

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   ArrowRight,
-  Mail,
   Menu,
   X,
   ChevronDown,
@@ -21,52 +20,32 @@ import {
 } from "lucide-react";
 import { useLang } from "@/lib/LanguageContext";
 
-const serviceDropdownItems = [
+const SERVICE_DROPDOWN_KEYS = [
   {
-    category: "Marketing & Social",
+    categoryKey: "marketing" as const,
     accent: "#E040A0",
     services: [
-      {
-        label: "Social Media Management",
-        id: "social-media-management",
-        icon: Share2,
-      },
-      {
-        label: "AI-Powered Marketing",
-        id: "ai-powered-marketing",
-        icon: Brain,
-      },
-      { label: "Meta Ads Campaigns", id: "meta-ads-campaigns", icon: Target },
+      { labelKey: "socialMedia" as const, id: "social-media-management", icon: Share2 },
+      { labelKey: "aiMarketing" as const, id: "ai-powered-marketing", icon: Brain },
+      { labelKey: "metaAds" as const, id: "meta-ads-campaigns", icon: Target },
     ],
   },
   {
-    category: "Creative & Content",
+    categoryKey: "creative" as const,
     accent: "#FFB76C",
     services: [
-      {
-        label: "Graphic Design (Print)",
-        id: "graphic-design-print",
-        icon: Printer,
-      },
-      {
-        label: "Graphic Design (Digital)",
-        id: "graphic-design-digital",
-        icon: Monitor,
-      },
-      { label: "Video Filming & Editing", id: "video-filming", icon: Video },
+      { labelKey: "graphicPrint" as const, id: "graphic-design-print", icon: Printer },
+      { labelKey: "graphicDigital" as const, id: "graphic-design-digital", icon: Monitor },
+      { labelKey: "videoFilming" as const, id: "video-filming", icon: Video },
     ],
   },
   {
-    category: "Web & Development",
+    categoryKey: "web" as const,
     accent: "#9B59F5",
     services: [
-      { label: "Website Development", id: "website-creation", icon: Globe },
-      { label: "Custom Solutions", id: "custom-websites-nextjs", icon: Code2 },
-      {
-        label: "E-commerce Websites",
-        id: "shopify-websites",
-        icon: ShoppingBag,
-      },
+      { labelKey: "websiteDev" as const, id: "website-creation", icon: Globe },
+      { labelKey: "customSolutions" as const, id: "custom-websites-nextjs", icon: Code2 },
+      { labelKey: "ecommerce" as const, id: "shopify-websites", icon: ShoppingBag },
     ],
   },
 ];
@@ -83,7 +62,6 @@ export default function Header() {
   const dropdownTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const navLinks = [
-    { label: t.nav.home, href: "/" },
     { label: t.nav.work, href: "/work" },
     { label: t.nav.projects, href: "/projects" },
     { label: t.nav.clients, href: "/clients" },
@@ -173,13 +151,30 @@ export default function Header() {
 
           {/* Nav links */}
           <nav className="flex items-center gap-0.5">
+            {/* Home link */}
+            <Link
+              href="/"
+              className={`relative px-3.5 py-1.5 rounded-xl text-[13px] font-semibold tracking-[0.08em] uppercase transition-all duration-200 ${
+                isActive("/")
+                  ? "text-white"
+                  : "text-white/45 hover:text-white/80"
+              }`}
+              style={
+                isActive("/") ? { background: "rgba(255,183,108,0.12)" } : {}
+              }
+            >
+              {isActive("/") ? gradientText(t.nav.home) : t.nav.home}
+            </Link>
+
             {/* Services with dropdown */}
             <div
               className="relative"
               onMouseEnter={handleServicesEnter}
               onMouseLeave={handleServicesLeave}
             >
-              <button
+              <Link
+                href="/services"
+                onClick={() => setServicesOpen(false)}
                 className={`relative flex items-center gap-1 px-3.5 py-1.5 rounded-xl text-[13px] font-semibold tracking-[0.08em] uppercase transition-all duration-200 ${
                   isServicesActive
                     ? "text-white"
@@ -202,95 +197,7 @@ export default function Header() {
                     transition: "transform 0.2s",
                   }}
                 />
-              </button>
-
-              {/* Invisible bridge to keep hover alive across the gap */}
-              {servicesOpen && (
-                <div
-                  className="absolute top-full left-0 w-[820px] h-10 z-50"
-                  onMouseEnter={handleServicesEnter}
-                  onMouseLeave={handleServicesLeave}
-                />
-              )}
-
-              {/* Dropdown panel */}
-              {servicesOpen && (
-                <div
-                  className="absolute top-full left-0 mt-10 w-[820px] rounded-2xl overflow-hidden z-50"
-                  style={{
-                    background: "rgba(8,8,12,0.98)",
-                    backdropFilter: "blur(60px) saturate(200%)",
-                    WebkitBackdropFilter: "blur(60px) saturate(200%)",
-                    border: "1px solid rgba(255,255,255,0.11)",
-                    boxShadow:
-                      "0 24px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,183,108,0.07)",
-                  }}
-                  onMouseEnter={handleServicesEnter}
-                  onMouseLeave={handleServicesLeave}
-                >
-                  <div
-                    className="h-px w-full"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, transparent, rgba(255,183,108,0.5), rgba(224,64,160,0.4), transparent)",
-                    }}
-                  />
-                  <div className="grid grid-cols-3 gap-0 p-7">
-                    {serviceDropdownItems.map((group) => (
-                      <div key={group.category} className="px-4 flex flex-col">
-                        <div
-                          className="text-[11px] font-bold uppercase tracking-[0.16em] mb-4 pb-3 border-b"
-                          style={{
-                            color: group.accent,
-                            borderColor: `${group.accent}25`,
-                          }}
-                        >
-                          {group.category}
-                        </div>
-                        <div className="flex flex-col gap-1 flex-1">
-                          {group.services.map((svc) => {
-                            const Icon = svc.icon;
-                            return (
-                              <Link
-                                key={svc.id}
-                                href={`/services/${svc.id}`}
-                                onClick={() => setServicesOpen(false)}
-                                className="flex items-center gap-3 px-3 py-3 rounded-xl text-[15px] text-white/75 hover:text-white hover:bg-white/[0.04] transition-all duration-150 group"
-                              >
-                                <span
-                                  className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity"
-                                  style={{ background: `${group.accent}18` }}
-                                >
-                                  <Icon
-                                    size={15}
-                                    style={{ color: group.accent }}
-                                  />
-                                </span>
-                                <span className="font-medium leading-snug">
-                                  {svc.label}
-                                </span>
-                              </Link>
-                            );
-                          })}
-                        </div>
-                        <div
-                          className="mt-5 pt-4 border-t"
-                          style={{ borderColor: `${group.accent}15` }}
-                        >
-                          <Link
-                            href="/services"
-                            onClick={() => setServicesOpen(false)}
-                            className="inline-flex items-center gap-1 px-3 text-[12px] font-semibold uppercase tracking-[0.1em] transition-colors duration-150 hover:opacity-100"
-                            style={{ color: `${group.accent}70` }}
-                          >
-                            {t.seeAll}
-                          </Link>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              </Link>
             </div>
 
             {/* Regular nav links */}
@@ -345,14 +252,84 @@ export default function Header() {
             ))}
           </div>
 
-          {/* CTA */}
-          <Link
-            href="/contact"
-            className="ml-1 inline-flex items-center justify-center w-10 h-10 rounded-xl text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.03] active:scale-[0.97]"
-            style={{ background: "linear-gradient(135deg, #E040A0, #FFB76C)" }}
-          >
-            <Mail size={18} strokeWidth={2} />
-          </Link>
+
+          {/* Dropdown — centered on header */}
+          {servicesOpen && (
+            <>
+              {/* Invisible bridge */}
+              <div
+                className="absolute w-full h-3 z-40"
+                style={{ top: "100%", left: 0 }}
+                onMouseEnter={handleServicesEnter}
+                onMouseLeave={handleServicesLeave}
+              />
+              <div
+                className="absolute w-[820px] rounded-2xl overflow-hidden z-50"
+                style={{
+                  top: "calc(100% + 16px)",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  background: "rgba(8,8,12,0.98)",
+                  backdropFilter: "blur(60px) saturate(200%)",
+                  WebkitBackdropFilter: "blur(60px) saturate(200%)",
+                  border: "1px solid rgba(255,255,255,0.11)",
+                  boxShadow:
+                    "0 24px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,183,108,0.07)",
+                }}
+                onMouseEnter={handleServicesEnter}
+                onMouseLeave={handleServicesLeave}
+              >
+                <div
+                  className="h-px w-full"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, transparent, rgba(255,183,108,0.5), rgba(224,64,160,0.4), transparent)",
+                  }}
+                />
+                <div className="grid grid-cols-3 gap-0 p-7">
+                  {SERVICE_DROPDOWN_KEYS.map((group) => (
+                    <div key={group.categoryKey} className="px-4 flex flex-col">
+                      <div
+                        className="text-[11px] font-bold uppercase tracking-[0.16em] mb-4 pb-3 border-b"
+                        style={{
+                          color: group.accent,
+                          borderColor: `${group.accent}25`,
+                        }}
+                      >
+                        {t.serviceDropdown.categories[group.categoryKey]}
+                      </div>
+                      <div className="flex flex-col gap-1 flex-1">
+                        {group.services.map((svc) => {
+                          const Icon = svc.icon;
+                          return (
+                            <Link
+                              key={svc.id}
+                              href={`/services/${svc.id}`}
+                              onClick={() => setServicesOpen(false)}
+                              className="flex items-center gap-3 px-3 py-3 rounded-xl text-[15px] text-white/75 hover:text-white hover:bg-white/[0.04] transition-all duration-150 group"
+                            >
+                              <span
+                                className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity"
+                                style={{ background: `${group.accent}18` }}
+                              >
+                                <Icon
+                                  size={15}
+                                  style={{ color: group.accent }}
+                                />
+                              </span>
+                              <span className="font-medium leading-snug">
+                                {t.serviceDropdown.services[svc.labelKey]}
+                              </span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </header>
       </div>
 
@@ -392,9 +369,30 @@ export default function Header() {
             className="px-5 pt-2 pb-7 flex flex-col gap-1"
             style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
           >
+            {/* Home */}
+            <Link
+              href="/"
+              onClick={() => setMobileOpen(false)}
+              className={`flex items-center gap-2 px-3 py-3 rounded-xl text-[14px] font-semibold tracking-[0.08em] uppercase transition-colors ${
+                isActive("/") ? "text-white" : "text-white/55 hover:text-white"
+              }`}
+              style={
+                isActive("/") ? { background: "rgba(255,183,108,0.10)" } : {}
+              }
+            >
+              {isActive("/") ? gradientText(t.nav.home) : t.nav.home}
+              {isActive("/") && (
+                <span
+                  className="ml-auto w-1.5 h-1.5 rounded-full"
+                  style={{
+                    background: "linear-gradient(135deg, #E040A0, #FFB76C)",
+                  }}
+                />
+              )}
+            </Link>
+
             {/* Services accordion */}
-            <button
-              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+            <div
               className={`flex items-center justify-between px-3 py-3 rounded-xl text-[14px] font-semibold tracking-[0.08em] uppercase transition-colors ${
                 isServicesActive
                   ? "text-white"
@@ -404,26 +402,39 @@ export default function Header() {
                 isServicesActive ? { background: "rgba(255,183,108,0.10)" } : {}
               }
             >
-              {isServicesActive ? gradientText(t.nav.services) : t.nav.services}
-              <ChevronDown
-                size={14}
-                style={{
-                  transform: mobileServicesOpen
-                    ? "rotate(180deg)"
-                    : "rotate(0deg)",
-                  transition: "transform 0.2s",
-                }}
-              />
-            </button>
+              <Link
+                href="/services"
+                onClick={() => setMobileOpen(false)}
+                className="flex-1"
+              >
+                {isServicesActive
+                  ? gradientText(t.nav.services)
+                  : t.nav.services}
+              </Link>
+              <button
+                onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                className="p-1"
+              >
+                <ChevronDown
+                  size={14}
+                  style={{
+                    transform: mobileServicesOpen
+                      ? "rotate(180deg)"
+                      : "rotate(0deg)",
+                    transition: "transform 0.2s",
+                  }}
+                />
+              </button>
+            </div>
             {mobileServicesOpen && (
               <div className="ml-3 mb-1 flex flex-col gap-0.5">
-                {serviceDropdownItems.map((group) => (
-                  <div key={group.category} className="mb-2">
+                {SERVICE_DROPDOWN_KEYS.map((group) => (
+                  <div key={group.categoryKey} className="mb-2">
                     <div
                       className="text-[10px] font-bold uppercase tracking-[0.14em] px-3 py-1 mb-1"
                       style={{ color: group.accent }}
                     >
-                      {group.category}
+                      {t.serviceDropdown.categories[group.categoryKey]}
                     </div>
                     {group.services.map((svc) => {
                       const Icon = svc.icon;
@@ -435,18 +446,10 @@ export default function Header() {
                           className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] text-white/50 hover:text-white transition-colors"
                         >
                           <Icon size={13} style={{ color: group.accent }} />
-                          {svc.label}
+                          {t.serviceDropdown.services[svc.labelKey]}
                         </Link>
                       );
                     })}
-                    <Link
-                      href="/services"
-                      onClick={() => setMobileOpen(false)}
-                      className="inline-flex items-center px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.1em]"
-                      style={{ color: `${group.accent}70` }}
-                    >
-                      See all →
-                    </Link>
                   </div>
                 ))}
               </div>

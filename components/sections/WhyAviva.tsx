@@ -9,6 +9,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ButtonOutline } from "@/components/ui/ButtonOutline";
 import { Glow } from "@/components/ui/Glow";
 import { useLang } from "@/lib/LanguageContext";
+import ToolsGrid from "@/components/ui/ToolsGrid";
 
 const cardMeta = [
   {
@@ -34,28 +35,6 @@ const cardMeta = [
   },
 ];
 
-const toolLogos = [
-  { name: "ChatGPT", src: "/tools/gpt1.png" },
-  { name: "Claude AI", src: "/tools/claude1.png" },
-  { name: "Gemini", src: "/tools/gemini1.png" },
-  { name: "Instagram", src: "/tools/insta1.png" },
-  { name: "Facebook", src: "/tools/facebook1.png" },
-  { name: "Meta", src: "/tools/meta1.png" },
-  { name: "TikTok", src: "/tools/tiktok1.png" },
-  { name: "LinkedIn", src: "/tools/linkedin1.png" },
-  { name: "Canva", src: "/tools/canva1.png" },
-  { name: "Viber", src: "/tools/viber1.png" },
-  { name: "CapCut", src: "/tools/capcut1.png" },
-  { name: "Captions", src: "/tools/captions1.png" },
-  { name: "PhotoRoom", src: "/tools/photoroom.png" },
-  { name: "Klaviyo", src: "/tools/klaviyo1.png" },
-  { name: "Google Drive", src: "/tools/drive1.png" },
-  { name: "VSCode", src: "/tools/vscode1.png" },
-  { name: "Cursor", src: "/tools/cursor1.png" },
-  { name: "Next.js", src: "/tools/next1.png" },
-  { name: "React", src: "/tools/react1.png" },
-  { name: "Supabase", src: "/tools/supabase1.png" },
-];
 
 export default function WhyAviva() {
   const { t } = useLang();
@@ -289,42 +268,9 @@ export default function WhyAviva() {
         </div>
 
         {/* ── Tools strip ── */}
-        {toolLogos.length > 0 && (
-          <div className="relative mb-16">
-            {/* Logo grid card */}
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-40px" }}
-              className="relative grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-x-8 gap-y-6 items-center justify-items-center py-10 px-8 rounded-3xl overflow-hidden"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
-                border: "1px solid rgba(255,255,255,0.06)",
-                backdropFilter: "blur(8px)",
-              }}
-            >
-              {toolLogos.map((logo, i) => (
-                <motion.div
-                  key={logo.name}
-                  variants={fadeUp}
-                  custom={i}
-                  className="group flex items-center justify-center"
-                  title={logo.name}
-                >
-                  <Image
-                    src={logo.src}
-                    alt={logo.name}
-                    width={120}
-                    height={28}
-                    className="h-7 w-auto object-contain opacity-30 grayscale group-hover:opacity-80 group-hover:grayscale-0 transition-all duration-400 mx-auto"
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        )}
+        <div className="relative mb-16">
+          <ToolsGrid variant="bordered" />
+        </div>
 
         {/* ── CTA ── */}
         <motion.div

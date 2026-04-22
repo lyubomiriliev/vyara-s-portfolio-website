@@ -10,6 +10,7 @@ interface SectionBackgroundProps {
   blendMode?: React.CSSProperties['mixBlendMode']
   vignette?: boolean
   vignetteIntensity?: number
+  blur?: number
 }
 
 export function SectionBackground({
@@ -20,6 +21,7 @@ export function SectionBackground({
   blendMode,
   vignette = true,
   vignetteIntensity = 0.85,
+  blur = 0,
 }: SectionBackgroundProps) {
   return (
     <>
@@ -33,6 +35,7 @@ export function SectionBackground({
           backgroundRepeat: 'no-repeat',
           opacity,
           mixBlendMode: blendMode,
+          filter: blur > 0 ? `blur(${blur}px)` : undefined,
         }}
       />
       {vignette && (
