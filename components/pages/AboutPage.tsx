@@ -44,7 +44,6 @@ const cardMeta = [
   },
 ];
 
-
 const processMeta = [
   {
     icon: Lightbulb,
@@ -88,47 +87,33 @@ export default function AboutPage() {
     <main>
       {/* ── Hero — full-bleed wallpaper + left text ── */}
       <section className="relative overflow-hidden min-h-screen flex items-center">
-        {/* Full-bleed wallpaper — shifted right so subject is visible */}
+        {/* Full-bleed wallpaper centered */}
         <Image
-          src="/background-images/aviva-digital-wallpaper.png"
+          src="/background-images/about-wallpaper.png"
           alt=""
           aria-hidden
           fill
-          className="pointer-events-none select-none object-cover object-left-center"
-          style={{ filter: "brightness(0.65) saturate(1.15)" }}
+          className="object-cover object-center pointer-events-none select-none"
+          style={{ filter: "brightness(0.7) saturate(1.15)" }}
         />
 
-        {/* Strong left vignette — text zone dark, image breathes right */}
+        {/* Corner/edge vignettes — blend image into dark bg on all sides */}
+        {/* Left fade — solid dark for text legibility */}
         <div
           aria-hidden
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(90deg, rgba(10,9,18,0.95) 21%, rgba(10,8,18,0.92) 22%, rgba(10,8,18,0.6) 44%, rgba(10,8,18,0.15) 62%, transparent 80%)",
+              "linear-gradient(90deg, rgb(10,8,18) 0%, rgb(10,8,18) 32%, rgba(10,8,18,0.7) 50%, rgba(10,8,18,0.15) 70%, rgb(10,8,18) 100%)",
           }}
         />
-
-        {/* Smooth left-edge fade — dissolves the hard cut where image starts at 20% */}
-        <div
-          aria-hidden
-          className="absolute pointer-events-none"
-          style={{
-            width: "50%",
-            top: 0,
-            bottom: 0,
-            left: "15%",
-            background:
-              "linear-gradient(to right, rgb(10,8,18) 0%, rgb(10,8,18) 20%, rgba(10,8,18,0.85) 45%, rgba(10,8,18,0.4) 70%, transparent 100%)",
-          }}
-        />
-
         {/* Top + bottom fades */}
         <div
           aria-hidden
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(180deg, rgba(10,8,18,0.8) 0%, transparent 18%, transparent 72%, rgba(10,8,18,0.95) 100%)",
+              "linear-gradient(180deg, rgb(10,8,18) 0%, transparent 20%, transparent 70%, rgb(10,8,18) 100%)",
           }}
         />
 
@@ -180,17 +165,16 @@ export default function AboutPage() {
 
               <motion.h1
                 variants={fadeUp}
-                className="font-display font-extrabold tracking-tight text-white"
+                className="font-display font-extrabold tracking-tight text-white flex flex-col"
                 style={{
                   fontSize: "clamp(58px, 8vw, 112px)",
-                  lineHeight: "0.93",
+                  lineHeight: "1",
                   letterSpacing: "-0.025em",
+                  gap: "0.06em",
                 }}
               >
-                {t.about.teamTitle}
-                <br />
-                {t.about.teamTitleMid}
-                <br />
+                <span>{t.about.teamTitle}</span>
+                <span>{t.about.teamTitleMid}</span>
                 <span
                   style={{
                     background:
@@ -502,12 +486,12 @@ export default function AboutPage() {
       <section className="relative overflow-hidden section-padding">
         {/* Full-bleed wallpaper */}
         <Image
-          src="/background-images/ai-prompt.png"
+          src="/background-images/light-beam.png"
           alt=""
           aria-hidden
           fill
-          className="object-cover object-center pointer-events-none select-none"
-          style={{ filter: "brightness(0.35) saturate(1.2)" }}
+          className="object-cover object-[center_83%] pointer-events-none select-none"
+          style={{ filter: "brightness(0.85) saturate(1.2)" }}
         />
 
         {/* Dark overlays — keep text legible */}
@@ -591,7 +575,7 @@ export default function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch"
           >
             {processMeta.map(
               ({ icon: Icon, number, accent, border, glow }, i) => {
@@ -615,7 +599,7 @@ export default function AboutPage() {
                   <motion.div
                     key={number}
                     variants={scaleIn}
-                    className="group relative rounded-[20px] p-7 flex flex-col gap-4 overflow-hidden cursor-default"
+                    className="group relative rounded-[20px] p-7 flex flex-col gap-4 overflow-hidden cursor-default h-full"
                     whileHover={{
                       y: -6,
                       transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
@@ -703,7 +687,7 @@ export default function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="relative overflow-hidden rounded-[28px] p-14 md:p-28 text-center max-w-5xl mx-auto"
+            className="relative rounded-[28px] pt-16 md:pt-24 px-14 md:px-28 pb-0 text-center max-w-6xl mx-auto flex flex-col"
             style={{
               background:
                 "linear-gradient(135deg, rgba(224,64,160,0.07), rgba(155,89,245,0.07), rgba(74,158,255,0.05))",
@@ -716,6 +700,7 @@ export default function AboutPage() {
               loop
               muted
               playsInline
+              suppressHydrationWarning
               className="absolute inset-0 w-full h-full object-cover rounded-[28px] pointer-events-none"
               style={{ opacity: 0.4 }}
             >
@@ -739,22 +724,29 @@ export default function AboutPage() {
             <div className="relative z-10">
               <motion.h2
                 variants={fadeUp}
-                className="font-display text-3xl md:text-4xl text-white mb-6 leading-tight"
+                className="font-display text-3xl md:text-4xl text-white leading-tight"
               >
                 {t.about.ctaTitle}
               </motion.h2>
-              <motion.div variants={fadeUp}>
-                <Link href="/contact">
-                  <ButtonPrimary
-                    size="lg"
-                    className="inline-flex items-center gap-2"
-                  >
-                    {t.about.ctaButton}
-                    <ArrowRight size={16} />
-                  </ButtonPrimary>
-                </Link>
-              </motion.div>
             </div>
+
+            {/* Button pinned flush to bottom center */}
+            <motion.div
+              variants={fadeUp}
+              className="relative z-10 flex justify-center mt-auto pt-10"
+            >
+              <Link href="/contact">
+                <button
+                  className="inline-flex items-center font-display font-semibold px-10 py-4 text-base text-white hover:opacity-90 transition-all duration-150 cursor-pointer whitespace-nowrap"
+                  style={{
+                    background: "linear-gradient(135deg, #FFB76C, #FF419D)",
+                    borderRadius: "16px 16px 0 0",
+                  }}
+                >
+                  {t.about.ctaButton}
+                </button>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>

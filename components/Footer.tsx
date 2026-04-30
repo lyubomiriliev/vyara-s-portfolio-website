@@ -85,29 +85,42 @@ export default function Footer() {
         <div className="pt-20 pb-16 border-b border-white/[0.05]">
           {locale === "bg" ? (
             <h2
-              className="font-display font-bold leading-[1.1] text-[clamp(36px,5vw,68px)] text-white whitespace-nowrap"
-              style={{ letterSpacing: "-0.02em" }}
+              className="font-display font-bold text-white"
+              style={{ letterSpacing: "-0.03em" }}
             >
-              {t.footer.futureHeadline}{" "}
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #FFB76C, #FF419D)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                {t.footer.futureAccent1}
-              </span>{" "}
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #FFB76C, #FF419D)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                {t.footer.futureMiddle}
+              {/* Line 1 — "Бъдещето" gradient + "на" muted */}
+              <span className="block leading-[1.1]">
+                <span
+                  className="inline text-[clamp(36px,4.5vw,64px)]"
+                  style={{
+                    background: "linear-gradient(90deg, #FFD580, #FFB76C, #FF6B3D)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  Бъдещето
+                </span>
+                <span className="inline text-[clamp(13px,1.4vw,20px)] text-white/35 font-medium italic ml-3 align-baseline">
+                  на
+                </span>
+              </span>
+              {/* Line 2 — "Маркетинга" gradient + "е тук." muted */}
+              <span className="block leading-[1.1]">
+                <span
+                  className="inline text-[clamp(36px,4.5vw,64px)]"
+                  style={{
+                    background: "linear-gradient(90deg, #FF6B3D, #FF419D, #FFB76C)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  Маркетинга
+                </span>
+                <span className="inline text-[clamp(13px,1.4vw,20px)] text-white/35 font-medium italic ml-3 align-baseline">
+                  е тук.
+                </span>
               </span>
             </h2>
           ) : (
@@ -232,28 +245,20 @@ export default function Footer() {
 
         {/* ── Bottom bar ── */}
         <div
-          className="py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm"
+          className="py-6 flex flex-col sm:flex-row items-center justify-center gap-3"
           style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
         >
           <p className="text-white/50 text-sm">
             © {new Date().getFullYear()} Aviva Digital · avivadigital.bg ·{" "}
             {t.footer.copyright}
           </p>
-          <a
-            href="https://lyubomir-iliev.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs font-semibold hover:opacity-80 transition-opacity duration-150"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(255,183,108,0.6), rgba(255,65,157,0.6))",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
+          <span className="hidden sm:block text-white/20 text-sm">·</span>
+          <Link
+            href="/terms"
+            className="text-white/35 hover:text-white/70 text-sm transition-colors duration-150"
           >
-            {t.footer.builtBy}
-          </a>
+            {locale === "bg" ? "Общи условия" : "Terms & Conditions"}
+          </Link>
         </div>
       </div>
     </footer>

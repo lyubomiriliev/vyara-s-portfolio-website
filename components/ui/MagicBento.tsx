@@ -1,9 +1,30 @@
 "use client";
 
-import React, { useRef, useEffect, useState, useCallback } from "react";
+import React, { useRef, useEffect, useState, useCallback, useId } from "react";
 import { gsap } from "gsap";
 import * as Icons from "lucide-react";
-import Link from "next/link";
+import Image from "next/image";
+
+// Map service IDs to background images
+const SERVICE_BACKGROUNDS: Record<string, string> = {
+  "social-media-management": "/background-images/aviva-digital-wallpaper.png",
+  "ai-powered-marketing": "/background-images/ai-master-wallpaper.png",
+  "meta-ads-campaigns": "/background-images/aviva-digital-wallpaper.png",
+  "email-marketing": "/background-images/working-wallpaper.png",
+  "graphic-design": "/background-images/aviva-digital-wallpaper.png",
+  "print-materials": "/background-images/working-wallpaper.png",
+  "video-filming": "/background-images/aviva-digital-wallpaper.png",
+  "video-editing": "/background-images/ai-master-wallpaper.png",
+  "copywriting": "/background-images/working-wallpaper.png",
+  "ai-image-generation": "/background-images/ai-master-wallpaper.png",
+  "ai-video-generation": "/background-images/ai-master-wallpaper.png",
+  "seo-optimization": "/background-images/tool-stack-wallpaper.png",
+  "custom-websites-nextjs": "/background-images/aviva-digital-wallpaper.png",
+  "online-store-ecommerce": "/background-images/working-wallpaper.png",
+  "web-applications": "/background-images/aviva-digital-wallpaper.png",
+  "saas-solutions": "/background-images/tool-stack-wallpaper.png",
+  "hosting-domain": "/background-images/tool-stack-wallpaper.png",
+};
 
 export interface BentoCardData {
   id: string;
@@ -422,9 +443,10 @@ const GlobalSpotlight: React.FC<{
 const BentoCardGrid: React.FC<{
   children: React.ReactNode;
   gridRef?: React.RefObject<HTMLDivElement>;
-}> = ({ children, gridRef }) => (
+  instanceId?: string;
+}> = ({ children, gridRef, instanceId }) => (
   <div
-    className="bento-section grid gap-2 p-3 select-none relative"
+    className={`bento-section grid gap-2 p-3 select-none relative${instanceId ? ` ${instanceId}` : ""}`}
     style={{ fontSize: "clamp(1rem, 0.9rem + 0.5vw, 1.5em)" }}
     ref={gridRef}
   >
@@ -461,7 +483,6 @@ interface MagicBentoProps {
 
 export default function MagicBento({
   cards,
-  getStartedLabel = "Get Started →",
   enableStars = true,
   enableSpotlight = true,
   enableBorderGlow = true,
@@ -473,22 +494,26 @@ export default function MagicBento({
   clickEffect = true,
   enableMagnetism = false,
 }: MagicBentoProps) {
+  const rawId = useId();
+  const instanceId = `mb-${rawId.replace(/:/g, "")}` ;
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
+
+  const s = `.${instanceId}`;
 
   return (
     <>
       <style
         dangerouslySetInnerHTML={{
           __html: `
-        .bento-section {
+        ${s} {
           --glow-x: 50%;
           --glow-y: 50%;
           --glow-intensity: 0;
           --glow-radius: 200px;
           --glow-color: ${glowColor};
-          --border-color: #392e4e;
+          --border-color: rgba(${glowColor}, 0.25);
           --background-dark: #0d0a14;
         }
 
@@ -510,7 +535,7 @@ export default function MagicBento({
           .card-responsive .card:nth-child(6) { grid-column: 4; grid-row: 3; }
         }
 
-        .card--border-glow::after {
+        ${s} .card--border-glow::after {
           content: '';
           position: absolute;
           inset: 0;
@@ -531,8 +556,8 @@ export default function MagicBento({
           z-index: 1;
         }
 
-        .card--border-glow:hover {
-          box-shadow: 0 4px 24px rgba(46, 24, 78, 0.5), 0 0 40px rgba(${glowColor}, 0.3);
+        ${s} .card--border-glow:hover {
+          box-shadow: 0 4px 24px rgba(${glowColor}, 0.15), 0 0 40px rgba(${glowColor}, 0.25);
         }
 
         .particle::before {
@@ -545,7 +570,7 @@ export default function MagicBento({
         }
 
         .particle-container:hover {
-          box-shadow: 0 4px 20px rgba(46, 24, 78, 0.2), 0 0 30px rgba(${glowColor}, 0.2);
+          box-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 30px rgba(${glowColor}, 0.2);
         }
 
         .text-clamp-1 {
@@ -579,14 +604,14 @@ export default function MagicBento({
         />
       )}
 
-      <BentoCardGrid gridRef={gridRef as React.RefObject<HTMLDivElement>}>
+      <BentoCardGrid gridRef={gridRef as React.RefObject<HTMLDivElement>} instanceId={instanceId}>
         <div className="card-responsive">
           {cards.map((card, index) => {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const IconComp = (Icons as any)[card.icon] as
               | React.ElementType
               | undefined;
-            const baseClassName = `card flex flex-col justify-between relative min-h-[280px] w-full max-w-full rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 ${enableBorderGlow ? "card--border-glow" : ""}`;
+            const baseClassName = `card flex flex-col relative min-h-[360px] w-full max-w-full rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 ${enableBorderGlow ? "card--border-glow" : ""}`;
             const cardStyle: React.CSSProperties = {
               backgroundColor: "#0d0a14",
               borderColor: "var(--border-color)",
@@ -597,62 +622,67 @@ export default function MagicBento({
               "--glow-radius": "200px",
             } as React.CSSProperties;
 
+            const bgImage = SERVICE_BACKGROUNDS[card.id];
+
             const cardContent = (
               <>
-                {/* Header */}
-                <div className="flex justify-between items-start gap-3 relative p-5 pb-3 z-10">
-                  <span className="text-[10px] font-semibold tracking-widest uppercase text-white/35 leading-tight">
-                    {card.id.replace(/-/g, " ")}
-                  </span>
-                  <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                    style={{ background: `rgba(${glowColor}, 0.15)` }}
-                  >
-                    {IconComp && (
-                      <IconComp
-                        size={15}
-                        style={{ color: `rgba(${glowColor}, 0.9)` }}
-                      />
-                    )}
+                {/* Background image with dark overlay */}
+                {bgImage && (
+                  <div className="absolute inset-0 z-0 pointer-events-none">
+                    <Image
+                      src={bgImage}
+                      alt=""
+                      fill
+                      className="object-cover opacity-[0.18]"
+                      sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a14] via-[#0d0a14]/70 to-transparent" />
                   </div>
-                </div>
+                )}
 
-                {/* Content — fills remaining space */}
-                <div className="flex flex-col flex-1 relative px-5 pb-5 z-10 justify-end gap-2">
-                  <h3 className="font-bold text-[15px] leading-snug text-white m-0">
-                    {card.title}
-                  </h3>
-                  <p className="text-[12px] leading-[1.55] text-white/55 m-0">
-                    {card.description}
-                  </p>
-                  <ul className="flex flex-col gap-[5px] mt-1">
-                    {card.benefits.map((b) => (
-                      <li
-                        key={b}
-                        className="flex items-center gap-2 text-[11px] text-white/35"
-                      >
-                        <span
-                          className="w-1 h-1 rounded-full flex-shrink-0"
-                          style={{ background: `rgba(${glowColor}, 0.8)` }}
-                        />
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href="/contact"
-                    className="mt-2 block"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <span
-                      className="inline-block w-full text-center text-[11px] font-semibold py-2 px-4 rounded-lg text-white transition-opacity hover:opacity-85 cursor-pointer"
-                      style={{
-                        background: "linear-gradient(135deg, #FFB76C, #FF419D)",
-                      }}
-                    >
-                      {getStartedLabel}
+                {/* Content */}
+                <div className="flex flex-col relative p-5 z-10 gap-3 h-full">
+                  {/* Icon + label row */}
+                  <div className="flex justify-between items-start gap-3">
+                    <span className="text-[10px] font-semibold tracking-widest uppercase text-white/50 leading-tight">
+                      {card.id.replace(/-/g, " ")}
                     </span>
-                  </Link>
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ background: `rgba(${glowColor}, 0.2)` }}
+                    >
+                      {IconComp && (
+                        <IconComp
+                          size={17}
+                          style={{ color: `rgba(${glowColor}, 1)` }}
+                        />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Text content anchored to bottom */}
+                  <div className="flex flex-col gap-3 mt-auto">
+                    <h3 className="font-bold text-[17px] leading-snug text-white m-0">
+                      {card.title}
+                    </h3>
+                    <p className="text-[13px] leading-[1.6] text-white/70 m-0">
+                      {card.description}
+                    </p>
+                    <ul className="flex flex-col gap-[6px]">
+                      {card.benefits.map((b) => (
+                        <li
+                          key={b}
+                          className="flex items-center gap-2 text-[12px] text-white/55"
+                        >
+                          <span
+                            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                            style={{ background: `rgba(${glowColor}, 0.9)` }}
+                          />
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </>
             );

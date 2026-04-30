@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Sparkles, Code2, Megaphone, Palette } from 'lucide-react'
-import { FloatingCard } from './FloatingCard'
-import { useLang } from '@/lib/LanguageContext'
+import { motion } from "framer-motion";
+import { Sparkles, Code2, Megaphone, Palette } from "lucide-react";
+import { FloatingCard } from "./FloatingCard";
+import { useLang } from "@/lib/LanguageContext";
 
 export function ServicesHeroFloatingCards() {
-  const { t } = useLang()
+  const { t } = useLang();
   return (
     <>
       {/* Top right — AI Content */}
@@ -14,7 +14,7 @@ export function ServicesHeroFloatingCards() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="absolute top-[16%] right-[6%] hidden lg:block z-10"
+        className="absolute top-[24%] right-[14%] hidden lg:block z-10"
       >
         <FloatingCard
           icon={<Sparkles size={14} />}
@@ -32,7 +32,7 @@ export function ServicesHeroFloatingCards() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
-        className="absolute top-[40%] left-[5%] hidden lg:block z-10"
+        className="absolute top-[34%] left-[13%] hidden lg:block z-10"
       >
         <FloatingCard
           icon={<Code2 size={14} />}
@@ -51,7 +51,7 @@ export function ServicesHeroFloatingCards() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.8 }}
-        className="absolute bottom-[20%] right-[10%] hidden lg:block z-10"
+        className="absolute bottom-[13%] right-[26%] hidden lg:block z-10"
       >
         <FloatingCard
           icon={<Megaphone size={14} />}
@@ -69,7 +69,7 @@ export function ServicesHeroFloatingCards() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.0 }}
-        className="absolute bottom-[26%] left-[4%] hidden xl:block z-10"
+        className="absolute bottom-[6%] left-[23%] hidden xl:block z-10"
       >
         <FloatingCard
           icon={<Palette size={14} />}
@@ -83,5 +83,5 @@ export function ServicesHeroFloatingCards() {
         />
       </motion.div>
     </>
-  )
+  );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, FormEvent } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -14,7 +15,6 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { fadeUp, scaleIn, slideInLeft } from "@/lib/animations";
-import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ButtonPrimary } from "@/components/ui/ButtonPrimary";
 import { Glow } from "@/components/ui/Glow";
 import { useLang } from "@/lib/LanguageContext";
@@ -27,7 +27,10 @@ export default function ContactPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownRect, setDropdownRect] = useState<DOMRect | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const portalRef = useRef<HTMLDivElement>(null);
 
   const toggleService = (title: string) => {
     setSelectedServices((prev) =>
@@ -42,16 +45,30 @@ export default function ContactPage() {
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node)
-      ) {
+      const target = e.target as Node;
+      const insideTrigger = dropdownRef.current?.contains(target);
+      const insidePortal = portalRef.current?.contains(target);
+      if (!insideTrigger && !insidePortal) {
         setDropdownOpen(false);
       }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
+
+  useEffect(() => {
+    if (!dropdownOpen) return;
+    const updateRect = () => {
+      if (triggerRef.current)
+        setDropdownRect(triggerRef.current.getBoundingClientRect());
+    };
+    window.addEventListener("scroll", updateRect, true);
+    window.addEventListener("resize", updateRect);
+    return () => {
+      window.removeEventListener("scroll", updateRect, true);
+      window.removeEventListener("resize", updateRect);
+    };
+  }, [dropdownOpen]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -84,7 +101,7 @@ export default function ContactPage() {
   return (
     <>
       {/* ── Main form + image + info ── */}
-      <section className="section-padding relative overflow-hidden">
+      <section className="section-padding relative">
         <Glow color="pink" size={700} className="top-1/2 left-1/4" />
         <Glow color="orange" size={400} className="bottom-0 right-1/3" />
 
@@ -99,18 +116,17 @@ export default function ContactPage() {
           }}
         />
 
-        {/* Decorative image — right half, taller */}
+        {/* Decorative image — right half, fixed to viewport height so layout changes don't affect it */}
         <div
           aria-hidden
-          className="absolute top-0 right-0 w-[75%] h-full pointer-events-none hidden lg:block"
-          style={{ zIndex: 1 }}
+          className="absolute top-0 right-0 w-[75%] pointer-events-none hidden lg:block overflow-hidden"
+          style={{ zIndex: 1, bottom: 0, willChange: "auto" }}
         >
           <Image
             src="/background-images/working-wallpaper.png"
             alt=""
-            width={1200}
-            height={900}
-            className="w-full h-full object-cover object-center"
+            fill
+            className="object-cover object-center"
             style={{
               opacity: 0.55,
               maskImage:
@@ -130,7 +146,7 @@ export default function ContactPage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="relative overflow-hidden rounded-[24px]"
+              className="relative rounded-[24px]"
               style={{
                 background:
                   "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
@@ -179,7 +195,6 @@ export default function ContactPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                   <div className="mb-2">
-                    <SectionLabel>{t.contactForm.label}</SectionLabel>
                     <h2 className="font-display font-bold text-2xl text-white mt-2">
                       {t.contactForm.title}
                     </h2>
@@ -258,7 +273,10 @@ export default function ContactPage() {
                   </div>
 
                   {/* Service interest — multi-select dropdown */}
-                  <div className="flex flex-col gap-1.5" ref={dropdownRef}>
+                  <div
+                    className="flex flex-col gap-1.5 relative"
+                    ref={dropdownRef}
+                  >
                     <label className="text-xs text-white/50 uppercase tracking-wider font-medium">
                       {t.contactForm.serviceInterest}
                     </label>
@@ -270,8 +288,15 @@ export default function ContactPage() {
 
                     {/* Trigger */}
                     <button
+                      ref={triggerRef}
                       type="button"
-                      onClick={() => setDropdownOpen((o) => !o)}
+                      onClick={() => {
+                        if (triggerRef.current)
+                          setDropdownRect(
+                            triggerRef.current.getBoundingClientRect(),
+                          );
+                        setDropdownOpen((o) => !o);
+                      }}
                       className="form-field flex items-center justify-between gap-2 text-left cursor-pointer"
                     >
                       <span
@@ -283,7 +308,7 @@ export default function ContactPage() {
                       >
                         {selectedServices.length === 0
                           ? t.contactForm.selectService
-                          : `${selectedServices.length} service${selectedServices.length > 1 ? "s" : ""} selected`}
+                          : `${selectedServices.length} ${selectedServices.length > 1 ? t.contactForm.servicesSelectedPlural : t.contactForm.servicesSelected}`}
                       </span>
                       <ChevronDown
                         size={16}
@@ -291,138 +316,163 @@ export default function ContactPage() {
                       />
                     </button>
 
-                    {/* Selected tags */}
-                    {selectedServices.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-1">
-                        {selectedServices.map((s) => (
-                          <span
-                            key={s}
-                            className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium"
+                    {/* Selected tags — always rendered to reserve space and avoid layout shift */}
+                    <div className="flex flex-wrap gap-2 min-h-[28px]">
+                      {selectedServices.map((s) => (
+                        <span
+                          key={s}
+                          className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, rgba(224,64,160,0.2), rgba(155,89,245,0.15))",
+                            border: "1px solid rgba(224,64,160,0.4)",
+                            color: "#fff",
+                          }}
+                        >
+                          {s}
+                          <button
+                            type="button"
+                            onClick={(e) => removeService(s, e)}
+                            className="ml-0.5 text-white/50 hover:text-white transition-colors cursor-pointer"
+                          >
+                            ×
+                          </button>
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Dropdown rendered via portal so it escapes all stacking contexts */}
+                    {typeof window !== "undefined" &&
+                      dropdownRect &&
+                      createPortal(
+                        <motion.div
+                          initial={false}
+                          animate={
+                            dropdownOpen
+                              ? { opacity: 1, y: 0, pointerEvents: "auto" }
+                              : { opacity: 0, y: -8, pointerEvents: "none" }
+                          }
+                          transition={{
+                            duration: 0.22,
+                            ease: [0.4, 0, 0.2, 1],
+                          }}
+                          style={{
+                            position: "fixed",
+                            top: dropdownRect.bottom + 4,
+                            left: dropdownRect.left,
+                            width: dropdownRect.width,
+                            zIndex: 9999,
+                          }}
+                        >
+                          <div
+                            ref={portalRef}
+                            className="rounded-[12px] overflow-hidden"
                             style={{
-                              background:
-                                "linear-gradient(135deg, rgba(224,64,160,0.2), rgba(155,89,245,0.15))",
-                              border: "1px solid rgba(224,64,160,0.4)",
-                              color: "#fff",
+                              background: "rgba(18,18,26,0.97)",
+                              border: "1px solid rgba(255,255,255,0.1)",
+                              backdropFilter: "blur(20px)",
+                              boxShadow: "0 16px 48px rgba(0,0,0,0.5)",
                             }}
                           >
-                            {s}
-                            <button
-                              type="button"
-                              onClick={(e) => removeService(s, e)}
-                              className="ml-0.5 text-white/50 hover:text-white transition-colors cursor-pointer"
-                            >
-                              ×
-                            </button>
-                          </span>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Dropdown panel */}
-                    {dropdownOpen && (
-                      <div
-                        className="mt-1 rounded-[12px] overflow-hidden"
-                        style={{
-                          background: "rgba(18,18,26,0.97)",
-                          border: "1px solid rgba(255,255,255,0.1)",
-                          backdropFilter: "blur(20px)",
-                          boxShadow: "0 16px 48px rgba(0,0,0,0.5)",
-                        }}
-                      >
-                        {(() => {
-                          const catIds: Record<string, string[]> = {
-                            marketing: [
-                              "social-media-management",
-                              "ai-powered-marketing",
-                              "meta-ads-campaigns",
-                              "influencer-marketing",
-                              "email-marketing",
-                              "seo-optimization",
-                            ],
-                            creative: [
-                              "graphic-design-print",
-                              "graphic-design-digital",
-                              "video-filming",
-                              "video-editing",
-                              "ai-image-generation",
-                              "ai-video-generation",
-                            ],
-                            web: [
-                              "website-creation",
-                              "custom-websites-nextjs",
-                              "shopify-websites",
-                              "online-store-ecommerce",
-                              "web-applications",
-                              "saas-solutions",
-                            ],
-                          };
-                          return t.categoriesList.map((cat, idx) => (
-                            <div key={cat.id}>
-                              {idx > 0 && (
-                                <div className="h-px bg-white/[0.06]" />
-                              )}
-                              <div className="px-3 pt-3 pb-1">
-                                <span className="text-[10px] uppercase tracking-widest text-white/30 font-semibold">
-                                  {cat.label}
-                                </span>
-                              </div>
-                              <div className="grid grid-cols-3 gap-1 px-3 pb-2">
-                                {t.servicesList
-                                  .filter((s) => catIds[cat.id]?.includes(s.id))
-                                  .map((s) => {
-                                    const active = selectedServices.includes(
-                                      s.title,
-                                    );
-                                    return (
-                                      <button
-                                        key={s.id}
-                                        type="button"
-                                        onClick={() => toggleService(s.title)}
-                                        className="flex items-center justify-between gap-1 px-3 py-2 rounded-lg text-xs transition-colors duration-150 cursor-pointer text-left"
-                                        style={{
-                                          color: active
-                                            ? "#fff"
-                                            : "rgba(255,255,255,0.6)",
-                                          background: active
-                                            ? "rgba(224,64,160,0.15)"
-                                            : "rgba(255,255,255,0.03)",
-                                          border: active
-                                            ? "1px solid rgba(224,64,160,0.35)"
-                                            : "1px solid rgba(255,255,255,0.06)",
-                                        }}
-                                        onMouseEnter={(e) => {
-                                          if (!active)
-                                            (
-                                              e.currentTarget as HTMLButtonElement
-                                            ).style.background =
-                                              "rgba(255,255,255,0.07)";
-                                        }}
-                                        onMouseLeave={(e) => {
-                                          if (!active)
-                                            (
-                                              e.currentTarget as HTMLButtonElement
-                                            ).style.background =
-                                              "rgba(255,255,255,0.03)";
-                                        }}
-                                      >
-                                        <span className="leading-snug">
-                                          {s.title}
-                                        </span>
-                                        {active && (
-                                          <span className="text-accent-pink text-sm leading-none flex-shrink-0">
-                                            ✓
-                                          </span>
-                                        )}
-                                      </button>
-                                    );
-                                  })}
-                              </div>
-                              <div className="pb-1" />
-                            </div>
-                          ));
-                        })()}
-                      </div>
-                    )}
+                            {(() => {
+                              const catIds: Record<string, string[]> = {
+                                marketing: [
+                                  "social-media-management",
+                                  "ai-powered-marketing",
+                                  "meta-ads-campaigns",
+                                  "influencer-marketing",
+                                  "email-marketing",
+                                  "seo-optimization",
+                                ],
+                                creative: [
+                                  "graphic-design-print",
+                                  "graphic-design-digital",
+                                  "video-filming",
+                                  "video-editing",
+                                  "ai-image-generation",
+                                  "ai-video-generation",
+                                ],
+                                web: [
+                                  "website-creation",
+                                  "custom-websites-nextjs",
+                                  "shopify-websites",
+                                  "online-store-ecommerce",
+                                  "web-applications",
+                                  "saas-solutions",
+                                ],
+                              };
+                              return t.categoriesList.map((cat, idx) => (
+                                <div key={cat.id}>
+                                  {idx > 0 && (
+                                    <div className="h-px bg-white/[0.06]" />
+                                  )}
+                                  <div className="px-3 pt-3 pb-1">
+                                    <span className="text-[10px] uppercase tracking-widest text-white/30 font-semibold">
+                                      {cat.label}
+                                    </span>
+                                  </div>
+                                  <div className="grid grid-cols-3 gap-1 px-3 pb-2">
+                                    {t.servicesList
+                                      .filter((s) =>
+                                        catIds[cat.id]?.includes(s.id),
+                                      )
+                                      .map((s) => {
+                                        const active =
+                                          selectedServices.includes(s.title);
+                                        return (
+                                          <button
+                                            key={s.id}
+                                            type="button"
+                                            onClick={() =>
+                                              toggleService(s.title)
+                                            }
+                                            className="flex items-center justify-between gap-1 px-3 py-2 rounded-lg text-xs transition-colors duration-150 cursor-pointer text-left"
+                                            style={{
+                                              color: active
+                                                ? "#fff"
+                                                : "rgba(255,255,255,0.6)",
+                                              background: active
+                                                ? "rgba(224,64,160,0.15)"
+                                                : "rgba(255,255,255,0.03)",
+                                              border: active
+                                                ? "1px solid rgba(224,64,160,0.35)"
+                                                : "1px solid rgba(255,255,255,0.06)",
+                                            }}
+                                            onMouseEnter={(e) => {
+                                              if (!active)
+                                                (
+                                                  e.currentTarget as HTMLButtonElement
+                                                ).style.background =
+                                                  "rgba(255,255,255,0.07)";
+                                            }}
+                                            onMouseLeave={(e) => {
+                                              if (!active)
+                                                (
+                                                  e.currentTarget as HTMLButtonElement
+                                                ).style.background =
+                                                  "rgba(255,255,255,0.03)";
+                                            }}
+                                          >
+                                            <span className="leading-snug">
+                                              {s.title}
+                                            </span>
+                                            {active && (
+                                              <span className="text-accent-pink text-sm leading-none flex-shrink-0">
+                                                ✓
+                                              </span>
+                                            )}
+                                          </button>
+                                        );
+                                      })}
+                                  </div>
+                                  <div className="pb-1" />
+                                </div>
+                              ));
+                            })()}
+                          </div>
+                        </motion.div>,
+                        document.body,
+                      )}
                   </div>
 
                   {/* Message */}

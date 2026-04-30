@@ -7,7 +7,6 @@ import WhyAviva from "@/components/sections/WhyAviva";
 import MarqueeBanner from "@/components/sections/MarqueeBanner";
 import Testimonials from "@/components/sections/Testimonials";
 import CTABanner from "@/components/sections/CTABanner";
-import ContactFormSection from "@/components/sections/ContactFormSection";
 
 export default function Home() {
   return (

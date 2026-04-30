@@ -57,7 +57,7 @@ const phases = [
     title: "Design & Build",
     titleBg: "Дизайн и разработка",
     short: "Where ideas turn into a functional, high-performing product.",
-    shortBg: "Където идеите се превръщат в реален, висококачествен продукт.",
+    shortBg: "Където идеите се превръщат в реален продукт.",
     image: "/websites/images/robohub.webp",
     steps: [
       {
@@ -96,7 +96,7 @@ const phases = [
     title: "Launch & Growth",
     titleBg: "Пускане и растеж",
     short: "We refine, launch, and continuously improve performance.",
-    shortBg: "Финализираме, пускаме и непрекъснато подобряваме резултатите.",
+    shortBg: "Финализиране, лаунч и поддръжка",
     image: "/websites/images/activegym.webp",
     steps: [
       {
@@ -254,7 +254,7 @@ export function ProcessSection({ locale = "en" }: ProcessSectionProps) {
                     className="object-cover"
                     style={{
                       filter: isActive
-                        ? "brightness(0.32) saturate(0.75)"
+                        ? "brightness(0.18) saturate(0.6)"
                         : "brightness(0.12) saturate(0.4)",
                       transform: isActive ? "scale(1.04)" : "scale(1.0)",
                       transition: "filter 0.6s ease, transform 0.6s ease",
@@ -267,7 +267,7 @@ export function ProcessSection({ locale = "en" }: ProcessSectionProps) {
                   className="absolute inset-0 pointer-events-none"
                   style={{
                     background: isActive
-                      ? "linear-gradient(to bottom, rgba(10,10,15,0.35) 0%, rgba(10,10,15,0.7) 100%)"
+                      ? "linear-gradient(to bottom, rgba(10,10,15,0.65) 0%, rgba(10,10,15,0.88) 100%)"
                       : "linear-gradient(to bottom, rgba(10,10,15,0.6) 0%, rgba(10,10,15,0.88) 100%)",
                     transition: "background 0.6s ease",
                   }}
@@ -322,7 +322,7 @@ export function ProcessSection({ locale = "en" }: ProcessSectionProps) {
                     className="text-lg leading-relaxed mb-8"
                     style={{
                       color: isActive
-                        ? "rgba(255,255,255,0.6)"
+                        ? "rgba(255,255,255,0.9)"
                         : "rgba(255,255,255,0.28)",
                       transition: "color 0.5s ease",
                     }}
@@ -361,7 +361,7 @@ export function ProcessSection({ locale = "en" }: ProcessSectionProps) {
                             className="text-base font-semibold leading-snug mb-1"
                             style={{
                               color: isActive
-                                ? "rgba(255,255,255,0.9)"
+                                ? "rgba(255,255,255,1)"
                                 : "rgba(255,255,255,0.3)",
                               transition: "color 0.5s ease",
                             }}
@@ -372,7 +372,7 @@ export function ProcessSection({ locale = "en" }: ProcessSectionProps) {
                             className="text-sm leading-relaxed"
                             style={{
                               color: isActive
-                                ? "rgba(255,255,255,0.45)"
+                                ? "rgba(255,255,255,0.8)"
                                 : "rgba(255,255,255,0.18)",
                               transition: "color 0.5s ease",
                             }}

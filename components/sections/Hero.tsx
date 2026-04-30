@@ -223,13 +223,13 @@ export default function Hero() {
       />
 
       {/* ── Main content ── */}
-      <div className="container relative z-20 flex flex-col min-h-screen py-20">
+      <div className="container relative z-20 flex flex-col justify-center min-h-screen py-28">
         {/* Left-aligned text block — max ~55% width so the hand stays visible */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="flex flex-col items-start text-left gap-5 max-w-[58%] lg:max-w-[52%] 3xl:max-w-[46%] mt-16"
+          className="flex flex-col items-start text-left gap-5 max-w-[58%] lg:max-w-[52%] 3xl:max-w-[46%]"
         >
           {/* H1 with BlurText */}
           <h1 className="font-display font-extrabold text-4xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] 3xl:text-[6rem] 4xl:text-[7.5rem] leading-[1.02] text-white w-full tracking-tight">
@@ -284,11 +284,14 @@ export default function Hero() {
               <ButtonOutline size="lg">{t.hero.ctaSecondary}</ButtonOutline>
             </Link>
           </motion.div>
-        </motion.div>
 
-        {/* ── Stats — centered at the bottom ── */}
-        <div className="mt-16 pb-8 w-full">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl 3xl:max-w-5xl mx-auto">
+          {/* ── Stats — left-aligned below buttons ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.4 }}
+            className="flex mt-8 gap-4"
+          >
             {stats.map((s) => (
               <StatCard
                 key={s.label}
@@ -299,8 +302,8 @@ export default function Hero() {
                 suffix="+"
               />
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

@@ -32,7 +32,7 @@ export const services: Service[] = [
   {
     id: "ai-powered-marketing",
     category: "marketing",
-    categories: ["marketing", "ai"],
+    categories: ["marketing"],
     categoryLabel: "Дигитален маркетинг",
     icon: "Brain",
     title: "AI-Powered Marketing",

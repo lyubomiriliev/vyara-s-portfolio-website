@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useLang } from "@/lib/LanguageContext";
 
 const logos = [
   { name: "El Shisha", src: "/clients/elshisha.png" },
@@ -18,7 +17,6 @@ const logos = [
 ];
 
 export default function MarqueeBanner() {
-  const { t } = useLang();
 
   if (logos.length === 0) return null;
   return (
