@@ -119,7 +119,9 @@ export default function CTABanner() {
               <Link href="/contact">
                 <button
                   className="inline-flex items-center gap-2 font-display font-semibold rounded-pill px-9 py-4 text-base text-white hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-150 cursor-pointer"
-                  style={{ background: 'linear-gradient(135deg, #FFB76C, #FF419D)' }}
+                  style={{
+                    background: "linear-gradient(135deg, #FFB76C, #FF419D)",
+                  }}
                 >
                   <MessageCircle size={16} />
                   {t.ctaBanner.ctaSecondary}

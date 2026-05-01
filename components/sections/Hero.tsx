@@ -4,12 +4,12 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { staggerContainer } from "@/lib/animations";
+
 import { ButtonPrimary } from "@/components/ui/ButtonPrimary";
 import { ButtonOutline } from "@/components/ui/ButtonOutline";
 import { useCountUp } from "@/lib/useCountUp";
 import { useLang } from "@/lib/LanguageContext";
-import { BlurText } from "@/components/ui/BlurText";
+
 
 const CYCLING_WORDS: Record<"en" | "bg", string[]> = {
   en: [
@@ -37,38 +37,42 @@ function TypewriterCycle({
   words: string[];
   gradient: string;
 }) {
+  const firstWord = words[0];
   const [index, setIndex] = useState(0);
-  const [displayed, setDisplayed] = useState("");
-  const [phase, setPhase] = useState<"typing" | "pausing" | "erasing">(
-    "typing",
-  );
-  const [started, setStarted] = useState(false);
+  // Start with first word fully shown so no layout shift on mount
+  const [charCount, setCharCount] = useState(firstWord.length);
+  const [phase, setPhase] = useState<"typing" | "erasing">("erasing");
+  // Delay before the first erase begins so the word is visible briefly
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
+    const delay = setTimeout(() => setActive(true), 1800);
+    return () => clearTimeout(delay);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (!active) return;
     const word = words[index];
     let timeout: ReturnType<typeof setTimeout>;
 
     if (phase === "typing") {
-      if (displayed.length < word.length) {
-        timeout = setTimeout(() => {
-          if (!started) setStarted(true);
-          setDisplayed(word.slice(0, displayed.length + 1));
-        }, 60);
+      if (charCount < word.length) {
+        timeout = setTimeout(() => setCharCount((c) => c + 1), 60);
       } else {
-        timeout = setTimeout(() => setPhase("pausing"), 1800);
+        timeout = setTimeout(() => setPhase("erasing"), 1800);
       }
-    } else if (phase === "pausing") {
-      timeout = setTimeout(() => setPhase("erasing"), 0);
     } else {
-      if (displayed.length > 0) {
-        timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 35);
+      if (charCount > 0) {
+        timeout = setTimeout(() => setCharCount((c) => c - 1), 35);
       } else {
         setIndex((i) => (i + 1) % words.length);
         setPhase("typing");
       }
     }
     return () => clearTimeout(timeout);
-  }, [displayed, phase, index, words, started]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [charCount, phase, index, words, active]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const displayed = words[index].slice(0, charCount);
 
   return (
     <span
@@ -78,6 +82,7 @@ function TypewriterCycle({
         WebkitTextFillColor: "transparent",
         backgroundClip: "text",
         display: "inline-block",
+        whiteSpace: "nowrap",
         minWidth: "2ch",
       }}
     >
@@ -88,7 +93,7 @@ function TypewriterCycle({
           background: gradient,
           WebkitBackgroundClip: "text",
           backgroundClip: "text",
-          opacity: started && phase !== "pausing" ? 1 : 0,
+          opacity: active ? 1 : 0,
           marginLeft: "2px",
           animation: "blink 0.7s step-end infinite",
         }}
@@ -225,46 +230,44 @@ export default function Hero() {
       {/* ── Main content ── */}
       <div className="container relative z-20 flex flex-col justify-center min-h-screen py-28">
         {/* Left-aligned text block — max ~55% width so the hand stays visible */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col items-start text-left gap-5 max-w-[58%] lg:max-w-[52%] 3xl:max-w-[46%]"
-        >
-          {/* H1 with BlurText */}
-          <h1 className="font-display font-extrabold text-4xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] 3xl:text-[6rem] 4xl:text-[7.5rem] leading-[1.02] text-white w-full tracking-tight">
-            <div className="block w-full text-left">
-              <BlurText
-                text={t.hero.line1}
-                delay={0.1}
-                stagger={0.08}
-                animate="always"
-              />
-            </div>
-            <div
-              className="block w-full py-2 text-left"
-              style={{ minHeight: "2.2em" }}
+        <div className="flex flex-col items-start text-left gap-5 max-w-[58%] lg:max-w-[52%] 3xl:max-w-[46%] overflow-visible">
+          {/* H1 — three rows slide up in clean sequence, typewriter starts after row 2 settles */}
+          <h1 className="font-display font-extrabold leading-[1.08] text-white w-full tracking-tight">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="block w-full text-left text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[4.25rem] 4xl:text-[5.25rem]"
+            >
+              {t.hero.line1}
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="block w-max text-left text-4xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] 3xl:text-[6rem] 4xl:text-[7.5rem]"
+              style={{ minHeight: "1.15em" }}
             >
               <TypewriterCycle
                 words={CYCLING_WORDS[locale]}
                 gradient="linear-gradient(135deg, #FFB76C 0%, #E040A0 100%)"
               />
-            </div>
-            <div className="block w-full text-left">
-              <BlurText
-                text={t.hero.line3}
-                delay={0.7}
-                stagger={0.05}
-                animate="always"
-              />
-            </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="block w-full text-left text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[4.25rem] 4xl:text-[5.25rem]"
+            >
+              {t.hero.line3}
+            </motion.div>
           </h1>
 
           {/* Subheading */}
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
+            transition={{ duration: 0.7, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-base md:text-lg xl:text-lg 3xl:text-xl text-white/65 max-w-lg 3xl:max-w-xl leading-relaxed text-left"
           >
             {t.hero.sub}
@@ -274,7 +277,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.25 }}
+            transition={{ duration: 0.7, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-center justify-start gap-4 flex-wrap"
           >
             <Link href="/contact">
@@ -285,11 +288,11 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-          {/* ── Stats — left-aligned below buttons ── */}
+          {/* Stats — left-aligned below buttons */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.4 }}
+            transition={{ duration: 0.7, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
             className="flex mt-8 gap-4"
           >
             {stats.map((s) => (
@@ -303,7 +306,7 @@ export default function Hero() {
               />
             ))}
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

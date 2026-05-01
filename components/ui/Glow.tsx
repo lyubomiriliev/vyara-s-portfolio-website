@@ -12,7 +12,7 @@ export function Glow({ color = 'pink', size = 400, className = '' }: GlowProps) 
   return (
     <div
       aria-hidden
-      className={`absolute pointer-events-none -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl animate-pulse-glow ${className}`}
+      className={`absolute pointer-events-none -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl ${className}`}
       style={{ width: size, height: size, background: `radial-gradient(circle, ${colors[color]}, transparent 70%)` }}
     />
   )

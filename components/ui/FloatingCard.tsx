@@ -14,6 +14,7 @@ export function FloatingCard({
   delay,
   floatDir = 'down',
   href,
+  small = false,
 }: {
   icon: React.ReactNode
   label: string
@@ -23,6 +24,7 @@ export function FloatingCard({
   delay: number
   floatDir?: 'up' | 'down'
   href: string
+  small?: boolean
 }) {
   const yKeyframes = floatDir === 'up' ? [0, 10, 0] : [0, -12, 0]
   return (
@@ -42,7 +44,7 @@ export function FloatingCard({
         <motion.div
           animate={{ y: yKeyframes }}
           transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay }}
-          className="relative px-5 py-4 rounded-2xl min-w-[180px]"
+          className={`relative rounded-2xl ${small ? 'px-3.5 py-3 min-w-[148px]' : 'px-5 py-4 min-w-[180px]'}`}
           style={{
             background: 'linear-gradient(160deg, rgba(22,22,34,0.88), rgba(10,10,16,0.94))',
             backdropFilter: 'blur(24px) saturate(180%)',
@@ -55,7 +57,7 @@ export function FloatingCard({
             <span style={{ color: accent }}>{icon}</span>
             {label}
           </div>
-          <div className="font-display font-bold text-xl mb-1" style={{ color: accent }}>
+          <div className={`font-display font-bold mb-1 ${small ? 'text-base' : 'text-xl'}`} style={{ color: accent }}>
             {value}
           </div>
           <div className="text-white/35 text-[11px] flex items-center gap-1">

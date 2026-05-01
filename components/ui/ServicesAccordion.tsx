@@ -15,26 +15,29 @@ export interface AccordionService {
 
 interface ServicesAccordionProps {
   services: AccordionService[];
-  accentColor: string; // e.g. '#FF419D'
-  accentColorRgb: string; // e.g. '255, 65, 157'
-  gradient: string; // e.g. 'linear-gradient(135deg, #FFB76C, #FF419D)'
+  accentColor: string;
+  accentColorRgb: string;
+  gradient: string;
+  minHeight?: number;
 }
 
 export default function ServicesAccordion({
   services,
   accentColor,
   accentColorRgb,
+  minHeight,
 }: ServicesAccordionProps) {
   const [open, setOpen] = useState<string | null>(null);
 
   return (
     <div
-      className="flex flex-col divide-y"
+      className="flex flex-col"
       style={{
-        borderColor: `rgba(${accentColorRgb}, 0.10)`,
-        border: `1px solid rgba(${accentColorRgb}, 0.10)`,
+        border: `1px solid rgba(${accentColorRgb}, 0.15)`,
         borderRadius: 16,
         overflow: "hidden",
+        minHeight: minHeight ? `${minHeight}px` : undefined,
+        boxShadow: `0 0 0 1px rgba(${accentColorRgb}, 0.05), inset 0 1px 0 rgba(255,255,255,0.04)`,
       }}
     >
       {services.map((service, index) => {
@@ -47,33 +50,24 @@ export default function ServicesAccordion({
         return (
           <div
             key={service.id}
-            style={{ borderColor: `rgba(${accentColorRgb}, 0.08)` }}
           >
             {/* Row trigger */}
             <button
               onClick={() => setOpen(isOpen ? null : service.id)}
-              className="w-full flex items-center gap-4 px-5 py-4 text-left transition-all duration-200 cursor-pointer group"
+              className="w-full flex items-center gap-3 px-4 py-3.5 text-left transition-all duration-200 cursor-pointer group"
               style={{
                 background: isOpen
-                  ? `rgba(${accentColorRgb}, 0.06)`
-                  : "rgba(255,255,255,0.02)",
+                  ? `rgba(${accentColorRgb}, 0.07)`
+                  : "transparent",
               }}
             >
-              {/* Number */}
-              <span
-                className="text-[11px] font-bold tabular-nums w-6 text-center flex-shrink-0 opacity-40 group-hover:opacity-70 transition-opacity"
-                style={{ color: accentColor }}
-              >
-                {String(index + 1).padStart(2, "0")}
-              </span>
-
               {/* Icon */}
               <div
                 className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-200"
                 style={{
                   background: isOpen
-                    ? `rgba(${accentColorRgb}, 0.18)`
-                    : `rgba(${accentColorRgb}, 0.08)`,
+                    ? `rgba(${accentColorRgb}, 0.20)`
+                    : `rgba(${accentColorRgb}, 0.10)`,
                 }}
               >
                 {IconComp && (
@@ -118,7 +112,7 @@ export default function ServicesAccordion({
                   <div className="p-5 flex flex-col gap-4">
                     {/* Left accent bar + description */}
                     <div
-                      className="pl-4 text-[13px] leading-relaxed"
+                      className="pl-4 text-base leading-relaxed"
                       style={{
                         borderLeft: `2px solid rgba(${accentColorRgb}, 0.4)`,
                         color: "rgba(255,255,255,0.60)",
@@ -153,7 +147,8 @@ export default function ServicesAccordion({
               <div
                 style={{
                   height: 1,
-                  background: `rgba(${accentColorRgb}, 0.06)`,
+                  background: `rgba(${accentColorRgb}, 0.12)`,
+                  margin: "0 16px",
                 }}
               />
             )}

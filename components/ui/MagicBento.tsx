@@ -5,25 +5,30 @@ import { gsap } from "gsap";
 import * as Icons from "lucide-react";
 import Image from "next/image";
 
+// Map service IDs to background videos (MP4)
+const SERVICE_VIDEOS: Record<string, string> = {
+  "video-editing": "/services-images/video-editing.mp4",
+};
+
 // Map service IDs to background images
 const SERVICE_BACKGROUNDS: Record<string, string> = {
-  "social-media-management": "/background-images/aviva-digital-wallpaper.png",
-  "ai-powered-marketing": "/background-images/ai-master-wallpaper.png",
-  "meta-ads-campaigns": "/background-images/aviva-digital-wallpaper.png",
-  "email-marketing": "/background-images/working-wallpaper.png",
-  "graphic-design": "/background-images/aviva-digital-wallpaper.png",
-  "print-materials": "/background-images/working-wallpaper.png",
-  "video-filming": "/background-images/aviva-digital-wallpaper.png",
-  "video-editing": "/background-images/ai-master-wallpaper.png",
-  "copywriting": "/background-images/working-wallpaper.png",
+  "social-media-management": "/services-images/social-media-management.png",
+  "ai-powered-marketing": "/services-images/ai-marketing.png",
+  "meta-ads-campaigns": "/services-images/meta-ads.png",
+  "email-marketing": "/services-images/email-marketing.png",
+  "graphic-design": "/services-images/graphic-design.png",
+  "print-materials": "/services-images/print-materials.png",
+  "video-filming": "/services-images/video-filming.png",
+  "video-editing": "/services-images/video-editing.png",
+  copywriting: "/services-images/copywriting.png",
   "ai-image-generation": "/background-images/ai-master-wallpaper.png",
-  "ai-video-generation": "/background-images/ai-master-wallpaper.png",
-  "seo-optimization": "/background-images/tool-stack-wallpaper.png",
-  "custom-websites-nextjs": "/background-images/aviva-digital-wallpaper.png",
-  "online-store-ecommerce": "/background-images/working-wallpaper.png",
-  "web-applications": "/background-images/aviva-digital-wallpaper.png",
-  "saas-solutions": "/background-images/tool-stack-wallpaper.png",
-  "hosting-domain": "/background-images/tool-stack-wallpaper.png",
+  "ai-video-generation": "/services-images/ai-video-generation.png",
+  "seo-optimization": "/services-images/seo-marketing.png",
+  "custom-websites-nextjs": "/services-images/custom-websites.png",
+  "online-store-ecommerce": "/services-images/ecommerce.png",
+  "web-applications": "/services-images/web-applications.png",
+  "saas-solutions": "/services-images/saas-solutions.png",
+  "hosting-domain": "/services-images/hosting-domain.png",
 };
 
 export interface BentoCardData {
@@ -318,17 +323,16 @@ const GlobalSpotlight: React.FC<{
     spotlight.className = "global-spotlight";
     spotlight.style.cssText = `
       position: fixed;
-      width: 800px;
-      height: 800px;
+      width: 500px;
+      height: 500px;
       border-radius: 50%;
       pointer-events: none;
       background: radial-gradient(circle,
-        rgba(${glowColor}, 0.15) 0%,
-        rgba(${glowColor}, 0.08) 15%,
-        rgba(${glowColor}, 0.04) 25%,
-        rgba(${glowColor}, 0.02) 40%,
-        rgba(${glowColor}, 0.01) 65%,
-        transparent 70%
+        rgba(${glowColor}, 0.07) 0%,
+        rgba(${glowColor}, 0.04) 15%,
+        rgba(${glowColor}, 0.02) 25%,
+        rgba(${glowColor}, 0.01) 40%,
+        transparent 60%
       );
       z-index: 200;
       opacity: 0;
@@ -401,9 +405,9 @@ const GlobalSpotlight: React.FC<{
       });
       const targetOpacity =
         minDistance <= proximity
-          ? 0.8
+          ? 0.4
           : minDistance <= fadeDistance
-            ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8
+            ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.4
             : 0;
       gsap.to(spotlightRef.current, {
         opacity: targetOpacity,
@@ -495,7 +499,7 @@ export default function MagicBento({
   enableMagnetism = false,
 }: MagicBentoProps) {
   const rawId = useId();
-  const instanceId = `mb-${rawId.replace(/:/g, "")}` ;
+  const instanceId = `mb-${rawId.replace(/:/g, "")}`;
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
@@ -604,14 +608,25 @@ export default function MagicBento({
         />
       )}
 
-      <BentoCardGrid gridRef={gridRef as React.RefObject<HTMLDivElement>} instanceId={instanceId}>
+      <BentoCardGrid
+        gridRef={gridRef as React.RefObject<HTMLDivElement>}
+        instanceId={instanceId}
+      >
         <div className="card-responsive">
-          {cards.map((card, index) => {
+          {(() => {
+            const scoreOf = (c: BentoCardData) =>
+              (c.description?.length ?? 0) + (c.benefits?.join("").length ?? 0);
+            const byScore = [...cards].sort((a, b) => scoreOf(b) - scoreOf(a));
+            const bigIds = [byScore[0]?.id, byScore[1]?.id].filter(Boolean);
+            const smalls = cards.filter((c) => !bigIds.includes(c.id));
+            const bigs = bigIds.map((id) => cards.find((c) => c.id === id)!).filter(Boolean);
+            const ordered = [...smalls.slice(0, 2), ...bigs, ...smalls.slice(2)];
+            return ordered.map((card, index) => {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const IconComp = (Icons as any)[card.icon] as
               | React.ElementType
               | undefined;
-            const baseClassName = `card flex flex-col relative min-h-[360px] w-full max-w-full rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 ${enableBorderGlow ? "card--border-glow" : ""}`;
+            const baseClassName = `card flex flex-col relative min-h-[260px] w-full max-w-full rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 ${enableBorderGlow ? "card--border-glow" : ""}`;
             const cardStyle: React.CSSProperties = {
               backgroundColor: "#0d0a14",
               borderColor: "var(--border-color)",
@@ -623,11 +638,27 @@ export default function MagicBento({
             } as React.CSSProperties;
 
             const bgImage = SERVICE_BACKGROUNDS[card.id];
+            const bgVideo = SERVICE_VIDEOS[card.id];
 
             const cardContent = (
               <>
+                {/* Background video with dark overlay */}
+                {bgVideo && (
+                  <div className="absolute inset-0 z-0 pointer-events-none">
+                    <video
+                      src={bgVideo}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover opacity-[0.25]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a14] via-[#0d0a14]/70 to-transparent" />
+                  </div>
+                )}
+
                 {/* Background image with dark overlay */}
-                {bgImage && (
+                {bgImage && !bgVideo && (
                   <div className="absolute inset-0 z-0 pointer-events-none">
                     <Image
                       src={bgImage}
@@ -641,12 +672,33 @@ export default function MagicBento({
                 )}
 
                 {/* Content */}
-                <div className="flex flex-col relative p-5 z-10 gap-3 h-full">
-                  {/* Icon + label row */}
-                  <div className="flex justify-between items-start gap-3">
-                    <span className="text-[10px] font-semibold tracking-widest uppercase text-white/50 leading-tight">
-                      {card.id.replace(/-/g, " ")}
-                    </span>
+                <div className="flex flex-col relative p-4 z-10 gap-3 h-full">
+                  {/* Text content */}
+                  <div className="flex flex-col gap-3 flex-1">
+                    <h3 className="font-bold text-[20px] leading-snug text-white m-0">
+                      {card.title}
+                    </h3>
+                    <p className="text-base leading-[1.6] text-white/70 m-0">
+                      {card.description}
+                    </p>
+                    <ul className="flex flex-col gap-[6px]">
+                      {card.benefits.map((b) => (
+                        <li
+                          key={b}
+                          className="flex items-center gap-2 text-sm text-white/55"
+                        >
+                          <span
+                            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                            style={{ background: `rgba(${glowColor}, 0.9)` }}
+                          />
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Icon — bottom right */}
+                  <div className="flex justify-end">
                     <div
                       className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
                       style={{ background: `rgba(${glowColor}, 0.2)` }}
@@ -658,30 +710,6 @@ export default function MagicBento({
                         />
                       )}
                     </div>
-                  </div>
-
-                  {/* Text content anchored to bottom */}
-                  <div className="flex flex-col gap-3 mt-auto">
-                    <h3 className="font-bold text-[17px] leading-snug text-white m-0">
-                      {card.title}
-                    </h3>
-                    <p className="text-[13px] leading-[1.6] text-white/70 m-0">
-                      {card.description}
-                    </p>
-                    <ul className="flex flex-col gap-[6px]">
-                      {card.benefits.map((b) => (
-                        <li
-                          key={b}
-                          className="flex items-center gap-2 text-[12px] text-white/55"
-                        >
-                          <span
-                            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                            style={{ background: `rgba(${glowColor}, 0.9)` }}
-                          />
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
               </>
@@ -710,7 +738,8 @@ export default function MagicBento({
                 {cardContent}
               </div>
             );
-          })}
+          });
+          })()}
         </div>
       </BentoCardGrid>
     </>

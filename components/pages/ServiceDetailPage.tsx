@@ -148,7 +148,7 @@ export default function ServiceDetailPage({ service }: Props) {
             <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4">
               Ready to get started?
             </h2>
-            <p className="text-white/55 mb-8 max-w-lg mx-auto">
+            <p className="text-white/55 text-base mb-8 max-w-lg mx-auto">
               Let&apos;s talk about your project and how {service.title} can help your brand grow.
             </p>
             <Link href="/contact">

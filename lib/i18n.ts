@@ -871,8 +871,8 @@ export const translations = {
     // CTABanner
     ctaBanner: {
       label: "ГОТОВИ ЛИ СТЕ?",
-      title: "Искате ли брандът ви да расте",
-      titleAccent: "с помощта на AI?",
+      title: "Искате ли брандът ви да",
+      titleAccent: "расте с помощта на AI?",
       sub: "Нека поговорим какво е възможно. Безплатна консултация, без задължения.",
       cta: "Безплатна консултация",
       ctaSecondary: "Пишете ни",

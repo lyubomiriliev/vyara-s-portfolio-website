@@ -21,7 +21,7 @@ export function PageHero({
     ? title.replace(titleGradient, "").trim()
     : title;
   return (
-    <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-0">
+    <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-0 lg:min-h-[480px] xl:min-h-[520px]">
       <Glow color="orange" size={500} className="top-1/2 left-1/3" />
       <Glow color="pink" size={300} className="top-1/3 right-1/4" />
       <div className="container relative z-10 text-center max-w-3xl mx-auto">

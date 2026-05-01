@@ -48,18 +48,18 @@ export function BlurText({
         <motion.span
           key={`${word}-${i}`}
           variants={{
-            hidden: { opacity: 0, filter: 'blur(12px)', y: 12 },
+            hidden: { opacity: 0, y: 18, filter: 'blur(6px)' },
             visible: {
               opacity: 1,
-              filter: 'blur(0px)',
               y: 0,
-              transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+              filter: 'blur(0px)',
+              transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
             },
           }}
           style={{
             display: 'inline-block',
             marginRight: '0.28em',
-            willChange: 'filter, transform',
+            willChange: 'transform, opacity, filter',
             ...wordGradientStyle,
           }}
         >

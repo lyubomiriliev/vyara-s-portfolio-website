@@ -11,9 +11,9 @@ import { projects } from "@/data/projects";
 import { useLang } from "@/lib/LanguageContext";
 
 const previewProjects = [
-  projects.find((p) => p.category === "Designs")!,
-  projects.find((p) => p.category === "Video")!,
-  projects.find((p) => p.category === "Web")!,
+  projects.find((p) => p.id === "c1")!,
+  projects.find((p) => p.id === "c11")!,
+  projects.find((p) => p.id === "c31")!,
 ];
 
 const categoryAccent: Record<
@@ -25,17 +25,17 @@ const categoryAccent: Record<
     border: "rgba(224,64,160,0.3)",
     glow: "rgba(224,64,160,0.12)",
   },
-  Social: {
+  Print: {
     color: "#9B59F5",
     border: "rgba(155,89,245,0.3)",
     glow: "rgba(155,89,245,0.12)",
   },
-  Web: {
+  Reels: {
     color: "#4A9EFF",
     border: "rgba(74,158,255,0.3)",
     glow: "rgba(74,158,255,0.12)",
   },
-  Video: {
+  AI: {
     color: "#FFB76C",
     border: "rgba(255,183,108,0.3)",
     glow: "rgba(255,183,108,0.12)",
@@ -190,11 +190,7 @@ export default function PortfolioPreview() {
                         backdropFilter: "blur(8px)",
                       }}
                     >
-                      {project.category === "Video"
-                        ? "VIDEOS"
-                        : project.category === "Web"
-                          ? "WEBSITES"
-                          : project.category.toUpperCase()}
+                      {project.category.toUpperCase()}
                     </span>
                   </div>
 
