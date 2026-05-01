@@ -17,8 +17,7 @@ import {
 } from "lucide-react";
 import { projects, projectCategories } from "@/data/projects";
 import type { Project, GoalType } from "@/data/projects";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { staggerContainer, fadeUp, scaleIn } from "@/lib/animations";
+import { scaleIn } from "@/lib/animations";
 
 type Category = (typeof projectCategories)[number];
 
@@ -499,8 +498,14 @@ function CarouselMedia({ slides }: { slides: string[] }) {
   const [dragging, setDragging] = useState(false);
   const dragStart = useRef(0);
 
-  const prev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
-  const next = () => setIndex((i) => (i + 1) % slides.length);
+  const prev = useCallback(
+    () => setIndex((i) => (i - 1 + slides.length) % slides.length),
+    [slides.length]
+  );
+  const next = useCallback(
+    () => setIndex((i) => (i + 1) % slides.length),
+    [slides.length]
+  );
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -509,7 +514,7 @@ function CarouselMedia({ slides }: { slides: string[] }) {
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [slides.length]);
+  }, [prev, next]);
 
   const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
     setDragging(true);
