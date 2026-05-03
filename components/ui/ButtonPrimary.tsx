@@ -26,7 +26,7 @@ export function ButtonPrimary({ children, size = 'md', className = '', onClick, 
         transition-all duration-150 cursor-pointer
         disabled:opacity-50 disabled:cursor-not-allowed
         ${sizes[size]} ${className}`}
-      style={{ background: 'linear-gradient(135deg, #FFB76C, #FF419D)' }}
+      style={{ background: 'linear-gradient(135deg, #E040A0, #9B59F5)' }}
     >
       {children}
     </button>

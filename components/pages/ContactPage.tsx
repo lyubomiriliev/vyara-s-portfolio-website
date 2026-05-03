@@ -101,7 +101,7 @@ export default function ContactPage() {
   return (
     <>
       {/* ── Main form + image + info ── */}
-      <section className="section-padding relative">
+      <section className="pb-24 relative">
         <Glow color="pink" size={700} className="top-1/2 left-1/4" />
         <Glow color="orange" size={400} className="bottom-0 right-1/3" />
 
@@ -115,28 +115,6 @@ export default function ContactPage() {
             backgroundSize: "28px 28px",
           }}
         />
-
-        {/* Decorative image — right half, fixed to viewport height so layout changes don't affect it */}
-        <div
-          aria-hidden
-          className="absolute top-0 right-0 w-[75%] pointer-events-none hidden lg:block overflow-hidden"
-          style={{ zIndex: 1, bottom: 0, willChange: "auto" }}
-        >
-          <Image
-            src="/background-images/working-wallpaper.png"
-            alt=""
-            fill
-            className="object-cover object-center"
-            style={{
-              opacity: 0.55,
-              maskImage:
-                "linear-gradient(to left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 40%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%)",
-              maskComposite: "intersect",
-              WebkitMaskImage:
-                "linear-gradient(to left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, transparent 100%)",
-            }}
-          />
-        </div>
 
         <div className="container relative z-10">
           <div className="max-w-5xl mx-auto flex flex-col gap-6">

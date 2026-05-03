@@ -195,7 +195,7 @@ export default function ProjectsPage() {
   return (
     <>
       {/* Desktop slider */}
-      <section className="hidden md:block section-padding">
+      <section className="hidden md:block pb-24">
         <motion.div
           className="w-full px-6 xl:px-12 2xl:px-20"
           initial={{ opacity: 0, y: 40 }}
