@@ -20,7 +20,7 @@ const phases = [
     titleBg: "Стратегия",
     short: "We define the foundation before anything is built.",
     shortBg: "Определяме основите, преди да се изгради каквото и да е.",
-    image: "/websites/images/mbcenter.webp",
+    image: "/websites/images/mbcenter3.webp",
     steps: [
       {
         title: "Research & Positioning",
@@ -97,7 +97,7 @@ const phases = [
     titleBg: "Пускане и растеж",
     short: "We refine, launch, and continuously improve performance.",
     shortBg: "Финализиране, лаунч и поддръжка",
-    image: "/websites/images/activegym.webp",
+    image: "/websites/images/activegym2.webp",
     steps: [
       {
         title: "Testing & Optimisation",

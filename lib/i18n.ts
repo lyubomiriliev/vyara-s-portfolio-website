@@ -20,7 +20,7 @@ export const translations = {
       badge: "AI-Powered Digital Agency",
       line1: "Crafting",
       line2: "Iconic Brands",
-      line3: "Engineered to Convert.",
+      line3: "Engineered",
       sub: "A new breed of digital agency — fusing AI intelligence with award-winning craft. We design, build, and scale brands the world stops to look at.",
       ctaPrimary: "Start Your Project →",
       ctaSecondary: "See Our Work",
@@ -69,10 +69,10 @@ export const translations = {
       label: "WHAT WE DO",
       title: "Every Service Your Brand Needs",
       sub: "From AI-generated content to custom web applications — we handle it all.",
-      seeAll: "See All 14 Services →",
+      seeAll: "See All 18 Services →",
       learnMore: "Learn More →",
       getStarted: "Get Started →",
-      across3: "14 services across 3 disciplines",
+      across3: "18 services across 3 disciplines",
       allServices: "All Services",
       columns: [
         { label: "Marketing & Social" },
@@ -104,7 +104,7 @@ export const translations = {
       sectionTitleAccent: "Trust Us",
       sectionSub:
         "We partner with ambitious brands — from local ventures to growing businesses — and shape the way they're seen online.",
-      brandCount: "+ brands we've worked with",
+      brandCount: " brands we've worked with",
       serviceTags: ["Social Media", "Brand Strategy", "Content Creation"],
       // ClientsPage
       pageLabel: "OUR CLIENTS",
@@ -268,7 +268,7 @@ export const translations = {
         title: "Every Service Your Brand Needs to",
         titleGradient: "Dominate Online",
         description:
-          "From AI-powered marketing to custom web applications — 14 services across marketing, creative and development.",
+          "From AI-powered marketing to custom web applications — 18 services across marketing, creative and development.",
       },
       work: {
         label: "OUR WORK",
@@ -334,10 +334,65 @@ export const translations = {
     // Clients page — full client stories
     clientStories: [
       {
+        tagline: "Architecture, scaled by storytelling.",
+        description:
+          "Premium portfolio design and Instagram storytelling that elevated every project into a marketing asset.",
+        industry: "Interior Design",
+        metrics: [
+          { label: "Inbound Leads" },
+          { label: "Engagement" },
+          { label: "Profile Visits" },
+        ],
+      },
+      {
+        tagline: "A product launch with momentum.",
+        description:
+          "Launch creative, paid funnels, and a content calendar that took a new product from cold launch to category challenger.",
+        industry: "Supplements",
+        metrics: [
+          { label: "ROAS" },
+          { label: "Trial Signups" },
+          { label: "Brand Recall" },
+        ],
+      },
+      {
+        tagline: "Automotive content that drives intent.",
+        description:
+          "Premium product visuals and dealership-level campaign work that translated digital impressions into showroom visits.",
+        industry: "Automotive",
+        metrics: [
+          { label: "Showroom Visits" },
+          { label: "Test Drives" },
+          { label: "CTR" },
+        ],
+      },
+      {
+        tagline: "A fitness brand built to scale.",
+        description:
+          "Identity, social, and creator partnerships engineered into one growth machine — with retention metrics to match.",
+        industry: "Sport & Wellness",
+        metrics: [
+          { label: "Brand Recognition" },
+          { label: "Client Retention" },
+          { label: "Reach Expanded" },
+        ],
+      },
+      {
+        tagline: "Education built for the algorithm age.",
+        description:
+          "A complete content engine — short-form, longform, and lead magnets — that turned curiosity into enrollments.",
+        industry: "Beauty",
+        metrics: [
+          { label: "Brand Recognition" },
+          { label: "Client Retention" },
+          { label: "Reach Expanded" },
+        ],
+      },
+      {
         tagline: "Premium nightlife brand reimagined.",
         description:
           "A complete social-first rebuild that turned a local lounge into a regional destination — with content that books tables before the doors open.",
-        industry: "Hospitality & Lifestyle",
+        industry: "Vaping",
         metrics: [
           { label: "Engagement" },
           { label: "Sales Growth" },
@@ -356,91 +411,25 @@ export const translations = {
         ],
       },
       {
-        tagline: "From storefront to scroll-stopping.",
-        description:
-          "A bold visual system and conversion-engineered ad creative that turned product drops into sell-out events.",
-        industry: "E-commerce / Fitness",
-        metrics: [
-          { label: "ROAS" },
-          { label: "Repeat Buyers" },
-          { label: "AOV Growth" },
-        ],
-      },
-      {
-        tagline: "A fitness brand built to scale.",
-        description:
-          "Identity, social, and creator partnerships engineered into one growth machine — with retention metrics to match.",
-        industry: "Fitness & Wellness",
-        metrics: [
-          { label: "Brand Recognition" },
-          { label: "Client Retention" },
-          { label: "Reach Expanded" },
-        ],
-      },
-      {
         tagline: "Wellness that feels like luxury.",
         description:
           "Editorial-grade content and a refined visual language that positioned El Well as the premium choice in a crowded market.",
-        industry: "Wellness & Beauty",
+        industry: "AI & News",
         metrics: [
           { label: "Brand Recognition" },
           { label: "Client Retention" },
           { label: "Reach Expanded" },
-        ],
-      },
-      {
-        tagline: "Education built for the algorithm age.",
-        description:
-          "A complete content engine — short-form, longform, and lead magnets — that turned curiosity into enrollments.",
-        industry: "Education",
-        metrics: [
-          { label: "Brand Recognition" },
-          { label: "Client Retention" },
-          { label: "Reach Expanded" },
-        ],
-      },
-      {
-        tagline: "Architecture, scaled by storytelling.",
-        description:
-          "Premium portfolio design and Instagram storytelling that elevated every project into a marketing asset.",
-        industry: "Interior & Architecture",
-        metrics: [
-          { label: "Inbound Leads" },
-          { label: "Engagement" },
-          { label: "Profile Visits" },
-        ],
-      },
-      {
-        tagline: "A product launch with momentum.",
-        description:
-          "Launch creative, paid funnels, and a content calendar that took a new product from cold launch to category challenger.",
-        industry: "Consumer Tech",
-        metrics: [
-          { label: "ROAS" },
-          { label: "Trial Signups" },
-          { label: "Brand Recall" },
         ],
       },
       {
         tagline: "A personal brand with executive polish.",
         description:
           "Long-form positioning, short-form distribution, and a brand voice engineered for trust at every touchpoint.",
-        industry: "Personal Brand",
+        industry: "Perfumery",
         metrics: [
           { label: "Audience Growth" },
           { label: "Engagement" },
           { label: "Reach" },
-        ],
-      },
-      {
-        tagline: "Automotive content that drives intent.",
-        description:
-          "Premium product visuals and dealership-level campaign work that translated digital impressions into showroom visits.",
-        industry: "Automotive",
-        metrics: [
-          { label: "Showroom Visits" },
-          { label: "Test Drives" },
-          { label: "CTR" },
         ],
       },
     ],
@@ -718,6 +707,22 @@ export const translations = {
       },
     ],
 
+    // Work page filter labels
+    workFilters: {
+      socialContent: "Social & Content",
+      webDevelopment: "Web Development",
+      all: "All",
+      visual: "Visual",
+      reels: "Reels",
+      ai: "AI",
+      print: "Print",
+      customWebsites: "Custom Websites",
+      ecommerce: "E-Commerce",
+      visitWebsite: "Browse Website",
+      visit: "Visit",
+      browseWebsite: "Browse Website",
+    },
+
     // Language
     language: "Language",
   },
@@ -733,23 +738,23 @@ export const translations = {
       about: "За нас",
       contact: "Контакт",
     },
-    cta: "Свържи се",
-    seeAll: "Виж всички →",
+    cta: "Свържете се",
+    seeAll: "Вижте всички →",
 
     // Hero
     hero: {
       badge: "AI дигитална агенция",
       line1: "Изграждаме",
       line2: "Силни брандове",
-      line3: "Които продават.",
+      line3: "които продават.",
       sub: "Ново поколение дигитална агенция — където AI технологиите срещат истинска креативност. Правим брандове, на които хората обръщат внимание.",
       ctaPrimary: "Започни проекта си →",
-      ctaSecondary: "Виж нашата работа",
+      ctaSecondary: "Вижте нашата работа",
       stats: [
         { label: "Поста и сторита" },
         { label: "Дизайна" },
         { label: "Кампании" },
-        { label: "Клиенти" },
+        { label: "Бизнеса" },
       ],
       floatingCards: {
         aiContent: {
@@ -770,7 +775,7 @@ export const translations = {
       label: "ЗАЩО ДА ИЗБЕРЕТЕ НАС",
       title: "AI технологии + истинска креативност",
       sub: "Комбинираме AI инструменти с маркетингов опит и техническа разработка — за да растат брандовете на нашите клиенти по-бързо и по-умно.",
-      learnMore: "Разбери повече за нас →",
+      learnMore: "Разберете повече за нас →",
       toolsLabel: "ИНСТРУМЕНТИ И ПЛАТФОРМИ",
       cards: [
         {
@@ -793,15 +798,15 @@ export const translations = {
       label: "КАКВО ПРАВИМ",
       title: "Всичко, от което брандът ви се нуждае",
       sub: "От AI съдържание до уеб разработка — работим по целия процес, не само по части от него.",
-      seeAll: "Виж всичките 14 услуги →",
-      learnMore: "Научи повече →",
+      seeAll: "Вижте всички услуги →",
+      learnMore: "Научете повече →",
       getStarted: "Започни →",
-      across3: "14 услуги в 3 направления",
+      across3: "18 услуги в 3 направления",
       allServices: "Всички услуги",
       columns: [
         { label: "Маркетинг и социални мрежи" },
-        { label: "Креатив и съдържание" },
-        { label: "Уеб и разработка" },
+        { label: "Криейтив и съдържание" },
+        { label: "Създаване на\nуеб сайтове" },
       ],
     },
 
@@ -812,8 +817,8 @@ export const translations = {
       titleLine2: "сама за себе си",
       acrossCategories: "проекта в 4 категории",
       sub: "Избрани проекти с реални резултати за реални бизнеси.",
-      viewAll: "Виж цялото портфолио →",
-      viewProject: "Виж проекта →",
+      viewAll: "Вижте цялото портфолио →",
+      viewProject: "Вижте проекта →",
     },
 
     // Clients (section on homepage)
@@ -822,13 +827,13 @@ export const translations = {
       title1: "Реални брандове.",
       titleAccent: "Реални резултати.",
       sub: "Всеки проект носи измерими резултати — не просто хубав дизайн.",
-      seeAll: "Виж всички клиенти →",
+      seeAll: "Вижте всички клиенти →",
       sectionLabel: "НАШИТЕ КЛИЕНТИ",
-      sectionTitle: "Брандове, които",
+      sectionTitle: "Брандовете, които",
       sectionTitleAccent: "ни се довериха",
       sectionSub:
         "Работим с амбициозни бизнеси — от малки местни марки до разрастващи се компании. Помагаме им да изградят силно онлайн присъствие.",
-      brandCount: "+ бранда, с които сме работили",
+      brandCount: " бранда, с които сме работили",
       serviceTags: [
         "Социални мрежи",
         "Бранд стратегия",
@@ -842,11 +847,11 @@ export const translations = {
         "Десет бизнеса. Десет трансформации. Всеки превърнат в разпознаваема марка чрез стратегия, дизайн и AI изпълнение.",
       scrollCue: "Скролни надолу",
       curvedText: "ИЗДИГНИ ПРИСЪСТВИЕТО НА СВОЯ БРАНД",
-      showcaseLabel: "РАЗГЛЕДАЙ ВСИЧКИ",
+      showcaseLabel: "РАЗГЛЕДАЙТЕ ВСИЧКИ",
       showcaseTitle: "Всеки бранд —",
       showcaseTitleAccent: "история, която си струва да се разкаже.",
       showcaseSub:
-        "Разгледай клиентите, с които сме работили — от хотелиерство и недвижими имоти до лични брандове и технологии.",
+        "Разгледайте клиентите, с които сме работили — от хотелиерство и недвижими имоти до лични брандове и технологии.",
       caseStudy: "Казус",
       ctaTitle: "Искате ли и вашият бранд",
       ctaTitleAccent: "да расте така?",
@@ -865,7 +870,7 @@ export const translations = {
     testimonials: {
       label: "ОТЗИВИ",
       title: "Какво казват",
-      titleAccent: "нашите клиенти",
+      titleAccent: "нашите клиенти?",
     },
 
     // CTABanner
@@ -883,34 +888,34 @@ export const translations = {
       label: "СВЪРЖИ СЕ С НАС",
       title: "Нека поговорим",
       sub: "Имате идея или проект? Попълнете формата и ще се свържем с вас до 24 часа.",
-      namePlaceholder: "Вашето име",
+      namePlaceholder: "Вашите имена",
       emailPlaceholder: "Вашият имейл",
       messagePlaceholder: "Разкажете ни за проекта си...",
-      submit: "Изпрати съобщение",
+      submit: "Изпратете съобщение",
       sending: "Изпращане...",
       successMsg: "Съобщението е изпратено! Скоро ще се чуем.",
-      errorMsg: "Нещо се обърка. Опитай пак.",
-      fullName: "Вашето име",
+      errorMsg: "Нещо се обърка. Опитайте пак.",
+      fullName: "Вашите имена",
       firstName: "Собствено име",
       lastName: "Фамилия",
-      firstNamePlaceholder: "Вашите имена",
+      firstNamePlaceholder: "Иван Иванов",
       lastNamePlaceholder: "Вашата фамилия",
       emailAddress: "Имейл адрес",
-      emailPlaceholder2: "Вашият имейл адрес",
+      emailPlaceholder2: "email@gmail.com",
       phone: "Телефон",
-      phonePlaceholder: "Вашият телефон",
+      phonePlaceholder: "+359 XXX XX XX XX",
       company: "Компания",
       companyPlaceholder: "Название на компанията (по желание)",
       serviceInterest: "Интересувате се от",
-      selectService: "Избери услуга...",
+      selectService: "Изберете услуга...",
       servicesSelected: "услуга избрана",
       servicesSelectedPlural: "услуги избрани",
       message: "Съобщение",
       successTitle: "Съобщението е изпратено!",
       successSub: "Ще се свържем с вас до 24 часа.",
-      sendAnother: "Изпрати ново съобщение →",
+      sendAnother: "Изпратете ново съобщение ",
       errorFull:
-        "Нещо се обърка. Опитайте отново или ни пишете директно на info@avivadigital.bg.",
+        "Нещо се обърка. Опитайте отново или ни пишете директно на office@avivadigital.bg",
       infoTagline:
         "AI стратегии. Истинска креативност. Дигитални решения от А до Я.",
       emailLabel: "Имейл",
@@ -932,8 +937,8 @@ export const translations = {
       filterEcommerce: "Е-Commerce",
       filterCustom: "По поръчка",
       techStack: "Технологии",
-      liveProject: "Виж сайта →",
-      viewDetails: "Виж детайли →",
+      liveProject: "Вижте сайта →",
+      viewDetails: "Вижте детайли →",
       ctaTitle: "Искате сайт, който",
       ctaTitleAccent: "наистина работи?",
       ctaSub: "Разкажете ни за проекта си и ще се свържем с вас до 24 часа.",
@@ -975,7 +980,7 @@ export const translations = {
       services: "Услуги",
       company: "Компания",
       pages: "Страници",
-      connect: "Свържи се",
+      connect: "Свържете се",
       copyright: "Всички права запазени.",
       builtBy: "Изградено от Lyubomir Iliev",
       serviceLinks: [
@@ -996,7 +1001,7 @@ export const translations = {
         title: "Всичко, от което брандът ви се нуждае, за да",
         titleGradient: "доминира онлайн",
         description:
-          "От AI маркетинг до уеб разработка — 14 услуги в три направления, всички под един покрив.",
+          "От AI маркетинг до уеб разработка — 18 услуги в три направления, всички под един покрив.",
       },
       work: {
         label: "НАШЕТО ПОРТФОЛИО",
@@ -1063,10 +1068,65 @@ export const translations = {
     // Clients page — full client stories
     clientStories: [
       {
-        tagline: "Премиум нощен бранд, преосмислен от нулата.",
+        tagline: "Цялостно интериорно проектиране и реализация",
+        description:
+          "Премиум портфолио дизайн и Instagram разказване, превърнали всеки проект в маркетингов актив.",
+        industry: "Интериорен дизайн",
+        metrics: [
+          { label: "Входящи запитвания" },
+          { label: "Ангажираност" },
+          { label: "Посещения на профила" },
+        ],
+      },
+      {
+        tagline: "Орални лентички с витамини и добавки",
+        description:
+          "Рекламни креативи, платени фунии и контент календар, изкарали нов продукт от нулев старт до претендент за категорията.",
+        industry: "Хранителни добавки",
+        metrics: [
+          { label: "ROAS" },
+          { label: "Регистрации за тест" },
+          { label: "Разпознаваемост" },
+        ],
+      },
+      {
+        tagline: "Водеща марка китайски автомобили",
+        description:
+          "Премиум продуктови визуали и кампании на ниво дилърство, превели дигиталните импресии в посещения на шоурума.",
+        industry: "Автомобили",
+        metrics: [
+          { label: "Посещения на шоурума" },
+          { label: "Тест-драйви" },
+          { label: "CTR" },
+        ],
+      },
+      {
+        tagline: "Корпоративна бенефит спортна карта",
+        description:
+          "Идентичност, социални мрежи и партньорства с инфлуенсъри — всичко обединено в една машина за растеж с метрики за задържане, които говорят сами.",
+        industry: "Спорт и уелнес",
+        metrics: [
+          { label: "Разпознаваемост" },
+          { label: "Задържане на клиенти" },
+          { label: "Разширен обхват" },
+        ],
+      },
+      {
+        tagline: "Студио и академия за перманентен грим",
+        description:
+          "Пълна контент машина — кратки видеа, дълги публикации и lead magnets — превърнала любопитството в записвания за курсове.",
+        industry: "Красота",
+        metrics: [
+          { label: "Разпознаваемост" },
+          { label: "Задържане на клиенти" },
+          { label: "Разширен обхват" },
+        ],
+      },
+      {
+        tagline: "Премиум бранд за електронни наргилета",
         description:
           "Пълно преизграждане с фокус върху социалните мрежи — превърнахме местен lounge в регионална дестинация с content, който запълва масите още преди вратите да се отворят.",
-        industry: "Хотелиерство и лайфстайл",
+        industry: "Вейпинг",
         metrics: [
           { label: "Ангажираност" },
           { label: "Ръст в продажбите" },
@@ -1074,7 +1134,7 @@ export const translations = {
         ],
       },
       {
-        tagline: "Обяви, които затварят сделки — не само изглеждат добре.",
+        tagline: "Wellplex имоти и строителство на сгради",
         description:
           "Висококачествено разказване на имоти, подкрепено от платени фунии — всяка обява превърната в канал за квалифицирани лийдове.",
         industry: "Недвижими имоти",
@@ -1085,32 +1145,10 @@ export const translations = {
         ],
       },
       {
-        tagline: "От витрина до спиране на скрола.",
-        description:
-          "Смела визуална система и рекламни креативи, насочени към конверсии — пускането на нови продукти се превърна в разпродадени событие.",
-        industry: "Е-commerce / Фитнес",
-        metrics: [
-          { label: "ROAS" },
-          { label: "Повторни купувачи" },
-          { label: "Ръст в AOV" },
-        ],
-      },
-      {
-        tagline: "Фитнес бранд, изграден за мащабиране.",
-        description:
-          "Идентичност, социални мрежи и партньорства с инфлуенсъри — всичко обединено в една машина за растеж с метрики за задържане, които говорят сами.",
-        industry: "Фитнес и уелнес",
-        metrics: [
-          { label: "Разпознаваемост" },
-          { label: "Задържане на клиенти" },
-          { label: "Разширен обхват" },
-        ],
-      },
-      {
-        tagline: "Уелнес, който се усеща като лукс.",
+        tagline: "Общност за уелнес и личностно развитие",
         description:
           "Редакционно съдържание и изчистен визуален език, позиционирали El Well като премиум избор на претъпкан пазар.",
-        industry: "Уелнес и красота",
+        industry: "AI и новини",
         metrics: [
           { label: "Разпознаваемост" },
           { label: "Задържане на клиенти" },
@@ -1118,58 +1156,14 @@ export const translations = {
         ],
       },
       {
-        tagline: "Образование, създадено за ерата на алгоритмите.",
-        description:
-          "Пълна контент машина — кратки видеа, дълги публикации и lead magnets — превърнала любопитството в записвания за курсове.",
-        industry: "Образование",
-        metrics: [
-          { label: "Разпознаваемост" },
-          { label: "Задържане на клиенти" },
-          { label: "Разширен обхват" },
-        ],
-      },
-      {
-        tagline: "Архитектура, мащабирана чрез разказване.",
-        description:
-          "Премиум портфолио дизайн и Instagram разказване, превърнали всеки проект в маркетингов актив.",
-        industry: "Интериор и архитектура",
-        metrics: [
-          { label: "Входящи запитвания" },
-          { label: "Ангажираност" },
-          { label: "Посещения на профила" },
-        ],
-      },
-      {
-        tagline: "Лансиране с импулс.",
-        description:
-          "Рекламни креативи, платени фунии и контент календар, изкарали нов продукт от нулев старт до претендент за категорията.",
-        industry: "Потребителски технологии",
-        metrics: [
-          { label: "ROAS" },
-          { label: "Регистрации за тест" },
-          { label: "Разпознаваемост" },
-        ],
-      },
-      {
-        tagline: "Личен бранд с изпълнителски лъск.",
+        tagline: "Парфюмни отливки от нишови аромати",
         description:
           "Дългосрочно позициониране, разпространение в кратък формат и бранд глас, изграден за доверие на всяка точка на контакт.",
-        industry: "Личен бранд",
+        industry: "Парфюмерия",
         metrics: [
           { label: "Ръст на аудиторията" },
           { label: "Ангажираност" },
           { label: "Обхват" },
-        ],
-      },
-      {
-        tagline: "Автомобилно съдържание, което задвижва намерения.",
-        description:
-          "Премиум продуктови визуали и кампании на ниво дилърство, превели дигиталните импресии в посещения на шоурума.",
-        industry: "Автомобилна индустрия",
-        metrics: [
-          { label: "Посещения на шоурума" },
-          { label: "Тест-драйви" },
-          { label: "CTR" },
         ],
       },
     ],
@@ -1218,7 +1212,7 @@ export const translations = {
     serviceDropdown: {
       categories: {
         marketing: "Маркетинг и социални мрежи",
-        creative: "Креатив и съдържание",
+        creative: "Криейтив и съдържание",
         web: "Уеб и разработка",
       },
       services: {
@@ -1446,6 +1440,22 @@ export const translations = {
         ],
       },
     ],
+
+    // Work page filter labels
+    workFilters: {
+      socialContent: "Социални мрежи и съдържание",
+      webDevelopment: "Уеб разработка",
+      all: "Всички",
+      visual: "Дизайни",
+      reels: "Reels",
+      ai: "AI",
+      print: "Печат",
+      customWebsites: "Уебсайтове по поръчка",
+      ecommerce: "Онлайн магазини",
+      visitWebsite: "Разгледайте сайта",
+      visit: "Посети",
+      browseWebsite: "Разгледайте сайта",
+    },
 
     // Language
     language: "Език",

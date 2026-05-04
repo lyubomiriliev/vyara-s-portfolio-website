@@ -17,7 +17,7 @@ export function ButtonOutline({ children, size = 'md', className = '', onClick }
   return (
     <button
       onClick={onClick}
-      className={`inline-flex items-center gap-2 font-display font-semibold rounded-pill
+      className={`inline-flex items-center gap-2 font-display font-semibold rounded-pill whitespace-nowrap
         border border-white/40 bg-white/5 text-white
         hover:border-white/60 hover:bg-white/10
         transition-all duration-150 cursor-pointer

@@ -8,8 +8,10 @@ import { projects, projectCategories } from "@/data/projects";
 import type { Project } from "@/data/projects";
 import { scaleIn } from "@/lib/animations";
 import ContentModal, { typeConfig } from "@/components/ui/ContentModal";
+import ProjectsPage from "@/components/pages/ProjectsPage";
+import { useLang } from "@/lib/LanguageContext";
 
-type Category = (typeof projectCategories)[number];
+type Category = (typeof projectCategories)[number] | "Custom Websites" | "E-Commerce";
 
 const STORAGE_KEY = "work-filter";
 
@@ -17,7 +19,9 @@ const STORAGE_KEY = "work-filter";
 // visual row N = items at flat indices [N*4, N*4+1, N*4+2, N*4+3].
 // Pick exactly 1 video from each group of 4 to autoplay.
 // Use the group's row number as a stable seed so the pick never changes on re-render.
-function buildAutoplayIds(list: { id: string; type: string; videoSrc?: string }[]): Set<string> {
+function buildAutoplayIds(
+  list: { id: string; type: string; videoSrc?: string }[],
+): Set<string> {
   const ids = new Set<string>();
   const rowCount = Math.ceil(list.length / 4);
   for (let row = 0; row < rowCount; row++) {
@@ -32,13 +36,16 @@ function buildAutoplayIds(list: { id: string; type: string; videoSrc?: string }[
 }
 
 export default function WorkPage() {
+  const { t } = useLang();
+  const wf = t.workFilters;
   const [activeFilter, setActiveFilter] = useState<Category>("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY) as Category | null;
-      if (saved && (projectCategories as readonly string[]).includes(saved)) {
+      const allCategories: string[] = [...projectCategories, "Custom Websites", "E-Commerce"];
+      if (saved && allCategories.includes(saved)) {
         setActiveFilter(saved);
       }
     } catch {}
@@ -46,7 +53,9 @@ export default function WorkPage() {
 
   const handleFilterChange = useCallback((cat: Category) => {
     setActiveFilter(cat);
-    try { localStorage.setItem(STORAGE_KEY, cat); } catch {}
+    try {
+      localStorage.setItem(STORAGE_KEY, cat);
+    } catch {}
   }, []);
 
   const filtered =
@@ -56,11 +65,10 @@ export default function WorkPage() {
 
   const videoList = useMemo(
     () => filtered.filter((p) => p.type === "video" || !!p.videoSrc),
-    [filtered]
+    [filtered],
   );
 
   const autoplayIds = useMemo(() => buildAutoplayIds(filtered), [filtered]);
-
 
   const openModal = useCallback((project: Project) => {
     setSelectedProject(project);
@@ -74,20 +82,26 @@ export default function WorkPage() {
     document.body.classList.remove("overflow-hidden");
   }, []);
 
-  const navigateVideo = useCallback((dir: 1 | -1) => {
-    setSelectedProject((cur) => {
-      if (!cur) return cur;
-      const idx = videoList.findIndex((p) => p.id === cur.id);
-      if (idx === -1) return cur;
-      return videoList[(idx + dir + videoList.length) % videoList.length] ?? cur;
-    });
-  }, [videoList]);
+  const navigateVideo = useCallback(
+    (dir: 1 | -1) => {
+      setSelectedProject((cur) => {
+        if (!cur) return cur;
+        const idx = videoList.findIndex((p) => p.id === cur.id);
+        if (idx === -1) return cur;
+        return (
+          videoList[(idx + dir + videoList.length) % videoList.length] ?? cur
+        );
+      });
+    },
+    [videoList],
+  );
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeModal();
       if (!selectedProject) return;
-      const isVid = selectedProject.type === "video" || !!selectedProject.videoSrc;
+      const isVid =
+        selectedProject.type === "video" || !!selectedProject.videoSrc;
       if (isVid && e.key === "ArrowLeft") navigateVideo(-1);
       if (isVid && e.key === "ArrowRight") navigateVideo(1);
     };
@@ -102,38 +116,87 @@ export default function WorkPage() {
     };
   }, []);
 
+  const isWebFilter = activeFilter === "Custom Websites" || activeFilter === "E-Commerce";
+
   return (
     <div className="relative bg-bg-primary">
       <section className="section-padding">
-        <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8">
-          {/* Filter bar */}
-          <div className="mb-14 flex justify-center">
+        {/* Filter bar — always centred */}
+        <div className="mb-14 flex justify-center items-end gap-6">
+          {/* Social & Content group */}
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/30">
+              {wf.socialContent}
+            </span>
             <div
               className="relative inline-flex items-center gap-1 p-1.5 rounded-full"
               style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
             >
-              {projectCategories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => handleFilterChange(cat)}
-                  className="relative z-10 py-2 px-5 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer whitespace-nowrap"
-                  style={{ color: activeFilter === cat ? "#fff" : "rgba(255,255,255,0.45)" }}
-                >
-                  {activeFilter === cat && (
-                    <motion.span
-                      layoutId="work-filter-pill"
-                      className="absolute inset-0 rounded-full z-[-1]"
-                      style={{ background: "linear-gradient(135deg, #FFB76C, #FF419D)" }}
-                      transition={{ type: "spring", stiffness: 420, damping: 36 }}
-                    />
-                  )}
-                  {cat}
-                </button>
-              ))}
+              {projectCategories.map((cat) => {
+                const label: Record<string, string> = {
+                  All: wf.all, Visual: wf.visual, Reels: wf.reels, AI: wf.ai, Print: wf.print,
+                };
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => handleFilterChange(cat)}
+                    className="relative z-10 py-2 px-5 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer whitespace-nowrap"
+                    style={{ color: activeFilter === cat ? "#fff" : "rgba(255,255,255,0.45)" }}
+                  >
+                    {activeFilter === cat && (
+                      <motion.span
+                        layoutId="work-filter-pill"
+                        className="absolute inset-0 rounded-full z-[-1]"
+                        style={{ background: "linear-gradient(135deg, #FFB76C, #FF419D)" }}
+                        transition={{ type: "spring", stiffness: 420, damping: 36 }}
+                      />
+                    )}
+                    {label[cat] ?? cat}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Masonry feed */}
+          {/* Web Development group */}
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/30">
+              {wf.webDevelopment}
+            </span>
+            <div
+              className="relative inline-flex items-center gap-1 p-1.5 rounded-full"
+              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
+            >
+              {(["Custom Websites", "E-Commerce"] as const).map((cat) => {
+                const label: Record<string, string> = {
+                  "Custom Websites": wf.customWebsites,
+                  "E-Commerce": wf.ecommerce,
+                };
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => handleFilterChange(cat)}
+                    className="relative z-10 py-2 px-5 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer whitespace-nowrap"
+                    style={{ color: activeFilter === cat ? "#fff" : "rgba(255,255,255,0.45)" }}
+                  >
+                    {activeFilter === cat && (
+                      <motion.span
+                        layoutId="work-filter-pill-web"
+                        className="absolute inset-0 rounded-full z-[-1]"
+                        style={{ background: "linear-gradient(135deg, #FFB76C, #FF419D)" }}
+                        transition={{ type: "spring", stiffness: 420, damping: 36 }}
+                      />
+                    )}
+                    {label[cat]}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* Content */}
+        {isWebFilter ? (
           <AnimatePresence mode="wait">
             <motion.div
               key={activeFilter}
@@ -141,33 +204,47 @@ export default function WorkPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="columns-2 md:columns-3 lg:columns-4 gap-3"
             >
-              {filtered.map((project, i) => (
-                <FeedCard
-                  key={project.id}
-                  project={project}
-                  index={i}
-                  autoplay={autoplayIds.has(project.id)}
-                  onClick={() => openModal(project)}
-                />
-              ))}
+              <ProjectsPage webFilter={activeFilter === "Custom Websites" ? "custom" : "ecommerce"} />
             </motion.div>
           </AnimatePresence>
-        </div>
-      </section>
+        ) : (
+          <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeFilter}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="columns-2 md:columns-3 lg:columns-4 gap-3"
+              >
+                {filtered.map((project, i) => (
+                  <FeedCard
+                    key={project.id}
+                    project={project}
+                    index={i}
+                    autoplay={project.category === "Reels" || autoplayIds.has(project.id)}
+                    onClick={() => openModal(project)}
+                  />
+                ))}
+              </motion.div>
+            </AnimatePresence>
 
-      <AnimatePresence>
-        {selectedProject && (
-          <ContentModal
-            project={selectedProject}
-            onClose={closeModal}
-            onPrev={() => navigateVideo(-1)}
-            onNext={() => navigateVideo(1)}
-            isVideo={selectedProject.type === "video" || !!selectedProject.videoSrc}
-          />
+            <AnimatePresence>
+              {selectedProject && (
+                <ContentModal
+                  project={selectedProject}
+                  onClose={closeModal}
+                  onPrev={() => navigateVideo(-1)}
+                  onNext={() => navigateVideo(1)}
+                  isVideo={selectedProject.type === "video" || !!selectedProject.videoSrc}
+                />
+              )}
+            </AnimatePresence>
+          </div>
         )}
-      </AnimatePresence>
+      </section>
     </div>
   );
 }
@@ -190,15 +267,35 @@ function FeedCard({
   const isVideo = project.type === "video" || !!project.videoSrc;
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hovered, setHovered] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [inView, setInView] = useState(false);
+
+  // Track when the card enters the viewport so autoplay works for off-screen items
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el || !autoplay) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setInView(true);
+      },
+      { rootMargin: "0px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [autoplay]);
 
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    if (hovered || autoplay) { v.play().catch(() => {}); }
-    else { v.pause(); }
-  }, [hovered, autoplay]);
+    if (hovered || (autoplay && inView)) {
+      v.play().catch(() => {});
+    } else if (!autoplay && !hovered) {
+      v.pause();
+    }
+  }, [hovered, autoplay, inView]);
 
-  const showDim = isVideo && !autoplay && !hovered;
+  const isPlaying = hovered || (autoplay && inView);
+  const showDim = isVideo && !isPlaying;
 
   return (
     <motion.div
@@ -227,16 +324,29 @@ function FeedCard({
               playsInline
               className="absolute inset-0 w-full h-full object-cover"
               suppressHydrationWarning
+              onLoadedData={() => setVideoLoaded(true)}
             />
+            {!videoLoaded && (
+              <div className="absolute inset-0 z-30 flex items-center justify-center">
+                <div className="w-7 h-7 rounded-full border-2 border-white/20 border-t-white animate-spin" />
+              </div>
+            )}
             {/* Dim overlay */}
             <div
               className="absolute inset-0 z-10 transition-opacity duration-300"
-              style={{ background: "rgba(0,0,0,0.45)", opacity: showDim ? 1 : 0, pointerEvents: "none" }}
+              style={{
+                background: "rgba(0,0,0,0.45)",
+                opacity: showDim ? 1 : 0,
+                pointerEvents: "none",
+              }}
             />
             {/* Centered play icon */}
             <div
               className="absolute inset-0 z-20 flex items-center justify-center transition-opacity duration-300"
-              style={{ opacity: showDim ? 1 : 0, pointerEvents: "none" }}
+              style={{
+                opacity: showDim && videoLoaded ? 1 : 0,
+                pointerEvents: "none",
+              }}
             >
               <div className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center">
                 <Play size={20} className="text-white ml-1" />
@@ -257,15 +367,12 @@ function FeedCard({
         {/* Type badge */}
         <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-black/55 backdrop-blur-md border border-white/10">
           <Icon size={11} className={cfg.color} />
-          <span className={`text-[10px] font-semibold uppercase tracking-[0.12em] ${cfg.color}`}>{cfg.label}</span>
+          <span
+            className={`text-[10px] font-semibold uppercase tracking-[0.12em] ${cfg.color}`}
+          >
+            {cfg.label}
+          </span>
         </div>
-
-        {/* Hover overlay — static only */}
-        {!isVideo && (
-          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/10 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out flex flex-col justify-end p-4 z-10">
-            <h3 className="font-display font-bold text-sm text-white leading-snug">{project.title}</h3>
-          </div>
-        )}
       </motion.div>
     </motion.div>
   );

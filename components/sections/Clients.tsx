@@ -142,7 +142,7 @@ export default function Clients() {
         }}
       />
 
-      <div className="container relative z-10">
+      <div className="mx-auto max-w-[900px] 2xl:max-w-[1200px] relative z-10">
         {/* Headline */}
         <motion.div
           variants={staggerContainer}
@@ -177,7 +177,7 @@ export default function Clients() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-3 sm:grid-cols-5 gap-4 mb-16"
+          className="grid grid-cols-3 px-5 md:px-0 sm:grid-cols-5 gap-4 mb-16"
         >
           {clientLogos.map((client, i) => {
             const isPopped = activeSet.has(i);
@@ -244,7 +244,7 @@ export default function Clients() {
                   src={client.logo}
                   alt={client.name}
                   loading="lazy"
-                  className="h-10 w-auto max-w-full object-contain"
+                  className="h-14 w-auto max-w-full object-contain"
                   animate={{
                     opacity: isPopped ? 1 : 0.45,
                     filter: isPopped
@@ -272,8 +272,7 @@ export default function Clients() {
             viewport={{ once: true }}
             className="text-white/30 text-xs font-semibold uppercase tracking-[0.15em] whitespace-nowrap"
           >
-            {clientLogos.length + 8}
-            {t.clients.brandCount}
+            {clientLogos.length + 2}+{t.clients.brandCount}
           </motion.p>
           <div className="flex-1 h-px bg-white/[0.06]" />
         </div>

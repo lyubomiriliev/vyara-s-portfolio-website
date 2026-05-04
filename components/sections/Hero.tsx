@@ -10,23 +10,22 @@ import { ButtonOutline } from "@/components/ui/ButtonOutline";
 import { useCountUp } from "@/lib/useCountUp";
 import { useLang } from "@/lib/LanguageContext";
 
-
 const CYCLING_WORDS: Record<"en" | "bg", string[]> = {
   en: [
-    "Iconic Brands",
-    "Bold Visions",
-    "Digital Leaders",
-    "Viral Stories",
-    "Market Leaders",
-    "Lasting Impact",
+    "Iconic Brands,",
+    "Bold Visions,",
+    "Digital Leaders,",
+    "Viral Stories,",
+    "Market Leaders,",
+    "Lasting Impact,",
   ],
   bg: [
-    "Силни брандове",
-    "Печеливши сайтове",
-    "Реклами с резултати",
-    "Онлайн магазини",
-    "Успешни кампании",
-    "Бързи решения",
+    "Силни брандове,",
+    "Печеливши сайтове,",
+    "Реклами с резултати,",
+    "Онлайн магазини,",
+    "Успешни кампании,",
+    "Бързи решения,",
   ],
 };
 
@@ -126,7 +125,7 @@ function StatCard({
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -4, transition: { duration: 0.25 } }}
-      className="relative group"
+      className="relative group overflow-hidden rounded-2xl"
     >
       {/* Animated gradient border ring */}
       <div
@@ -160,7 +159,7 @@ function StatCard({
         <span
           className="font-display font-extrabold leading-[1.05] tabular-nums text-3xl md:text-4xl 3xl:text-5xl whitespace-nowrap"
           style={{
-            background: `linear-gradient(180deg, #fff 0%, ${accent} 130%)`,
+            background: `linear-gradient(180deg, #fff 0%, ${accent} 100%)`,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -169,14 +168,14 @@ function StatCard({
           {count.toLocaleString()}
           {suffix}
         </span>
-        <span className="text-white/45 text-[10px] 3xl:text-xs uppercase tracking-[0.18em] font-medium">
+        <span className="text-white/45 text-[10px] 3xl:text-xs uppercase tracking-[0.18em] font-medium whitespace-nowrap">
           {label}
         </span>
 
         {/* Bottom accent line */}
         <div
           aria-hidden
-          className="absolute bottom-0 left-4 right-4 h-px opacity-50"
+          className="absolute bottom-0 left-4 right-4 h-px opacity-30"
           style={{
             background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
           }}
@@ -187,10 +186,10 @@ function StatCard({
 }
 
 const statValues = [
-  { value: 32604, delay: 0.9, accent: "#E040A0" },
-  { value: 1852, delay: 1.05, accent: "#FFB76C" },
-  { value: 85, delay: 1.2, accent: "#9B59F5" },
-  { value: 13, delay: 1.35, accent: "#FFB76C" },
+  { value: 38712, delay: 0.9, accent: "#E040A0" },
+  { value: 2493, delay: 1.05, accent: "#FFB76C" },
+  { value: 214, delay: 1.2, accent: "#9B59F5" },
+  { value: 17, delay: 1.35, accent: "#FFB76C" },
 ];
 
 export default function Hero() {
@@ -232,11 +231,15 @@ export default function Hero() {
         {/* Left-aligned text block — max ~55% width so the hand stays visible */}
         <div className="flex flex-col items-start text-left gap-5 max-w-[58%] lg:max-w-[52%] 3xl:max-w-[46%] overflow-visible">
           {/* H1 — three rows slide up in clean sequence, typewriter starts after row 2 settles */}
-          <h1 className="font-display font-extrabold leading-[1.08] text-white w-full tracking-tight">
+          <h1 className="font-display flex flex-col gap-3 font-extrabold leading-[1.22] text-white w-full tracking-tight">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.65,
+                delay: 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
               className="block w-full text-left text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[4.25rem] 4xl:text-[5.25rem]"
             >
               {t.hero.line1}
@@ -244,7 +247,11 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.65,
+                delay: 0.35,
+                ease: [0.16, 1, 0.3, 1],
+              }}
               className="block w-max text-left text-4xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] 3xl:text-[6rem] 4xl:text-[7.5rem]"
               style={{ minHeight: "1.15em" }}
             >
@@ -256,7 +263,11 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.65,
+                delay: 0.6,
+                ease: [0.16, 1, 0.3, 1],
+              }}
               className="block w-full text-left text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[4.25rem] 4xl:text-[5.25rem]"
             >
               {t.hero.line3}
@@ -268,7 +279,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base md:text-lg xl:text-lg 3xl:text-xl text-white/65 max-w-lg 3xl:max-w-xl leading-relaxed text-left"
+            className="text-base md:text-lg xl:text-lg 3xl:text-xl py-6 text-white/65 max-w-lg 3xl:max-w-xl leading-relaxed text-left"
           >
             {t.hero.sub}
           </motion.p>
@@ -278,7 +289,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center justify-start gap-4 flex-wrap"
+            className="flex items-center justify-start gap-4"
           >
             <Link href="/contact">
               <ButtonPrimary size="lg">{t.hero.ctaPrimary}</ButtonPrimary>

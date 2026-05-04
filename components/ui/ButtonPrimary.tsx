@@ -20,13 +20,13 @@ export function ButtonPrimary({ children, size = 'md', className = '', onClick, 
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`inline-flex items-center gap-2 font-display font-semibold rounded-pill
+      className={`inline-flex items-center gap-2 font-display font-semibold rounded-pill whitespace-nowrap
         text-white
         hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]
         transition-all duration-150 cursor-pointer
         disabled:opacity-50 disabled:cursor-not-allowed
         ${sizes[size]} ${className}`}
-      style={{ background: 'linear-gradient(135deg, #E040A0, #9B59F5)' }}
+      style={{ background: 'linear-gradient(135deg, #E040A0 0%, #FFB76C 100%)' }}
     >
       {children}
     </button>

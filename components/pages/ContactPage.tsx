@@ -19,28 +19,83 @@ import { ButtonPrimary } from "@/components/ui/ButtonPrimary";
 import { Glow } from "@/components/ui/Glow";
 import { useLang } from "@/lib/LanguageContext";
 
+const STORAGE_KEY = "contact_page_draft";
+
 type FormStatus = "idle" | "loading" | "success" | "error";
+
+interface FieldState {
+  name: string;
+  phone: string;
+  email: string;
+  company: string;
+  message: string;
+  services: string[];
+}
+
+const EMPTY_FIELDS: FieldState = {
+  name: "",
+  phone: "",
+  email: "",
+  company: "",
+  message: "",
+  services: [],
+};
+
+function loadDraft(): FieldState {
+  if (typeof window === "undefined") return EMPTY_FIELDS;
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? { ...EMPTY_FIELDS, ...JSON.parse(raw) } : EMPTY_FIELDS;
+  } catch {
+    return EMPTY_FIELDS;
+  }
+}
 
 export default function ContactPage() {
   const { t } = useLang();
   const [formStatus, setFormStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [fields, setFields] = useState<FieldState>(EMPTY_FIELDS);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [dropdownRect, setDropdownRect] = useState<DOMRect | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const portalRef = useRef<HTMLDivElement>(null);
 
+  // Hydrate from localStorage after mount
+  useEffect(() => {
+    setFields(loadDraft());
+  }, []);
+
+  // Persist on every change
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(fields));
+    } catch {}
+  }, [fields]);
+
+  const setField =
+    (key: keyof Omit<FieldState, "services">) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+      setFields((f) => ({ ...f, [key]: e.target.value }));
+
+  const selectedServices = fields.services;
+
   const toggleService = (title: string) => {
-    setSelectedServices((prev) =>
-      prev.includes(title) ? prev.filter((s) => s !== title) : [...prev, title],
-    );
+    setFields((f) => ({
+      ...f,
+      services: f.services.includes(title)
+        ? f.services.filter((s) => s !== title)
+        : [...f.services, title],
+    }));
   };
 
   const removeService = (title: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    setSelectedServices((prev) => prev.filter((s) => s !== title));
+    setFields((f) => ({
+      ...f,
+      services: f.services.filter((s) => s !== title),
+    }));
   };
 
   useEffect(() => {
@@ -75,12 +130,17 @@ export default function ContactPage() {
     setFormStatus("loading");
     setErrorMessage("");
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
+    const formData = new FormData();
+    formData.append("name", fields.name);
+    formData.append("phone", fields.phone);
+    formData.append("email", fields.email);
+    if (fields.company) formData.append("company", fields.company);
+    if (fields.services.length > 0)
+      formData.append("services", fields.services.join(", "));
+    formData.append("message", fields.message);
 
     try {
-      const FORMSPREE_URL = "https://formspree.io/f/YOUR_FORM_ID";
-      const response = await fetch(FORMSPREE_URL, {
+      const response = await fetch("https://formspree.io/f/xlgzjekl", {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },
@@ -88,7 +148,10 @@ export default function ContactPage() {
 
       if (response.ok) {
         setFormStatus("success");
-        form.reset();
+        setFields(EMPTY_FIELDS);
+        try {
+          localStorage.removeItem(STORAGE_KEY);
+        } catch {}
       } else {
         throw new Error("Failed to send message");
       }
@@ -194,6 +257,8 @@ export default function ContactPage() {
                         id="name"
                         name="name"
                         required
+                        value={fields.name}
+                        onChange={setField("name")}
                         placeholder={t.contactForm.firstNamePlaceholder}
                         className="form-field"
                       />
@@ -210,6 +275,8 @@ export default function ContactPage() {
                         name="phone"
                         type="tel"
                         required
+                        value={fields.phone}
+                        onChange={setField("phone")}
                         placeholder={t.contactForm.phonePlaceholder}
                         className="form-field"
                       />
@@ -230,6 +297,8 @@ export default function ContactPage() {
                         name="email"
                         type="email"
                         required
+                        value={fields.email}
+                        onChange={setField("email")}
                         placeholder={t.contactForm.emailPlaceholder2}
                         className="form-field"
                       />
@@ -244,6 +313,8 @@ export default function ContactPage() {
                       <input
                         id="company"
                         name="company"
+                        value={fields.company}
+                        onChange={setField("company")}
                         placeholder={t.contactForm.companyPlaceholder}
                         className="form-field"
                       />
@@ -389,7 +460,7 @@ export default function ContactPage() {
                                       {cat.label}
                                     </span>
                                   </div>
-                                  <div className="grid grid-cols-3 gap-1 px-3 pb-2">
+                                  <div className="grid grid-cols-3 gap-2 px-3 pb-2">
                                     {t.servicesList
                                       .filter((s) =>
                                         catIds[cat.id]?.includes(s.id),
@@ -431,7 +502,7 @@ export default function ContactPage() {
                                                   "rgba(255,255,255,0.03)";
                                             }}
                                           >
-                                            <span className="leading-snug">
+                                            <span className="leading-snug text-[14px]">
                                               {s.title}
                                             </span>
                                             {active && (
@@ -466,6 +537,8 @@ export default function ContactPage() {
                       name="message"
                       rows={5}
                       required
+                      value={fields.message}
+                      onChange={setField("message")}
                       placeholder={t.contactForm.messagePlaceholder}
                       className="form-field resize-none"
                     />
@@ -610,7 +683,7 @@ export default function ContactPage() {
                       href="tel:+359888123456"
                       className="text-sm text-white hover:text-accent-pink transition-colors"
                     >
-                      +359 888 123 456
+                      +359 886 66 20 20
                     </a>
                   </div>
                 </div>

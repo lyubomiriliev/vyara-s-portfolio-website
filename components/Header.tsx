@@ -63,7 +63,6 @@ export default function Header() {
 
   const navLinks = [
     { label: t.nav.work, href: "/work" },
-    { label: t.nav.projects, href: "/projects" },
     { label: t.nav.clients, href: "/clients" },
     { label: t.nav.about, href: "/about" },
     { label: t.nav.contact, href: "/contact" },
@@ -98,16 +97,7 @@ export default function Header() {
   };
 
   const gradientText = (label: string) => (
-    <span
-      style={{
-        background: "linear-gradient(135deg, #E040A0, #FFB76C)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        backgroundClip: "text",
-      }}
-    >
-      {label}
-    </span>
+    <span style={{ color: "#fff" }}>{label}</span>
   );
 
   return (
@@ -160,7 +150,7 @@ export default function Header() {
                   : "text-white/45 hover:text-white/80"
               }`}
               style={
-                isActive("/") ? { background: "rgba(255,183,108,0.12)" } : {}
+                isActive("/") ? { background: "linear-gradient(135deg, rgba(224,64,160,0.18), rgba(255,183,108,0.18))" } : {}
               }
             >
               {isActive("/") ? gradientText(t.nav.home) : t.nav.home}
@@ -182,7 +172,7 @@ export default function Header() {
                 }`}
                 style={
                   isServicesActive
-                    ? { background: "rgba(255,183,108,0.12)" }
+                    ? { background: "linear-gradient(135deg, rgba(224,64,160,0.18), rgba(255,183,108,0.18))" }
                     : {}
                 }
               >
@@ -210,7 +200,7 @@ export default function Header() {
                   className={`relative px-3.5 py-1.5 rounded-xl text-[13px] font-semibold tracking-[0.08em] uppercase transition-all duration-200 ${
                     active ? "text-white" : "text-white/45 hover:text-white/80"
                   }`}
-                  style={active ? { background: "rgba(255,183,108,0.12)" } : {}}
+                  style={active ? { background: "linear-gradient(135deg, rgba(224,64,160,0.18), rgba(255,183,108,0.18))" } : {}}
                 >
                   {active ? gradientText(link.label) : link.label}
                 </Link>
@@ -377,7 +367,7 @@ export default function Header() {
                 isActive("/") ? "text-white" : "text-white/55 hover:text-white"
               }`}
               style={
-                isActive("/") ? { background: "rgba(255,183,108,0.10)" } : {}
+                isActive("/") ? { background: "linear-gradient(135deg, rgba(224,64,160,0.18), rgba(255,183,108,0.18))" } : {}
               }
             >
               {isActive("/") ? gradientText(t.nav.home) : t.nav.home}
@@ -399,7 +389,7 @@ export default function Header() {
                   : "text-white/55 hover:text-white"
               }`}
               style={
-                isServicesActive ? { background: "rgba(255,183,108,0.10)" } : {}
+                isServicesActive ? { background: "linear-gradient(135deg, rgba(224,64,160,0.18), rgba(255,183,108,0.18))" } : {}
               }
             >
               <Link
@@ -465,7 +455,7 @@ export default function Header() {
                   className={`flex items-center gap-2 px-3 py-3 rounded-xl text-[14px] font-semibold tracking-[0.08em] uppercase transition-colors ${
                     active ? "text-white" : "text-white/55 hover:text-white"
                   }`}
-                  style={active ? { background: "rgba(255,183,108,0.10)" } : {}}
+                  style={active ? { background: "linear-gradient(135deg, rgba(224,64,160,0.18), rgba(255,183,108,0.18))" } : {}}
                 >
                   {active ? gradientText(link.label) : link.label}
                   {active && (

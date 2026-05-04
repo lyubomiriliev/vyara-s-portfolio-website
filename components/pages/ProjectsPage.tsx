@@ -9,6 +9,8 @@ import {
   ExternalLink,
   ChevronLeft,
   ChevronRight,
+  X,
+  ZoomIn,
 } from "lucide-react";
 import { useLang } from "@/lib/LanguageContext";
 import { ProcessSection } from "./ProcessSection";
@@ -19,11 +21,13 @@ interface WebProject {
   client: string;
   logo: string;
   thumbnail: string;
+  fullWebsiteImage?: string;
   description: { en: string; bg: string };
   url: string;
-  category: string;
+  category: { en: string; bg: string };
   accentColor: string;
   tech: string[];
+  webCategory: "custom" | "ecommerce";
 }
 
 const projects: WebProject[] = [
@@ -32,15 +36,17 @@ const projects: WebProject[] = [
     name: "MB Center",
     client: "MB Center",
     logo: "/websites/mbc-logo-black.png",
-    thumbnail: "/websites/images/mbcenter.webp",
+    thumbnail: "/websites/images/mbcenter3.webp",
+    fullWebsiteImage: "/full-websites/mbcenter-bg.webp",
     description: {
       en: "Premium automotive service centre website with multi-language support, service booking flow, and a refined brand experience built for luxury clientele.",
       bg: "Уебсайт за премиум автомобилен сервиз с многоезична поддръжка, система за резервации и изискано брандиране за луксозна клиентела.",
     },
     url: "https://mbcenter.bg/bg/",
-    category: "Auto Service",
+    category: { en: "Auto Service", bg: "Автосервиз" },
     accentColor: "#1a1a2e",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "i18n"],
+    webCategory: "custom",
   },
   {
     id: "robohub",
@@ -48,29 +54,33 @@ const projects: WebProject[] = [
     client: "RoboHub Pro",
     logo: "/websites/robohub-logo.png",
     thumbnail: "/websites/images/robohub.webp",
+    fullWebsiteImage: "/full-websites/robohubpro.webp",
     description: {
       en: "A cutting-edge platform for robotics and automation products, featuring an immersive product showcase, technical specs display, and seamless e-commerce integration.",
       bg: "Платформа за роботика и автоматизация с продуктова витрина, технически спецификации и безпроблемна e-commerce интеграция.",
     },
     url: "https://robohubpro.com/en/",
-    category: "Automation",
+    category: { en: "Robotics", bg: "Роботи" },
     accentColor: "#0f1729",
-    tech: ["Next.js", "Framer Motion", "TypeScript", "Stripe"],
+    tech: ["Next.js", "Framer Motion", "TypeScript", "Tailwind CSS"],
+    webCategory: "custom",
   },
   {
     id: "activegym",
     name: "Active Gym",
     client: "Active Gym",
     logo: "/websites/active-gym-logo.webp",
-    thumbnail: "/websites/images/activegym.webp",
+    thumbnail: "/websites/images/activegym2.webp",
+    fullWebsiteImage: "/full-websites/activegym-eu.webp",
     description: {
       en: "High-energy fitness brand website with class schedules, membership plans, and a performance-first design that drives gym sign-ups and member retention.",
       bg: "Уебсайт за фитнес бранд с програми за тренировки, членски планове и дизайн, ориентиран към конверсии.",
     },
     url: "https://activegym.eu/en/",
-    category: "Fitness & Health",
+    category: { en: "Gym equipment", bg: "Фитнес уреди" },
     accentColor: "#1a0a0a",
     tech: ["Next.js", "Tailwind CSS", "Framer Motion", "CMS"],
+    webCategory: "custom",
   },
   {
     id: "pulsePadel",
@@ -78,29 +88,33 @@ const projects: WebProject[] = [
     client: "Pulse Padel",
     logo: "/websites/pulse-padel-logo.png",
     thumbnail: "/websites/images/pulse-padel.webp",
+    fullWebsiteImage: "/full-websites/pulse-padel.webp",
     description: {
       en: "Dynamic sports club website for an elite padel venue — online court booking, tournament management, and a brand identity that captures the energy of the sport.",
       bg: "Уебсайт за елитен падел клуб с онлайн резервации на кортове, управление на турнири и брандиране, което предава енергията на спорта.",
     },
     url: "https://pulse-padel.com/",
-    category: "Sports",
+    category: { en: "Padel courts", bg: "Падел кортове" },
     accentColor: "#0a1a0f",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Booking API"],
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Formspree"],
+    webCategory: "custom",
   },
   {
     id: "smartstrips",
     name: "Smart Strips",
     client: "Smart Strips",
     logo: "/websites/smart-strips-logo.png",
-    thumbnail: "/websites/images/smart-strips.jpg",
+    thumbnail: "/websites/images/smart-strips2.webp",
+    fullWebsiteImage: "/full-websites/smart-strips.webp",
     description: {
-      en: "Modern e-commerce store for smart LED lighting products — product configurator, comparison tools, and a clean UX that converts browsers into buyers.",
-      bg: "Модерен e-commerce магазин за смарт LED осветление с конфигуратор на продукти и изчистен UX, ориентиран към продажби.",
+      en: "Modern e-commerce store for innovative oral health supplement strips — clean UX, clear product storytelling, and a conversion-focused design that turns visitors into buyers.",
+      bg: "Модерен e-commerce магазин за иновативни орални ленти с хранителни добавки — изчистен UX, ясно продуктово представяне и дизайн, ориентиран към конверсии.",
     },
     url: "https://smartstrips.bg/bg",
-    category: "E-Commerce",
+    category: { en: "Supplements", bg: "Хранителни добавки" },
     accentColor: "#0a0a1a",
-    tech: ["Next.js", "Shopify", "Tailwind CSS", "Analytics"],
+    tech: ["Shopify", "Liquid", "Superhosting", "Figma"],
+    webCategory: "ecommerce",
   },
   {
     id: "pawsheaven",
@@ -108,14 +122,16 @@ const projects: WebProject[] = [
     client: "Paws Heaven",
     logo: "/websites/paws-heaven-logo.png",
     thumbnail: "/websites/images/paws-heaven.webp",
+    fullWebsiteImage: "/full-websites/paws-heaven.webp",
     description: {
       en: "Warm and inviting pet care platform with service booking, grooming gallery, and trust-building design that connects pet owners with expert care.",
       bg: "Платформа за грижи за домашни любимци с резервации, галерия и дизайн, изграждащ доверие между собственици и специалисти.",
     },
     url: "https://paws-heaven.com/",
-    category: "Pet Care",
+    category: { en: "Pet Care", bg: "Грижа за животни" },
     accentColor: "#1a0f0a",
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "EmailJS"],
+    tech: ["Shopify", "Liquid", "Superhosting", "Figma"],
+    webCategory: "ecommerce",
   },
   {
     id: "trending",
@@ -123,20 +139,175 @@ const projects: WebProject[] = [
     client: "Trending.bg",
     logo: "/websites/trending-logo.png",
     thumbnail: "/websites/images/trending.jpg",
+    fullWebsiteImage: "/full-websites/christian-andon.webp",
     description: {
       en: "Luxury perfume decanter boutique — an elegant e-commerce experience for high-end fragrance enthusiasts, featuring curated collections, rich product storytelling, and a refined aesthetic that matches the exclusivity of the brand.",
       bg: "Бутик за луксозни парфюмни декантери — изискано e-commerce изживяване за ценители на висококласни аромати с богато продуктово представяне и елегантна естетика.",
     },
     url: "https://trending.bg/",
-    category: "E-COMMERCE",
+    category: { en: "Perfumes", bg: "Парфюми" },
     accentColor: "#0f0a1a",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "E-Commerce"],
+    tech: ["Shopify", "Liquid", "Superhosting", "Figma"],
+    webCategory: "ecommerce",
   },
 ];
 
-export default function ProjectsPage() {
+// ─── Full-Website Preview Modal ────────────────────────────────────────────────
+
+function WebsitePreviewModal({
+  project,
+  onClose,
+}: {
+  project: WebProject;
+  onClose: () => void;
+}) {
+  const { locale } = useLang();
+  const isBg = locale === "bg";
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onClose]);
+
+  useEffect(() => {
+    document.documentElement.classList.add("overflow-hidden");
+    document.body.classList.add("overflow-hidden");
+    return () => {
+      document.documentElement.classList.remove("overflow-hidden");
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.22 }}
+      className="fixed inset-0 z-[9999]"
+      style={{
+        background: "rgba(0,0,0,0.55)",
+        backdropFilter: "blur(10px)",
+        WebkitBackdropFilter: "blur(10px)",
+      }}
+    >
+      {/* Gradient border wrapper — no border-radius on image, overflow clips to rounded container */}
+      <div
+        className="absolute inset-6 rounded-2xl p-[2px]"
+        style={{
+          background: "linear-gradient(135deg, #E040A0, #FFB76C, #E040A0)",
+          backgroundSize: "200% 200%",
+          animation: "gradientShift 4s ease infinite",
+        }}
+      >
+        {/* Scrollable image — inner radius must match outer minus border (2px) */}
+        <div
+          className="preview-scroll w-full h-full overflow-auto"
+          style={{ borderRadius: "calc(1rem - 2px)" }}
+        >
+          <Image
+            src={project.fullWebsiteImage!}
+            alt={`${project.name} full website preview`}
+            width={2560}
+            height={0}
+            style={{ width: "100%", height: "auto", display: "block" }}
+            unoptimized
+          />
+        </div>
+      </div>
+
+      {/* Unified bottom bar — 3-column layout */}
+      <div
+        className="absolute bottom-12 left-1/2 w-[95%] mx-auto -translate-x-1/2 z-20 grid items-center px-5 py-3 rounded-3xl"
+        style={{
+          gridTemplateColumns: "1fr auto 1fr",
+          background: "rgba(0,0,0,0.38)",
+          border: "1px solid rgba(255,255,255,0.1)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          boxShadow: "0 8px 40px rgba(0,0,0,0.4)",
+        }}
+      >
+        {/* Left — Aviva logo */}
+        <div className="flex items-center">
+          <Image
+            src="/aviva-digital-white-logo.png"
+            className="mt-2"
+            alt="Aviva Digital"
+            width={120}
+            height={60}
+            style={{
+              filter: "drop-shadow(0 1px 4px rgba(0,0,0,0.5))",
+            }}
+          />
+        </div>
+
+        {/* Center — action buttons, truly centered via grid */}
+        <div className="flex items-center gap-3 justify-center">
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white/80 hover:text-white transition-colors cursor-pointer whitespace-nowrap"
+            style={{
+              background: "rgba(255,255,255,0.08)",
+              border: "1px solid rgba(255,255,255,0.14)",
+            }}
+          >
+            <ExternalLink size={14} strokeWidth={2} />
+            {isBg ? "Посетете уебсайта" : "Go to website"}
+          </a>
+          <button
+            onClick={onClose}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-90 cursor-pointer whitespace-nowrap"
+            style={{
+              background: "rgba(255,255,255,0.11)",
+              border: "1px solid rgba(255,255,255,0.2)",
+            }}
+          >
+            <X size={14} strokeWidth={2} />
+            {isBg ? "Затворете" : "Close"}
+          </button>
+        </div>
+
+        {/* Right — Princeps logo */}
+        <div className="flex items-center gap-2.5 justify-end">
+          {project.id !== "mbcenter" ? (
+            <>
+              <span className="text-white text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap">
+                Powered by
+              </span>
+              <Image
+                src="/websites/princeps-logo.png"
+                alt="Princeps Group"
+                width={180}
+                height={60}
+                style={{
+                  filter: "drop-shadow(0 1px 4px rgba(0,0,0,0.5))",
+                }}
+              />
+            </>
+          ) : null}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function ProjectsPage({
+  webFilter,
+}: {
+  webFilter?: "custom" | "ecommerce";
+}) {
   const { t, locale } = useLang();
-  const [activeId, setActiveId] = useState(projects[0].id);
+  const visibleProjects = webFilter
+    ? projects.filter((p) => p.webCategory === webFilter)
+    : projects;
+  const [activeId, setActiveId] = useState(visibleProjects[0].id);
+  const [previewProject, setPreviewProject] = useState<WebProject | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [mobileIndex, setMobileIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -150,17 +321,24 @@ export default function ProjectsPage() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
+  // Reset active slide when filter changes
+  useEffect(() => {
+    setActiveId(visibleProjects[0].id);
+    setMobileIndex(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [webFilter]);
+
   // Auto-advance every 3 seconds, pauses on user interaction
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
       setActiveId((current) => {
-        const idx = projects.findIndex((p) => p.id === current);
-        return projects[(idx + 1) % projects.length].id;
+        const idx = visibleProjects.findIndex((p) => p.id === current);
+        return visibleProjects[(idx + 1) % visibleProjects.length].id;
       });
     }, 3000);
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, visibleProjects]);
 
   const pauseAutoplay = () => {
     setIsPaused(true);
@@ -168,29 +346,30 @@ export default function ProjectsPage() {
     pauseTimerRef.current = setTimeout(() => setIsPaused(false), 8000);
   };
 
-  const activeIndex = projects.findIndex((p) => p.id === activeId);
+  const activeIndex = visibleProjects.findIndex((p) => p.id === activeId);
 
   const prev = () => {
     pauseAutoplay();
     if (isMobile) {
       setMobileIndex((i) => Math.max(0, i - 1));
     } else {
-      const newIndex = (activeIndex - 1 + projects.length) % projects.length;
-      setActiveId(projects[newIndex].id);
+      const newIndex =
+        (activeIndex - 1 + visibleProjects.length) % visibleProjects.length;
+      setActiveId(visibleProjects[newIndex].id);
     }
   };
 
   const next = () => {
     pauseAutoplay();
     if (isMobile) {
-      setMobileIndex((i) => Math.min(projects.length - 1, i + 1));
+      setMobileIndex((i) => Math.min(visibleProjects.length - 1, i + 1));
     } else {
-      const newIndex = (activeIndex + 1) % projects.length;
-      setActiveId(projects[newIndex].id);
+      const newIndex = (activeIndex + 1) % visibleProjects.length;
+      setActiveId(visibleProjects[newIndex].id);
     }
   };
 
-  const mobileProject = projects[mobileIndex];
+  const mobileProject = visibleProjects[mobileIndex] ?? visibleProjects[0];
 
   return (
     <>
@@ -208,7 +387,7 @@ export default function ProjectsPage() {
             ref={containerRef}
             className="flex gap-3 h-[780px] items-stretch"
           >
-            {projects.map((project) => {
+            {visibleProjects.map((project) => {
               const isActive = project.id === activeId;
               return (
                 <motion.div
@@ -220,8 +399,12 @@ export default function ProjectsPage() {
                   }}
                   transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
                   onClick={() => {
-                    pauseAutoplay();
-                    setActiveId(project.id);
+                    if (isActive && project.fullWebsiteImage) {
+                      setPreviewProject(project);
+                    } else {
+                      pauseAutoplay();
+                      setActiveId(project.id);
+                    }
                   }}
                   className="relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0"
                   style={{
@@ -270,7 +453,8 @@ export default function ProjectsPage() {
                       backdropFilter: "blur(8px)",
                     }}
                   >
-                    {project.category}
+                    {project.category[locale as "en" | "bg"] ??
+                      project.category.en}
                   </div>
 
                   {/* Inactive state — logo + vertical label */}
@@ -336,11 +520,6 @@ export default function ProjectsPage() {
                           />
                         </div>
 
-                        {/* Name */}
-                        <h3 className="font-display text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
-                          {project.name}
-                        </h3>
-
                         {/* Description */}
                         <p className="text-white/60 text-base leading-relaxed mb-5 max-w-sm">
                           {project.description[locale as "en" | "bg"] ??
@@ -383,31 +562,37 @@ export default function ProjectsPage() {
 
                         {/* Actions */}
                         <div className="flex items-center gap-3 flex-nowrap">
-                          <a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white whitespace-nowrap transition-all duration-200 hover:opacity-90 hover:scale-[1.03] active:scale-[0.97] flex-shrink-0"
-                            style={{
-                              background:
-                                "linear-gradient(135deg, #E040A0, #FFB76C)",
-                            }}
-                          >
-                            <ExternalLink size={14} strokeWidth={2.5} />
-                            Visit Website
-                          </a>
-                          <Link
-                            href="/contact"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white/60 hover:text-white whitespace-nowrap transition-colors duration-200 flex-shrink-0"
-                            style={{
-                              border: "1px solid rgba(255,255,255,0.12)",
-                            }}
-                          >
-                            Similar Project
-                            <ArrowRight size={13} strokeWidth={2.5} />
-                          </Link>
+                          {project.fullWebsiteImage ? (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setPreviewProject(project);
+                              }}
+                              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white whitespace-nowrap transition-all duration-200 hover:opacity-90 hover:scale-[1.03] active:scale-[0.97] flex-shrink-0 cursor-pointer"
+                              style={{
+                                background:
+                                  "linear-gradient(135deg, #E040A0, #FFB76C)",
+                              }}
+                            >
+                              <ZoomIn size={14} strokeWidth={2.5} />
+                              {t.workFilters.visitWebsite}
+                            </button>
+                          ) : (
+                            <a
+                              href={project.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white whitespace-nowrap transition-all duration-200 hover:opacity-90 hover:scale-[1.03] active:scale-[0.97] flex-shrink-0"
+                              style={{
+                                background:
+                                  "linear-gradient(135deg, #E040A0, #FFB76C)",
+                              }}
+                            >
+                              <ExternalLink size={14} strokeWidth={2.5} />
+                              {t.workFilters.visitWebsite}
+                            </a>
+                          )}
                         </div>
                       </motion.div>
                     )}
@@ -421,7 +606,7 @@ export default function ProjectsPage() {
           <div className="flex items-center justify-between mt-8">
             {/* Progress dots */}
             <div className="flex items-center gap-2">
-              {projects.map((p) => (
+              {visibleProjects.map((p) => (
                 <button
                   key={p.id}
                   onClick={() => {
@@ -511,7 +696,8 @@ export default function ProjectsPage() {
                     color: "#c084fc",
                   }}
                 >
-                  {mobileProject.category}
+                  {mobileProject.category[locale as "en" | "bg"] ??
+                    mobileProject.category.en}
                 </span>
 
                 <div className="relative w-14 h-10 mb-3">
@@ -524,9 +710,6 @@ export default function ProjectsPage() {
                   />
                 </div>
 
-                <h3 className="font-display text-2xl font-bold text-white mb-2">
-                  {mobileProject.name}
-                </h3>
                 <p className="text-white/60 text-sm leading-relaxed mb-5">
                   {mobileProject.description[locale as "en" | "bg"] ??
                     mobileProject.description.en}
@@ -543,15 +726,8 @@ export default function ProjectsPage() {
                     }}
                   >
                     <ExternalLink size={13} />
-                    Visit
+                    {t.workFilters.visit}
                   </a>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white/60"
-                    style={{ border: "1px solid rgba(255,255,255,0.12)" }}
-                  >
-                    Similar Project
-                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -560,7 +736,7 @@ export default function ProjectsPage() {
           {/* Mobile nav */}
           <div className="flex items-center justify-between mt-6">
             <div className="flex items-center gap-2">
-              {projects.map((_, i) => (
+              {visibleProjects.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setMobileIndex(i)}
@@ -591,7 +767,7 @@ export default function ProjectsPage() {
               </button>
               <button
                 onClick={next}
-                disabled={mobileIndex === projects.length - 1}
+                disabled={mobileIndex === visibleProjects.length - 1}
                 className="w-9 h-9 rounded-full flex items-center justify-center text-white/60 hover:text-white disabled:opacity-30 transition-all cursor-pointer"
                 style={{
                   background: "rgba(255,255,255,0.06)",
@@ -673,6 +849,16 @@ export default function ProjectsPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Full-website preview modal */}
+      <AnimatePresence>
+        {previewProject && (
+          <WebsitePreviewModal
+            project={previewProject}
+            onClose={() => setPreviewProject(null)}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

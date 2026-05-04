@@ -94,7 +94,7 @@ export default function ServicesPage() {
 
   return (
     <section className="section-padding">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1600px] mx-auto">
         {/* Tab filter */}
         <div className="mb-14 flex justify-center">
           <div
@@ -119,11 +119,7 @@ export default function ServicesPage() {
                     layoutId="services-pill"
                     className="absolute inset-0 rounded-full z-[-1]"
                     style={{
-                      background:
-                        CATEGORY_CONFIG[
-                          activeFilter as keyof typeof CATEGORY_CONFIG
-                        ]?.gradient ??
-                        "linear-gradient(135deg, #FFB76C, #FF419D)",
+                      background: "linear-gradient(135deg, #FFB76C, #FF419D)",
                     }}
                     transition={{ type: "spring", stiffness: 420, damping: 36 }}
                   />

@@ -9,8 +9,6 @@ import {
   ChevronRight,
   Play,
   Pause,
-  Volume2,
-  VolumeX,
   Images,
   Video,
   Sparkles,
@@ -22,10 +20,10 @@ import type { Project, GoalType } from "@/data/projects";
 // ─── Shared config ────────────────────────────────────────────────────────────
 
 export const typeConfig = {
-  carousel: { label: "Carousel", icon: Images, color: "text-accent-violet" },
-  image:    { label: "Visual",   icon: ImageIcon, color: "text-[#F9A8D4]" },
-  video:    { label: "Reel",     icon: Video,     color: "text-accent-pink" },
-  ai:       { label: "AI",       icon: Sparkles,  color: "text-accent-orange" },
+  carousel: { label: "Carousel", icon: Images,    color: "text-[#FB923C]" },
+  image:    { label: "Visual",   icon: ImageIcon, color: "text-[#C084FC]" },
+  video:    { label: "Reel",     icon: Video,     color: "text-[#FF419D]" },
+  ai:       { label: "AI",       icon: Sparkles,  color: "text-[#86EFAC]" },
   print:    { label: "Print",    icon: Printer,   color: "text-[#38BDF8]" },
 };
 
@@ -54,6 +52,16 @@ export default function ContentModal({
   const Icon = cfg.icon;
   const isStatic = !isVideo;
 
+  // Detect mobile so we don't render two <video> elements simultaneously
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -65,12 +73,13 @@ export default function ContentModal({
       onClick={onClose}
     >
       {/* ── Mobile sheet ── */}
+      {isMobile && (
       <motion.div
         initial={{ y: "100%" }}
         animate={{ y: 0 }}
         exit={{ y: "100%" }}
         transition={{ type: "spring", stiffness: 340, damping: 36 }}
-        className="md:hidden w-full rounded-t-3xl overflow-hidden flex flex-col
+        className="w-full rounded-t-3xl overflow-hidden flex flex-col
                    bg-[#0f0f18] border-t border-x border-white/[0.08]
                    shadow-[0_-24px_80px_rgba(0,0,0,0.7)]"
         style={{ maxHeight: "92dvh" }}
@@ -81,7 +90,7 @@ export default function ContentModal({
         </div>
         <div className="flex items-center justify-between px-5 pb-3 flex-shrink-0">
           <div className="flex items-center gap-2">
-            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-white/[0.06] border border-white/[0.1] text-[9px] font-bold uppercase tracking-[0.14em]">
+            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-black/55 backdrop-blur-md border border-white/10 text-[9px] font-bold uppercase tracking-[0.14em]">
               <Icon size={10} className={cfg.color} />
               <span className={cfg.color}>{cfg.label}</span>
             </span>
@@ -120,11 +129,12 @@ export default function ContentModal({
           </div>
         )}
       </motion.div>
+      )}
 
       {/* ── Desktop ── */}
-      {isVideo ? (
+      {!isMobile && (isVideo ? (
         /* Stories-style video viewer */
-        <div className="hidden md:flex items-center gap-6" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-6" onClick={(e) => e.stopPropagation()}>
           {/* Prev arrow */}
           <button
             onClick={onPrev}
@@ -149,8 +159,7 @@ export default function ContentModal({
             <VideoMedia key={project.id} thumbnail={project.thumbnail} videoSrc={project.videoSrc} />
 
             {/* Category pill — top-left */}
-            <div className="absolute top-4 left-4 z-30 flex items-center gap-1.5 px-2.5 py-1 rounded-pill
-                            bg-black/55 backdrop-blur-md border border-white/10">
+            <div className="absolute top-4 left-4 z-30 flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-black/55 backdrop-blur-md border border-white/10">
               <Icon size={11} className={cfg.color} />
               <span className={`text-[10px] font-semibold uppercase tracking-[0.12em] ${cfg.color}`}>
                 {cfg.label}
@@ -185,7 +194,7 @@ export default function ContentModal({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.98, y: 10 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="hidden md:flex rounded-2xl overflow-hidden items-stretch
+          className="flex rounded-2xl overflow-hidden items-stretch
                      bg-[#0c0c15] border border-white/[0.07]
                      shadow-[0_60px_160px_rgba(0,0,0,0.95)]"
           style={{ height: "min(85vh, 860px)" }}
@@ -201,7 +210,7 @@ export default function ContentModal({
           <div className="w-[320px] flex-shrink-0 flex flex-col border-l border-white/[0.06] overflow-y-auto">
             <div className="flex items-center justify-between px-7 pt-7 pb-6 border-b border-white/[0.06] flex-shrink-0">
               <div className="flex items-center gap-2">
-                <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-white/[0.06] border border-white/[0.09] text-[9px] font-bold uppercase tracking-[0.14em]">
+                <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-black/55 backdrop-blur-md border border-white/10 text-[9px] font-bold uppercase tracking-[0.14em]">
                   <Icon size={10} className={cfg.color} />
                   <span className={cfg.color}>{cfg.label}</span>
                 </span>
@@ -234,7 +243,7 @@ export default function ContentModal({
             </div>
           </div>
         </motion.div>
-      )}
+      ))}
     </motion.div>
   );
 }
@@ -341,25 +350,17 @@ function VideoMedia({
   const videoRef = useRef<HTMLVideoElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [seeking, setSeeking] = useState(false);
 
-  // Autoplay on mount
+  // Autoplay on mount — unmuted; if browser blocks it, stay paused (user clicks to play with sound)
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
     v.muted = false;
-    v.play().catch(() => {
-      // Autoplay blocked — try muted first
-      v.muted = true;
-      setIsMuted(true);
-      v.play().catch(() => {});
-    });
-    return () => {
-      v.pause();
-    };
+    v.play().catch(() => {});
+    return () => { v.pause(); };
   }, []);
 
   const formatTime = (s: number) => {
@@ -374,14 +375,6 @@ function VideoMedia({
     if (!v) return;
     if (v.paused) { v.play().catch(() => {}); setPaused(false); }
     else { v.pause(); setPaused(true); }
-  };
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = !v.muted;
-    setIsMuted(v.muted);
   };
 
   const getBarRatio = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -470,16 +463,6 @@ function VideoMedia({
           </div>
         )}
       </div>
-
-      {/* Mute button */}
-      <button
-        onClick={toggleMute}
-        className="absolute bottom-16 right-4 z-30 w-9 h-9 rounded-full
-                   bg-black/55 backdrop-blur-md border border-white/15
-                   flex items-center justify-center hover:bg-black/75 transition-all duration-150"
-      >
-        {isMuted ? <VolumeX size={16} className="text-white" /> : <Volume2 size={16} className="text-white" />}
-      </button>
 
       {/* Progress bar */}
       <div

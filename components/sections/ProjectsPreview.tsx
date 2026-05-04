@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink, ArrowRight } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ButtonOutline } from "@/components/ui/ButtonOutline";
@@ -30,7 +30,7 @@ const featuredProjects: WebProject[] = [
     name: "MB Center",
     client: "MB Center",
     logo: "/websites/mbc-logo-black.png",
-    thumbnail: "/websites/images/mbcenter.webp",
+    thumbnail: "/websites/images/mbcenter3.webp",
     description: {
       en: "Premium automotive service centre website with multi-language support, service booking flow, and a refined brand experience built for luxury clientele.",
       bg: "Уебсайт за премиум автомобилен сервиз с многоезична поддръжка, система за резервации и изискано брандиране за луксозна клиентела.",
@@ -46,7 +46,7 @@ const featuredProjects: WebProject[] = [
     name: "Smart Strips",
     client: "Smart Strips",
     logo: "/websites/smart-strips-logo.png",
-    thumbnail: "/websites/images/smart-strips.jpg",
+    thumbnail: "/websites/images/smart-strips2.webp",
     description: {
       en: "Modern e-commerce store for smart LED lighting products — product configurator, comparison tools, and a clean UX that converts browsers into buyers.",
       bg: "Модерен e-commerce магазин за смарт LED осветление с конфигуратор на продукти и изчистен UX, ориентиран към продажби.",
@@ -87,7 +87,7 @@ export default function ProjectsPreview() {
     if (isPaused) return;
     const interval = setInterval(() => {
       setActiveIndex((i) => (i + 1) % featuredProjects.length);
-    }, 4000);
+    }, 6000);
     return () => clearInterval(interval);
   }, [isPaused]);
 
@@ -100,7 +100,7 @@ export default function ProjectsPreview() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ padding: "120px 0 140px" }}
+      style={{ padding: "120px 0 160px" }}
     >
       {/* Background glows */}
       <div
@@ -171,11 +171,11 @@ export default function ProjectsPreview() {
         </motion.div>
 
         {/* Desktop layout */}
-        <div className="hidden md:grid grid-cols-[1fr_420px] gap-6 items-stretch min-h-[560px]">
+        <div className="hidden md:grid grid-cols-[1fr_480px] gap-6 items-stretch min-h-[680px]">
           {/* Main featured card */}
           <div
             className="relative rounded-3xl overflow-hidden"
-            style={{ minHeight: 520 }}
+            style={{ minHeight: 800 }}
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -280,16 +280,8 @@ export default function ProjectsPreview() {
                     }}
                   >
                     <ExternalLink size={14} strokeWidth={2.5} />
-                    Виж сайта
+                    Вижте сайта
                   </a>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white/55 hover:text-white transition-colors duration-200"
-                    style={{ border: "1px solid rgba(255,255,255,0.11)" }}
-                  >
-                    Подобен проект
-                    <ArrowRight size={13} strokeWidth={2.5} />
-                  </Link>
                 </div>
 
                 {/* Princeps logo — bottom-right of big card */}
@@ -339,9 +331,7 @@ export default function ProjectsPreview() {
                     border: isActive
                       ? `1px solid ${project.accentColor}55`
                       : "1px solid rgba(255,255,255,0.07)",
-                    background: isActive
-                      ? `linear-gradient(135deg, ${project.accentColor}12, rgba(10,10,15,0.9))`
-                      : "rgba(10,10,15,0.6)",
+                    background: "rgba(10,10,15,0.6)",
                     boxShadow: isActive
                       ? `0 0 30px ${project.accentColor}20`
                       : "none",
@@ -349,53 +339,41 @@ export default function ProjectsPreview() {
                     transition: "all 0.35s ease",
                   }}
                 >
-                  {/* Thumbnail strip */}
-                  <div className="relative h-28 overflow-hidden">
-                    <Image
-                      src={project.thumbnail}
-                      alt={project.name}
-                      fill
-                      className="object-cover transition-transform duration-500"
-                      style={{
-                        filter: isActive
-                          ? "brightness(0.65)"
-                          : "brightness(0.4)",
-                        transform: isActive ? "scale(1)" : "scale(1.04)",
-                      }}
-                    />
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          "linear-gradient(to top, rgba(10,10,15,1) 0%, rgba(10,10,15,0.25) 100%)",
-                      }}
-                    />
+                  {/* Full-card image */}
+                  <Image
+                    src={project.thumbnail}
+                    alt={project.name}
+                    fill
+                    className="object-cover transition-all duration-500"
+                    style={{
+                      filter: isActive
+                        ? "brightness(0.75)"
+                        : "brightness(0.45)",
+                      transform: isActive ? "scale(1)" : "scale(1.04)",
+                    }}
+                  />
 
-                    {/* Active indicator bar */}
-                    {isActive && (
-                      <div
-                        className="absolute bottom-0 left-0 right-0 h-[2px]"
-                        style={{
-                          background: `linear-gradient(90deg, transparent, ${project.accentColor}, transparent)`,
-                        }}
-                      />
-                    )}
-                  </div>
+                  {/* Gradient — only bottom portion darkened */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(to top, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.3) 35%, transparent 60%)",
+                    }}
+                  />
 
-                  {/* Info */}
-                  <div className="px-4 py-3">
-                    <div className="flex items-center justify-between mb-1">
-                      <span
-                        className="text-[10px] font-bold tracking-[0.16em] uppercase"
-                        style={{
-                          color: isActive
-                            ? project.accentColor
-                            : "rgba(255,255,255,0.35)",
-                        }}
-                      >
-                        {project.category}
-                      </span>
-                    </div>
+                  {/* Text pinned to bottom */}
+                  <div className="absolute bottom-0 left-0 right-0 px-4 py-4 z-10">
+                    <span
+                      className="block text-[10px] font-bold tracking-[0.16em] uppercase mb-1"
+                      style={{
+                        color: isActive
+                          ? project.accentColor
+                          : "rgba(255,255,255,0.35)",
+                      }}
+                    >
+                      {project.category}
+                    </span>
                     <h4
                       className="font-display font-bold text-sm leading-tight"
                       style={{
@@ -407,6 +385,16 @@ export default function ProjectsPreview() {
                       {project.name}
                     </h4>
                   </div>
+
+                  {/* Active indicator bar */}
+                  {isActive && (
+                    <div
+                      className="absolute bottom-0 left-0 right-0 h-[2px] z-20"
+                      style={{
+                        background: `linear-gradient(90deg, transparent, ${project.accentColor}, transparent)`,
+                      }}
+                    />
+                  )}
                 </motion.button>
               );
             })}
@@ -477,7 +465,7 @@ export default function ProjectsPreview() {
                     }}
                   >
                     <ExternalLink size={13} />
-                    Виж сайта
+                    Вижте сайта
                   </a>
                   <Link
                     href="/contact"
@@ -519,7 +507,7 @@ export default function ProjectsPreview() {
         <div className="flex items-center gap-6 mt-12 mb-10">
           <div className="flex-1 h-px bg-white/[0.06]" />
           <p className="text-white/30 text-xs font-semibold uppercase tracking-[0.15em] whitespace-nowrap">
-            {featuredProjects.length} избрани проекта · виж всички 7
+            {featuredProjects.length} избрани проекта от 2 категории
           </p>
           <div className="flex-1 h-px bg-white/[0.06]" />
         </div>
@@ -532,8 +520,15 @@ export default function ProjectsPreview() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <Link href="/projects">
-            <ButtonOutline size="lg">Виж всички проекти →</ButtonOutline>
+          <Link
+            href="/work"
+            onClick={() => {
+              try {
+                localStorage.setItem("work-filter", "Custom Websites");
+              } catch {}
+            }}
+          >
+            <ButtonOutline size="lg">Вижте всички проекти →</ButtonOutline>
           </Link>
         </motion.div>
       </div>

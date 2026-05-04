@@ -626,7 +626,7 @@ export default function MagicBento({
             const IconComp = (Icons as any)[card.icon] as
               | React.ElementType
               | undefined;
-            const baseClassName = `card flex flex-col relative min-h-[260px] w-full max-w-full rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 ${enableBorderGlow ? "card--border-glow" : ""}`;
+            const baseClassName = `card flex flex-col relative min-h-[300px] w-full max-w-full rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 ${enableBorderGlow ? "card--border-glow" : ""}`;
             const cardStyle: React.CSSProperties = {
               backgroundColor: "#0d0a14",
               borderColor: "var(--border-color)",
@@ -672,29 +672,15 @@ export default function MagicBento({
                 )}
 
                 {/* Content */}
-                <div className="flex flex-col relative p-4 z-10 gap-3 h-full">
+                <div className="flex flex-col relative p-6 z-10 gap-4 h-full">
                   {/* Text content */}
                   <div className="flex flex-col gap-3 flex-1">
-                    <h3 className="font-bold text-[20px] leading-snug text-white m-0">
+                    <h3 className="font-bold text-[24px] leading-snug text-white m-0">
                       {card.title}
                     </h3>
-                    <p className="text-base leading-[1.6] text-white/70 m-0">
+                    <p className="text-[17px] leading-[1.65] text-white/70 m-0">
                       {card.description}
                     </p>
-                    <ul className="flex flex-col gap-[6px]">
-                      {card.benefits.map((b) => (
-                        <li
-                          key={b}
-                          className="flex items-center gap-2 text-sm text-white/55"
-                        >
-                          <span
-                            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                            style={{ background: `rgba(${glowColor}, 0.9)` }}
-                          />
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
                   </div>
 
                   {/* Icon — bottom right */}

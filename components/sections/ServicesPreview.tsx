@@ -17,21 +17,18 @@ const columnMeta = [
     accent: "#E040A0",
     border: "rgba(224,64,160,0.3)",
     glow: "rgba(224,64,160,0.12)",
-    number: "01",
   },
   {
     category: "creative" as const,
     accent: "#9B59F5",
     border: "rgba(155,89,245,0.3)",
     glow: "rgba(155,89,245,0.12)",
-    number: "02",
   },
   {
     category: "web" as const,
     accent: "#4A9EFF",
     border: "rgba(74,158,255,0.3)",
     glow: "rgba(74,158,255,0.12)",
-    number: "03",
   },
 ];
 
@@ -41,6 +38,13 @@ export default function ServicesPreview() {
     ...m,
     label: t.services.columns[i].label,
   }));
+
+  const localizedServices = services.map((s) => {
+    const localized = t.servicesList.find((ls) => ls.id === s.id);
+    return localized
+      ? { ...s, title: localized.title, description: localized.description }
+      : s;
+  });
 
   return (
     <section
@@ -106,9 +110,11 @@ export default function ServicesPreview() {
           viewport={{ once: true, margin: "-60px" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
         >
-          {columns.map(({ category, label, accent, border, glow, number }) => {
-            const categoryServices = services
-              .filter((s) => s.category === category)
+          {columns.map(({ category, label, accent, border, glow }) => {
+            const categoryServices = localizedServices
+              .filter(
+                (s) => s.category === category && s.id !== "print-materials",
+              )
               .slice(0, 2);
 
             return (
@@ -119,23 +125,17 @@ export default function ServicesPreview() {
               >
                 {/* Category header */}
                 <div
-                  className="flex items-center justify-between px-5 py-4 rounded-[14px]"
+                  className="flex items-start justify-between px-5 py-4 rounded-[14px]"
                   style={{
                     background: `linear-gradient(135deg, ${glow}, transparent)`,
                     border: `1px solid ${border}`,
                   }}
                 >
                   <span
-                    className="font-display font-bold text-sm uppercase tracking-[0.12em]"
+                    className="font-display font-bold text-sm uppercase tracking-[0.12em]] flex-1"
                     style={{ color: accent }}
                   >
                     {label}
-                  </span>
-                  <span
-                    className="font-display font-bold text-3xl leading-none opacity-20 select-none"
-                    style={{ color: accent }}
-                  >
-                    {number}
                   </span>
                 </div>
 
@@ -150,12 +150,14 @@ export default function ServicesPreview() {
                     <motion.div
                       key={service.id}
                       className="group relative p-6 flex flex-col gap-3 overflow-hidden cursor-default flex-1 rounded-[16px]"
-                      style={{
-                        background: "rgba(8, 6, 18, 0.75)",
-                        border: `1px solid ${border}`,
-                        backdropFilter: "blur(12px)",
-                        "--card-border": border,
-                      } as React.CSSProperties}
+                      style={
+                        {
+                          background: "rgba(8, 6, 18, 0.75)",
+                          border: `1px solid ${border}`,
+                          backdropFilter: "blur(12px)",
+                          "--card-border": border,
+                        } as React.CSSProperties
+                      }
                       whileHover={{
                         y: -4,
                         transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },

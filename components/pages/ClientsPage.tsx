@@ -11,44 +11,329 @@ import ScrollStack, { ScrollStackItem } from "@/components/ui/ScrollStack";
 import { CurvedLoop } from "@/components/ui/CurvedLoop";
 import { Glow } from "@/components/ui/Glow";
 import { useLang } from "@/lib/LanguageContext";
-import { ArrowUpRight, Sparkles, Star } from "lucide-react";
+import {
+  ArrowUpRight,
+  Sparkles,
+  Star,
+  Share2,
+  Brain,
+  Target,
+  Mail,
+  Palette,
+  Printer,
+  Video,
+  Film,
+  PenLine,
+  ImagePlay,
+  Clapperboard,
+  Search,
+  Code2,
+  Store,
+  Smartphone,
+  Layers,
+  Server,
+} from "lucide-react";
+import { services as allServices } from "@/data/services";
+
+const LUCIDE_ICONS: Record<string, React.ElementType> = {
+  Share2,
+  Brain,
+  Target,
+  Mail,
+  Palette,
+  Printer,
+  Video,
+  Film,
+  PenLine,
+  ImagePlay,
+  Clapperboard,
+  Search,
+  Code2,
+  Store,
+  Smartphone,
+  Layers,
+  Server,
+};
 
 interface ClientStoryMeta {
   id: string;
   name: string;
+  shortDesc: string;
   image: string;
-  metrics: { value: string }[];
   accent: string;
   accentRgb: string;
+  serviceIds: string[];
+  instagram?: string;
+  facebook?: string;
+  website?: string;
 }
 
 interface ClientStory extends ClientStoryMeta {
   industry: string;
   tagline: string;
   description: string;
-  metrics: { value: string; label: string }[];
 }
 
 const clientsMeta: ClientStoryMeta[] = [
-  { id: "elshisha",        name: "El Shisha",       image: "/instagrams/elshisha.png",        metrics: [{ value: "+340%" }, { value: "+40%" },  { value: "100K+" }], accent: "#E040A0", accentRgb: "rgba(224,64,160," },
-  { id: "pulse-homes",     name: "Pulse Homes",     image: "/instagrams/pulse-homes.png",     metrics: [{ value: "+60%" },  { value: "2x" },    { value: "+40%" }],  accent: "#9B59F5", accentRgb: "rgba(155,89,245," },
-  { id: "pulse-gym-shop",  name: "Pulse Gym Shop",  image: "/instagrams/pulse-gym-shop.png",  metrics: [{ value: "5.2x" },  { value: "+85%" },  { value: "+120%" }], accent: "#FFB76C", accentRgb: "rgba(255,183,108," },
-  { id: "coolfit",         name: "CoolFit",         image: "/instagrams/coolfit.png",         metrics: [{ value: "+50%" },  { value: "1.8x" },  { value: "+35%" }],  accent: "#4A9EFF", accentRgb: "rgba(74,158,255," },
-  { id: "el-well",         name: "El Well",         image: "/instagrams/el-well.png",         metrics: [{ value: "+55%" },  { value: "2x" },    { value: "+45%" }],  accent: "#E040A0", accentRgb: "rgba(224,64,160," },
-  { id: "fox-academy",     name: "Fox Academy",     image: "/instagrams/fox-academy.png",     metrics: [{ value: "+45%" },  { value: "1.5x" },  { value: "+30%" }],  accent: "#9B59F5", accentRgb: "rgba(155,89,245," },
-  { id: "fine-design",     name: "Fine Design",     image: "/instagrams/fine-design.png",     metrics: [{ value: "+70%" },  { value: "3.2x" },  { value: "+45%" }],  accent: "#FFB76C", accentRgb: "rgba(255,183,108," },
-  { id: "smart-strips",    name: "Smart Strips",    image: "/instagrams/smart-strips.png",    metrics: [{ value: "4.8x" },  { value: "+200%" }, { value: "+90%" }],  accent: "#4A9EFF", accentRgb: "rgba(74,158,255," },
-  { id: "christian-andon", name: "Christian Andon", image: "/instagrams/christian-andon.png", metrics: [{ value: "+250%" }, { value: "+180%" }, { value: "12x" }],   accent: "#E040A0", accentRgb: "rgba(224,64,160," },
-  { id: "dongfeng",        name: "Dongfeng",        image: "/instagrams/dongfeng.png",        metrics: [{ value: "+65%" },  { value: "+120%" }, { value: "3.1x" }],  accent: "#9B59F5", accentRgb: "rgba(155,89,245," },
+  // 1 — Fine Design — purple
+  {
+    id: "fine-design",
+    name: "Fine Design",
+    shortDesc:
+      "Interior architecture studio crafting bespoke spaces for discerning clients.",
+    image: "/instagrams/fine-design.png",
+    accent: "#ca6b99",
+    accentRgb: "rgba(202,107,153,",
+    serviceIds: [
+      "social-media-management",
+      "ai-powered-marketing",
+      "meta-ads-campaigns",
+      "copywriting",
+      "graphic-design",
+      "video-filming",
+      "video-editing",
+      "ai-image-generation",
+      "ai-video-generation",
+    ],
+    instagram: "https://instagram.com/finedesign.bg",
+    facebook: "https://facebook.com/finedesign",
+    website: "https://finedesign.bg",
+  },
+  // 2 — Smart Strips — burgundy red
+  {
+    id: "smart-strips",
+    name: "Smart Strips",
+    shortDesc:
+      "Consumer tech brand bringing smart LED solutions to the Bulgarian market.",
+    image: "/instagrams/smart-strips.png",
+    accent: "#c1ff72",
+    accentRgb: "rgba(193,255,114,",
+    serviceIds: [
+      "social-media-management",
+      "ai-powered-marketing",
+      "meta-ads-campaigns",
+      "email-marketing",
+      "copywriting",
+      "seo-optimization",
+      "graphic-design",
+      "video-editing",
+      "ai-image-generation",
+      "ai-video-generation",
+      "online-store-ecommerce",
+      "hosting-domain",
+    ],
+    instagram: "https://instagram.com/smartstrips.bg",
+    facebook: "https://facebook.com/smartstrips",
+    website: "https://smartstrips.bg",
+  },
+  // 3 — Dongfeng — red
+  {
+    id: "dongfeng",
+    name: "Dongfeng Plovdiv",
+    shortDesc:
+      "Official Bulgarian importer of Dongfeng electric and hybrid vehicles.",
+    image: "/instagrams/dongfeng.png",
+    accent: "#E53E3E",
+    accentRgb: "rgba(229,62,62,",
+    serviceIds: [
+      "social-media-management",
+      "ai-powered-marketing",
+      "meta-ads-campaigns",
+      "copywriting",
+      "graphic-design",
+      "video-editing",
+      "ai-image-generation",
+      "ai-video-generation",
+    ],
+    instagram: "https://instagram.com/dongfeng.bg",
+    facebook: "https://facebook.com/dongfeng.bg",
+    website: "https://dongfeng.bg",
+  },
+  // 4 — CoolFit — blue
+  {
+    id: "coolfit",
+    name: "CoolFit",
+    shortDesc:
+      "Corporate sports card giving access to 415+ fitness venues across Bulgaria.",
+    image: "/instagrams/coolfit.png",
+    accent: "#4A9EFF",
+    accentRgb: "rgba(74,158,255,",
+    serviceIds: [
+      "social-media-management",
+      "ai-powered-marketing",
+      "meta-ads-campaigns",
+      "email-marketing",
+      "copywriting",
+      "graphic-design",
+      "video-editing",
+      "ai-image-generation",
+      "ai-video-generation",
+    ],
+    instagram: "https://instagram.com/coolfit.bg",
+    facebook: "https://facebook.com/coolfit.bg",
+    website: "https://coolfit.bg",
+  },
+  // 5 — Fox Academy — golden
+  {
+    id: "fox-academy",
+    name: "Fox Academy",
+    shortDesc:
+      "Modern education platform bridging skills and career opportunities.",
+    image: "/instagrams/fox-academy.png",
+    accent: "#D4A017",
+    accentRgb: "rgba(212,160,23,",
+    serviceIds: [
+      "social-media-management",
+      "ai-powered-marketing",
+      "meta-ads-campaigns",
+      "copywriting",
+      "graphic-design",
+      "video-filming",
+      "video-editing",
+      "ai-image-generation",
+      "ai-video-generation",
+      "custom-websites-nextjs",
+      "seo-optimization",
+      "hosting-domain",
+    ],
+    instagram: "https://instagram.com/foxacademy",
+    facebook: "https://facebook.com/foxacademy",
+    website: "https://foxacademy.bg",
+  },
+  // 6 — El Shisha — emerald green
+  {
+    id: "elshisha",
+    name: "El Shisha",
+    shortDesc: "Premium shisha lounge brand in Sofia's nightlife scene.",
+    image: "/instagrams/elshisha.png",
+    accent: "#10B981",
+    accentRgb: "rgba(16,185,129,",
+    serviceIds: [
+      "social-media-management",
+      "ai-powered-marketing",
+      "meta-ads-campaigns",
+      "email-marketing",
+      "copywriting",
+      "graphic-design",
+      "print-materials",
+      "video-filming",
+      "video-editing",
+      "ai-image-generation",
+      "ai-video-generation",
+    ],
+    instagram: "https://instagram.com/elshisha",
+    facebook: "https://facebook.com/elshisha",
+    website: "https://elshisha.bg",
+  },
+  // 7 — Pulse Homes — blue
+  {
+    id: "pulse-homes",
+    name: "Pulse Homes",
+    shortDesc:
+      "Luxury real estate brand specialising in Sofia's prime districts.",
+    image: "/instagrams/pulse-homes.png",
+    accent: "#4A9EFF",
+    accentRgb: "rgba(74,158,255,",
+    serviceIds: [
+      "social-media-management",
+      "ai-powered-marketing",
+      "meta-ads-campaigns",
+      "email-marketing",
+      "copywriting",
+      "graphic-design",
+      "video-editing",
+      "ai-image-generation",
+      "ai-video-generation",
+    ],
+    instagram: "https://instagram.com/pulsehomes",
+    facebook: "https://facebook.com/pulsehomes",
+    website: "https://pulsehomes.bg",
+  },
+  // 8 — El Well — light green
+  {
+    id: "el-well",
+    name: "El Well",
+    shortDesc: "Holistic wellness and beauty studio focused on mindful luxury.",
+    image: "/instagrams/el-well.png",
+    accent: "#4ADE80",
+    accentRgb: "rgba(74,222,128,",
+    serviceIds: [
+      "social-media-management",
+      "ai-powered-marketing",
+      "copywriting",
+      "graphic-design",
+      "video-filming",
+      "video-editing",
+      "ai-image-generation",
+      "ai-video-generation",
+    ],
+    instagram: "https://instagram.com/elwell.bg",
+    facebook: "https://facebook.com/elwell",
+    website: "https://elwell.bg",
+  },
+  // 9 — Christian Andon — yellow
+  {
+    id: "christian-andon",
+    name: "CA Fragrances",
+    shortDesc:
+      "Executive personal brand for a high-profile business leader and entrepreneur.",
+    image: "/instagrams/christian-andon.png",
+    accent: "#FACC15",
+    accentRgb: "rgba(250,204,21,",
+    serviceIds: [
+      "graphic-design",
+      "online-store-ecommerce",
+      "seo-optimization",
+      "hosting-domain",
+    ],
+    instagram: "https://instagram.com/christianandon",
+    facebook: "https://facebook.com/christianandon",
+  },
 ];
 
 const testimonialsMeta = [
-  { photo: "/images/review1.jpg", accent: "#E040A0", border: "rgba(224,64,160,0.3)", glow: "rgba(224,64,160,0.12)", stars: 5 },
-  { photo: null,                  accent: "#9B59F5", border: "rgba(155,89,245,0.3)", glow: "rgba(155,89,245,0.12)", stars: 5 },
-  { photo: null,                  accent: "#FFB76C", border: "rgba(255,183,108,0.3)", glow: "rgba(255,183,108,0.12)", stars: 5 },
-  { photo: null,                  accent: "#E040A0", border: "rgba(224,64,160,0.3)", glow: "rgba(224,64,160,0.12)", stars: 5 },
-  { photo: null,                  accent: "#9B59F5", border: "rgba(155,89,245,0.3)", glow: "rgba(155,89,245,0.12)", stars: 5 },
-  { photo: null,                  accent: "#FFB76C", border: "rgba(255,183,108,0.3)", glow: "rgba(255,183,108,0.12)", stars: 5 },
+  {
+    photo: "/images/review1.jpg",
+    accent: "#E040A0",
+    border: "rgba(224,64,160,0.3)",
+    glow: "rgba(224,64,160,0.12)",
+    stars: 5,
+  },
+  {
+    photo: null,
+    accent: "#9B59F5",
+    border: "rgba(155,89,245,0.3)",
+    glow: "rgba(155,89,245,0.12)",
+    stars: 5,
+  },
+  {
+    photo: null,
+    accent: "#FFB76C",
+    border: "rgba(255,183,108,0.3)",
+    glow: "rgba(255,183,108,0.12)",
+    stars: 5,
+  },
+  {
+    photo: null,
+    accent: "#E040A0",
+    border: "rgba(224,64,160,0.3)",
+    glow: "rgba(224,64,160,0.12)",
+    stars: 5,
+  },
+  {
+    photo: null,
+    accent: "#9B59F5",
+    border: "rgba(155,89,245,0.3)",
+    glow: "rgba(155,89,245,0.12)",
+    stars: 5,
+  },
+  {
+    photo: null,
+    accent: "#FFB76C",
+    border: "rgba(255,183,108,0.3)",
+    glow: "rgba(255,183,108,0.12)",
+    stars: 5,
+  },
 ];
 
 interface TestimonialItem {
@@ -74,31 +359,54 @@ function TestimonialCard({ item }: { item: TestimonialItem }) {
       <div
         aria-hidden
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[20px]"
-        style={{ background: `radial-gradient(circle at 50% 0%, ${item.glow} 0%, transparent 65%)` }}
+        style={{
+          background: `radial-gradient(circle at 50% 0%, ${item.glow} 0%, transparent 65%)`,
+        }}
       />
       <div
         className="absolute top-0 left-8 right-8 h-[1px] opacity-40 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ background: `linear-gradient(90deg, transparent, ${item.accent}, transparent)` }}
+        style={{
+          background: `linear-gradient(90deg, transparent, ${item.accent}, transparent)`,
+        }}
       />
       <div className="flex gap-1">
         {Array.from({ length: item.stars }).map((_, i) => (
-          <Star key={i} size={13} fill={item.accent} style={{ color: item.accent }} />
+          <Star
+            key={i}
+            size={13}
+            fill={item.accent}
+            style={{ color: item.accent }}
+          />
         ))}
       </div>
-      <p className="text-white/80 text-base leading-relaxed flex-1">&ldquo;{item.quote}&rdquo;</p>
+      <p className="text-white/80 text-base leading-relaxed flex-1">
+        &ldquo;{item.quote}&rdquo;
+      </p>
       <div className="flex items-center gap-3 pt-4 border-t border-white/[0.07]">
         {item.photo ? (
-          <Image src={item.photo} alt={item.name} width={36} height={36} className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
+          <Image
+            src={item.photo}
+            alt={item.name}
+            width={36}
+            height={36}
+            className="w-9 h-9 rounded-full object-cover flex-shrink-0"
+          />
         ) : (
           <div
             className="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-sm flex-shrink-0"
-            style={{ background: `radial-gradient(circle, ${item.glow}, rgba(255,255,255,0.05))`, border: `1px solid ${item.border}`, color: item.accent }}
+            style={{
+              background: `radial-gradient(circle, ${item.glow}, rgba(255,255,255,0.05))`,
+              border: `1px solid ${item.border}`,
+              color: item.accent,
+            }}
           >
             {item.name[0]}
           </div>
         )}
         <div>
-          <div className="text-sm font-semibold text-white leading-tight">{item.name}</div>
+          <div className="text-sm font-semibold text-white leading-tight">
+            {item.name}
+          </div>
           <div className="text-xs text-white/40 mt-0.5">{item.role}</div>
         </div>
       </div>
@@ -106,23 +414,43 @@ function TestimonialCard({ item }: { item: TestimonialItem }) {
   );
 }
 
-function MarqueeRow({ items, reverse = false }: { items: TestimonialItem[]; reverse?: boolean }) {
+function MarqueeRow({
+  items,
+  reverse = false,
+}: {
+  items: TestimonialItem[];
+  reverse?: boolean;
+}) {
   const trackRef = useRef<HTMLDivElement>(null);
   return (
     <div
       className="relative"
       style={{ overflowX: "hidden", overflowY: "visible" }}
-      onMouseEnter={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "paused"; }}
-      onMouseLeave={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "running"; }}
+      onMouseEnter={() => {
+        if (trackRef.current)
+          trackRef.current.style.animationPlayState = "paused";
+      }}
+      onMouseLeave={() => {
+        if (trackRef.current)
+          trackRef.current.style.animationPlayState = "running";
+      }}
     >
-      <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to right, #0A0A0F, transparent)" }} />
-      <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to left, #0A0A0F, transparent)" }} />
+      <div
+        className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+        style={{
+          background: "linear-gradient(to right, #0A0A0F, transparent)",
+        }}
+      />
+      <div
+        className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+        style={{ background: "linear-gradient(to left, #0A0A0F, transparent)" }}
+      />
       <div
         ref={trackRef}
         className="flex gap-5 w-max py-4"
-        style={{ animation: `marquee${reverse ? "Reverse" : ""} ${reverse ? "160s" : "130s"} linear infinite` }}
+        style={{
+          animation: `marquee${reverse ? "Reverse" : ""} ${reverse ? "160s" : "130s"} linear infinite`,
+        }}
       >
         {items.map((item, i) => (
           <TestimonialCard key={`${item.name}-${i}`} item={item} />
@@ -133,21 +461,37 @@ function MarqueeRow({ items, reverse = false }: { items: TestimonialItem[]; reve
 }
 
 const clientLogos = [
-  { logo: "/clients/elshisha.png",          name: "El Shisha",    accent: "#E040A0" },
-  { logo: "/clients/pulsehomes2.png",        name: "Pulse Homes",  accent: "#FFB76C" },
-  { logo: "/clients/coolfit.png",            name: "CoolFit",      accent: "#9B59F5" },
-  { logo: "/clients/elwell.png",             name: "ElWell",       accent: "#E040A0" },
-  { logo: "/clients/foxacademy.png",         name: "Fox Academy",  accent: "#FFB76C" },
-  { logo: "/clients/lamaniere.png",          name: "La Manière",   accent: "#9B59F5" },
-  { logo: "/clients/vapy.png",               name: "Vapy",         accent: "#E040A0" },
-  { logo: "/clients/pulsekids.png",          name: "Pulse Kids",   accent: "#FFB76C" },
-  { logo: "/clients/smart-strips-logo.png",  name: "Smart Strips", accent: "#9B59F5" },
-  { logo: "/clients/fine-design-logo.png",   name: "Fine Design",  accent: "#E040A0" },
-  { logo: "/clients/dongfeng-logo-white.png",name: "Dongfeng",     accent: "#FFB76C" },
-  { logo: "/clients/chris-logo.png",         name: "Chris",        accent: "#9B59F5" },
-  { logo: "/clients/fitty-logo.png",         name: "Fitty",        accent: "#FFB76C" },
-  { logo: "/clients/under1roof-logo.png",    name: "Under 1 Roof", accent: "#9B59F5" },
-  { logo: "/clients/mbc-logo-white.png",     name: "MBC",          accent: "#E040A0" },
+  { logo: "/clients/elshisha.png", name: "El Shisha", accent: "#E040A0" },
+  { logo: "/clients/pulsehomes2.png", name: "Pulse Homes", accent: "#FFB76C" },
+  { logo: "/clients/coolfit.png", name: "CoolFit", accent: "#9B59F5" },
+  { logo: "/clients/elwell.png", name: "ElWell", accent: "#E040A0" },
+  { logo: "/clients/foxacademy.png", name: "Fox Academy", accent: "#FFB76C" },
+  { logo: "/clients/lamaniere.png", name: "La Manière", accent: "#9B59F5" },
+  { logo: "/clients/vapy.png", name: "Vapy", accent: "#E040A0" },
+  { logo: "/clients/pulsekids.png", name: "Pulse Kids", accent: "#FFB76C" },
+  {
+    logo: "/clients/smart-strips-logo.png",
+    name: "Smart Strips",
+    accent: "#9B59F5",
+  },
+  {
+    logo: "/clients/fine-design-logo.png",
+    name: "Fine Design",
+    accent: "#E040A0",
+  },
+  {
+    logo: "/clients/dongfeng-logo-white.png",
+    name: "Dongfeng",
+    accent: "#FFB76C",
+  },
+  { logo: "/clients/chris-logo.png", name: "Chris", accent: "#9B59F5" },
+  { logo: "/clients/fitty-logo.png", name: "Fitty", accent: "#FFB76C" },
+  {
+    logo: "/clients/under1roof-logo.png",
+    name: "Under 1 Roof",
+    accent: "#9B59F5",
+  },
+  { logo: "/clients/mbc-logo-white.png", name: "MBC", accent: "#E040A0" },
 ];
 
 function useRandomPop(count: number, inView: boolean) {
@@ -210,16 +554,22 @@ function useRandomPop(count: number, inView: boolean) {
   return activeSet;
 }
 
-function ClientCard({
-  client,
-  caseStudyLabel,
-}: {
-  client: ClientStory;
-  caseStudyLabel: string;
-}) {
+function ClientCard({ client }: { client: ClientStory }) {
+  const { t } = useLang();
+  const resolvedServices = client.serviceIds.map((id) => {
+    const svc = allServices.find((s) => s.id === id);
+    const translated = t.servicesList.find((s: { id: string }) => s.id === id);
+    return {
+      id,
+      icon: svc?.icon ?? "Share2",
+      title: translated?.title ?? svc?.title ?? id,
+      category: svc?.category ?? "marketing",
+    };
+  });
+
   return (
     <div
-      className="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden"
+      className="relative w-full rounded-3xl overflow-hidden"
       style={{
         background: `#0B0B12`,
         backgroundImage: `linear-gradient(135deg, ${client.accentRgb}0.10), rgba(11,11,18,1) 60%)`,
@@ -227,7 +577,7 @@ function ClientCard({
         boxShadow: `0 40px 100px rgba(0,0,0,0.7), 0 0 80px ${client.accentRgb}0.18), inset 0 1px 0 rgba(255,255,255,0.06)`,
       }}
     >
-      {/* Corner glow */}
+      {/* Corner glows */}
       <div
         aria-hidden
         className="absolute -top-32 -right-32 w-96 h-96 rounded-full pointer-events-none"
@@ -245,9 +595,9 @@ function ClientCard({
         }}
       />
 
-      <div className="relative grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-0">
+      <div className="relative grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-0">
         {/* Left — image */}
-        <div className="relative aspect-square lg:aspect-auto lg:min-h-[520px] overflow-hidden">
+        <div className="relative aspect-square lg:aspect-auto lg:min-h-[940px] overflow-hidden">
           <Image
             src={client.image}
             alt={client.name}
@@ -268,68 +618,185 @@ function ClientCard({
               background: `linear-gradient(180deg, transparent 60%, rgba(15,15,22,0.5) 100%)`,
             }}
           />
-          {/* Industry tag */}
-          <div className="absolute top-6 left-6">
+        </div>
+
+        {/* Right — content */}
+        <div className="p-6 md:p-10 flex flex-col justify-between gap-8">
+          {/* Top: name + industry pill + tagline + description + service tags */}
+          <div className="flex flex-col gap-4">
+            <h3 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-[1.05]">
+              {client.name}
+            </h3>
+
+            {/* Industry pill — right below name */}
+
             <span
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] uppercase tracking-[0.18em] font-medium"
+              className="self-start inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[12px] uppercase tracking-[0.18em] font-medium"
               style={{
-                background: "rgba(15,15,22,0.7)",
+                background: "rgba(15,15,22,0.8)",
                 backdropFilter: "blur(12px)",
-                border: `1px solid ${client.accentRgb}0.4)`,
+                border: `1px solid ${client.accentRgb}0.5)`,
                 color: client.accent,
               }}
             >
               <Sparkles size={11} />
               {client.industry}
             </span>
-          </div>
-        </div>
-
-        {/* Right — content */}
-        <div className="p-8 md:p-12 flex flex-col justify-between gap-8">
-          <div>
-            <div className="text-white/40 text-xs uppercase tracking-[0.2em] mb-3">
-              {caseStudyLabel}
-            </div>
-            <h3 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-white leading-[1.05] mb-4">
-              {client.name}
-            </h3>
-            <p
-              className="text-lg md:text-xl font-display mb-5"
-              style={{
-                background: `linear-gradient(135deg, #fff, ${client.accent})`,
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              {client.tagline}
+            <p className="text-lg md:text-xl font-display">
+              <span
+                style={{
+                  background: `linear-gradient(135deg, #fff, ${client.accent})`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                {client.tagline}
+              </span>
             </p>
             <p className="text-white/60 text-sm md:text-base leading-relaxed">
               {client.description}
             </p>
-          </div>
 
-          {/* Metrics */}
-          <div className="grid grid-cols-3 gap-3 pt-6 border-t border-white/[0.08]">
-            {client.metrics.map((m) => (
-              <div key={m.label} className="flex flex-col gap-1">
+            {/* Separator above service tags */}
+            <div className="border-t border-white/[0.08]" />
+
+            {/* Service tags — categorized columns */}
+            {(() => {
+              const catLabels = (
+                t.categoriesList as { id: string; label: string }[]
+              ).map((c) =>
+                c.id === "web" ? { ...c, label: "Уеб услуги" } : c,
+              );
+              const servicesWithWebSeo = resolvedServices.map((s) =>
+                s.id === "seo-optimization"
+                  ? { ...s, category: "web" as const }
+                  : s,
+              );
+              const grouped = catLabels
+                .map((cat) => ({
+                  label: cat.label,
+                  items: servicesWithWebSeo.filter(
+                    (s) => s.category === cat.id,
+                  ),
+                }))
+                .filter((g) => g.items.length > 0);
+              if (grouped.length === 0) return null;
+              return (
                 <div
-                  className="font-display font-extrabold text-2xl md:text-3xl leading-none tabular-nums"
+                  className="grid gap-x-4 gap-y-3 mt-1"
                   style={{
-                    background: `linear-gradient(180deg, #fff, ${client.accent})`,
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
+                    gridTemplateColumns: `repeat(${grouped.length}, minmax(0,1fr))`,
                   }}
                 >
-                  {m.value}
+                  {grouped.map((group) => (
+                    <div key={group.label} className="flex flex-col gap-1.5">
+                      <span className="text-[10px] uppercase tracking-[0.16em] font-semibold text-white/30 mb-0.5">
+                        {group.label}
+                      </span>
+                      {group.items.map(({ id, icon, title }) => {
+                        const Icon = LUCIDE_ICONS[icon];
+                        return (
+                          <span
+                            key={id}
+                            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-[14px] tracking-wide font-medium text-white"
+                            style={{
+                              background: "rgba(255,255,255,0.06)",
+                              border: "1px solid rgba(255,255,255,0.15)",
+                            }}
+                          >
+                            {Icon && (
+                              <Icon
+                                size={10}
+                                className="opacity-60 flex-shrink-0"
+                              />
+                            )}
+                            {title}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  ))}
                 </div>
-                <div className="text-white/40 text-[10px] uppercase tracking-[0.15em]">
-                  {m.label}
-                </div>
-              </div>
-            ))}
+              );
+            })()}
+          </div>
+
+          {/* Bottom: social links */}
+          <div className="flex flex-col gap-5 pt-6 border-t border-white/[0.08]">
+            {/* Social / website buttons */}
+            <div className="flex items-center gap-3 self-end">
+              {client.instagram && (
+                <a
+                  href={client.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium text-white/60 hover:text-white transition-colors"
+                  style={{
+                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                  }}
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                  </svg>
+                  Instagram
+                </a>
+              )}
+              {client.facebook && (
+                <a
+                  href={client.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium text-white/60 hover:text-white transition-colors"
+                  style={{
+                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                  }}
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                  Facebook
+                </a>
+              )}
+              {client.website && (
+                <a
+                  href={client.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium text-white/60 hover:text-white transition-colors"
+                  style={{
+                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                  }}
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                  Website
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -337,9 +804,12 @@ function ClientCard({
   );
 }
 
+const VISIBLE_STACK = 3;
+
 export default function ClientsPage() {
   const { t } = useLang();
   const logoGridRef = useRef<HTMLDivElement>(null);
+  const stackSectionRef = useRef<HTMLElement>(null);
   const [logoGridInView, setLogoGridInView] = useState(false);
 
   useEffect(() => {
@@ -353,7 +823,62 @@ export default function ClientsPage() {
     return () => obs.disconnect();
   }, []);
 
-  const activeSet = useRandomPop(clientLogos.length, logoGridInView);
+  // Hide stack cards that are more than VISIBLE_STACK behind the current top card
+  useEffect(() => {
+    const section = stackSectionRef.current;
+    if (!section) return;
+
+    let cardOffsets: number[] = [];
+
+    const measure = () => {
+      const cards = Array.from(
+        section.querySelectorAll<HTMLElement>(".scroll-stack-card"),
+      );
+      const saved = cards.map((c) => c.style.transform);
+      cards.forEach((c) => (c.style.transform = "none"));
+      cardOffsets = cards.map(
+        (c) => c.getBoundingClientRect().top + window.scrollY,
+      );
+      cards.forEach((c, i) => (c.style.transform = saved[i]));
+    };
+
+    const applyVisibility = () => {
+      const cards = Array.from(
+        section.querySelectorAll<HTMLElement>(".scroll-stack-card"),
+      );
+      if (!cards.length || !cardOffsets.length) return;
+
+      const scrollTop = window.scrollY;
+      const stackPx = window.innerHeight * 0.05;
+
+      let topIndex = 0;
+      for (let i = 0; i < cardOffsets.length; i++) {
+        const pinStart = cardOffsets[i] - stackPx - 32 * i;
+        if (scrollTop >= pinStart) topIndex = i;
+      }
+
+      cards.forEach((card, i) => {
+        const hide = i < topIndex - (VISIBLE_STACK - 1);
+        card.style.visibility = hide ? "hidden" : "";
+        card.style.pointerEvents = hide ? "none" : "";
+      });
+    };
+
+    const timer = setTimeout(() => {
+      measure();
+      applyVisibility();
+    }, 100);
+
+    window.addEventListener("scroll", applyVisibility, { passive: true });
+    window.addEventListener("resize", measure, { passive: true });
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", applyVisibility);
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
+
+  useRandomPop(clientLogos.length, logoGridInView);
 
   const testimonials: TestimonialItem[] = testimonialsMeta.map((meta, i) => ({
     ...meta,
@@ -361,8 +886,10 @@ export default function ClientsPage() {
   }));
   const row1 = [...testimonials, ...testimonials];
   const row2 = [
-    ...testimonials.slice(3), ...testimonials.slice(0, 3),
-    ...testimonials.slice(3), ...testimonials.slice(0, 3),
+    ...testimonials.slice(3),
+    ...testimonials.slice(0, 3),
+    ...testimonials.slice(3),
+    ...testimonials.slice(0, 3),
   ];
 
   const clients: ClientStory[] = clientsMeta.map((meta, i) => {
@@ -372,7 +899,6 @@ export default function ClientsPage() {
       industry: story.industry,
       tagline: story.tagline,
       description: story.description,
-      metrics: meta.metrics.map((m, j) => ({ value: m.value, label: story.metrics[j]?.label ?? "" })),
     };
   });
 
@@ -442,14 +968,21 @@ export default function ClientsPage() {
         {/* Content */}
         <div className="relative z-10 container text-center max-w-4xl mx-auto px-6 pt-24">
           <SectionLabel>{t.clients.pageLabel}</SectionLabel>
-          <h1 className="font-display font-extrabold text-5xl md:text-6xl lg:text-8xl text-white mt-4 mb-6 leading-[1.02]">
+          <h1
+            className="font-display font-extrabold text-5xl md:text-6xl lg:text-8xl text-white mt-4 mb-6 leading-[1.02]"
+            style={{
+              textShadow:
+                "0 2px 24px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5)",
+            }}
+          >
             {t.clients.pageTitle}
             <br />
-            <span className="text-gradient-warm">
-              {t.clients.pageTitleAccent}
-            </span>
+            <span className="">{t.clients.pageTitleAccent}</span>
           </h1>
-          <p className="text-lg md:text-xl text-white/55 leading-relaxed max-w-2xl mx-auto">
+          <p
+            className="text-lg md:text-xl text-white/55 leading-relaxed max-w-2xl mx-auto"
+            style={{ textShadow: "0 1px 12px rgba(0,0,0,0.6)" }}
+          >
             {t.clients.pageSub}
           </p>
         </div>
@@ -474,8 +1007,8 @@ export default function ClientsPage() {
       </div>
 
       {/* ScrollStack — the showcase */}
-      <section className="relative">
-        <div className="container">
+      <section ref={stackSectionRef} className="relative">
+        <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8 xl:px-12">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -506,6 +1039,7 @@ export default function ClientsPage() {
             itemDistance={120}
             itemStackDistance={32}
             stackPosition="5%"
+            stackPositionStep={1}
             scaleEndPosition="2%"
             baseScale={0.88}
             itemScale={0.02}
@@ -514,15 +1048,15 @@ export default function ClientsPage() {
           >
             {clients.map((c) => (
               <ScrollStackItem key={c.id}>
-                <ClientCard client={c} caseStudyLabel={t.clients.caseStudy} />
+                <ClientCard client={c} />
               </ScrollStackItem>
             ))}
           </ScrollStack>
         </div>
       </section>
 
-      {/* Testimonials marquee — no title */}
-      <section className="relative overflow-hidden pt-6 pb-6">
+      {/* Testimonials marquee */}
+      <section className="relative overflow-hidden pt-16 pb-6">
         <style>{`
           @keyframes marquee {
             0%   { transform: translateX(0); }
@@ -536,6 +1070,27 @@ export default function ClientsPage() {
         <Glow color="pink" size={600} className="top-1/2 left-1/3" />
         <Glow color="orange" size={400} className="bottom-0 right-1/4" />
         <div className="relative z-10">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="text-center max-w-3xl mx-auto mb-16 px-6"
+          >
+            <motion.div variants={fadeUp}>
+              <SectionLabel>{t.testimonials.label}</SectionLabel>
+            </motion.div>
+            <motion.h2
+              variants={fadeUp}
+              className="font-display text-4xl md:text-5xl lg:text-6xl text-white mt-4 mb-5 leading-tight"
+            >
+              {t.testimonials.title}
+              <br />
+              <span className="text-gradient-warm">
+                {t.testimonials.titleAccent}
+              </span>
+            </motion.h2>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -551,106 +1106,6 @@ export default function ClientsPage() {
             transition={{ duration: 0.7, delay: 0.15, ease: [0.4, 0, 0.2, 1] }}
           >
             <MarqueeRow items={row2} reverse />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Client logo grid */}
-      <section className="relative overflow-hidden pt-8 pb-16">
-        <Glow color="pink" size={600} className="top-1/2 left-1/3" />
-        <Glow color="orange" size={500} className="bottom-1/4 right-1/4" />
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none opacity-[0.02]"
-          style={{
-            backgroundImage: "radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
-        />
-        <div className="container relative z-10">
-          <motion.div
-            ref={logoGridRef}
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-3 sm:grid-cols-5 gap-4"
-          >
-            {clientLogos.map((client, i) => {
-              const isPopped = activeSet.has(i);
-              return (
-                <motion.div
-                  key={client.name}
-                  variants={fadeUp}
-                  custom={i}
-                  animate={isPopped ? { y: -8, scale: 1.06 } : { y: 0, scale: 1 }}
-                  transition={{
-                    y: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-                    scale: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-                  }}
-                  whileHover={{
-                    y: -8,
-                    scale: 1.06,
-                    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
-                  }}
-                  className="group relative flex items-center justify-center rounded-[18px] glass-card p-6 aspect-[3/2] cursor-default overflow-hidden"
-                  style={{
-                    transition: "box-shadow 0.6s ease, border-color 0.6s ease",
-                    borderColor: isPopped ? `${client.accent}50` : undefined,
-                    boxShadow: isPopped
-                      ? `0 8px 32px ${client.accent}30, 0 0 0 1px ${client.accent}40, inset 0 1px 0 rgba(255,255,255,0.08)`
-                      : undefined,
-                  }}
-                >
-                  <div
-                    className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[18px] transition-opacity duration-500"
-                    style={{
-                      background: `linear-gradient(90deg, transparent, ${client.accent}, transparent)`,
-                      opacity: isPopped ? 1 : 0,
-                    }}
-                  />
-                  <div
-                    className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[18px] opacity-0 group-hover:opacity-100 transition-opacity duration-400"
-                    style={{
-                      background: `linear-gradient(90deg, transparent, ${client.accent}, transparent)`,
-                    }}
-                  />
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 pointer-events-none rounded-[18px] transition-opacity duration-500"
-                    style={{
-                      background: `radial-gradient(circle at 50% 0%, ${client.accent}18, transparent 70%)`,
-                      opacity: isPopped ? 1 : 0,
-                    }}
-                  />
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none rounded-[18px]"
-                    style={{
-                      background: `radial-gradient(circle at 50% 0%, ${client.accent}15, transparent 70%)`,
-                    }}
-                  />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <motion.img
-                    src={client.logo}
-                    alt={client.name}
-                    loading="lazy"
-                    className="h-10 w-auto max-w-full object-contain"
-                    animate={{
-                      opacity: isPopped ? 1 : 0.45,
-                      filter: isPopped
-                        ? "brightness(1.15) grayscale(0)"
-                        : "brightness(1) grayscale(0.3)",
-                    }}
-                    whileHover={{
-                      opacity: 1,
-                      filter: "brightness(1.15) grayscale(0)",
-                    }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                  />
-                </motion.div>
-              );
-            })}
           </motion.div>
         </div>
       </section>
