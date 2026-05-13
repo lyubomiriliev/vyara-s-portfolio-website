@@ -5,18 +5,13 @@ import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { Glow } from "@/components/ui/Glow";
 import { useLang } from "@/lib/LanguageContext";
 
 export default function CTABanner() {
   const { t } = useLang();
 
   return (
-    <section className="section-padding py-32 md:py-40 relative overflow-hidden">
-      {/* Tear divider at top */}
-      <Glow color="pink" size={700} className="top-1/2 left-1/2" />
-      <Glow color="orange" size={500} className="top-1/4 right-1/4" />
-
+    <section className="section-padding py-16 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden">
       {/* Subtle dot grid */}
       <div
         aria-hidden
@@ -34,7 +29,7 @@ export default function CTABanner() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="relative overflow-hidden rounded-[28px] p-10 md:p-20 text-center"
+          className="relative overflow-hidden rounded-[20px] sm:rounded-[24px] md:rounded-[28px] p-6 sm:p-8 md:p-12 lg:p-16 xl:p-20 text-center"
           style={{
             background:
               "linear-gradient(135deg, rgba(224,64,160,0.07), rgba(155,89,245,0.07), rgba(74,158,255,0.05))",
@@ -96,7 +91,7 @@ export default function CTABanner() {
 
             <motion.h2
               variants={fadeUp}
-              className="font-display text-4xl md:text-5xl lg:text-6xl text-white mt-4 mb-5 leading-tight"
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-white mt-4 mb-5 leading-tight"
             >
               {t.ctaBanner.title}
               <br />
@@ -107,7 +102,7 @@ export default function CTABanner() {
 
             <motion.p
               variants={fadeUp}
-              className="text-white/60 text-lg mb-10 max-w-lg mx-auto leading-relaxed"
+              className="text-white/60 text-base sm:text-lg mb-8 sm:mb-10 max-w-lg mx-auto leading-relaxed"
             >
               {t.ctaBanner.sub}
             </motion.p>
@@ -118,7 +113,7 @@ export default function CTABanner() {
             >
               <Link href="/contact">
                 <button
-                  className="inline-flex items-center gap-2 font-display font-semibold rounded-pill px-9 py-4 text-base text-white hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-150 cursor-pointer"
+                  className="inline-flex items-center gap-2 font-display font-semibold rounded-pill px-6 sm:px-8 md:px-9 py-3 sm:py-3.5 md:py-4 text-sm sm:text-base text-white hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-150 cursor-pointer"
                   style={{
                     background: "linear-gradient(135deg, #FFB76C, #FF419D)",
                   }}

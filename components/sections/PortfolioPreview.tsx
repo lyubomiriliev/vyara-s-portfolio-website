@@ -50,7 +50,7 @@ export default function PortfolioPreview() {
   const { t } = useLang();
 
   return (
-    <section className="pt-[96px] pb-16 relative overflow-hidden">
+    <section className="pt-16 sm:pt-20 md:pt-[96px] pb-12 sm:pb-16 relative overflow-hidden">
       {/* Left decorative image */}
       <Image
         src="/background-images/communication.png"
@@ -58,7 +58,7 @@ export default function PortfolioPreview() {
         aria-hidden
         width={600}
         height={600}
-        className="absolute -left-8 top-1/2 -translate-y-1/2 w-[600px] pointer-events-none select-none"
+        className="hidden md:block absolute -left-8 top-1/2 -translate-y-1/2 w-[400px] lg:w-[500px] xl:w-[600px] pointer-events-none select-none"
         style={{
           opacity: 0.85,
           maskImage:
@@ -75,7 +75,7 @@ export default function PortfolioPreview() {
         aria-hidden
         width={600}
         height={600}
-        className="absolute -right-8 top-1/2 -translate-y-1/2 w-[600px] pointer-events-none select-none"
+        className="hidden md:block absolute -right-8 top-1/2 -translate-y-1/2 w-[400px] lg:w-[500px] xl:w-[600px] pointer-events-none select-none"
         style={{
           opacity: 0.65,
           maskImage:
@@ -108,14 +108,14 @@ export default function PortfolioPreview() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20"
         >
           <motion.div variants={fadeUp}>
             <SectionLabel>{t.portfolio.label}</SectionLabel>
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-display text-4xl md:text-5xl lg:text-6xl text-white mt-4 mb-5 leading-tight"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-white mt-4 mb-5 leading-tight"
           >
             <span className="text-gradient-warm">{t.portfolio.title}</span>
             <br />
@@ -123,7 +123,7 @@ export default function PortfolioPreview() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-white/60 text-lg leading-relaxed"
+            className="text-white/60 text-base sm:text-lg leading-relaxed"
           >
             {t.portfolio.sub}
           </motion.p>
@@ -135,7 +135,7 @@ export default function PortfolioPreview() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mb-12 sm:mb-16"
         >
           {previewProjects.map((project) => {
             const accentKey =

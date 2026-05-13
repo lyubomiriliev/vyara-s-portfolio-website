@@ -350,7 +350,7 @@ interface TestimonialItem {
 function TestimonialCard({ item }: { item: TestimonialItem }) {
   return (
     <div
-      className="group relative flex-shrink-0 w-[640px] md:w-[720px] min-h-[260px] rounded-[20px] p-10 flex flex-col gap-4 cursor-default transition-transform duration-300 hover:-translate-y-2"
+      className="group relative flex-shrink-0 w-[88vw] sm:w-[460px] md:w-[640px] lg:w-[720px] min-h-[260px] rounded-[20px] p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col gap-4 cursor-default transition-transform duration-300 hover:-translate-y-2"
       style={{
         background: `linear-gradient(135deg, ${item.glow}, rgba(255,255,255,0.03))`,
         border: `1px solid ${item.border}`,
@@ -379,7 +379,7 @@ function TestimonialCard({ item }: { item: TestimonialItem }) {
           />
         ))}
       </div>
-      <p className="text-white/80 text-base leading-relaxed flex-1">
+      <p className="text-white/80 text-sm sm:text-base leading-relaxed flex-1">
         &ldquo;{item.quote}&rdquo;
       </p>
       <div className="flex items-center gap-3 pt-4 border-t border-white/[0.07]">
@@ -597,7 +597,7 @@ function ClientCard({ client }: { client: ClientStory }) {
 
       <div className="relative grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-0">
         {/* Left — image */}
-        <div className="relative aspect-square lg:aspect-auto lg:min-h-[940px] overflow-hidden">
+        <div className="relative aspect-square lg:aspect-auto lg:min-h-[680px] xl:min-h-[820px] 2xl:min-h-[940px] overflow-hidden">
           <Image
             src={client.image}
             alt={client.name}
@@ -621,10 +621,10 @@ function ClientCard({ client }: { client: ClientStory }) {
         </div>
 
         {/* Right — content */}
-        <div className="p-6 md:p-10 flex flex-col justify-between gap-8">
+        <div className="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 flex flex-col justify-between gap-6 md:gap-8">
           {/* Top: name + industry pill + tagline + description + service tags */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-[1.05]">
+            <h3 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-white leading-[1.05]">
               {client.name}
             </h3>
 
@@ -642,7 +642,7 @@ function ClientCard({ client }: { client: ClientStory }) {
               <Sparkles size={11} />
               {client.industry}
             </span>
-            <p className="text-lg md:text-xl font-display">
+            <p className="text-base sm:text-lg md:text-xl font-display">
               <span
                 style={{
                   background: `linear-gradient(135deg, #fff, ${client.accent})`,
@@ -654,7 +654,7 @@ function ClientCard({ client }: { client: ClientStory }) {
                 {client.tagline}
               </span>
             </p>
-            <p className="text-white/60 text-sm md:text-base leading-relaxed">
+            <p className="text-white/60 text-sm md:text-base lg:text-lg leading-relaxed">
               {client.description}
             </p>
 
@@ -725,7 +725,7 @@ function ClientCard({ client }: { client: ClientStory }) {
           {/* Bottom: social links */}
           <div className="flex flex-col gap-5 pt-6 border-t border-white/[0.08]">
             {/* Social / website buttons */}
-            <div className="flex items-center gap-3 self-end">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 self-start sm:self-end">
               {client.instagram && (
                 <a
                   href={client.instagram}
@@ -969,7 +969,7 @@ export default function ClientsPage() {
         <div className="relative z-10 container text-center max-w-4xl mx-auto px-6 pt-24">
           <SectionLabel>{t.clients.pageLabel}</SectionLabel>
           <h1
-            className="font-display font-extrabold text-5xl md:text-6xl lg:text-8xl text-white mt-4 mb-6 leading-[1.02]"
+            className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl text-white mt-4 mb-6 leading-[1.02]"
             style={{
               textShadow:
                 "0 2px 24px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5)",
@@ -980,7 +980,7 @@ export default function ClientsPage() {
             <span className="">{t.clients.pageTitleAccent}</span>
           </h1>
           <p
-            className="text-lg md:text-xl text-white/55 leading-relaxed max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-white/55 leading-relaxed max-w-2xl mx-auto"
             style={{ textShadow: "0 1px 12px rgba(0,0,0,0.6)" }}
           >
             {t.clients.pageSub}
@@ -1021,7 +1021,7 @@ export default function ClientsPage() {
             </motion.div>
             <motion.h2
               variants={fadeUp}
-              className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mt-4 leading-[1.05]"
+              className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-white mt-4 leading-[1.05]"
             >
               {t.clients.showcaseTitle}
               <br />
@@ -1029,7 +1029,7 @@ export default function ClientsPage() {
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="text-white/55 text-lg mt-5 leading-relaxed"
+              className="text-white/55 text-base sm:text-lg mt-5 leading-relaxed"
             >
               {t.clients.showcaseSub}
             </motion.p>
@@ -1082,7 +1082,7 @@ export default function ClientsPage() {
             </motion.div>
             <motion.h2
               variants={fadeUp}
-              className="font-display text-4xl md:text-5xl lg:text-6xl text-white mt-4 mb-5 leading-tight"
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-white mt-4 mb-5 leading-tight"
             >
               {t.testimonials.title}
               <br />
@@ -1167,9 +1167,9 @@ export default function ClientsPage() {
                 }}
               />
 
-              <div className="grid grid-cols-1 lg:grid-cols-[2.5fr_2fr] items-stretch">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2.5fr_2fr] items-stretch">
                 {/* Left — text */}
-                <div className="relative p-12 md:p-16 flex flex-col justify-center gap-10">
+                <div className="relative p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-16 flex flex-col justify-center gap-6 sm:gap-8 lg:gap-10">
                   {/* Subtle orange corner glow behind text */}
                   <div
                     aria-hidden
@@ -1183,14 +1183,14 @@ export default function ClientsPage() {
                   <SectionLabel>{t.ctaBanner.label}</SectionLabel>
 
                   <div className="space-y-5">
-                    <h2 className="font-display font-bold text-5xl md:text-6xl text-white leading-[1.05]">
+                    <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl text-white leading-[1.05]">
                       {t.clients.ctaTitle}
                       <br />
                       <span className="text-gradient-warm">
                         {t.clients.ctaTitleAccent}
                       </span>
                     </h2>
-                    <p className="text-white/50 text-lg leading-relaxed max-w-md">
+                    <p className="text-white/50 text-base sm:text-lg leading-relaxed max-w-md">
                       {t.clients.ctaSub}
                     </p>
                   </div>
@@ -1210,7 +1210,7 @@ export default function ClientsPage() {
                   </div>
 
                   {/* Stats row */}
-                  <div className="flex items-center gap-8 pt-6 border-t border-white/[0.06]">
+                  <div className="flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-8 pt-6 border-t border-white/[0.06]">
                     {t.clients.stats.map((stat, i) => (
                       <div key={stat.label} className="flex flex-col gap-1">
                         <span

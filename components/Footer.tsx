@@ -82,16 +82,16 @@ export default function Footer() {
 
       <div className="container relative z-10">
         {/* ── Links + social row ── */}
-        <div className="py-14 flex flex-col md:flex-row justify-between gap-12">
+        <div className="py-10 sm:py-12 md:py-14 flex flex-col md:flex-row justify-between gap-8 sm:gap-10 md:gap-12">
           {/* Brand + social */}
-          <div className="flex flex-col gap-6 max-w-[220px]">
+          <div className="flex flex-col gap-5 sm:gap-6 max-w-[220px]">
             <Link href="/">
               <Image
                 src="/aviva-digital-white-logo.png"
                 alt="Aviva Digital"
                 width={160}
                 height={96}
-                className="h-24 w-auto object-contain opacity-100"
+                className="h-16 sm:h-20 md:h-24 w-auto object-contain opacity-100"
               />
             </Link>
             <div className="flex items-center gap-2">
@@ -130,7 +130,7 @@ export default function Footer() {
           </div>
 
           {/* Link columns */}
-          <div className="grid grid-cols-2 gap-x-16 gap-y-8">
+          <div className="grid grid-cols-2 gap-x-8 sm:gap-x-12 md:gap-x-16 gap-y-6 sm:gap-y-8">
             <div>
               <h4 className="font-display font-semibold text-white/60 text-xs uppercase tracking-[0.16em] mb-5">
                 {t.footer.services}
@@ -140,7 +140,7 @@ export default function Footer() {
                   <li key={label}>
                     <Link
                       href={SERVICE_HREFS[i]}
-                      className="text-white/60 hover:text-white text-base transition-colors duration-150"
+                      className="text-white/60 hover:text-white text-sm sm:text-base transition-colors duration-150"
                     >
                       {label}
                     </Link>
@@ -157,7 +157,7 @@ export default function Footer() {
                   <li key={label}>
                     <Link
                       href={COMPANY_HREFS[i]}
-                      className="text-white/60 hover:text-white text-base transition-colors duration-150"
+                      className="text-white/60 hover:text-white text-sm sm:text-base transition-colors duration-150"
                     >
                       {label}
                     </Link>
@@ -173,7 +173,7 @@ export default function Footer() {
           className="py-6 flex flex-col sm:flex-row items-center justify-center gap-3"
           style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
         >
-          <p className="text-white/50 text-sm">
+          <p className="text-white/50 text-xs sm:text-sm text-center">
             © {new Date().getFullYear()} Aviva Digital · avivadigital.bg ·{" "}
             {t.footer.copyright}
           </p>

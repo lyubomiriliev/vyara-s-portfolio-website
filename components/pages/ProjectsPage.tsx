@@ -385,7 +385,7 @@ export default function ProjectsPage({
           {/* Slider row */}
           <div
             ref={containerRef}
-            className="flex gap-3 h-[780px] items-stretch"
+            className="flex gap-3 h-[400px] sm:h-[500px] md:h-[600px] lg:h-[780px] items-stretch"
           >
             {visibleProjects.map((project) => {
               const isActive = project.id === activeId;
@@ -510,7 +510,7 @@ export default function ProjectsPage({
                         className="absolute inset-0 flex flex-col justify-end p-8"
                       >
                         {/* Logo */}
-                        <div className="relative w-28 h-20 mb-4 flex items-center">
+                        <div className="relative w-16 h-12 sm:w-20 sm:h-14 md:w-24 md:h-16 lg:w-28 lg:h-20 mb-4 flex items-center">
                           <Image
                             src={project.logo}
                             alt={project.name}
@@ -667,9 +667,8 @@ export default function ProjectsPage({
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -30 }}
               transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-              className="relative rounded-2xl overflow-hidden"
+              className="relative rounded-2xl overflow-hidden h-[320px] sm:h-[380px] md:h-[460px]"
               style={{
-                height: 480,
                 boxShadow: "0 24px 80px rgba(0,0,0,0.6)",
               }}
             >
@@ -795,7 +794,7 @@ export default function ProjectsPage({
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="relative rounded-3xl overflow-hidden p-12 text-center"
+            className="relative rounded-3xl overflow-hidden p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 text-center"
             style={{
               background:
                 "linear-gradient(135deg, rgba(224,64,160,0.18) 0%, rgba(255,183,108,0.18) 100%)",
@@ -820,7 +819,7 @@ export default function ProjectsPage({
             >
               {t.projects.pageLabel}
             </p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-3 leading-tight">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl font-bold text-white mb-3 leading-tight">
               {t.projects.ctaTitle}{" "}
               <span
                 style={{

@@ -99,8 +99,7 @@ export default function ProjectsPreview() {
 
   return (
     <section
-      className="relative overflow-hidden"
-      style={{ padding: "120px 0 160px" }}
+      className="relative overflow-hidden py-16 sm:py-20 md:py-24 lg:py-[120px] lg:pb-[160px]"
     >
       {/* Background glows */}
       <div
@@ -140,14 +139,14 @@ export default function ProjectsPreview() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16"
         >
           <motion.div variants={fadeUp}>
             <SectionLabel>УЕБ ПРОЕКТИ</SectionLabel>
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-display text-4xl md:text-5xl lg:text-6xl text-white mt-4 mb-5 leading-tight"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-white mt-4 mb-5 leading-tight"
           >
             Сайтове, които{" "}
             <span
@@ -163,7 +162,7 @@ export default function ProjectsPreview() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-white/60 text-lg leading-relaxed"
+            className="text-white/60 text-base sm:text-lg leading-relaxed"
           >
             Уебсайтове и уеб приложения, изградени за скорост, SEO и максимални
             конверсии.
@@ -171,11 +170,10 @@ export default function ProjectsPreview() {
         </motion.div>
 
         {/* Desktop layout */}
-        <div className="hidden md:grid grid-cols-[1fr_480px] gap-6 items-stretch min-h-[680px]">
+        <div className="hidden md:grid md:grid-cols-1 lg:grid-cols-[1fr_360px] xl:grid-cols-[1fr_480px] gap-4 lg:gap-6 items-stretch md:min-h-[600px] lg:min-h-[680px]">
           {/* Main featured card */}
           <div
-            className="relative rounded-3xl overflow-hidden"
-            style={{ minHeight: 800 }}
+            className="relative rounded-3xl overflow-hidden min-h-[500px] md:min-h-[600px] lg:min-h-[700px] xl:min-h-[800px]"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -313,7 +311,7 @@ export default function ProjectsPreview() {
           </div>
 
           {/* Sidebar — project list */}
-          <div className="flex flex-col gap-3">
+          <div className="grid grid-cols-3 lg:flex lg:flex-col gap-3">
             {featuredProjects.map((project, i) => {
               const isActive = i === activeIndex;
               return (
@@ -326,7 +324,7 @@ export default function ProjectsPreview() {
                   animate={{ opacity: isActive ? 1 : 0.6 }}
                   whileHover={{ opacity: 1 }}
                   transition={{ duration: 0.25 }}
-                  className="relative rounded-2xl overflow-hidden text-left cursor-pointer flex-1"
+                  className="relative rounded-2xl overflow-hidden text-left cursor-pointer flex-1 min-h-[180px] lg:min-h-0"
                   style={{
                     border: isActive
                       ? `1px solid ${project.accentColor}55`

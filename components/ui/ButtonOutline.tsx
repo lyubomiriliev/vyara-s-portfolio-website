@@ -10,9 +10,9 @@ interface ButtonOutlineProps {
 
 export function ButtonOutline({ children, size = 'md', className = '', onClick }: ButtonOutlineProps) {
   const sizes = {
-    sm: 'px-5 py-2 text-sm',
-    md: 'px-7 py-3 text-sm',
-    lg: 'px-9 py-4 text-base',
+    sm: 'px-4 sm:px-5 py-2 text-xs sm:text-sm',
+    md: 'px-5 sm:px-6 md:px-7 py-2.5 sm:py-3 text-sm',
+    lg: 'px-6 sm:px-7 md:px-9 py-3 sm:py-3.5 md:py-4 text-sm sm:text-base',
   }
   return (
     <button

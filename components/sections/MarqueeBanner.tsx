@@ -20,7 +20,7 @@ export default function MarqueeBanner() {
 
   if (logos.length === 0) return null;
   return (
-    <section className="relative py-16 border-y border-white/[0.06] overflow-hidden">
+    <section className="relative py-8 sm:py-12 md:py-16 border-y border-white/[0.06] overflow-hidden">
 
       {/* Outer masks left/right edges */}
       <div
@@ -35,14 +35,14 @@ export default function MarqueeBanner() {
           {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
             <div
               key={i}
-              className="flex-shrink-0 px-14 flex items-center justify-center"
+              className="flex-shrink-0 px-5 sm:px-8 md:px-12 lg:px-14 flex items-center justify-center"
             >
               <Image
                 src={logo.src}
                 alt={logo.name}
                 width={180}
                 height={56}
-                className="h-14 w-auto object-contain opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all duration-300"
+                className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto object-contain opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all duration-300"
               />
             </div>
           ))}

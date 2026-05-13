@@ -122,7 +122,7 @@ export default function WorkPage() {
     <div className="relative bg-bg-primary">
       <section className="section-padding">
         {/* Filter bar — always centred */}
-        <div className="mb-14 flex justify-center items-end gap-6">
+        <div className="mb-14 flex flex-wrap justify-center items-end gap-4 sm:gap-6 px-4 overflow-x-auto">
           {/* Social & Content group */}
           <div className="flex flex-col items-center gap-2">
             <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/30">
@@ -217,7 +217,7 @@ export default function WorkPage() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="columns-2 md:columns-3 lg:columns-4 gap-3"
+                className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 3xl:columns-5 gap-3"
               >
                 {filtered.map((project, i) => (
                   <FeedCard

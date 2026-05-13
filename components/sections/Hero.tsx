@@ -138,7 +138,7 @@ function StatCard({
       />
 
       <div
-        className="relative rounded-2xl px-4 py-5 md:px-5 md:py-6 flex flex-col gap-2"
+        className="relative rounded-2xl px-2.5 py-3 sm:px-3.5 sm:py-4 md:px-5 md:py-6 flex flex-col gap-1 sm:gap-2"
         style={{
           background:
             "linear-gradient(180deg, rgba(20,20,30,0.78) 0%, rgba(10,10,16,0.92) 100%)",
@@ -157,7 +157,7 @@ function StatCard({
         />
 
         <span
-          className="font-display font-extrabold leading-[1.05] tabular-nums text-3xl md:text-4xl 3xl:text-5xl whitespace-nowrap"
+          className="font-display font-extrabold leading-[1.05] tabular-nums text-lg sm:text-2xl md:text-3xl lg:text-4xl 3xl:text-5xl whitespace-nowrap"
           style={{
             background: `linear-gradient(180deg, #fff 0%, ${accent} 100%)`,
             WebkitBackgroundClip: "text",
@@ -168,7 +168,7 @@ function StatCard({
           {count.toLocaleString()}
           {suffix}
         </span>
-        <span className="text-white/45 text-[10px] 3xl:text-xs uppercase tracking-[0.18em] font-medium whitespace-nowrap">
+        <span className="text-white/45 text-[8px] sm:text-[9px] md:text-[10px] 3xl:text-xs uppercase tracking-[0.14em] sm:tracking-[0.16em] md:tracking-[0.18em] font-medium whitespace-nowrap leading-tight">
           {label}
         </span>
 
@@ -203,7 +203,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden min-h-screen flex items-center section-padding"
+      className="relative overflow-hidden min-h-screen flex items-center py-0 md:section-padding"
     >
       {/* Layer 1 — full-bleed wave background */}
       <Image
@@ -227,11 +227,11 @@ export default function Hero() {
       />
 
       {/* ── Main content ── */}
-      <div className="container relative z-20 flex flex-col justify-center min-h-screen py-28">
+      <div className="container relative z-20 flex flex-col justify-center min-h-screen md:py-24 lg:py-28">
         {/* Left-aligned text block — max ~55% width so the hand stays visible */}
-        <div className="flex flex-col items-start text-left gap-5 max-w-[58%] lg:max-w-[52%] 3xl:max-w-[46%] overflow-visible">
+        <div className="flex flex-col items-start text-left gap-4 sm:gap-5 max-w-full md:max-w-[68%] lg:max-w-[58%] xl:max-w-[52%] 3xl:max-w-[46%] 4xl:max-w-[40%] overflow-visible">
           {/* H1 — three rows slide up in clean sequence, typewriter starts after row 2 settles */}
-          <h1 className="font-display flex flex-col gap-3 font-extrabold leading-[1.22] text-white w-full tracking-tight">
+          <h1 className="font-display flex flex-col gap-2 sm:gap-3 font-extrabold leading-[1.22] text-white w-full tracking-tight">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -240,7 +240,7 @@ export default function Hero() {
                 delay: 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="block w-full text-left text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[4.25rem] 4xl:text-[5.25rem]"
+              className="block w-full text-left text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[4.25rem] 4xl:text-[5.25rem]"
             >
               {t.hero.line1}
             </motion.div>
@@ -252,7 +252,7 @@ export default function Hero() {
                 delay: 0.35,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="block w-max text-left text-4xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] 3xl:text-[6rem] 4xl:text-[7.5rem]"
+              className="block w-max max-w-full text-left text-3xl sm:text-4xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] 3xl:text-[6rem] 4xl:text-[7.5rem]"
               style={{ minHeight: "1.15em" }}
             >
               <TypewriterCycle
@@ -268,7 +268,7 @@ export default function Hero() {
                 delay: 0.6,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="block w-full text-left text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[4.25rem] 4xl:text-[5.25rem]"
+              className="block w-full text-left text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[4.25rem] 4xl:text-[5.25rem]"
             >
               {t.hero.line3}
             </motion.div>
@@ -279,7 +279,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base md:text-lg xl:text-lg 3xl:text-xl py-6 text-white/65 max-w-lg 3xl:max-w-xl leading-relaxed text-left"
+            className="text-sm sm:text-base md:text-lg xl:text-lg 3xl:text-xl py-3 sm:py-4 md:py-6 text-white/65 max-w-md sm:max-w-lg 3xl:max-w-xl leading-relaxed text-left"
           >
             {t.hero.sub}
           </motion.p>
@@ -289,7 +289,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center justify-start gap-4"
+            className="flex flex-wrap items-center justify-start gap-3 sm:gap-4"
           >
             <Link href="/contact">
               <ButtonPrimary size="lg">{t.hero.ctaPrimary}</ButtonPrimary>
@@ -304,7 +304,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
-            className="flex mt-8 gap-4"
+            className="grid grid-cols-2 sm:grid-cols-4 mt-6 sm:mt-8 gap-2 sm:gap-3 md:gap-4 w-full max-w-2xl"
           >
             {stats.map((s) => (
               <StatCard

@@ -42,8 +42,8 @@ export default function ToolsGrid({ variant = "bordered" }: ToolsGridProps) {
       viewport={{ once: true, margin: "-40px" }}
       className={
         variant === "bordered"
-          ? "grid grid-cols-5 gap-x-8 gap-y-8 items-center justify-items-center px-4 py-8"
-          : "grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-x-8 gap-y-6 items-center justify-items-center py-10 px-8"
+          ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-x-4 sm:gap-x-6 md:gap-x-8 gap-y-6 sm:gap-y-8 items-center justify-items-center px-4 py-6 sm:py-8"
+          : "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-10 gap-x-4 sm:gap-x-6 md:gap-x-8 gap-y-4 sm:gap-y-6 items-center justify-items-center py-6 sm:py-8 md:py-10 px-4 sm:px-6 md:px-8"
       }
     >
       {toolLogos.map((logo, i) => (
@@ -60,7 +60,7 @@ export default function ToolsGrid({ variant = "bordered" }: ToolsGridProps) {
             width={120}
             height={28}
             className={`w-auto object-contain opacity-30 grayscale group-hover:opacity-80 group-hover:grayscale-0 transition-all duration-300 mx-auto ${
-              variant === "bordered" ? "h-9" : "h-7"
+              variant === "bordered" ? "h-5 sm:h-6 md:h-7 lg:h-8 xl:h-9" : "h-4 sm:h-5 md:h-6 lg:h-7"
             }`}
           />
         </motion.div>

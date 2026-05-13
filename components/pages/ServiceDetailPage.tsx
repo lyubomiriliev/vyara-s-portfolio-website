@@ -28,7 +28,7 @@ export default function ServiceDetailPage({ service }: Props) {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden pt-40 pb-24">
+      <section className="relative overflow-hidden pt-24 sm:pt-28 md:pt-32 lg:pt-40 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
         <Glow color="pink"   size={700} className="top-1/2 left-1/4" />
         <Glow color="orange" size={500} className="top-1/3 right-1/4" />
 
@@ -64,14 +64,14 @@ export default function ServiceDetailPage({ service }: Props) {
 
             <motion.h1
               variants={fadeUp}
-              className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] mb-6"
+              className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 3xl:text-7xl text-white leading-[1.05] mb-6"
             >
               {service.title}
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl mb-10"
+              className="text-base sm:text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl mb-10"
             >
               {service.description}
             </motion.p>
@@ -96,14 +96,14 @@ export default function ServiceDetailPage({ service }: Props) {
           >
             <motion.div variants={fadeUp} className="mb-10">
               <SectionLabel>What&apos;s Included</SectionLabel>
-              <h2 className="font-display font-bold text-3xl md:text-4xl text-white mt-3">
+              <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl 3xl:text-5xl text-white mt-3">
                 Everything you need to succeed
               </h2>
             </motion.div>
 
             <motion.div
               variants={staggerContainer}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6"
             >
               {service.benefits.map((benefit, i) => (
                 <motion.div
@@ -127,14 +127,14 @@ export default function ServiceDetailPage({ service }: Props) {
       </section>
 
       {/* CTA inline */}
-      <section className="pb-24">
+      <section className="pb-12 sm:pb-16 md:pb-20 lg:pb-24">
         <div className="container">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="relative rounded-3xl overflow-hidden p-12 md:p-16 text-center"
+            className="relative rounded-3xl overflow-hidden p-6 sm:p-8 md:p-12 lg:p-16 text-center"
             style={{
               background: `linear-gradient(135deg, ${accent}12, rgba(255,255,255,0.02))`,
               border: `1px solid ${accent}25`,
@@ -145,10 +145,10 @@ export default function ServiceDetailPage({ service }: Props) {
               className="absolute top-0 left-0 right-0 h-px"
               style={{ background: `linear-gradient(90deg, transparent, ${accent}, transparent)` }}
             />
-            <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4">
+            <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl 3xl:text-5xl text-white mb-4">
               Ready to get started?
             </h2>
-            <p className="text-white/55 text-base mb-8 max-w-lg mx-auto">
+            <p className="text-white/55 text-sm sm:text-base mb-8 max-w-lg mx-auto">
               Let&apos;s talk about your project and how {service.title} can help your brand grow.
             </p>
             <Link href="/contact">

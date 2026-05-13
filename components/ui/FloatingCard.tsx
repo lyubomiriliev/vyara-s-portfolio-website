@@ -44,7 +44,7 @@ export function FloatingCard({
         <motion.div
           animate={{ y: yKeyframes }}
           transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay }}
-          className={`relative rounded-2xl ${small ? 'px-3.5 py-3 min-w-[148px]' : 'px-5 py-4 min-w-[180px]'}`}
+          className={`relative rounded-2xl ${small ? 'px-3 py-2.5 min-w-[130px] xl:px-3.5 xl:py-3 xl:min-w-[148px]' : 'px-4 py-3 min-w-[160px] xl:px-5 xl:py-4 xl:min-w-[180px]'}`}
           style={{
             background: 'linear-gradient(160deg, rgba(22,22,34,0.88), rgba(10,10,16,0.94))',
             backdropFilter: 'blur(24px) saturate(180%)',

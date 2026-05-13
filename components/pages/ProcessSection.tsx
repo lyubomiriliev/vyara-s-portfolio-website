@@ -191,7 +191,7 @@ export function ProcessSection({ locale = "en" }: ProcessSectionProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="container text-center mb-20 md:mb-28"
+          className="container text-center mb-12 sm:mb-16 md:mb-20 lg:mb-28"
         >
           <span
             className="inline-block text-[11px] font-bold tracking-[0.25em] uppercase mb-6 px-5 py-2 rounded-full"
@@ -203,7 +203,7 @@ export function ProcessSection({ locale = "en" }: ProcessSectionProps) {
           >
             {isBg ? "КАК РАБОТИМ" : "HOW WE WORK"}
           </span>
-          <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl text-white leading-[1.08] mb-6">
+          <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-white leading-[1.08] mb-6">
             {isBg ? (
               <>
                 От идея до пускане —<br />
@@ -220,7 +220,7 @@ export function ProcessSection({ locale = "en" }: ProcessSectionProps) {
               </>
             )}
           </h2>
-          <p className="text-white/45 max-w-md mx-auto text-base leading-relaxed">
+          <p className="text-white/45 max-w-md mx-auto text-sm sm:text-base leading-relaxed">
             {isBg
               ? "Три фази. Всеки проект. Без изненади, без загубено време."
               : "Three phases. Every project. No surprises, no wasted time."}
@@ -229,7 +229,7 @@ export function ProcessSection({ locale = "en" }: ProcessSectionProps) {
 
         {/* Phase cards */}
         <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-px rounded-2xl overflow-hidden mx-16 xl:mx-20 2xl:mx-40 3xl:mx-80"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px rounded-2xl overflow-hidden mx-4 sm:mx-6 md:mx-8 lg:mx-12 xl:mx-16 2xl:mx-20 3xl:mx-24"
           style={{ background: "rgba(255,255,255,0.05)" }}
         >
           {phases.map((phase, i) => {
@@ -293,10 +293,10 @@ export function ProcessSection({ locale = "en" }: ProcessSectionProps) {
                   }}
                 />
 
-                <div className="relative z-10 p-8 lg:p-10 xl:p-12">
+                <div className="relative z-10 p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12">
                   {/* Phase number */}
                   <div
-                    className="font-display text-[80px] lg:text-[96px] font-extrabold leading-none mb-4 select-none"
+                    className="font-display text-[56px] sm:text-[64px] md:text-[72px] lg:text-[96px] font-extrabold leading-none mb-4 select-none"
                     style={{
                       color: phase.accent,
                       opacity: isActive ? 0.35 : 0.12,
@@ -308,7 +308,7 @@ export function ProcessSection({ locale = "en" }: ProcessSectionProps) {
 
                   {/* Title */}
                   <h3
-                    className="font-display text-2xl lg:text-3xl font-bold mb-2 leading-tight"
+                    className="font-display text-xl sm:text-2xl lg:text-3xl font-bold mb-2 leading-tight"
                     style={{
                       color: isActive ? "#ffffff" : "rgba(255,255,255,0.5)",
                       transition: "color 0.5s ease",
@@ -319,7 +319,7 @@ export function ProcessSection({ locale = "en" }: ProcessSectionProps) {
 
                   {/* Short desc */}
                   <p
-                    className="text-lg leading-relaxed mb-8"
+                    className="text-base sm:text-lg leading-relaxed mb-8"
                     style={{
                       color: isActive
                         ? "rgba(255,255,255,0.9)"
@@ -358,7 +358,7 @@ export function ProcessSection({ locale = "en" }: ProcessSectionProps) {
                         </div>
                         <div>
                           <p
-                            className="text-base font-semibold leading-snug mb-1"
+                            className="text-sm sm:text-base font-semibold leading-snug mb-1"
                             style={{
                               color: isActive
                                 ? "rgba(255,255,255,1)"

@@ -194,9 +194,10 @@ export default function ContentModal({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.98, y: 10 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="flex rounded-2xl overflow-hidden items-stretch
+          className="flex rounded-2xl overflow-hidden items-stretch mx-4
                      bg-[#0c0c15] border border-white/[0.07]
-                     shadow-[0_60px_160px_rgba(0,0,0,0.95)]"
+                     shadow-[0_60px_160px_rgba(0,0,0,0.95)]
+                     max-w-[calc(100vw-2rem)]"
           style={{ height: "min(85vh, 860px)" }}
           onClick={(e) => e.stopPropagation()}
         >
@@ -207,8 +208,8 @@ export default function ContentModal({
               <ImageMedia src={project.thumbnail} alt={project.title} />
             )}
           </div>
-          <div className="w-[320px] flex-shrink-0 flex flex-col border-l border-white/[0.06] overflow-y-auto">
-            <div className="flex items-center justify-between px-7 pt-7 pb-6 border-b border-white/[0.06] flex-shrink-0">
+          <div className="w-[260px] lg:w-[300px] xl:w-[320px] flex-shrink-0 flex flex-col border-l border-white/[0.06] overflow-y-auto">
+            <div className="flex items-center justify-between px-5 pt-5 pb-4 lg:px-6 lg:pt-6 lg:pb-5 xl:px-7 xl:pt-7 xl:pb-6 border-b border-white/[0.06] flex-shrink-0">
               <div className="flex items-center gap-2">
                 <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-black/55 backdrop-blur-md border border-white/10 text-[9px] font-bold uppercase tracking-[0.14em]">
                   <Icon size={10} className={cfg.color} />
@@ -224,10 +225,10 @@ export default function ContentModal({
                 <X size={16} className="text-white/60" />
               </button>
             </div>
-            <div className="p-7 flex flex-col gap-5">
+            <div className="p-5 lg:p-6 xl:p-7 flex flex-col gap-4 lg:gap-5">
               <div>
                 <p className="text-[10px] uppercase tracking-[0.18em] text-white/25 mb-2">{project.client} · {project.year}</p>
-                <h2 className="font-display font-bold text-2xl text-white leading-tight">{project.title}</h2>
+                <h2 className="font-display font-bold text-xl lg:text-2xl text-white leading-tight">{project.title}</h2>
               </div>
               <div className="h-px bg-white/[0.06]" />
               <p className="text-sm text-white/50 leading-relaxed">{project.description}</p>

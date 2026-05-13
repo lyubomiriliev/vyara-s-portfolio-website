@@ -2,18 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import {
-  Brain,
-  RefreshCw,
-  TrendingUp,
-  ArrowRight,
-  Lightbulb,
-  Rocket,
-  BarChart3,
-  Repeat2,
-} from "lucide-react";
+import { Brain, RefreshCw, TrendingUp } from "lucide-react";
 import Link from "next/link";
-import { fadeUp, staggerContainer, scaleIn } from "@/lib/animations";
+import { fadeUp, staggerContainer } from "@/lib/animations";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ButtonPrimary } from "@/components/ui/ButtonPrimary";
 import { Glow } from "@/components/ui/Glow";
@@ -44,36 +35,6 @@ const cardMeta = [
   },
 ];
 
-const processMeta = [
-  {
-    icon: Lightbulb,
-    number: "01",
-    accent: "#E040A0",
-    border: "rgba(224,64,160,0.3)",
-    glow: "rgba(224,64,160,0.12)",
-  },
-  {
-    icon: Rocket,
-    number: "02",
-    accent: "#9B59F5",
-    border: "rgba(155,89,245,0.3)",
-    glow: "rgba(155,89,245,0.12)",
-  },
-  {
-    icon: BarChart3,
-    number: "03",
-    accent: "#4A9EFF",
-    border: "rgba(74,158,255,0.3)",
-    glow: "rgba(74,158,255,0.12)",
-  },
-  {
-    icon: Repeat2,
-    number: "04",
-    accent: "#FFB76C",
-    border: "rgba(255,183,108,0.3)",
-    glow: "rgba(255,183,108,0.12)",
-  },
-];
 
 export default function AboutPage() {
   const { t } = useLang();
@@ -85,182 +46,170 @@ export default function AboutPage() {
 
   return (
     <main>
-      {/* ── Hero — full-bleed wallpaper + left text ── */}
-      <section className="relative overflow-hidden min-h-screen flex items-center">
-        {/* Full-bleed wallpaper centered */}
-        <Image
-          src="/background-images/about-wallpaper.png"
-          alt=""
-          aria-hidden
-          fill
-          className="object-cover object-center pointer-events-none select-none"
-          style={{ filter: "brightness(0.7) saturate(1.15)" }}
-        />
-
-        {/* Corner/edge vignettes — blend image into dark bg on all sides */}
-        {/* Left fade — solid dark for text legibility */}
+      {/* ── Hero — editorial split layout ── */}
+      <section
+        className="relative overflow-hidden min-h-screen flex items-center"
+        style={{ background: "rgb(10,8,18)" }}
+      >
+        {/* Subtle grid lines */}
         <div
           aria-hidden
           className="absolute inset-0 pointer-events-none"
           style={{
-            background:
-              "linear-gradient(90deg, rgb(10,8,18) 0%, rgb(10,8,18) 32%, rgba(10,8,18,0.7) 50%, rgba(10,8,18,0.15) 70%, rgb(10,8,18) 100%)",
-          }}
-        />
-        {/* Top + bottom fades */}
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(180deg, rgb(10,8,18) 0%, transparent 20%, transparent 70%, rgb(10,8,18) 100%)",
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
           }}
         />
 
-        {/* Pink ambient glow behind headline */}
+        {/* Large ambient violet glow — top right */}
         <div
           aria-hidden
-          className="absolute top-1/4 -left-24 w-[640px] h-[640px] pointer-events-none"
+          className="absolute pointer-events-none"
           style={{
+            width: "900px",
+            height: "900px",
+            right: "-200px",
+            top: "-200px",
             background:
-              "radial-gradient(circle, rgba(224,64,160,0.22) 0%, transparent 65%)",
-            filter: "blur(90px)",
+              "radial-gradient(circle, rgba(155,89,245,0.12) 0%, transparent 65%)",
+            filter: "blur(80px)",
           }}
         />
+        {/* Pink glow — bottom left */}
         <div
           aria-hidden
-          className="absolute bottom-1/4 left-0 w-[400px] h-[400px] pointer-events-none"
+          className="absolute pointer-events-none"
           style={{
+            width: "600px",
+            height: "600px",
+            left: "-100px",
+            bottom: "-100px",
             background:
-              "radial-gradient(circle, rgba(155,89,245,0.14) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(224,64,160,0.1) 0%, transparent 65%)",
             filter: "blur(80px)",
           }}
         />
 
-        {/* Dot grid */}
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none opacity-[0.025]"
-          style={{
-            backgroundImage:
-              "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
-        />
-
-        <div className="container relative z-10">
-          <div
-            className="pt-32 pb-20 lg:pt-0 lg:pb-0 lg:min-h-screen lg:flex lg:flex-col lg:justify-center"
-            style={{ maxWidth: "clamp(480px, 50vw, 720px)", marginLeft: 0 }}
-          >
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-col gap-5"
-            >
-              <motion.div variants={fadeUp}>
-                <SectionLabel>{t.about.pageLabel}</SectionLabel>
-              </motion.div>
-
-              <motion.h1
-                variants={fadeUp}
-                className="font-display font-extrabold tracking-tight text-white flex flex-col"
-                style={{
-                  fontSize: "clamp(58px, 8vw, 112px)",
-                  lineHeight: "1",
-                  letterSpacing: "-0.025em",
-                  gap: "0.06em",
-                }}
+        <div className="container relative z-10 w-full">
+          <div className="pt-32 pb-20 lg:pt-0 lg:pb-0 lg:min-h-screen lg:flex lg:items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-24 items-center w-full">
+              {/* Left — text content */}
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+                className="flex flex-col gap-7"
               >
-                <span>{t.about.teamTitle}</span>
-                <span>{t.about.teamTitleMid}</span>
-                <span
+                <motion.div variants={fadeUp}>
+                  <SectionLabel>{t.about.pageLabel}</SectionLabel>
+                </motion.div>
+
+                <motion.h1
+                  variants={fadeUp}
+                  className="font-display font-extrabold text-white leading-[0.95] tracking-tight"
                   style={{
-                    background:
-                      "linear-gradient(135deg, #FFB76C 0%, #E040A0 55%, #9B59F5 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
+                    fontSize: "clamp(52px, 6.5vw, 96px)",
+                    letterSpacing: "-0.03em",
                   }}
                 >
-                  {t.about.teamTitleAccent}
-                </span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeUp}
-                className="text-white/55 leading-relaxed"
-                style={{
-                  fontSize: "clamp(15px, 1.25vw, 17px)",
-                  maxWidth: "440px",
-                }}
-              >
-                {t.about.pageDescription}
-              </motion.p>
-
-              {/* Stat pills — big & bold */}
-              <motion.div
-                variants={fadeUp}
-                className="flex flex-wrap gap-3 pt-1"
-              >
-                {[
-                  { value: "7г+", label: t.clients.stats[1].label },
-                  { value: "17+", label: t.clients.stats[0].label },
-                  { value: "100%", label: t.clients.stats[2].label },
-                ].map((s) => (
-                  <div
-                    key={s.label}
-                    className="relative flex flex-col gap-1.5 px-6 py-4 rounded-2xl overflow-hidden"
+                  {t.about.teamTitle} {t.about.teamTitleMid}{" "}
+                  <span
                     style={{
-                      background: "rgba(255,255,255,0.05)",
-                      border: "1px solid rgba(255,255,255,0.13)",
-                      backdropFilter: "blur(18px)",
+                      background:
+                        "linear-gradient(135deg, #FFB76C 0%, #E040A0 55%, #9B59F5 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
                     }}
                   >
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 pointer-events-none rounded-2xl"
-                      style={{
-                        background:
-                          "radial-gradient(ellipse 90% 70% at 50% 110%, rgba(224,64,160,0.12), transparent)",
-                      }}
-                    />
+                    {t.about.teamTitleAccent}
+                  </span>
+                </motion.h1>
+
+                <motion.p
+                  variants={fadeUp}
+                  className="text-white/50 leading-relaxed"
+                  style={{
+                    fontSize: "clamp(15px, 1.2vw, 18px)",
+                    maxWidth: "460px",
+                  }}
+                >
+                  {t.about.pageDescription}
+                </motion.p>
+
+                <motion.div
+                  variants={fadeUp}
+                  className="flex items-center gap-4 flex-wrap"
+                >
+                  <Link href="/contact">
+                    <ButtonPrimary size="lg">{t.about.ctaButton}</ButtonPrimary>
+                  </Link>
+                </motion.div>
+              </motion.div>
+
+              {/* Right — stats */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.9,
+                  ease: [0.22, 1, 0.36, 1],
+                  delay: 0.3,
+                }}
+                className="relative flex flex-col justify-center"
+              >
+                {[
+                  {
+                    value: "7г+",
+                    label: t.clients.stats[1].label,
+                    accent: "#E040A0",
+                  },
+                  {
+                    value: "17+",
+                    label: t.clients.stats[0].label,
+                    accent: "#9B59F5",
+                  },
+                  {
+                    value: "100%",
+                    label: t.clients.stats[2].label,
+                    accent: "#FFB76C",
+                  },
+                ].map((s, i) => (
+                  <motion.div
+                    key={s.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.6,
+                      ease: [0.22, 1, 0.36, 1],
+                      delay: 0.45 + i * 0.12,
+                    }}
+                    className="flex items-baseline justify-between py-5 gap-6"
+                  >
                     <span
-                      className="font-display font-extrabold relative z-10"
+                      className="font-display font-extrabold leading-none"
                       style={{
-                        fontSize: "clamp(28px, 3.2vw, 42px)",
-                        lineHeight: 1,
-                        background: "linear-gradient(135deg, #FFB76C, #E040A0)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        backgroundClip: "text",
+                        fontSize: "clamp(48px, 6vw, 80px)",
+                        letterSpacing: "-0.04em",
+                        color: s.accent,
                       }}
                     >
                       {s.value}
                     </span>
-                    <span className="text-white/40 text-[11px] uppercase tracking-[0.18em] relative z-10 font-semibold whitespace-nowrap">
+                    <span
+                      className="text-xs font-semibold uppercase tracking-[0.2em] text-right shrink-0"
+                      style={{
+                        color: "rgba(255,255,255,0.35)",
+                        maxWidth: "120px",
+                      }}
+                    >
                       {s.label}
                     </span>
-                  </div>
+                  </motion.div>
                 ))}
               </motion.div>
-
-              <motion.div
-                variants={fadeUp}
-                className="flex items-center gap-5 flex-wrap pt-1"
-              >
-                <Link href="/contact">
-                  <ButtonPrimary size="lg">{t.about.ctaButton}</ButtonPrimary>
-                </Link>
-                <Link
-                  href="/work"
-                  className="text-sm font-semibold text-white/50 hover:text-white transition-colors flex items-center gap-1.5"
-                >
-                  {t.portfolio.viewAll} <ArrowRight size={14} />
-                </Link>
-              </motion.div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -268,146 +217,83 @@ export default function AboutPage() {
       {/* ── Why Aviva cards ── */}
       <section
         className="section-padding relative overflow-hidden"
-        style={{ background: "rgb(18,14,32)", isolation: "isolate" }}
+        style={{ background: "rgb(13,10,24)" }}
       >
-        {/* tool-stack.png blended right side */}
-        <motion.div
-          initial={{ opacity: 0, x: 80 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          viewport={{ once: true }}
-          aria-hidden
-          className="absolute z-0 pointer-events-none"
-          style={{
-            width: "auto",
-            height: "100%",
-            right: "clamp(-8%, -3vw, -3%)",
-            top: "0%",
-            bottom: "0%",
-            mixBlendMode: "screen",
-            opacity: 0.6,
-          }}
-        >
-          <Image
-            src="/background-images/tool-stack.png"
-            alt=""
-            width={800}
-            height={1200}
-            className="h-full w-auto object-cover"
-            style={{ filter: "none" }}
-          />
-        </motion.div>
-
-        {/* Fade right screen edge */}
+        {/* Ambient glows */}
         <div
           aria-hidden
-          className="absolute pointer-events-none z-0"
+          className="absolute pointer-events-none"
           style={{
-            width: "120px",
-            top: 0,
-            bottom: 0,
-            right: 0,
+            width: "700px",
+            height: "700px",
+            left: "-200px",
+            top: "-100px",
             background:
-              "linear-gradient(to left, rgb(18,14,32) 0%, transparent 100%)",
+              "radial-gradient(circle, rgba(224,64,160,0.07) 0%, transparent 65%)",
+            filter: "blur(80px)",
           }}
         />
-        {/* Fade top edge */}
         <div
           aria-hidden
-          className="absolute pointer-events-none z-0"
+          className="absolute pointer-events-none"
           style={{
-            height: "80px",
-            left: 0,
-            right: 0,
-            top: 0,
+            width: "600px",
+            height: "600px",
+            right: "-100px",
+            bottom: "-100px",
             background:
-              "linear-gradient(to bottom, rgb(18,14,32) 0%, transparent 100%)",
-          }}
-        />
-        {/* Fade bottom edge */}
-        <div
-          aria-hidden
-          className="absolute pointer-events-none z-0"
-          style={{
-            height: "120px",
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background:
-              "linear-gradient(to top, rgb(18,14,32) 0%, transparent 100%)",
-          }}
-        />
-        {/* Fade left edge of image — very wide smooth blend */}
-        <div
-          aria-hidden
-          className="absolute pointer-events-none z-0"
-          style={{
-            width: "clamp(40%, 45vw, 70%)",
-            top: 0,
-            bottom: 0,
-            right: 0,
-            background:
-              "linear-gradient(to right, rgb(18,14,32) 0%, rgb(18,14,32) 25%, rgba(18,14,32,0.85) 48%, rgba(18,14,32,0.4) 72%, transparent 100%)",
-          }}
-        />
-        {/* Ambient purple glow behind image */}
-        <div
-          aria-hidden
-          className="absolute pointer-events-none z-0"
-          style={{
-            width: "clamp(500px, 55vw, 800px)",
-            height: "clamp(500px, 55vw, 800px)",
-            right: "-15%",
-            top: "-20%",
-            background:
-              "radial-gradient(ellipse at 65% 45%, rgba(155,89,245,0.1) 0%, rgba(224,64,160,0.07) 45%, transparent 70%)",
-            filter: "blur(50px)",
-          }}
-        />
-
-        <Glow color="pink" size={700} className="top-1/2 left-1/4" />
-        <Glow color="orange" size={400} className="bottom-0 left-1/2" />
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
+              "radial-gradient(circle, rgba(155,89,245,0.08) 0%, transparent 65%)",
+            filter: "blur(80px)",
           }}
         />
 
         <div className="container relative z-10">
+          {/* Editorial split — label + headline left, sub right */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-20 items-end mb-12 sm:mb-16 md:mb-20"
           >
-            <motion.div variants={fadeUp}>
-              <SectionLabel>{t.whyAviva.label}</SectionLabel>
-            </motion.div>
-            <motion.h2
-              variants={fadeUp}
-              className="font-display text-4xl md:text-5xl lg:text-6xl text-white mt-4 mb-5 leading-tight"
-            >
-              {t.whyAviva.title}
-            </motion.h2>
+            <div>
+              <motion.div variants={fadeUp}>
+                <SectionLabel>{t.whyAviva.label}</SectionLabel>
+              </motion.div>
+              <motion.h2
+                variants={fadeUp}
+                className="font-display font-extrabold text-white mt-5 leading-[0.95] tracking-tight"
+                style={{
+                  fontSize: "clamp(40px, 5vw, 72px)",
+                  letterSpacing: "-0.03em",
+                }}
+              >
+                {t.whyAviva.title}
+              </motion.h2>
+            </div>
             <motion.p
               variants={fadeUp}
-              className="text-white/60 text-lg leading-relaxed"
+              className="text-white/50 text-base sm:text-lg leading-relaxed lg:pb-2"
             >
               {t.whyAviva.sub}
             </motion.p>
           </motion.div>
 
+          {/* Divider */}
+          <div className="h-px bg-white/[0.06] mb-16" />
+
+          {/* Cards — horizontal list with left number accent */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24"
+            className="grid grid-cols-1 md:grid-cols-3 gap-px mb-24"
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              borderRadius: "20px",
+              overflow: "hidden",
+            }}
           >
             {cards.map(
               ({
@@ -421,49 +307,49 @@ export default function AboutPage() {
               }) => (
                 <motion.div
                   key={title}
-                  variants={scaleIn}
-                  className="glass-card group relative p-8 overflow-hidden cursor-default"
+                  variants={fadeUp}
+                  className="group relative p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col gap-5 cursor-default"
+                  style={{ background: "rgb(13,10,24)" }}
                   whileHover={{
-                    y: -6,
-                    transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+                    background: `radial-gradient(circle at 30% 0%, ${glow} 0%, rgb(13,10,24) 60%)`,
+                    transition: { duration: 0.4 },
                   }}
                 >
+                  {/* Accent top bar */}
                   <div
-                    aria-hidden
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[16px]"
-                    style={{
-                      background: `radial-gradient(circle at 50% 0%, ${glow} 0%, transparent 70%)`,
-                    }}
-                  />
-                  <div
-                    className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-[16px]"
+                    className="absolute top-0 left-0 right-0 h-[1px] opacity-30 group-hover:opacity-100 transition-opacity duration-500"
                     style={{
                       background: `linear-gradient(90deg, transparent, ${iconColor}, transparent)`,
                     }}
                   />
-                  <div className="flex items-start justify-between mb-6">
-                    <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
-                      style={{
-                        background: `radial-gradient(circle at 30% 30%, ${glow} 0%, rgba(255,255,255,0.04) 100%)`,
-                        border: `1px solid ${border}`,
-                      }}
-                    >
-                      <Icon size={24} style={{ color: iconColor }} />
-                    </div>
-                    <span
-                      className="font-display font-bold text-5xl leading-none select-none opacity-10 group-hover:opacity-20 transition-opacity duration-300"
-                      style={{ color: iconColor }}
-                    >
-                      {number}
-                    </span>
+
+                  {/* Number */}
+                  <span
+                    className="font-display font-extrabold text-[80px] leading-none select-none opacity-[0.06] group-hover:opacity-[0.12] transition-opacity duration-300 absolute top-6 right-8"
+                    style={{ color: iconColor }}
+                  >
+                    {number}
+                  </span>
+
+                  {/* Icon */}
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+                    style={{
+                      background: `radial-gradient(circle at 30% 30%, ${glow} 0%, rgba(255,255,255,0.03) 100%)`,
+                      border: `1px solid ${border}`,
+                    }}
+                  >
+                    <Icon size={24} style={{ color: iconColor }} />
                   </div>
-                  <h3 className="font-display font-bold text-xl text-white mb-3">
-                    {title}
-                  </h3>
-                  <p className="text-sm text-white/55 leading-relaxed">
-                    {body}
-                  </p>
+
+                  <div>
+                    <h3 className="font-display font-bold text-xl text-white mb-3 leading-snug">
+                      {title}
+                    </h3>
+                    <p className="text-sm text-white/50 leading-relaxed">
+                      {body}
+                    </p>
+                  </div>
                 </motion.div>
               ),
             )}
@@ -482,189 +368,259 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Our Process — ai-master-wallpaper.png background ── */}
-      <section className="relative overflow-hidden section-padding">
-        {/* Full-bleed wallpaper */}
-        <Image
-          src="/background-images/light-beam.png"
-          alt=""
-          aria-hidden
-          fill
-          className="object-cover object-[center_83%] pointer-events-none select-none"
-          style={{ filter: "brightness(0.85) saturate(1.2)" }}
-        />
-
-        {/* Dark overlays — keep text legible */}
+      {/* ── Founders ── */}
+      <section
+        className="section-padding relative overflow-hidden"
+        style={{ background: "rgb(10,8,18)" }}
+      >
+        {/* Ambient glows */}
         <div
           aria-hidden
-          className="absolute inset-0 pointer-events-none"
+          className="absolute pointer-events-none"
           style={{
+            width: "800px",
+            height: "800px",
+            left: "-200px",
+            top: "50%",
+            transform: "translateY(-50%)",
             background:
-              "linear-gradient(180deg, rgba(10,8,18,0.85) 0%, rgba(10,8,18,0.5) 40%, rgba(10,8,18,0.5) 60%, rgba(10,8,18,0.92) 100%)",
+              "radial-gradient(circle, rgba(224,64,160,0.08) 0%, transparent 65%)",
+            filter: "blur(100px)",
           }}
         />
         <div
           aria-hidden
-          className="absolute inset-0 pointer-events-none"
+          className="absolute pointer-events-none"
           style={{
+            width: "700px",
+            height: "700px",
+            right: "-150px",
+            top: "50%",
+            transform: "translateY(-50%)",
             background:
-              "linear-gradient(90deg, rgba(10,8,18,0.6) 0%, transparent 35%, transparent 65%, rgba(10,8,18,0.6) 100%)",
-          }}
-        />
-
-        {/* Pink/purple ambient glow from the image light source */}
-        <div
-          aria-hidden
-          className="absolute top-0 left-0 w-[700px] h-[500px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at 20% 30%, rgba(224,64,160,0.18) 0%, transparent 65%)",
-            filter: "blur(60px)",
-          }}
-        />
-        <div
-          aria-hidden
-          className="absolute bottom-0 right-0 w-[500px] h-[400px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at 80% 80%, rgba(155,89,245,0.14) 0%, transparent 65%)",
-            filter: "blur(60px)",
+              "radial-gradient(circle, rgba(155,89,245,0.09) 0%, transparent 65%)",
+            filter: "blur(100px)",
           }}
         />
 
         <div className="container relative z-10">
-          {/* Headline */}
+          {/* Header */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
-            className="text-center max-w-3xl mx-auto mb-20"
+            className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 md:mb-20"
           >
             <motion.div variants={fadeUp}>
-              <SectionLabel>{t.about.teamLabel}</SectionLabel>
+              <SectionLabel>{t.about.teamSectionLabel}</SectionLabel>
             </motion.div>
             <motion.h2
               variants={fadeUp}
-              className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl text-white mt-4 mb-5 leading-tight"
+              className="font-display font-extrabold text-white mt-5 leading-[0.95] tracking-tight"
+              style={{
+                fontSize: "clamp(40px, 5vw, 72px)",
+                letterSpacing: "-0.03em",
+              }}
             >
-              {t.about.processTitle} {t.about.processTitleMid}{" "}
+              {t.about.teamSectionTitle}{" "}
               <span
                 style={{
                   background:
-                    "linear-gradient(135deg, #FFB76C 0%, #E040A0 100%)",
+                    "linear-gradient(135deg, #FFB76C 0%, #E040A0 55%, #9B59F5 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                 }}
               >
-                {t.about.processTitleAccent}
+                {t.about.teamSectionAccent}
               </span>
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="text-white/55 text-lg leading-relaxed"
+              className="text-white/45 text-base sm:text-lg leading-relaxed mt-5"
             >
-              {t.about.bio}
+              {t.about.teamSectionSub}
             </motion.p>
           </motion.div>
 
-          {/* Process steps — 2×2 grid */}
+          {/* Founder cards */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-6"
           >
-            {processMeta.map(
-              ({ icon: Icon, number, accent, border, glow }, i) => {
-                const steps = [
-                  {
-                    title: t.whyAviva.cards[0].title,
-                    body: t.whyAviva.cards[0].body,
-                  },
-                  {
-                    title: t.whyAviva.cards[1].title,
-                    body: t.whyAviva.cards[1].body,
-                  },
-                  {
-                    title: t.whyAviva.cards[2].title,
-                    body: t.whyAviva.cards[2].body,
-                  },
-                  { title: t.about.role, body: t.about.pageDescription },
-                ];
-                const step = steps[i];
-                return (
-                  <motion.div
-                    key={number}
-                    variants={scaleIn}
-                    className="group relative rounded-[20px] p-7 flex flex-col gap-4 overflow-hidden cursor-default h-full"
-                    whileHover={{
-                      y: -6,
-                      transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
-                    }}
+            {/* Vyara */}
+            <motion.div
+              variants={fadeUp}
+              className="group relative rounded-[24px] overflow-hidden"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(224,64,160,0.06) 0%, rgba(255,255,255,0.02) 100%)",
+                border: "1px solid rgba(224,64,160,0.18)",
+              }}
+              whileHover={{
+                y: -4,
+                transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+              }}
+            >
+              <div
+                className="absolute top-0 left-0 right-0 h-[1px] opacity-50 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background:
+                    "linear-gradient(90deg, transparent, #E040A0, transparent)",
+                }}
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 30% 0%, rgba(224,64,160,0.08) 0%, transparent 60%)",
+                }}
+              />
+              <div className="relative flex flex-col sm:flex-row gap-6 sm:gap-8 p-5 sm:p-6 md:p-8 lg:p-10">
+                <div className="flex-shrink-0">
+                  <div
+                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-2xl overflow-hidden"
                     style={{
-                      background:
-                        "linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-                      border: `1px solid ${border}`,
-                      backdropFilter: "blur(16px)",
+                      border: "2px solid rgba(224,64,160,0.3)",
+                      boxShadow: "0 0 40px rgba(224,64,160,0.15)",
                     }}
                   >
-                    {/* Hover inner glow */}
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[20px]"
-                      style={{
-                        background: `radial-gradient(circle at 50% 0%, ${glow} 0%, transparent 70%)`,
-                      }}
+                    <Image
+                      src="/profile/profilepic.jpg"
+                      alt="Vyara Ivanova-Ilieva"
+                      width={128}
+                      height={128}
+                      className="w-full h-full object-cover"
                     />
-                    {/* Top accent */}
-                    <div
-                      className="absolute top-0 left-0 right-0 h-[2px] opacity-40 group-hover:opacity-100 transition-opacity duration-500 rounded-t-[20px]"
-                      style={{
-                        background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
-                      }}
-                    />
-
-                    {/* Number + icon */}
-                    <div className="flex items-start justify-between">
-                      <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4 flex-1">
+                  <div>
+                    <p
+                      className="text-xs font-semibold uppercase tracking-[0.2em] mb-2"
+                      style={{ color: "#E040A0" }}
+                    >
+                      {t.about.founder1Role}
+                    </p>
+                    <h3 className="font-display font-extrabold text-xl sm:text-2xl text-white leading-tight">
+                      {t.about.founder1Name}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-white/55 leading-relaxed">
+                    {t.about.founder1Bio}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {[
+                      t.about.founder1Tag1,
+                      t.about.founder1Tag2,
+                      t.about.founder1Tag3,
+                    ].map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs font-medium px-3 py-1 rounded-full"
                         style={{
-                          background: `radial-gradient(circle at 30% 30%, ${glow} 0%, rgba(255,255,255,0.04) 100%)`,
-                          border: `1px solid ${border}`,
+                          background: "rgba(224,64,160,0.1)",
+                          border: "1px solid rgba(224,64,160,0.25)",
+                          color: "rgba(224,64,160,0.9)",
                         }}
                       >
-                        <Icon size={20} style={{ color: accent }} />
-                      </div>
-                      <span
-                        className="font-display font-bold text-5xl leading-none select-none opacity-10 group-hover:opacity-25 transition-opacity duration-300"
-                        style={{ color: accent }}
-                      >
-                        {number}
+                        {tag}
                       </span>
-                    </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
-                    <h3 className="font-display font-bold text-lg text-white leading-snug">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-white/50 leading-relaxed flex-1">
-                      {step.body}
-                    </p>
-
-                    {/* Bottom accent line */}
-                    <div
-                      aria-hidden
-                      className="absolute bottom-0 left-6 right-6 h-px opacity-0 group-hover:opacity-50 transition-opacity duration-500"
-                      style={{
-                        background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
-                      }}
+            {/* Lyubomir */}
+            <motion.div
+              variants={fadeUp}
+              className="group relative rounded-[24px] overflow-hidden"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(155,89,245,0.06) 0%, rgba(255,255,255,0.02) 100%)",
+                border: "1px solid rgba(155,89,245,0.18)",
+              }}
+              whileHover={{
+                y: -4,
+                transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+              }}
+            >
+              <div
+                className="absolute top-0 left-0 right-0 h-[1px] opacity-50 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background:
+                    "linear-gradient(90deg, transparent, #9B59F5, transparent)",
+                }}
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 70% 0%, rgba(155,89,245,0.08) 0%, transparent 60%)",
+                }}
+              />
+              <div className="relative flex flex-col sm:flex-row gap-6 sm:gap-8 p-5 sm:p-6 md:p-8 lg:p-10">
+                <div className="flex-shrink-0">
+                  <div
+                    className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-2xl overflow-hidden"
+                    style={{
+                      border: "2px solid rgba(155,89,245,0.3)",
+                      boxShadow: "0 0 40px rgba(155,89,245,0.15)",
+                    }}
+                  >
+                    <Image
+                      src="/profile/profilepic2.jpg"
+                      alt="Lyubomir Iliev"
+                      width={128}
+                      height={128}
+                      className="w-full h-full object-cover"
                     />
-                  </motion.div>
-                );
-              },
-            )}
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4 flex-1">
+                  <div>
+                    <p
+                      className="text-xs font-semibold uppercase tracking-[0.2em] mb-2"
+                      style={{ color: "#9B59F5" }}
+                    >
+                      {t.about.founder2Role}
+                    </p>
+                    <h3 className="font-display font-extrabold text-xl sm:text-2xl text-white leading-tight">
+                      {t.about.founder2Name}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-white/55 leading-relaxed">
+                    {t.about.founder2Bio}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {[
+                      t.about.founder2Tag1,
+                      t.about.founder2Tag2,
+                      t.about.founder2Tag3,
+                    ].map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs font-medium px-3 py-1 rounded-full"
+                        style={{
+                          background: "rgba(155,89,245,0.1)",
+                          border: "1px solid rgba(155,89,245,0.25)",
+                          color: "rgba(155,89,245,0.9)",
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -687,7 +643,7 @@ export default function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="relative rounded-[28px] pt-16 md:pt-24 px-14 md:px-28 pb-0 text-center max-w-6xl mx-auto flex flex-col"
+            className="relative rounded-[28px] pt-12 sm:pt-16 md:pt-24 px-6 sm:px-10 md:px-20 lg:px-28 pb-0 text-center max-w-6xl mx-auto flex flex-col"
             style={{
               background:
                 "linear-gradient(135deg, rgba(224,64,160,0.07), rgba(155,89,245,0.07), rgba(74,158,255,0.05))",
@@ -724,7 +680,7 @@ export default function AboutPage() {
             <div className="relative z-10">
               <motion.h2
                 variants={fadeUp}
-                className="font-display text-3xl md:text-4xl text-white leading-tight"
+                className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl 3xl:text-6xl text-white leading-tight"
               >
                 {t.about.ctaTitle}
               </motion.h2>
@@ -733,14 +689,14 @@ export default function AboutPage() {
             {/* Button pinned flush to bottom center */}
             <motion.div
               variants={fadeUp}
-              className="relative z-10 flex justify-center mt-auto pt-10"
+              className="relative z-10 flex justify-center mt-auto pt-8 sm:pt-10 pb-10 sm:pb-12 md:pb-16"
             >
               <Link href="/contact">
                 <button
-                  className="inline-flex items-center font-display font-semibold px-10 py-4 text-base text-white hover:opacity-90 transition-all duration-150 cursor-pointer whitespace-nowrap"
+                  className="inline-flex items-center font-display font-semibold px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-sm sm:text-base text-white hover:opacity-90 transition-all duration-150 cursor-pointer whitespace-nowrap"
                   style={{
                     background: "linear-gradient(135deg, #FFB76C, #FF419D)",
-                    borderRadius: "16px 16px 0 0",
+                    borderRadius: "16px",
                   }}
                 >
                   {t.about.ctaButton}

@@ -104,7 +104,7 @@ export default function Header() {
     <>
       {/* ── Desktop floating pill ── */}
       <div
-        className="fixed top-4 left-0 right-0 z-50 hidden md:flex justify-center px-4"
+        className="fixed top-4 left-0 right-0 z-50 hidden lg:flex justify-center px-4"
         style={{
           transform: visible ? "translateY(0)" : "translateY(-120%)",
           transition: "transform 0.4s cubic-bezier(0.4,0,0.2,1)",
@@ -254,7 +254,7 @@ export default function Header() {
                 onMouseLeave={handleServicesLeave}
               />
               <div
-                className="absolute w-[820px] rounded-2xl overflow-hidden z-50"
+                className="absolute w-[min(820px,calc(100vw-2rem))] rounded-2xl overflow-hidden z-50"
                 style={{
                   top: "calc(100% + 16px)",
                   left: "50%",
@@ -323,9 +323,9 @@ export default function Header() {
         </header>
       </div>
 
-      {/* ── Mobile header ── */}
+      {/* ── Mobile/Tablet header ── */}
       <header
-        className="fixed top-0 left-0 right-0 z-50 md:hidden"
+        className="fixed top-0 left-0 right-0 z-50 lg:hidden"
         style={{
           transform: visible ? "translateY(0)" : "translateY(-110%)",
           transition: "transform 0.4s cubic-bezier(0.4,0,0.2,1)",

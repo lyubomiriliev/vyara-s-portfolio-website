@@ -14,7 +14,7 @@ export function ServicesHeroFloatingCards() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="absolute top-[18%] right-[4%] hidden lg:block z-10"
+        className="absolute top-[18%] right-[2%] xl:right-[4%] hidden xl:block z-10"
       >
         <FloatingCard
           icon={<Sparkles size={13} />}
@@ -33,7 +33,7 @@ export function ServicesHeroFloatingCards() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
-        className="absolute top-[30%] left-[3%] hidden lg:block z-10"
+        className="absolute top-[30%] left-[2%] xl:left-[3%] hidden lg:block z-10"
       >
         <FloatingCard
           icon={<Code2 size={13} />}
@@ -53,7 +53,7 @@ export function ServicesHeroFloatingCards() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.8 }}
-        className="absolute bottom-[10%] right-[5%] hidden lg:block z-10"
+        className="absolute bottom-[10%] right-[2%] xl:right-[5%] hidden lg:block z-10"
       >
         <FloatingCard
           icon={<Megaphone size={13} />}

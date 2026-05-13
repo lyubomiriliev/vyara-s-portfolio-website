@@ -98,7 +98,7 @@ export default function ServicesPage() {
         {/* Tab filter */}
         <div className="mb-14 flex justify-center">
           <div
-            className="relative inline-flex items-center gap-1 p-1.5 rounded-full"
+            className="relative inline-flex flex-wrap items-center justify-center gap-1 p-1.5 rounded-full"
             style={{
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(255,255,255,0.08)",
@@ -108,7 +108,7 @@ export default function ServicesPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveFilter(tab.id)}
-                className="relative z-10 py-2 px-5 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer whitespace-nowrap"
+                className="relative z-10 py-2 px-3 sm:px-4 md:px-5 rounded-full text-xs sm:text-sm font-medium transition-colors duration-200 cursor-pointer whitespace-nowrap"
                 style={{
                   color:
                     activeFilter === tab.id ? "#fff" : "rgba(255,255,255,0.45)",
@@ -141,7 +141,7 @@ export default function ServicesPage() {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.35 }}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 items-start">
                 {/* Marketing */}
                 <div className="flex flex-col gap-4">
                   <CategoryHeader

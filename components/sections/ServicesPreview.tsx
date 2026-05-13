@@ -49,8 +49,7 @@ export default function ServicesPreview() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden"
-      style={{ padding: "140px 0" }}
+      className="relative overflow-hidden py-16 sm:py-20 md:py-28 lg:py-[140px]"
     >
       {/* Atmospheric workflow background */}
       <SectionBackground
@@ -83,20 +82,20 @@ export default function ServicesPreview() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="text-center max-w-5xl mx-auto mb-20"
+          className="text-center max-w-5xl mx-auto mb-12 sm:mb-16 md:mb-20"
         >
           <motion.div variants={fadeUp}>
             <SectionLabel>{t.services.label}</SectionLabel>
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-display text-4xl md:text-5xl lg:text-6xl text-white mt-4 mb-5 leading-tight"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-white mt-4 mb-5 leading-tight"
           >
             {t.services.title}
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-white/60 text-lg leading-relaxed max-w-none"
+            className="text-white/60 text-base sm:text-lg leading-relaxed max-w-none"
           >
             {t.services.sub}
           </motion.p>
@@ -108,7 +107,7 @@ export default function ServicesPreview() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mb-12 sm:mb-16"
         >
           {columns.map(({ category, label, accent, border, glow }) => {
             const categoryServices = localizedServices

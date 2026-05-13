@@ -45,7 +45,7 @@ export default function ProjectPageContent({ project }: { project: Project }) {
               </>
             )}
           </div>
-          <h1 className="font-sans font-extrabold text-4xl md:text-6xl text-white leading-tight">
+          <h1 className="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-white leading-tight">
             {project.title}
           </h1>
         </motion.div>
@@ -71,7 +71,7 @@ export default function ProjectPageContent({ project }: { project: Project }) {
 
           {/* Left: description + gallery */}
           <div className="lg:col-span-2 flex flex-col gap-8">
-            <p className="text-white/65 text-lg leading-relaxed">{project.description}</p>
+            <p className="text-white/65 text-base sm:text-lg leading-relaxed">{project.description}</p>
 
             {project.images.length > 1 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -130,12 +130,12 @@ export default function ProjectPageContent({ project }: { project: Project }) {
         </div>
 
         {/* CTA */}
-        <div className="mt-20 text-center glass-card p-12 relative overflow-hidden">
+        <div className="mt-20 text-center glass-card p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 relative overflow-hidden">
           <div className="relative z-10">
             <div className="text-xs uppercase tracking-[0.15em] text-accent-violet mb-4">
               Ready for Results?
             </div>
-            <h2 className="font-sans font-extrabold text-3xl md:text-4xl text-white mb-6">
+            <h2 className="font-sans font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl 3xl:text-6xl text-white mb-6">
               Let&apos;s build something like this for you.
             </h2>
             <Link href="/contact">

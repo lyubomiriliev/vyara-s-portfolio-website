@@ -21,12 +21,12 @@ export function PageHero({
     ? title.replace(titleGradient, "").trim()
     : title;
   return (
-    <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-0 lg:min-h-[480px] xl:min-h-[520px]">
+    <section className="relative overflow-hidden pt-24 sm:pt-28 md:pt-32 lg:pt-40 pb-12 sm:pb-16 md:pb-0 lg:min-h-[480px] xl:min-h-[520px] 3xl:min-h-[640px]">
       <Glow color="orange" size={500} className="top-1/2 left-1/3" />
       <Glow color="pink" size={300} className="top-1/3 right-1/4" />
-      <div className="container relative z-10 text-center max-w-3xl mx-auto">
+      <div className="container relative z-10 text-center max-w-3xl 3xl:max-w-4xl mx-auto">
         <SectionLabel>{label}</SectionLabel>
-        <h1 className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white mt-3 mb-5 leading-[1.05]">
+        <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 3xl:text-8xl text-white mt-3 mb-4 sm:mb-5 leading-[1.05]">
           {titleWithout}
           {titleGradient && (
             <>
@@ -35,7 +35,7 @@ export function PageHero({
             </>
           )}
         </h1>
-        <p className="text-lg text-white/60 leading-relaxed max-w-xl mx-auto">
+        <p className="text-base sm:text-lg 3xl:text-xl text-white/60 leading-relaxed max-w-xl 3xl:max-w-2xl mx-auto">
           {description}
         </p>
       </div>

@@ -32,7 +32,7 @@ interface TestimonialItem {
 function TestimonialCard({ item }: { item: TestimonialItem }) {
   return (
     <div
-      className="group relative flex-shrink-0 w-[640px] md:w-[720px] min-h-[260px] rounded-[20px] p-10 flex flex-col gap-4 cursor-default transition-transform duration-300 hover:-translate-y-2"
+      className="group relative flex-shrink-0 w-[88vw] sm:w-[460px] md:w-[640px] lg:w-[720px] min-h-[240px] sm:min-h-[260px] rounded-[20px] p-6 sm:p-8 md:p-10 flex flex-col gap-3 sm:gap-4 cursor-default transition-transform duration-300 hover:-translate-y-2"
       style={{
         background: `linear-gradient(135deg, ${item.glow}, rgba(255,255,255,0.03))`,
         border: `1px solid ${item.border}`,
@@ -62,7 +62,7 @@ function TestimonialCard({ item }: { item: TestimonialItem }) {
       </div>
 
       {/* Quote */}
-      <p className="text-white/80 text-base leading-relaxed flex-1">
+      <p className="text-white/80 text-sm sm:text-base leading-relaxed flex-1">
         &ldquo;{item.quote}&rdquo;
       </p>
 
@@ -107,14 +107,14 @@ function MarqueeRow({ items, reverse = false }: { items: TestimonialItem[]; reve
       onMouseEnter={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "paused"; }}
       onMouseLeave={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "running"; }}
     >
-      <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+      <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 md:w-32 z-10 pointer-events-none"
         style={{ background: "linear-gradient(to right, #0A0A0F, transparent)" }} />
-      <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+      <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 md:w-32 z-10 pointer-events-none"
         style={{ background: "linear-gradient(to left, #0A0A0F, transparent)" }} />
 
       <div
         ref={trackRef}
-        className="flex gap-5 w-max py-4"
+        className="flex gap-3 sm:gap-4 md:gap-5 w-max py-4"
         style={{ animation: `marquee${reverse ? "Reverse" : ""} ${reverse ? "160s" : "130s"} linear infinite` }}
       >
         {items.map((item, i) => (
@@ -172,14 +172,14 @@ export default function Testimonials() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="text-center max-w-3xl mx-auto mb-16 px-6"
+          className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 px-4 sm:px-6"
         >
           <motion.div variants={fadeUp}>
             <SectionLabel>{t.testimonials.label}</SectionLabel>
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-display text-4xl md:text-5xl lg:text-6xl text-white mt-4 mb-5 leading-tight"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-white mt-4 mb-5 leading-tight"
           >
             {t.testimonials.title}
             <br />

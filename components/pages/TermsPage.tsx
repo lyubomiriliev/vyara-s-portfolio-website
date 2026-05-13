@@ -161,9 +161,9 @@ export default function TermsPage() {
         }}
       />
 
-      <div className="container relative z-10 py-32 max-w-3xl">
+      <div className="container relative z-10 py-16 sm:py-20 md:py-28 lg:py-32 max-w-3xl px-4 sm:px-6 md:px-8">
         {/* Header */}
-        <div className="mb-16">
+        <div className="mb-10 sm:mb-12 md:mb-16">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] mt-6 text-white/30 mb-4">
             Правна информация
           </p>
@@ -179,10 +179,10 @@ export default function TermsPage() {
         </div>
 
         {/* Sections */}
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-10 md:space-y-12">
           {sections.map((section, i) => (
-            <div key={i} className="border-t border-white/[0.06] pt-10">
-              <h2 className="font-display font-bold text-white text-lg mb-4 flex items-center gap-3">
+            <div key={i} className="border-t border-white/[0.06] pt-6 sm:pt-8 md:pt-10">
+              <h2 className="font-display font-bold text-white text-base sm:text-lg mb-4 flex items-center gap-3 flex-wrap">
                 {section.number && (
                   <span
                     className="text-xs font-semibold px-2 py-0.5 rounded-md"
@@ -199,13 +199,13 @@ export default function TermsPage() {
               </h2>
 
               {section.content && (
-                <p className="text-white/55 text-[15px] leading-relaxed whitespace-pre-line">
+                <p className="text-white/55 text-sm sm:text-[15px] leading-relaxed whitespace-pre-line">
                   {section.content}
                 </p>
               )}
 
               {section.intro && (
-                <p className="text-white/55 text-[15px] leading-relaxed mb-4">
+                <p className="text-white/55 text-sm sm:text-[15px] leading-relaxed mb-4">
                   {section.intro}
                 </p>
               )}
@@ -215,7 +215,7 @@ export default function TermsPage() {
                   {section.items.map((item, j) => (
                     <li
                       key={j}
-                      className="flex gap-3 text-white/55 text-[15px] leading-relaxed"
+                      className="flex gap-3 text-white/55 text-sm sm:text-[15px] leading-relaxed"
                     >
                       <span
                         className="mt-2 shrink-0 w-1 h-1 rounded-full"
@@ -241,7 +241,7 @@ export default function TermsPage() {
                         {sub.items.map((item, l) => (
                           <li
                             key={l}
-                            className="flex gap-3 text-white/55 text-[15px] leading-relaxed"
+                            className="flex gap-3 text-white/55 text-sm sm:text-[15px] leading-relaxed"
                           >
                             <span
                               className="shrink-0 w-1 h-1 rounded-full"
@@ -264,7 +264,7 @@ export default function TermsPage() {
 
         {/* Contact note */}
         <div
-          className="my-16 p-6 rounded-2xl"
+          className="my-10 sm:my-14 md:my-16 p-5 sm:p-6 rounded-2xl"
           style={{
             background: "rgba(255,107,61,0.06)",
             border: "1px solid rgba(255,107,61,0.15)",

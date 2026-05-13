@@ -127,7 +127,7 @@ export default function Clients() {
     <section
       ref={sectionRef}
       id="clients"
-      className="py-24 relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden"
     >
       <Glow color="pink" size={600} className="top-0 left-1/3" />
       <Glow color="orange" size={500} className="bottom-1/4 right-1/4" />
@@ -142,21 +142,21 @@ export default function Clients() {
         }}
       />
 
-      <div className="mx-auto max-w-[900px] 2xl:max-w-[1200px] relative z-10">
+      <div className="mx-auto max-w-[900px] 2xl:max-w-[1200px] 3xl:max-w-[1500px] relative z-10 px-4 sm:px-6 md:px-8">
         {/* Headline */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 md:mb-16"
         >
           <motion.div variants={fadeUp}>
             <SectionLabel>{t.clients.sectionLabel}</SectionLabel>
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="font-display text-4xl md:text-5xl lg:text-6xl text-white mt-4 mb-5 leading-tight"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl text-white mt-4 mb-5 leading-tight"
           >
             {t.clients.sectionTitle}{" "}
             <span className="text-gradient-warm">
@@ -165,7 +165,7 @@ export default function Clients() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-white/55 text-lg leading-relaxed"
+            className="text-white/55 text-base sm:text-lg leading-relaxed"
           >
             {t.clients.sectionSub}
           </motion.p>
@@ -177,7 +177,7 @@ export default function Clients() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-3 px-5 md:px-0 sm:grid-cols-5 gap-4 mb-16"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-3 md:gap-4 mb-12 sm:mb-16"
         >
           {clientLogos.map((client, i) => {
             const isPopped = activeSet.has(i);
@@ -196,7 +196,7 @@ export default function Clients() {
                   scale: 1.06,
                   transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
                 }}
-                className="group relative flex items-center justify-center rounded-[18px] glass-card p-6 aspect-[3/2] cursor-default overflow-hidden"
+                className="group relative flex items-center justify-center rounded-[14px] sm:rounded-[18px] glass-card p-3 sm:p-4 md:p-6 aspect-[3/2] cursor-default overflow-hidden"
                 style={{
                   transition: "box-shadow 0.6s ease, border-color 0.6s ease",
                   borderColor: isPopped ? `${client.accent}50` : undefined,
@@ -244,7 +244,7 @@ export default function Clients() {
                   src={client.logo}
                   alt={client.name}
                   loading="lazy"
-                  className="h-14 w-auto max-w-full object-contain"
+                  className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto max-w-full object-contain"
                   animate={{
                     opacity: isPopped ? 1 : 0.45,
                     filter: isPopped

@@ -52,7 +52,7 @@ export default function ServicesAccordion({
             {/* Row trigger */}
             <button
               onClick={() => setOpen(isOpen ? null : service.id)}
-              className="w-full flex items-center gap-3 px-4 py-3.5 text-left transition-all duration-200 cursor-pointer group"
+              className="w-full flex items-center gap-3 px-3 sm:px-4 py-3 md:py-4 text-left transition-all duration-200 cursor-pointer group"
               style={{
                 background: isOpen
                   ? `rgba(${accentColorRgb}, 0.07)`
@@ -78,7 +78,7 @@ export default function ServicesAccordion({
 
               {/* Title */}
               <span
-                className="flex-1 font-semibold text-[16px] leading-tight transition-colors duration-200"
+                className="flex-1 font-semibold text-[14px] sm:text-[15px] md:text-[16px] leading-tight transition-colors duration-200"
                 style={{ color: isOpen ? "#fff" : "rgba(255,255,255,0.75)" }}
               >
                 {service.title}
@@ -107,10 +107,10 @@ export default function ServicesAccordion({
                   transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
                   style={{ overflow: "hidden" }}
                 >
-                  <div className="p-5 flex flex-col gap-4">
+                  <div className="p-4 sm:p-5 flex flex-col gap-3 sm:gap-4">
                     {/* Left accent bar + description */}
                     <div
-                      className="pl-4 text-base leading-relaxed"
+                      className="pl-3 sm:pl-4 text-sm sm:text-base leading-relaxed"
                       style={{
                         borderLeft: `2px solid rgba(${accentColorRgb}, 0.4)`,
                         color: "rgba(255,255,255,0.60)",

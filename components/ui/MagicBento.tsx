@@ -626,7 +626,7 @@ export default function MagicBento({
             const IconComp = (Icons as any)[card.icon] as
               | React.ElementType
               | undefined;
-            const baseClassName = `card flex flex-col relative min-h-[300px] w-full max-w-full rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 ${enableBorderGlow ? "card--border-glow" : ""}`;
+            const baseClassName = `card flex flex-col relative min-h-[220px] sm:min-h-[260px] md:min-h-[300px] w-full max-w-full rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 ${enableBorderGlow ? "card--border-glow" : ""}`;
             const cardStyle: React.CSSProperties = {
               backgroundColor: "#0d0a14",
               borderColor: "var(--border-color)",
@@ -672,13 +672,13 @@ export default function MagicBento({
                 )}
 
                 {/* Content */}
-                <div className="flex flex-col relative p-6 z-10 gap-4 h-full">
+                <div className="flex flex-col relative p-4 sm:p-5 md:p-6 z-10 gap-3 sm:gap-4 h-full">
                   {/* Text content */}
-                  <div className="flex flex-col gap-3 flex-1">
-                    <h3 className="font-bold text-[24px] leading-snug text-white m-0">
+                  <div className="flex flex-col gap-2 sm:gap-3 flex-1">
+                    <h3 className="font-bold text-[18px] sm:text-[20px] md:text-[24px] leading-snug text-white m-0">
                       {card.title}
                     </h3>
-                    <p className="text-[17px] leading-[1.65] text-white/70 m-0">
+                    <p className="text-[14px] sm:text-[15px] md:text-[17px] leading-[1.65] text-white/70 m-0">
                       {card.description}
                     </p>
                   </div>
