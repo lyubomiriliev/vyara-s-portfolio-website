@@ -9,23 +9,23 @@ const SERVICE_VIDEOS: Record<string, string> = {
 };
 
 const SERVICE_BACKGROUNDS: Record<string, string> = {
-  "social-media-management": "/services-images/social-media-management.png",
-  "ai-powered-marketing": "/services-images/ai-marketing.png",
-  "meta-ads-campaigns": "/services-images/meta-ads.png",
-  "email-marketing": "/services-images/email-marketing.png",
-  "graphic-design": "/services-images/graphic-design.png",
-  "print-materials": "/services-images/print-materials.png",
-  "video-filming": "/services-images/video-filming.png",
-  "video-editing": "/services-images/video-editing.png",
-  copywriting: "/services-images/copywriting.png",
-  "ai-image-generation": "/background-images/ai-master-wallpaper.png",
-  "ai-video-generation": "/services-images/ai-video-generation.png",
-  "seo-optimization": "/services-images/seo-marketing.png",
-  "custom-websites-nextjs": "/services-images/custom-websites.png",
-  "online-store-ecommerce": "/services-images/ecommerce.png",
-  "web-applications": "/services-images/web-applications.png",
-  "saas-solutions": "/services-images/saas-solutions.png",
-  "hosting-domain": "/services-images/hosting-domain.png",
+  "social-media-management": "/services-images/social-media-management.webp",
+  "ai-powered-marketing": "/services-images/ai-marketing.webp",
+  "meta-ads-campaigns": "/services-images/meta-ads.webp",
+  "email-marketing": "/services-images/email-marketing.webp",
+  "graphic-design": "/services-images/graphic-design.webp",
+  "print-materials": "/services-images/print-materials.webp",
+  "video-filming": "/services-images/video-filming.webp",
+  "video-editing": "/services-images/video-editing.webp",
+  copywriting: "/services-images/copywriting.webp",
+  "ai-image-generation": "/background-images/ai-master-wallpaper.webp",
+  "ai-video-generation": "/services-images/ai-video-generation.webp",
+  "seo-optimization": "/services-images/seo-marketing.webp",
+  "custom-websites-nextjs": "/services-images/custom-websites.webp",
+  "online-store-ecommerce": "/services-images/ecommerce.webp",
+  "web-applications": "/services-images/web-applications.webp",
+  "saas-solutions": "/services-images/saas-solutions.webp",
+  "hosting-domain": "/services-images/hosting-domain.webp",
 };
 
 export interface BentoCardData {
@@ -151,11 +151,10 @@ export default function MagicBento({
                     <div className="absolute inset-0 z-0 pointer-events-none">
                       <video
                         src={bgVideo}
-                        autoPlay
                         loop
                         muted
                         playsInline
-                        preload="metadata"
+                        preload="none"
                         className="absolute inset-0 w-full h-full object-cover opacity-[0.25]"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a14] via-[#0d0a14]/70 to-transparent" />

@@ -53,7 +53,7 @@ export default function ServicesPreview() {
     >
       {/* Atmospheric workflow background */}
       <SectionBackground
-        src="/background-images/workflow.png"
+        src="/background-images/workflow.webp"
         opacity={0.16}
         position="right center"
         vignetteIntensity={0.7}

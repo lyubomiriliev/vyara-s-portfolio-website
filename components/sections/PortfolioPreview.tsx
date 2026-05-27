@@ -51,55 +51,6 @@ export default function PortfolioPreview() {
 
   return (
     <section className="pt-16 sm:pt-20 md:pt-[96px] pb-12 sm:pb-16 relative overflow-hidden">
-      {/* Left decorative image */}
-      <Image
-        src="/background-images/communication.png"
-        alt=""
-        aria-hidden
-        width={600}
-        height={600}
-        className="hidden md:block absolute -left-8 top-1/2 -translate-y-1/2 w-[400px] lg:w-[500px] xl:w-[600px] pointer-events-none select-none"
-        style={{
-          opacity: 0.85,
-          maskImage:
-            "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, transparent 85%)",
-          WebkitMaskImage:
-            "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, transparent 85%)",
-          mixBlendMode: "screen",
-        }}
-      />
-      {/* Right decorative image */}
-      <Image
-        src="/background-images/floating-bubble.png"
-        alt=""
-        aria-hidden
-        width={600}
-        height={600}
-        className="hidden md:block absolute -right-8 top-1/2 -translate-y-1/2 w-[400px] lg:w-[500px] xl:w-[600px] pointer-events-none select-none"
-        style={{
-          opacity: 0.65,
-          maskImage:
-            "linear-gradient(270deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, transparent 85%)",
-          WebkitMaskImage:
-            "linear-gradient(270deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, transparent 85%)",
-          mixBlendMode: "screen",
-        }}
-      />
-      {/* Bottom tear divider */}
-      <Image
-        src="/background-images/tear.png"
-        alt=""
-        aria-hidden
-        width={1440}
-        height={80}
-        className="absolute bottom-0 left-0 right-0 w-full pointer-events-none select-none"
-        style={{
-          opacity: 0.07,
-          height: "80px",
-          objectFit: "cover",
-          objectPosition: "top",
-        }}
-      />
 
       <div className="container relative z-10">
         {/* ── Headline ── */}
@@ -161,10 +112,16 @@ export default function PortfolioPreview() {
                   {isVideo && project.videoSrc ? (
                     <video
                       src={project.videoSrc}
-                      autoPlay
                       muted
                       loop
                       playsInline
+                      preload="metadata"
+                      poster={project.coverImage || undefined}
+                      onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.pause();
+                        e.currentTarget.currentTime = 0;
+                      }}
                       className="absolute inset-0 w-full h-full object-cover"
                       suppressHydrationWarning
                     />
@@ -199,10 +156,9 @@ export default function PortfolioPreview() {
                     <span
                       className="text-xs font-semibold uppercase tracking-[0.14em] px-4 py-1.5 rounded-pill"
                       style={{
-                        background: "rgba(0,0,0,0.55)",
+                        background: "rgba(0,0,0,0.75)",
                         border: "1px solid rgba(255,255,255,0.1)",
                         color: accent.color,
-                        backdropFilter: "blur(8px)",
                       }}
                     >
                       {badgeLabel}

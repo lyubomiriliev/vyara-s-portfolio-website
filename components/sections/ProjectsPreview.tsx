@@ -185,13 +185,12 @@ export default function ProjectsPreview() {
             <div
               className="absolute top-0 left-0 z-20 text-[11px] font-bold tracking-[0.18em] uppercase px-4 py-2"
               style={{
-                background: "rgba(10,10,15,0.80)",
+                background: "rgba(10,10,15,0.92)",
                 border: "1px solid rgba(255,255,255,0.1)",
                 borderTop: "none",
                 borderLeft: "none",
                 borderBottomRightRadius: "10px",
                 color: "rgba(255,255,255,0.6)",
-                backdropFilter: "blur(8px)",
               }}
             >
               {activeProject.category}

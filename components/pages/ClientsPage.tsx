@@ -81,7 +81,7 @@ const clientsMeta: ClientStoryMeta[] = [
     name: "Fine Design",
     shortDesc:
       "Interior architecture studio crafting bespoke spaces for discerning clients.",
-    image: "/instagrams/fine-design.png",
+    image: "/instagrams/fine-design.webp",
     accent: "#ca6b99",
     accentRgb: "rgba(202,107,153,",
     serviceIds: [
@@ -105,7 +105,7 @@ const clientsMeta: ClientStoryMeta[] = [
     name: "Smart Strips",
     shortDesc:
       "Consumer tech brand bringing smart LED solutions to the Bulgarian market.",
-    image: "/instagrams/smart-strips.png",
+    image: "/instagrams/smart-strips.webp",
     accent: "#c1ff72",
     accentRgb: "rgba(193,255,114,",
     serviceIds: [
@@ -132,7 +132,7 @@ const clientsMeta: ClientStoryMeta[] = [
     name: "Dongfeng Plovdiv",
     shortDesc:
       "Official Bulgarian importer of Dongfeng electric and hybrid vehicles.",
-    image: "/instagrams/dongfeng.png",
+    image: "/instagrams/dongfeng.webp",
     accent: "#E53E3E",
     accentRgb: "rgba(229,62,62,",
     serviceIds: [
@@ -155,7 +155,7 @@ const clientsMeta: ClientStoryMeta[] = [
     name: "CoolFit",
     shortDesc:
       "Corporate sports card giving access to 415+ fitness venues across Bulgaria.",
-    image: "/instagrams/coolfit.png",
+    image: "/instagrams/coolfit.webp",
     accent: "#4A9EFF",
     accentRgb: "rgba(74,158,255,",
     serviceIds: [
@@ -179,7 +179,7 @@ const clientsMeta: ClientStoryMeta[] = [
     name: "Fox Academy",
     shortDesc:
       "Modern education platform bridging skills and career opportunities.",
-    image: "/instagrams/fox-academy.png",
+    image: "/instagrams/fox-academy.webp",
     accent: "#D4A017",
     accentRgb: "rgba(212,160,23,",
     serviceIds: [
@@ -205,7 +205,7 @@ const clientsMeta: ClientStoryMeta[] = [
     id: "elshisha",
     name: "El Shisha",
     shortDesc: "Premium shisha lounge brand in Sofia's nightlife scene.",
-    image: "/instagrams/elshisha.png",
+    image: "/instagrams/elshisha.webp",
     accent: "#10B981",
     accentRgb: "rgba(16,185,129,",
     serviceIds: [
@@ -231,7 +231,7 @@ const clientsMeta: ClientStoryMeta[] = [
     name: "Pulse Homes",
     shortDesc:
       "Luxury real estate brand specialising in Sofia's prime districts.",
-    image: "/instagrams/pulse-homes.png",
+    image: "/instagrams/pulse-homes.webp",
     accent: "#4A9EFF",
     accentRgb: "rgba(74,158,255,",
     serviceIds: [
@@ -254,7 +254,7 @@ const clientsMeta: ClientStoryMeta[] = [
     id: "el-well",
     name: "El Well",
     shortDesc: "Holistic wellness and beauty studio focused on mindful luxury.",
-    image: "/instagrams/el-well.png",
+    image: "/instagrams/el-well.webp",
     accent: "#4ADE80",
     accentRgb: "rgba(74,222,128,",
     serviceIds: [
@@ -277,7 +277,7 @@ const clientsMeta: ClientStoryMeta[] = [
     name: "CA Fragrances",
     shortDesc:
       "Executive personal brand for a high-profile business leader and entrepreneur.",
-    image: "/instagrams/christian-andon.png",
+    image: "/instagrams/christian-andon.webp",
     accent: "#FACC15",
     accentRgb: "rgba(250,204,21,",
     serviceIds: [
@@ -911,7 +911,7 @@ export default function ClientsPage() {
       >
         {/* Background image */}
         <Image
-          src="/background-images/floating-wave.png"
+          src="/background-images/floating-wave.webp"
           alt=""
           aria-hidden
           fill
@@ -1281,7 +1281,7 @@ export default function ClientsPage() {
                   />
 
                   <Image
-                    src="/background-images/rule-your-brand.png"
+                    src="/background-images/rule-your-brand.webp"
                     alt="Rule your brand"
                     fill
                     className="object-cover object-center"

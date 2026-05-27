@@ -184,11 +184,13 @@ export default function Hero() {
     >
       {/* Layer 1 — full-bleed wave background */}
       <Image
-        src="/background-images/ai-master-wallpaper.png"
+        src="/background-images/ai-master-wallpaper.webp"
         alt=""
         aria-hidden
         fill
         priority
+        fetchPriority="high"
+        sizes="100vw"
         className="object-cover object-center pointer-events-none"
         style={{ opacity: 0.55 }}
       />

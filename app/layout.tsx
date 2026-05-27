@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Tenor_Sans, Caveat } from 'next/font/google'
+import { Tenor_Sans } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -9,13 +9,6 @@ const tenorSans = Tenor_Sans({
   subsets: ['latin'],
   weight: ['400'],
   variable: '--font-display',
-  display: 'swap',
-})
-
-const caveat = Caveat({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-script',
   display: 'swap',
 })
 
@@ -34,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="bg" className={`${tenorSans.variable} ${caveat.variable} overflow-x-hidden`}>
+    <html lang="bg" className={`${tenorSans.variable} overflow-x-hidden`}>
       <body className="bg-[#0A0A0F] text-white overflow-x-hidden antialiased" style={{ fontFamily: 'var(--font-display), system-ui, sans-serif' }}>
         <LanguageProvider>
           <Header />

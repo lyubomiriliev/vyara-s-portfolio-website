@@ -76,7 +76,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   background-color: #0a0a0f;
   -webkit-text-size-adjust: 100%;
   scroll-padding-top: 80px;
@@ -97,26 +96,22 @@ h4 {
 body {
   font-family: var(--font-display), system-ui, sans-serif;
   background-color: #0a0a0f;
-  background-image:
-    radial-gradient(
-      ellipse 80% 50% at 20% -10%,
-      rgba(255, 183, 108, 0.1) 0%,
-      transparent 60%
-    ),
-    radial-gradient(
-      ellipse 60% 40% at 80% 10%,
-      rgba(224, 64, 160, 0.08) 0%,
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse 70% 50% at 50% 100%,
-      rgba(155, 89, 245, 0.07) 0%,
-      transparent 60%
-    );
-  background-attachment: fixed;
   color: #ffffff;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/* Fixed ambient gradient layer — single GPU layer instead of repainting body on scroll */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(255, 183, 108, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 10%, rgba(224, 64, 160, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(155, 89, 245, 0.07) 0%, transparent 60%);
 }
 
 .font-script {
@@ -138,11 +133,9 @@ body {
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(20, 20, 28, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
   box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);

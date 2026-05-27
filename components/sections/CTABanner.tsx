@@ -41,7 +41,7 @@ export default function CTABanner() {
             aria-hidden
             className="absolute inset-0 pointer-events-none rounded-[28px] overflow-hidden"
             style={{
-              backgroundImage: "url(/background-images/ai-prompt.png)",
+              backgroundImage: "url(/background-images/ai-prompt.webp)",
               backgroundSize: "cover",
               backgroundPosition: "center",
               opacity: 0.18,

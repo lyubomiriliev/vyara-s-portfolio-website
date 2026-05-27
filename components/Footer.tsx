@@ -53,7 +53,7 @@ export default function Footer() {
         aria-hidden
         className="absolute inset-0 pointer-events-none select-none"
         style={{
-          backgroundImage: "url('/background-images/floating-wave-purple.png')",
+          backgroundImage: "url('/background-images/floating-wave-purple.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center top",
           opacity: 0.15,

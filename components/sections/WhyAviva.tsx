@@ -63,12 +63,11 @@ export default function WhyAviva() {
           right: "clamp(-8%, -3vw, -3%)",
           top: "0%",
           bottom: "0%",
-          mixBlendMode: "screen",
-          opacity: 0.6,
+          opacity: 0.5,
         }}
       >
         <Image
-          src="/background-images/tool-stack.png"
+          src="/background-images/tool-stack.webp"
           alt=""
           width={800}
           height={1200}
