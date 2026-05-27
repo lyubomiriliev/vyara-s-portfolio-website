@@ -293,7 +293,7 @@ const clientsMeta: ClientStoryMeta[] = [
 
 const testimonialsMeta = [
   {
-    photo: "/images/review1.jpg",
+    photo: null,
     accent: "#E040A0",
     border: "rgba(224,64,160,0.3)",
     glow: "rgba(224,64,160,0.12)",

@@ -60,14 +60,13 @@ export default function Footer() {
         }}
       />
 
-      {/* Ambient glows */}
+      {/* Ambient gradients — no blur filter */}
       <div
         aria-hidden
         className="absolute top-0 left-1/4 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse, rgba(224,64,160,0.09), transparent 70%)",
-          filter: "blur(80px)",
+            "radial-gradient(ellipse, rgba(224,64,160,0.11), transparent 70%)",
         }}
       />
       <div
@@ -75,8 +74,7 @@ export default function Footer() {
         className="absolute bottom-0 right-1/4 translate-x-1/2 w-[500px] h-[350px] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse, rgba(155,89,245,0.08), transparent 70%)",
-          filter: "blur(80px)",
+            "radial-gradient(ellipse, rgba(155,89,245,0.10), transparent 70%)",
         }}
       />
 

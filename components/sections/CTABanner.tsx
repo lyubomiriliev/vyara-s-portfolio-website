@@ -62,7 +62,6 @@ export default function CTABanner() {
             style={{
               background:
                 "radial-gradient(circle, rgba(224,64,160,0.18) 0%, transparent 70%)",
-              filter: "blur(40px)",
             }}
           />
           <div
@@ -71,7 +70,6 @@ export default function CTABanner() {
             style={{
               background:
                 "radial-gradient(circle, rgba(74,158,255,0.15) 0%, transparent 70%)",
-              filter: "blur(40px)",
             }}
           />
 

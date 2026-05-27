@@ -124,38 +124,15 @@ function StatCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ y: -4, transition: { duration: 0.25 } }}
-      className="relative group overflow-hidden rounded-2xl"
+      className="relative group overflow-hidden rounded-2xl transition-transform duration-300 hover:-translate-y-1"
     >
-      {/* Animated gradient border ring */}
-      <div
-        aria-hidden
-        className="absolute -inset-px rounded-2xl opacity-60 group-hover:opacity-100 transition-opacity"
-        style={{
-          background: `conic-gradient(from 180deg at 50% 50%, transparent 0%, ${accent}80 25%, transparent 50%, ${accent}60 75%, transparent 100%)`,
-          filter: "blur(0.5px)",
-        }}
-      />
-
       <div
         className="relative rounded-2xl px-2.5 py-3 sm:px-3.5 sm:py-4 md:px-5 md:py-6 flex flex-col gap-1 sm:gap-2"
         style={{
-          background:
-            "linear-gradient(180deg, rgba(20,20,30,0.78) 0%, rgba(10,10,16,0.92) 100%)",
-          backdropFilter: "blur(24px) saturate(180%)",
-          border: "1px solid rgba(255,255,255,0.06)",
+          background: "rgba(14,14,20,0.85)",
+          border: `1px solid ${accent}30`,
         }}
       >
-        {/* Inner glow */}
-        <div
-          aria-hidden
-          className="absolute -top-12 -right-12 w-32 h-32 rounded-full pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"
-          style={{
-            background: `radial-gradient(circle, ${accent}50 0%, transparent 70%)`,
-            filter: "blur(28px)",
-          }}
-        />
-
         <span
           className="font-display font-extrabold leading-[1.05] tabular-nums text-lg sm:text-2xl md:text-3xl lg:text-4xl 3xl:text-5xl whitespace-nowrap"
           style={{

@@ -7,7 +7,6 @@ import { Brain, RefreshCw, TrendingUp } from "lucide-react";
 import { fadeUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ButtonOutline } from "@/components/ui/ButtonOutline";
-import { Glow } from "@/components/ui/Glow";
 import { useLang } from "@/lib/LanguageContext";
 import ToolsGrid from "@/components/ui/ToolsGrid";
 
@@ -130,7 +129,7 @@ export default function WhyAviva() {
             "linear-gradient(to right, rgb(18,14,32) 0%, rgb(18,14,32) 25%, rgba(18,14,32,0.85) 48%, rgba(18,14,32,0.4) 72%, transparent 100%)",
         }}
       />
-      {/* Ambient purple glow behind image */}
+      {/* Ambient purple glow behind image — no expensive blur filter */}
       <div
         aria-hidden
         className="absolute pointer-events-none z-0"
@@ -140,15 +139,9 @@ export default function WhyAviva() {
           right: "-15%",
           top: "-20%",
           background:
-            "radial-gradient(ellipse at 65% 45%, rgba(155,89,245,0.1) 0%, rgba(224,64,160,0.07) 45%, transparent 70%)",
-          filter: "blur(50px)",
+            "radial-gradient(ellipse at 65% 45%, rgba(155,89,245,0.14) 0%, rgba(224,64,160,0.08) 45%, transparent 70%)",
         }}
       />
-
-      {/* Background glows */}
-      <Glow color="pink" size={700} className="top-1/2 left-1/4 z-0" />
-      <Glow color="orange" size={500} className="top-1/4 right-0 z-0" />
-      <Glow color="pink" size={400} className="bottom-0 left-1/2 z-0" />
 
       {/* Subtle grid overlay */}
       <div

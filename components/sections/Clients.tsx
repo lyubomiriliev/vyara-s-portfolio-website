@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ButtonOutline } from "@/components/ui/ButtonOutline";
-import { Glow } from "@/components/ui/Glow";
 import { useLang } from "@/lib/LanguageContext";
 
 const clientLogos = [
@@ -18,132 +17,105 @@ const clientLogos = [
   { logo: "/clients/lamaniere.png", name: "La Manière", accent: "#9B59F5" },
   { logo: "/clients/vapy.png", name: "Vapy", accent: "#E040A0" },
   { logo: "/clients/pulsekids.png", name: "Pulse Kids", accent: "#FFB76C" },
-  {
-    logo: "/clients/smart-strips-logo.png",
-    name: "Smart Strips",
-    accent: "#9B59F5",
-  },
-  {
-    logo: "/clients/fine-design-logo.png",
-    name: "Fine Design",
-    accent: "#E040A0",
-  },
-  {
-    logo: "/clients/dongfeng-logo-white.png",
-    name: "Dongfeng",
-    accent: "#FFB76C",
-  },
+  { logo: "/clients/smart-strips-logo.png", name: "Smart Strips", accent: "#9B59F5" },
+  { logo: "/clients/fine-design-logo.png", name: "Fine Design", accent: "#E040A0" },
+  { logo: "/clients/dongfeng-logo-white.png", name: "Dongfeng", accent: "#FFB76C" },
   { logo: "/clients/chris-logo.png", name: "Chris", accent: "#9B59F5" },
   { logo: "/clients/fitty-logo.png", name: "Fitty", accent: "#FFB76C" },
-  {
-    logo: "/clients/under1roof-logo.png",
-    name: "Under 1 Roof",
-    accent: "#9B59F5",
-  },
+  { logo: "/clients/under1roof-logo.png", name: "Under 1 Roof", accent: "#9B59F5" },
   { logo: "/clients/mbc-logo-white.png", name: "MBC", accent: "#E040A0" },
 ];
 
-function useRandomPop(count: number, inView: boolean) {
-  const [activeSet, setActiveSet] = useState<Set<number>>(new Set());
-  const timeouts = useRef<ReturnType<typeof setTimeout>[]>([]);
-  const rafId = useRef<ReturnType<typeof setTimeout> | null>(null);
+export default function Clients() {
+  const { t } = useLang();
+  const gridRef = useRef<HTMLDivElement>(null);
 
+  // Lightweight random-pop loop: at most one card "popped" at a time,
+  // direct DOM writes (no React state, no Framer Motion), pauses when off-screen
+  // and when the user prefers reduced motion.
   useEffect(() => {
-    const clearAll = () => {
-      if (rafId.current) clearTimeout(rafId.current);
-      timeouts.current.forEach(clearTimeout);
-      timeouts.current = [];
-    };
+    const grid = gridRef.current;
+    if (!grid) return;
 
-    if (!inView) {
-      clearAll();
-      setActiveSet(new Set());
-      return;
-    }
+    const reduce =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
 
-    const popBatch = () => {
-      const batchSize = Math.random() < 0.4 ? 3 : 2;
-      const picks: number[] = [];
-      while (picks.length < batchSize) {
-        const n = Math.floor(Math.random() * count);
-        if (!picks.includes(n)) picks.push(n);
+    let inView = false;
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    let resetTimer: ReturnType<typeof setTimeout> | null = null;
+    let currentEl: HTMLElement | null = null;
+
+    const cards = () =>
+      Array.from(grid.querySelectorAll<HTMLElement>(".client-card"));
+
+    const pop = () => {
+      const list = cards();
+      if (!list.length) return;
+      const el = list[Math.floor(Math.random() * list.length)];
+      const accent = el.style.getPropertyValue("--accent").trim() || "#FFB76C";
+
+      currentEl = el;
+      el.style.border = `1px solid ${accent}55`;
+      el.style.boxShadow = `0 8px 40px ${accent}30, inset 0 1px 0 rgba(255,255,255,0.08)`;
+      el.style.transform = "translateY(-3px)";
+      const img = el.querySelector("img");
+      if (img) {
+        img.style.opacity = "1";
+        img.style.filter = "grayscale(0)";
       }
 
-      picks.forEach((idx, i) => {
-        const staggerDelay = i * (700 + Math.random() * 800);
-        const tOn = setTimeout(() => {
-          setActiveSet((prev) => new Set([...prev, idx]));
-        }, staggerDelay);
-        timeouts.current.push(tOn);
-
-        const holdMs = 1800 + Math.random() * 600;
-        const tOff = setTimeout(() => {
-          setActiveSet((prev) => {
-            const next = new Set(prev);
-            next.delete(idx);
-            return next;
-          });
-        }, staggerDelay + holdMs);
-        timeouts.current.push(tOff);
-      });
+      resetTimer = setTimeout(() => {
+        if (currentEl === el) {
+          el.style.border = "1px solid rgba(255,255,255,0.08)";
+          el.style.boxShadow =
+            "0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06)";
+          el.style.transform = "translateY(0)";
+          if (img) {
+            img.style.opacity = "0.6";
+            img.style.filter = "grayscale(0.2)";
+          }
+          currentEl = null;
+        }
+      }, 1600);
     };
 
     const schedule = () => {
-      const delay = 2500 + Math.random() * 1000;
-      rafId.current = setTimeout(() => {
-        popBatch();
+      if (!inView) return;
+      const delay = 1800 + Math.random() * 1400;
+      timer = setTimeout(() => {
+        pop();
         schedule();
       }, delay);
     };
 
-    popBatch();
-    schedule();
-
-    return clearAll;
-  }, [count, inView]);
-
-  return activeSet;
-}
-
-export default function Clients() {
-  const { t } = useLang();
-  const sectionRef = useRef<HTMLElement>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { threshold: 0.1 },
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        if (inView && !timer) schedule();
+        if (!inView && timer) {
+          clearTimeout(timer);
+          timer = null;
+        }
+      },
+      { threshold: 0.15 },
     );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+    obs.observe(grid);
 
-  const activeSet = useRandomPop(clientLogos.length, inView);
+    return () => {
+      obs.disconnect();
+      if (timer) clearTimeout(timer);
+      if (resetTimer) clearTimeout(resetTimer);
+    };
+  }, []);
 
   return (
     <section
-      ref={sectionRef}
       id="clients"
       className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden"
     >
-      <Glow color="pink" size={600} className="top-0 left-1/3" />
-      <Glow color="orange" size={500} className="bottom-1/4 right-1/4" />
-
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-[0.02]"
-        style={{
-          backgroundImage:
-            "radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
-
       <div className="mx-auto max-w-[900px] 2xl:max-w-[1200px] 3xl:max-w-[1500px] relative z-10 px-4 sm:px-6 md:px-8">
-        {/* Headline */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -171,124 +143,64 @@ export default function Clients() {
           </motion.p>
         </motion.div>
 
-        {/* Logo grid */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+        <div
+          ref={gridRef}
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-3 md:gap-4 mb-12 sm:mb-16"
         >
-          {clientLogos.map((client, i) => {
-            const isPopped = activeSet.has(i);
-            return (
-              <motion.div
-                key={client.name}
-                variants={fadeUp}
-                custom={i}
-                animate={isPopped ? { y: -8, scale: 1.06 } : { y: 0, scale: 1 }}
-                transition={{
-                  y: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-                  scale: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-                }}
-                whileHover={{
-                  y: -8,
-                  scale: 1.06,
-                  transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
-                }}
-                className="group relative flex items-center justify-center rounded-[14px] sm:rounded-[18px] glass-card p-3 sm:p-4 md:p-6 aspect-[3/2] cursor-default overflow-hidden"
+          {clientLogos.map((client) => (
+            <div
+              key={client.name}
+              className="client-card group relative flex items-center justify-center rounded-[14px] sm:rounded-[18px] p-3 sm:p-4 md:p-6 aspect-[3/2] cursor-default overflow-hidden transition-all duration-300"
+              style={{
+                ["--accent" as string]: client.accent,
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06)",
+              }}
+              onMouseEnter={e => {
+                const el = e.currentTarget;
+                el.style.border = `1px solid ${client.accent}40`;
+                el.style.boxShadow = `0 8px 40px ${client.accent}26, inset 0 1px 0 rgba(255,255,255,0.08)`;
+                el.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget;
+                el.style.border = "1px solid rgba(255,255,255,0.08)";
+                el.style.boxShadow = "0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06)";
+                el.style.transform = "translateY(0)";
+              }}
+            >
+              <div
+                className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{
-                  transition: "box-shadow 0.6s ease, border-color 0.6s ease",
-                  borderColor: isPopped ? `${client.accent}50` : undefined,
-                  boxShadow: isPopped
-                    ? `0 8px 32px ${client.accent}30, 0 0 0 1px ${client.accent}40, inset 0 1px 0 rgba(255,255,255,0.08)`
-                    : undefined,
+                  background: `linear-gradient(90deg, transparent, ${client.accent}, transparent)`,
                 }}
-              >
-                {/* Auto-pop top accent line */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[18px] transition-opacity duration-500"
-                  style={{
-                    background: `linear-gradient(90deg, transparent, ${client.accent}, transparent)`,
-                    opacity: isPopped ? 1 : 0,
-                  }}
-                />
-                {/* Hover top accent line (CSS group-hover) */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[18px] opacity-0 group-hover:opacity-100 transition-opacity duration-400"
-                  style={{
-                    background: `linear-gradient(90deg, transparent, ${client.accent}, transparent)`,
-                  }}
-                />
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={client.logo}
+                alt={client.name}
+                loading="lazy"
+                className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto max-w-full object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ filter: "grayscale(0.2)" }}
+              />
+            </div>
+          ))}
+        </div>
 
-                {/* Auto-pop glow */}
-                <div
-                  aria-hidden
-                  className="absolute inset-0 pointer-events-none rounded-[18px] transition-opacity duration-500"
-                  style={{
-                    background: `radial-gradient(circle at 50% 0%, ${client.accent}18, transparent 70%)`,
-                    opacity: isPopped ? 1 : 0,
-                  }}
-                />
-                {/* Hover glow */}
-                <div
-                  aria-hidden
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none rounded-[18px]"
-                  style={{
-                    background: `radial-gradient(circle at 50% 0%, ${client.accent}15, transparent 70%)`,
-                  }}
-                />
-
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <motion.img
-                  src={client.logo}
-                  alt={client.name}
-                  loading="lazy"
-                  className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto max-w-full object-contain"
-                  animate={{
-                    opacity: isPopped ? 1 : 0.45,
-                    filter: isPopped
-                      ? "brightness(1.15) grayscale(0)"
-                      : "brightness(1) grayscale(0.3)",
-                  }}
-                  whileHover={{
-                    opacity: 1,
-                    filter: "brightness(1.15) grayscale(0)",
-                  }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                />
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
-        {/* Divider + count */}
         <div className="flex items-center gap-6 mb-10">
           <div className="flex-1 h-px bg-white/[0.06]" />
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-white/30 text-xs font-semibold uppercase tracking-[0.15em] whitespace-nowrap"
-          >
+          <p className="text-white/30 text-xs font-semibold uppercase tracking-[0.15em] whitespace-nowrap">
             {clientLogos.length + 2}+{t.clients.brandCount}
-          </motion.p>
+          </p>
           <div className="flex-1 h-px bg-white/[0.06]" />
         </div>
 
-        {/* CTA */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="text-center"
-        >
+        <div className="text-center">
           <Link href="/clients">
             <ButtonOutline>{t.clients.seeAll}</ButtonOutline>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

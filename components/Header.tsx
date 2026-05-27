@@ -114,10 +114,10 @@ export default function Header() {
           className="relative flex items-center gap-2 px-3 py-2.5 rounded-[22px]"
           style={{
             background: scrolled
-              ? "rgba(10,10,15,0.75)"
-              : "rgba(10,10,15,0.55)",
-            backdropFilter: "blur(28px) saturate(180%)",
-            WebkitBackdropFilter: "blur(28px) saturate(180%)",
+              ? "rgba(10,10,15,0.92)"
+              : "rgba(10,10,15,0.78)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
             border: scrolled
               ? "1px solid rgba(255,255,255,0.10)"
               : "1px solid rgba(255,255,255,0.07)",
@@ -260,8 +260,8 @@ export default function Header() {
                   left: "50%",
                   transform: "translateX(-50%)",
                   background: "rgba(8,8,12,0.98)",
-                  backdropFilter: "blur(60px) saturate(200%)",
-                  WebkitBackdropFilter: "blur(60px) saturate(200%)",
+                  backdropFilter: "blur(16px)",
+                  WebkitBackdropFilter: "blur(16px)",
                   border: "1px solid rgba(255,255,255,0.11)",
                   boxShadow:
                     "0 24px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,183,108,0.07)",

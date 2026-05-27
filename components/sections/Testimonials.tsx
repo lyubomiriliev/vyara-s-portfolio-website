@@ -10,7 +10,7 @@ import { Glow } from "@/components/ui/Glow";
 import { useLang } from "@/lib/LanguageContext";
 
 const testimonialsMeta = [
-  { photo: "/images/review1.jpg", accent: "#E040A0", border: "rgba(224,64,160,0.3)", glow: "rgba(224,64,160,0.12)", stars: 5 },
+  { photo: null,                  accent: "#E040A0", border: "rgba(224,64,160,0.3)", glow: "rgba(224,64,160,0.12)", stars: 5 },
   { photo: null,                  accent: "#9B59F5", border: "rgba(155,89,245,0.3)", glow: "rgba(155,89,245,0.12)", stars: 5 },
   { photo: null,                  accent: "#FFB76C", border: "rgba(255,183,108,0.3)", glow: "rgba(255,183,108,0.12)", stars: 5 },
   { photo: null,                  accent: "#E040A0", border: "rgba(224,64,160,0.3)", glow: "rgba(224,64,160,0.12)", stars: 5 },

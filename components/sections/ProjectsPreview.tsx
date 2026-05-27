@@ -101,34 +101,12 @@ export default function ProjectsPreview() {
     <section
       className="relative overflow-hidden py-16 sm:py-20 md:py-24 lg:py-[120px] lg:pb-[160px]"
     >
-      {/* Background glows */}
+      {/* Single static background tint — no expensive blur filter */}
       <div
         aria-hidden
-        className="absolute top-1/4 left-0 w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute top-1/4 left-0 w-[600px] h-[600px] rounded-full pointer-events-none opacity-40"
         style={{
-          background: `radial-gradient(circle, ${activeProject.accentColor}18 0%, transparent 70%)`,
-          filter: "blur(80px)",
-          transition: "background 0.8s ease",
-        }}
-      />
-      <div
-        aria-hidden
-        className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(224,64,160,0.12) 0%, transparent 70%)",
-          filter: "blur(80px)",
-        }}
-      />
-
-      {/* Dot grid */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-[0.02]"
-        style={{
-          backgroundImage:
-            "radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
+          background: `radial-gradient(circle, ${activeProject.accentColor}22 0%, transparent 65%)`,
         }}
       />
 
