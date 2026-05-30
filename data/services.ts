@@ -12,7 +12,7 @@ export interface Service {
 }
 
 export const services: Service[] = [
-  // Дигитален маркетинг
+  // ── Marketing (most important first) ──────────────────────────────────────
   {
     id: "social-media-management",
     category: "marketing",
@@ -27,22 +27,6 @@ export const services: Service[] = [
       "Community engagement",
       "Analytics reporting",
       "Platform strategy",
-    ],
-  },
-  {
-    id: "ai-powered-marketing",
-    category: "marketing",
-    categories: ["marketing"],
-    categoryLabel: "Дигитален маркетинг",
-    icon: "Brain",
-    title: "AI-Powered Marketing",
-    description:
-      "Machine learning-driven campaigns that adapt and optimize in real time.",
-    benefits: [
-      "Predictive audience targeting",
-      "Real-time optimization",
-      "AI copywriting",
-      "Performance forecasting",
     ],
   },
   {
@@ -62,6 +46,22 @@ export const services: Service[] = [
     ],
   },
   {
+    id: "ai-powered-marketing",
+    category: "marketing",
+    categories: ["marketing"],
+    categoryLabel: "Дигитален маркетинг",
+    icon: "Brain",
+    title: "AI-Powered Marketing",
+    description:
+      "Machine learning-driven campaigns that adapt and optimize in real time.",
+    benefits: [
+      "Predictive audience targeting",
+      "Real-time optimization",
+      "AI copywriting",
+      "Performance forecasting",
+    ],
+  },
+  {
     id: "email-marketing",
     category: "marketing",
     categories: ["marketing"],
@@ -77,7 +77,39 @@ export const services: Service[] = [
       "Deliverability optimization",
     ],
   },
-  // Дизайн и видео
+  {
+    id: "seo-optimization",
+    category: "marketing",
+    categories: ["marketing", "web"],
+    categoryLabel: "Дигитален маркетинг",
+    icon: "Search",
+    title: "SEO Optimization",
+    description:
+      "Technical and content SEO to dominate search rankings in your niche.",
+    benefits: [
+      "Keyword research",
+      "On-page optimization",
+      "Link building",
+      "Monthly reporting",
+    ],
+  },
+  {
+    id: "copywriting",
+    category: "marketing",
+    categories: ["marketing"],
+    categoryLabel: "Дигитален маркетинг",
+    icon: "PenLine",
+    title: "Copywriting",
+    description:
+      "Compelling copy for ads, websites, social media and email — words that convert.",
+    benefits: [
+      "Ad & landing page copy",
+      "Social media captions",
+      "Email sequences",
+      "Brand voice guidelines",
+    ],
+  },
+  // ── Creative (most important first) ───────────────────────────────────────
   {
     id: "graphic-design",
     category: "creative",
@@ -91,22 +123,6 @@ export const services: Service[] = [
       "Brand consistency",
       "Digital formats",
       "Animated assets",
-      "Unlimited revisions",
-    ],
-  },
-  {
-    id: "print-materials",
-    category: "creative",
-    categories: ["creative"],
-    categoryLabel: "Дизайн и видео",
-    icon: "Printer",
-    title: "Print Materials",
-    description:
-      "Brochures, banners, packaging and all print collateral, pixel-perfect.",
-    benefits: [
-      "Brand consistency",
-      "Print-ready files",
-      "Multiple formats",
       "Unlimited revisions",
     ],
   },
@@ -143,23 +159,6 @@ export const services: Service[] = [
     ],
   },
   {
-    id: "copywriting",
-    category: "marketing",
-    categories: ["marketing"],
-    categoryLabel: "Дигитален маркетинг",
-    icon: "PenLine",
-    title: "Copywriting",
-    description:
-      "Compelling copy for ads, websites, social media and email — words that convert.",
-    benefits: [
-      "Ad & landing page copy",
-      "Social media captions",
-      "Email sequences",
-      "Brand voice guidelines",
-    ],
-  },
-  // AI
-  {
     id: "ai-image-generation",
     category: "creative",
     categories: ["creative"],
@@ -191,23 +190,23 @@ export const services: Service[] = [
       "Platform-optimized exports",
     ],
   },
-  // Уеб & Разработка
   {
-    id: "seo-optimization",
-    category: "marketing",
-    categories: ["marketing", "web"],
-    categoryLabel: "Дигитален маркетинг",
-    icon: "Search",
-    title: "SEO Optimization",
+    id: "print-materials",
+    category: "creative",
+    categories: ["creative"],
+    categoryLabel: "Дизайн и видео",
+    icon: "Printer",
+    title: "Print Materials",
     description:
-      "Technical and content SEO to dominate search rankings in your niche.",
+      "Brochures, banners, packaging and all print collateral, pixel-perfect.",
     benefits: [
-      "Keyword research",
-      "On-page optimization",
-      "Link building",
-      "Monthly reporting",
+      "Brand consistency",
+      "Print-ready files",
+      "Multiple formats",
+      "Unlimited revisions",
     ],
   },
+  // ── Web (most important first) ─────────────────────────────────────────────
   {
     id: "custom-websites-nextjs",
     category: "web",
@@ -241,21 +240,6 @@ export const services: Service[] = [
     ],
   },
   {
-    id: "web-applications",
-    category: "web",
-    categories: ["web"],
-    categoryLabel: "Уеб & Разработка",
-    icon: "Smartphone",
-    title: "Web Applications",
-    description: "Cross-platform apps built with React Native and Electron.",
-    benefits: [
-      "Cross-platform",
-      "Offline support",
-      "Push notifications",
-      "App store ready",
-    ],
-  },
-  {
     id: "saas-solutions",
     category: "web",
     categories: ["web"],
@@ -272,19 +256,34 @@ export const services: Service[] = [
     ],
   },
   {
+    id: "web-applications",
+    category: "web",
+    categories: ["web"],
+    categoryLabel: "Уеб & Разработка",
+    icon: "Smartphone",
+    title: "Web Applications",
+    description: "Cross-platform apps built with React Native and Electron.",
+    benefits: [
+      "Cross-platform",
+      "Offline support",
+      "Push notifications",
+      "App store ready",
+    ],
+  },
+  {
     id: "hosting-domain",
     category: "web",
     categories: ["web"],
     categoryLabel: "Уеб & Разработка",
     icon: "Server",
-    title: "Хостинг & домейн",
+    title: "Hosting & Domain",
     description:
-      "Бърз и сигурен хостинг и управление на домейн — вашият сайт винаги онлайн и винаги с висока производителност.",
+      "Fast, secure hosting and domain management — your site, always online and always performing.",
     benefits: [
-      "Настройка на управляван хостинг",
-      "Регистрация на домейн и DNS",
-      "SSL сертификати",
-      "Мониторинг на наличност",
+      "Managed hosting setup",
+      "Domain registration & DNS",
+      "SSL certificates",
+      "Uptime monitoring",
     ],
   },
 ];

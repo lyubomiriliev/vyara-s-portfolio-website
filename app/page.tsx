@@ -37,9 +37,9 @@ export default function Home() {
       <ServicesPreview />
       <PortfolioPreview />
       <ProjectsPreview />
+      <WhyAviva />
       <ClientOnlyBelowFold slot="clients" />
       <ClientOnlyBelowFold slot="testimonials" />
-      <WhyAviva />
       <ClientOnlyBelowFold slot="cta" />
     </main>
   );

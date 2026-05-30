@@ -185,7 +185,7 @@ export default function Hero() {
       {/* Layer 1 — full-bleed wave background. Native <picture> so mobile
          pulls the 14 KB version instead of the 52 KB desktop one. */}
       <picture
-        aria-hidden
+        role="presentation"
         className="absolute inset-0 pointer-events-none"
         style={{ opacity: 0.55 }}
       >
@@ -228,7 +228,7 @@ export default function Hero() {
                 delay: 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="block w-full text-left text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] xl:text-[2.5rem] 3xl:text-[3rem] 4xl:text-[3.75rem] whitespace-nowrap"
+              className="block w-full text-left text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] 3xl:text-[3.75rem] 4xl:text-[4.5rem] whitespace-nowrap"
             >
               {t.hero.line1}
             </motion.div>
@@ -281,11 +281,11 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-wrap items-center justify-start gap-3 sm:gap-4"
           >
-            <Link href="/contact">
-              <ButtonPrimary size="md">{t.hero.ctaPrimary}</ButtonPrimary>
+            <Link href="/services">
+              <ButtonPrimary size="lg">{t.hero.ctaPrimary}</ButtonPrimary>
             </Link>
             <Link href="/work">
-              <ButtonOutline size="md">{t.hero.ctaSecondary}</ButtonOutline>
+              <ButtonOutline size="lg">{t.hero.ctaSecondary}</ButtonOutline>
             </Link>
           </motion.div>
 

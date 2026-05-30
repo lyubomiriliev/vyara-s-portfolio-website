@@ -22,8 +22,8 @@ export const translations = {
       line2: "Iconic Brands",
       line3: "Engineered",
       sub: "A new breed of digital agency — fusing AI intelligence with award-winning craft. We design, build, and scale brands the world stops to look at.",
-      ctaPrimary: "Start Your Project →",
-      ctaSecondary: "See Our Work",
+      ctaPrimary: "What We Offer →",
+      ctaSecondary: "See Our Portfolio",
       stats: [
         { label: "Posts & Stories" },
         { label: "Designs" },
@@ -43,23 +43,23 @@ export const translations = {
 
     // WhyAviva
     whyAviva: {
-      label: "OUR EDGE",
-      title: "Where AI Meets Human Creativity",
-      sub: "We engineer growth by combining AI-powered tools with deep marketing expertise and full-stack technical development.",
-      learnMore: "Learn more about us →",
+      label: "WHO WE ARE",
+      title: "Aviva Digital",
+      sub: "A full-service digital agency offering complete marketing and technology solutions for modern businesses — Marketing, Websites, and next-generation AI innovations. Everything a modern business needs, in one place, built for the experience today's consumers expect.",
+      learnMore: "Meet the team →",
       toolsLabel: "TOOLS & PLATFORMS WE MASTER",
       cards: [
         {
-          title: "AI-First Approach",
-          body: "We embed AI into every layer: generative visuals, predictive ad targeting, automated content pipelines.",
+          title: "Experience as Both Business & Client",
+          body: "We know the digital world from both sides — as professionals with marketing and development expertise, and as next-gen consumers. That's why we know what works today and what the modern customer really needs.",
         },
         {
-          title: "Full-Circle Solutions",
-          body: "Strategy, creative, development, advertising — all under one roof. No handoffs, no gaps.",
+          title: "We Are the New Generation",
+          body: "Consumers no longer choose a business just because they need its product. They choose it for how it looks, communicates, and the experience it offers. We understand this in detail — because we're part of that generation.",
         },
         {
-          title: "Measurable Results",
-          body: "Every decision is data-driven. We track, optimize and scale what works with full transparency.",
+          title: "Reaching New Heights Through AI",
+          body: "AI doesn't replace our work — it elevates it to a completely different level. Every modern business needs AI innovation to stay competitive today. We know how to apply it correctly, because we do it every day.",
         },
       ],
     },
@@ -215,39 +215,42 @@ export const translations = {
     // About page
     about: {
       pageLabel: "WHO WE ARE",
-      pageTitle: "Built for Brands That Want More",
+      pageTitle: "Young. Experienced. Always one step ahead.",
       pageDescription:
-        "AI-powered strategies. Human creativity. Full-circle digital solutions.",
-      teamLabel: "THE TEAM",
-      teamTitle: "Led by Vision,",
-      teamTitleMid: "Powered by",
-      teamTitleAccent: "Expertise",
-      processTitle: "How We",
-      processTitleMid: "Work With",
-      processTitleAccent: "You",
-      role: "Creative Director",
-      bio: "With deep expertise in AI-powered marketing, social media strategy, and creative direction, Vyara leads the Aviva Digital team in delivering full-circle digital solutions for brands that want to grow faster and smarter.",
-      ctaTitle: "Ready to work with us?",
-      ctaButton: "Start a Project →",
+        "A new-generation digital agency built by people with years of real experience, deep AI expertise, and a clear vision for what modern digital presence should look like.",
+      whyLabel: "WHY WE'RE DIFFERENT",
+      whyTitle:
+        "Consumers no longer choose a business only because they need its product.",
+      whySub:
+        "They choose it for the way it looks, communicates, and the experience it offers. Old practices and established approaches in marketing, business and websites no longer work the way they used to.\n\nWe know this from both sides — as professionals with years of experience and as consumers from the same generation. That's why we don't work from a template. Every client gets an approach built around their business and what actually works today.",
+      aiLabel: "AI — A TOOL, NOT A REPLACEMENT",
+      aiTitle: "AI entered the digital world just a year or two ago.",
+      aiTitleAccent: "We were already here.",
+      aiBody1:
+        "We already had years of real work with real businesses — in marketing, design and web development — behind us. When AI became accessible, we didn't treat it as a replacement. We embraced it as a tool that elevates our work to a completely different level.",
+      aiBody2:
+        "More precise visuals, smarter content, faster and more intelligent websites, more personalised communication for our clients' customers. The combination of years of experience and mastery of the latest AI technologies is something most agencies are still developing. For us, it's already everyday practice.",
+      ctaTitle: "Want to work together?",
+      ctaButton: "Get a Free Consultation →",
       teamSectionLabel: "THE FOUNDERS",
       teamSectionTitle: "Meet the",
       teamSectionAccent: "Team",
       teamSectionSub:
-        "Two co-founders. One shared vision. Zero compromise on results.",
+        "Two founders. One shared vision. Zero compromise on results.",
       founder1Name: "Vyara Ivanova-Ilieva",
-      founder1Role: "Co-Founder & Head of Marketing",
+      founder1Role: "Founder & CEO",
       founder1Bio:
-        "Vyara is the strategic and creative force behind Aviva Digital. With years of experience in AI-powered marketing, social media growth, and brand building, she turns ideas into campaigns that actually move the needle.",
-      founder1Tag1: "AI Marketing",
-      founder1Tag2: "Social Strategy",
-      founder1Tag3: "Brand Growth",
+        "I started at 18, a student of Programming and Business Informatics at university. I quickly realised my true calling was Marketing and enrolled it as a second degree alongside. I graduated in both, but the difference was that I didn't just study marketing from a textbook. I applied it directly in real business from the very first year.\n\nMy first client was El Shisha, a premium brand owned by one of Bulgaria's oldest and most established ad agencies, Princeps Advertising. Working on such a large-scale project from year one gave me something that can't be taught - real practice in a real business.\n\nOver the next 8 years I worked personally with over 16 of Bulgaria's most recognisable brands, from social media and graphic design to Meta ads, email marketing, and now AI innovation. Every service Aviva Digital offers today has passed through my hands in a real business context across a wide range of industries.\n\nAviva Digital is the natural continuation of those years of work. This isn't an agency built from scratch — it's one built on real experience, many campaigns, and a clear understanding of what works and what no longer does in digital marketing.\n\nI work personally with every client, because I believe that knowing the business in detail is what makes the difference between a digital presence that stands out and one that simply exists. By chance or not, the best technical partner turned out to be my husband - Lyubomir.",
+      founder1Tag1: "Marketing Strategy",
+      founder1Tag2: "Meta Ads",
+      founder1Tag3: "AI Innovation",
       founder2Name: "Lyubomir Iliev",
-      founder2Role: "Co-Founder & Head of Web Development",
+      founder2Role: "Head of Web Development",
       founder2Bio:
-        "Lyubomir architects the technical backbone of everything Aviva Digital builds. From lightning-fast websites to custom web apps, he bridges design and engineering to deliver digital products that look great and perform even better.",
+        "Lyubomir is the developer behind everything Aviva Digital creates technically. He started as a graphic and UX designer, but technology always pulled him in deeper. Working with American software companies in the hospitality sector and developing platforms for online casinos turned him into a developer with real experience in complex, large-scale projects.\n\nToday he builds custom websites, online stores, software platforms, mobile applications and AI integrations for businesses across many different industries.\n\nThe combination of design thinking and programming precision is what makes Aviva Digital's sites different — beautiful on the outside, flawless on the inside.",
       founder2Tag1: "Web Development",
       founder2Tag2: "UI Engineering",
-      founder2Tag3: "Next.js & React",
+      founder2Tag3: "AI Integrations",
     },
 
     // Footer
@@ -533,18 +536,6 @@ export const translations = {
         ],
       },
       {
-        id: "ai-powered-marketing",
-        title: "AI-Powered Marketing",
-        description:
-          "Machine learning-driven campaigns that adapt and optimize in real time.",
-        benefits: [
-          "Predictive audience targeting",
-          "Real-time optimization",
-          "AI copywriting",
-          "Performance forecasting",
-        ],
-      },
-      {
         id: "meta-ads-campaigns",
         title: "Meta Ads Campaigns",
         description:
@@ -554,6 +545,18 @@ export const translations = {
           "A/B testing",
           "Retargeting funnels",
           "ROAS optimization",
+        ],
+      },
+      {
+        id: "ai-powered-marketing",
+        title: "AI-Powered Marketing",
+        description:
+          "Machine learning-driven campaigns that adapt and optimize in real time.",
+        benefits: [
+          "Predictive audience targeting",
+          "Real-time optimization",
+          "AI copywriting",
+          "Performance forecasting",
         ],
       },
       {
@@ -569,6 +572,30 @@ export const translations = {
         ],
       },
       {
+        id: "seo-optimization",
+        title: "SEO Optimization",
+        description:
+          "Technical and content SEO to dominate search rankings in your niche.",
+        benefits: [
+          "Keyword research",
+          "On-page optimization",
+          "Link building",
+          "Monthly reporting",
+        ],
+      },
+      {
+        id: "copywriting",
+        title: "Copywriting",
+        description:
+          "Compelling copy for ads, websites, social media and email — words that convert.",
+        benefits: [
+          "Ad & landing page copy",
+          "Social media captions",
+          "Email sequences",
+          "Brand voice guidelines",
+        ],
+      },
+      {
         id: "graphic-design",
         title: "Graphic Design",
         description:
@@ -577,18 +604,6 @@ export const translations = {
           "Brand consistency",
           "Digital formats",
           "Animated assets",
-          "Unlimited revisions",
-        ],
-      },
-      {
-        id: "print-materials",
-        title: "Print Materials",
-        description:
-          "Brochures, banners, packaging and all print collateral, pixel-perfect.",
-        benefits: [
-          "Brand consistency",
-          "Print-ready files",
-          "Multiple formats",
           "Unlimited revisions",
         ],
       },
@@ -617,18 +632,6 @@ export const translations = {
         ],
       },
       {
-        id: "copywriting",
-        title: "Copywriting",
-        description:
-          "Compelling copy for ads, websites, social media and email — words that convert.",
-        benefits: [
-          "Ad & landing page copy",
-          "Social media captions",
-          "Email sequences",
-          "Brand voice guidelines",
-        ],
-      },
-      {
         id: "ai-image-generation",
         title: "AI Image Generation",
         description:
@@ -653,15 +656,15 @@ export const translations = {
         ],
       },
       {
-        id: "seo-optimization",
-        title: "SEO Optimization",
+        id: "print-materials",
+        title: "Print Materials",
         description:
-          "Technical and content SEO to dominate search rankings in your niche.",
+          "Brochures, banners, packaging and all print collateral, pixel-perfect.",
         benefits: [
-          "Keyword research",
-          "On-page optimization",
-          "Link building",
-          "Monthly reporting",
+          "Brand consistency",
+          "Print-ready files",
+          "Multiple formats",
+          "Unlimited revisions",
         ],
       },
       {
@@ -689,18 +692,6 @@ export const translations = {
         ],
       },
       {
-        id: "web-applications",
-        title: "Web Applications",
-        description:
-          "Cross-platform apps built with React Native and Electron.",
-        benefits: [
-          "Cross-platform",
-          "Offline support",
-          "Push notifications",
-          "App store ready",
-        ],
-      },
-      {
         id: "saas-solutions",
         title: "SaaS Solutions",
         description:
@@ -710,6 +701,18 @@ export const translations = {
           "Auth & billing",
           "Dashboard UI",
           "API integrations",
+        ],
+      },
+      {
+        id: "web-applications",
+        title: "Web Applications",
+        description:
+          "Cross-platform apps built with React Native and Electron.",
+        benefits: [
+          "Cross-platform",
+          "Offline support",
+          "Push notifications",
+          "App store ready",
         ],
       },
       {
@@ -824,8 +827,8 @@ export const translations = {
       line2: "Силни брандове",
       line3: "",
       sub: "Дигитална агенция от ново поколение - AI технологии, уебсайтове и социални мрежи, създадени за изживяването, което днешният потребител търси.",
-      ctaPrimary: "Започни проекта си →",
-      ctaSecondary: "Вижте нашата работа",
+      ctaPrimary: "Какво предлагаме →",
+      ctaSecondary: "Вижте портфолиото ни",
       stats: [
         { label: "Поста и сторита" },
         { label: "Дизайна" },
@@ -848,23 +851,23 @@ export const translations = {
 
     // WhyAviva
     whyAviva: {
-      label: "ЗАЩО ДА ИЗБЕРЕТЕ НАС",
-      title: "AI технологии + истинска креативност",
-      sub: "Комбинираме AI инструменти с маркетингов опит и техническа разработка — за да растат брандовете на нашите клиенти по-бързо и по-умно.",
-      learnMore: "Разберете повече за нас →",
+      label: "КОИ СМЕ НИЕ",
+      title: "Aviva Digital",
+      sub: "Дигитална агенция, която предлага пълно маркетингово и технологично обслужване за модерни бизнеси — Маркетинг, Уебсайтове и AI иновации от ново поколение. Всички услуги, от които се нуждае модерният бизнес на едно място, създадени за изживяването, което днешният потребител търси.",
+      learnMore: "Запознайте се с нас →",
       toolsLabel: "ИНСТРУМЕНТИ И ПЛАТФОРМИ",
       cards: [
         {
-          title: "AI от самото начало",
-          body: "AI е в основата на всичко — от визуалите и текстовете до рекламното таргетиране и автоматизацията на съдържанието.",
+          title: "Опит като бизнес и като клиент",
+          body: "Познаваме дигиталния свят от двете страни — като професионалисти с опит в маркетинга и програмирането и като потребители от новото поколение. Затова знаем какво работи днес и от какво има нужда съвременният клиент.",
         },
         {
-          title: "Всичко под един покрив",
-          body: "Стратегия, дизайн, разработка, реклама — при нас. Без посредници, без загубено време в координация.",
+          title: "Ние сме новото поколение",
+          body: "Потребителите вече не избират бизнес само защото имат нужда от продукта или услугите му. Избират го заради начина, по който изглежда, комуникира и какво изживяване предлага. Ние го познаваме в детайл, защото сме част от това поколение.",
         },
         {
-          title: "Резултати, не обещания",
-          body: "Работим с данни. Следим какво работи, оптимизираме и мащабираме — и вие виждате всичко.",
+          title: "Достигаме ново ниво чрез AI",
+          body: "AI не замества работата ни — той я вдига на съвсем различно ниво. Вярваме, че всеки съвременен бизнес има нужда от AI иновации, за да е конкурентен днес. Ние знаем как да го приложим правилно, защото го правим всеки ден.",
         },
       ],
     },
@@ -1023,40 +1026,43 @@ export const translations = {
 
     // About page
     about: {
-      pageLabel: "КОИ СМЕ НИЕ ?",
-      pageTitle: "Агенция, създадена за амбициозни брандове",
+      pageLabel: "КОИ СМЕ НИЕ",
+      pageTitle: "Млади. Опитни. Винаги една крачка пред дигиталния свят.",
       pageDescription:
-        "AI стратегии. Истинска креативност. Дигитални решения от А до Я.",
-      teamLabel: "ЕКИПЪТ",
-      teamTitle: "Визия",
-      teamTitleMid: "и опит",
-      teamTitleAccent: "в едно",
-      processTitle: "Как",
-      processTitleMid: "работим",
-      processTitleAccent: "с вас",
-      role: "Креативен директор",
-      bio: "Вяра е човекът зад стратегията и визията на Aviva Digital. С опит в AI маркетинга, социалните мрежи и управлението на брандове, тя ръководи екипа към резултати, които се усещат — не просто изглеждат добре.",
-      ctaTitle: "Искате ли да работим заедно?",
-      ctaButton: "Започни проект →",
+        "Дигитална агенция от ново поколение, създадена от хора с дългогодишен опит, дълбока експертиза в AI технологиите и ясна визия за това как трябва да изглежда дигиталното присъствие на един съвременен бизнес.",
+      whyLabel: "ЗАЩО СМЕ РАЗЛИЧНИ",
+      whyTitle:
+        "Потребителите вече не избират бизнес само защото имат нужда от него.",
+      whySub:
+        "Избират го заради начина, по който изглежда, комуникира и какво изживяване предлага. Старите практики и утвърдени подходи в маркетинга, бизнеса и уебсайтовете вече не работят както преди.\n\nНие познаваме това от двете страни — като професионалисти с години опит и като потребители от същото поколение. Затова не работим по шаблон. Всеки клиент получава подход, изграден около неговия бизнес и това, което наистина работи днес.",
+      aiLabel: "AI — ИНСТРУМЕНТ, НЕ ЗАМЕСТИТЕЛ",
+      aiTitle: "AI навлезе активно в дигиталния свят едва преди година-две.",
+      aiTitleAccent: "Ние вече бяхме тук.",
+      aiBody1:
+        "Вече имахме зад гърба си години реална работа с истински бизнеси — в маркетинга, дизайна и уеб разработката. Когато AI стана достъпен, не го приехме като заместител. Приехме го като инструмент, който вдига работата ни на съвсем различно ниво.",
+      aiBody2:
+        "По-прецизни визии, по-умно съдържание, по-бързи и по-интелигентни уебсайтове, по-персонална комуникация с клиентите на нашите клиенти. Комбинацията от дългогодишен опит и владеене на най-новите AI технологии е нещо, което повечето агенции все още развиват. За нас вече е ежедневие.",
+      ctaTitle: "Искате да работим заедно?",
+      ctaButton: "Безплатна консултация →",
       teamSectionLabel: "ОСНОВАТЕЛИТЕ",
       teamSectionTitle: "Запознайте се с",
       teamSectionAccent: "Екипа",
       teamSectionSub:
-        "Двама съосновател. Една обща визия. Нулев компромис с резултатите.",
+        "Двама основатели. Една обща визия. Нулев компромис с резултатите.",
       founder1Name: "Вяра Иванова-Илиева",
-      founder1Role: "Съосновател и ръководител маркетинг",
+      founder1Role: "Founder & CEO",
       founder1Bio:
-        "Вяра е стратегическата и творческа сила зад Aviva Digital. С години опит в AI маркетинга, ръста на социалните мрежи и изграждането на брандове, тя превръща идеите в кампании, които наистина дават резултати.",
-      founder1Tag1: "AI Маркетинг",
-      founder1Tag2: "Социална стратегия",
-      founder1Tag3: "Бранд растеж",
+        "Започнах на 18 години, студентка по Програмиране и Бизнес информатика в университета. Бързо разбрах, че истинското ми призвание е Маркетингът и го записах като втора специалност паралелно. Завърших и двете, но разликата беше, че маркетинга не го учих само по учебник. Прилагах го директно в реален бизнес от първата година.\n\nПървият ми клиент беше El Shisha, премиум бранд собственост на една от най-старите и утвърдени рекламни агенции в България, Princeps Advertising. Работата по толкова мащабен проект от първата година ми даде нещо, което не се учи - реална практика в истински бизнес.\n\nПрез следващите 8 години работих лично с над 16 от най-разпознаваемите български брандове, от социални мрежи и графичен дизайн до Meta реклами, имейл маркетинг, а вече и AI иновации. Всяка услуга, която Aviva Digital предлага днес, е минала през моите ръце в реален бизнес контекст за бизнеси в най-различни сфери.\n\nAviva Digital е естественото продължение на тези години работа. Това не е агенция, създадена от нулата, а такава, изградена върху реален опит, много кампании и ясно разбиране за това какво работи и какво вече не работи в дигиталния маркетинг.\n\nРаботя лично с всеки клиент, защото вярвам, че познаването на бизнеса в детайл е това, което прави разликата между дигитално присъствие, което се отличава, и такова, което просто съществува. Случайно или не, най-добрият технически партньор се оказа мъжът ми - Любомир.",
+      founder1Tag1: "Маркетинг стратегия",
+      founder1Tag2: "Meta реклами",
+      founder1Tag3: "AI иновации",
       founder2Name: "Любомир Илиев",
-      founder2Role: "Съосновател и ръководител уеб разработка",
+      founder2Role: "Head of Web Development",
       founder2Bio:
-        "Любомир изгражда техническата основа на всичко, което Aviva Digital създава. От светкавично бързи уебсайтове до персонализирани уеб приложения, той свързва дизайна с инженерството за дигитални продукти, които изглеждат страхотно и работят още по-добре.",
+        "Любомир е програмистът зад всичко, което Aviva Digital създава технически. Започва като графичен и UX дизайнер, но технологиите винаги са го влечали повече. Работата с американски софтуерни компании в сферата на хотелиерството и разработката на платформи за онлайн казина го превръща в програмист с реален опит в сложни, мащабни проекти.\n\nДнес създава уебсайтове по поръчка, онлайн магазини, софтуерни платформи, мобилни приложения и AI интеграции за бизнеси в най-различни сфери.\n\nКомбинацията от дизайнерски поглед и програмистско мислене е това, което прави сайтовете на Aviva Digital различни — красиви отвън, безупречни отвътре.",
       founder2Tag1: "Уеб разработка",
       founder2Tag2: "UI инженерство",
-      founder2Tag3: "Next.js и React",
+      founder2Tag3: "AI интеграции",
     },
 
     // Footer
@@ -1343,18 +1349,6 @@ export const translations = {
         ],
       },
       {
-        id: "ai-powered-marketing",
-        title: "Маркетинг с изкуствен интелект",
-        description:
-          "Кампании, задвижвани от машинно обучение, които се адаптират и оптимизират в реално време.",
-        benefits: [
-          "Предиктивно таргетиране на аудитория",
-          "Оптимизация в реално време",
-          "AI копирайтинг",
-          "Прогнозиране на резултати",
-        ],
-      },
-      {
         id: "meta-ads-campaigns",
         title: "Meta Ads кампании",
         description:
@@ -1364,6 +1358,18 @@ export const translations = {
           "A/B тестване",
           "Ретаргетинг фунии",
           "ROAS оптимизация",
+        ],
+      },
+      {
+        id: "ai-powered-marketing",
+        title: "Маркетинг с изкуствен интелект",
+        description:
+          "Кампании, задвижвани от машинно обучение, които се адаптират и оптимизират в реално време.",
+        benefits: [
+          "Предиктивно таргетиране на аудитория",
+          "Оптимизация в реално време",
+          "AI копирайтинг",
+          "Прогнозиране на резултати",
         ],
       },
       {
@@ -1379,6 +1385,30 @@ export const translations = {
         ],
       },
       {
+        id: "seo-optimization",
+        title: "SEO оптимизация",
+        description:
+          "Техническо и съдържателно SEO за доминиране в резултатите от търсене във вашата ниша.",
+        benefits: [
+          "Проучване на ключови думи",
+          "On-page оптимизация",
+          "Изграждане на връзки",
+          "Месечни отчети",
+        ],
+      },
+      {
+        id: "copywriting",
+        title: "Копирайтинг",
+        description:
+          "Убедителни текстове за реклами, уебсайтове, социални мрежи и имейли — думи, които конвертират.",
+        benefits: [
+          "Текстове за реклами и landing pages",
+          "Надписи за социални мрежи",
+          "Имейл последователности",
+          "Насоки за бранд глас",
+        ],
+      },
+      {
         id: "graphic-design",
         title: "Графичен дизайн",
         description:
@@ -1387,18 +1417,6 @@ export const translations = {
           "Консистентност на бранда",
           "Дигитални формати",
           "Анимирани активи",
-          "Неограничени корекции",
-        ],
-      },
-      {
-        id: "print-materials",
-        title: "Печатни материали",
-        description:
-          "Брошури, банери, опаковки и всички печатни материали — перфектни до последния пиксел.",
-        benefits: [
-          "Консистентност на бранда",
-          "Файлове готови за печат",
-          "Множество формати",
           "Неограничени корекции",
         ],
       },
@@ -1427,18 +1445,6 @@ export const translations = {
         ],
       },
       {
-        id: "copywriting",
-        title: "Копирайтинг",
-        description:
-          "Убедителни текстове за реклами, уебсайтове, социални мрежи и имейли — думи, които конвертират.",
-        benefits: [
-          "Текстове за реклами и landing pages",
-          "Надписи за социални мрежи",
-          "Имейл последователности",
-          "Насоки за бранд глас",
-        ],
-      },
-      {
         id: "ai-image-generation",
         title: "AI генериране на изображения",
         description:
@@ -1463,15 +1469,15 @@ export const translations = {
         ],
       },
       {
-        id: "seo-optimization",
-        title: "SEO оптимизация",
+        id: "print-materials",
+        title: "Печатни материали",
         description:
-          "Техническо и съдържателно SEO за доминиране в резултатите от търсене във вашата ниша.",
+          "Брошури, банери, опаковки и всички печатни материали — перфектни до последния пиксел.",
         benefits: [
-          "Проучване на ключови думи",
-          "On-page оптимизация",
-          "Изграждане на връзки",
-          "Месечни отчети",
+          "Консистентност на бранда",
+          "Файлове готови за печат",
+          "Множество формати",
+          "Неограничени корекции",
         ],
       },
       {
@@ -1499,18 +1505,6 @@ export const translations = {
         ],
       },
       {
-        id: "web-applications",
-        title: "Уеб приложения",
-        description:
-          "Кросплатформени приложения, изградени с React Native и Electron.",
-        benefits: [
-          "Кросплатформеност",
-          "Офлайн поддръжка",
-          "Push известия",
-          "Готовност за App Store",
-        ],
-      },
-      {
         id: "saas-solutions",
         title: "SaaS решения",
         description:
@@ -1520,6 +1514,18 @@ export const translations = {
           "Автентикация & фактуриране",
           "Dashboard интерфейс",
           "API интеграции",
+        ],
+      },
+      {
+        id: "web-applications",
+        title: "Уеб приложения",
+        description:
+          "Кросплатформени приложения, изградени с React Native и Electron.",
+        benefits: [
+          "Кросплатформеност",
+          "Офлайн поддръжка",
+          "Push известия",
+          "Готовност за App Store",
         ],
       },
       {

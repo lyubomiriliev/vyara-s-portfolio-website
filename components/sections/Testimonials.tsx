@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { Glow } from "@/components/ui/Glow";
 import { useLang } from "@/lib/LanguageContext";
 
 const testimonialsMeta = [
@@ -143,8 +142,6 @@ export default function Testimonials() {
 
   return (
     <section className="section-padding relative overflow-hidden">
-      <Glow color="pink" size={700} className="top-1/2 left-1/3" />
-      <Glow color="orange" size={500} className="bottom-0 right-1/4" />
 
       <div
         aria-hidden

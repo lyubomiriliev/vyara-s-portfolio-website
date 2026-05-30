@@ -8,6 +8,8 @@ interface PageHeroProps {
   titleGradient?: string;
   description: string;
   children?: ReactNode;
+  titleSize?: "default" | "sm";
+  bgImage?: string;
 }
 
 export function PageHero({
@@ -16,17 +18,32 @@ export function PageHero({
   titleGradient,
   description,
   children,
+  titleSize = "default",
+  bgImage,
 }: PageHeroProps) {
   const titleWithout = titleGradient
     ? title.replace(titleGradient, "").trim()
     : title;
+  const titleClass =
+    titleSize === "sm"
+      ? "font-display font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 3xl:text-7xl text-white mt-3 mb-4 sm:mb-5 leading-[1.1] break-words hyphens-auto"
+      : "font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 3xl:text-8xl text-white mt-3 mb-4 sm:mb-5 leading-[1.05]";
   return (
     <section className="relative overflow-hidden pt-24 sm:pt-28 md:pt-32 lg:pt-40 3xl:pt-48 4xl:pt-56 pb-12 sm:pb-16 md:pb-0 lg:min-h-[480px] xl:min-h-[520px] 3xl:min-h-[640px] 4xl:min-h-[800px]">
-      <Glow color="orange" size={500} className="top-1/2 left-1/3" />
-      <Glow color="pink" size={300} className="top-1/3 right-1/4" />
+      {bgImage ? (
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-[0.12]"
+          style={{ backgroundImage: `url(${bgImage})` }}
+        />
+      ) : (
+        <>
+          <Glow color="orange" size={500} className="top-1/2 left-1/3" />
+          <Glow color="pink" size={300} className="top-1/3 right-1/4" />
+        </>
+      )}
       <div className="container relative z-10 text-center max-w-3xl 3xl:max-w-4xl 4xl:max-w-5xl mx-auto">
         <SectionLabel>{label}</SectionLabel>
-        <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 3xl:text-8xl text-white mt-3 mb-4 sm:mb-5 leading-[1.05]">
+        <h1 className={titleClass}>
           {titleWithout}
           {titleGradient && (
             <>

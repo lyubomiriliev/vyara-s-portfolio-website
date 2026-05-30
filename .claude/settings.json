@@ -20,7 +20,10 @@
       "Bash(python3 -c \"import json,sys; p=json.load\\(sys.stdin\\); print\\('framer-motion', p['version']\\)\")",
       "Bash(node -e ' *)",
       "Bash(node -e \"console.log\\('AI-powered digital agency in Sofia — social media, Meta Ads, web development & AI content. Full-circle solutions for brands that want to grow.'.length\\)\")",
-      "Bash(sips -g pixelWidth -g pixelHeight /Users/lyubomirsmacbookpro/Desktop/PROJECTS/vyara/vyara-s-portfolio-website/public/apple-touch-icon.png)"
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/lyubomirsmacbookpro/Desktop/PROJECTS/vyara/vyara-s-portfolio-website/public/apple-touch-icon.png)",
+      "Bash(node -e \"console.log\\('lenis version:', require\\('./node_modules/lenis/package.json'\\).version\\)\")",
+      "Bash(echo \"exit: $?\")",
+      "Bash(ffmpeg -i /Users/lyubomirsmacbookpro/Desktop/PROJECTS/vyara/vyara-s-portfolio-website/public/team/lyubomir-iliev.jpg -q:v 85 /Users/lyubomirsmacbookpro/Desktop/PROJECTS/vyara/vyara-s-portfolio-website/public/team/lyubomir-iliev.webp)"
     ]
   }
 }

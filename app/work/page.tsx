@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import type { Metadata } from 'next'
 import WorkPage from '@/components/pages/WorkPage'
 import { TranslatedPageHero } from '@/components/ui/TranslatedPageHero'
@@ -12,7 +13,9 @@ export default function Work() {
   return (
     <main>
       <TranslatedPageHero heroKey="work" />
-      <WorkPage />
+      <Suspense fallback={null}>
+        <WorkPage />
+      </Suspense>
       <CTABanner />
     </main>
   )

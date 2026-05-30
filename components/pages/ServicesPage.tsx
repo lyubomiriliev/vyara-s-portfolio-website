@@ -155,6 +155,7 @@ export default function ServicesPage() {
                     accentColorRgb={CATEGORY_CONFIG.marketing.glowColor}
                     gradient={CATEGORY_CONFIG.marketing.gradient}
                     minHeight={accordionMinHeight}
+                    defaultOpen
                   />
                 </div>
 
@@ -171,6 +172,7 @@ export default function ServicesPage() {
                     accentColorRgb={CATEGORY_CONFIG.creative.glowColor}
                     gradient={CATEGORY_CONFIG.creative.gradient}
                     minHeight={accordionMinHeight}
+                    defaultOpen
                   />
                 </div>
 
@@ -187,6 +189,7 @@ export default function ServicesPage() {
                     accentColorRgb={CATEGORY_CONFIG.web.glowColor}
                     gradient={CATEGORY_CONFIG.web.gradient}
                     minHeight={accordionMinHeight}
+                    defaultOpen
                   />
                 </div>
               </div>

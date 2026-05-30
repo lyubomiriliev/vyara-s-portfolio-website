@@ -27,6 +27,7 @@ interface ServicesAccordionProps {
   accentColorRgb: string;
   gradient: string;
   minHeight?: number;
+  defaultOpen?: boolean;
 }
 
 export default function ServicesAccordion({
@@ -34,8 +35,11 @@ export default function ServicesAccordion({
   accentColor,
   accentColorRgb,
   minHeight,
+  defaultOpen = false,
 }: ServicesAccordionProps) {
-  const [open, setOpen] = useState<string | null>(null);
+  const [open, setOpen] = useState<string | null>(
+    defaultOpen && services.length > 0 ? services[0].id : null,
+  );
 
   return (
     <div

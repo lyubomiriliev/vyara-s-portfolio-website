@@ -301,6 +301,7 @@ export default function ProjectsPage({
   webFilter,
 }: {
   webFilter?: "custom" | "ecommerce";
+  defaultOpenFirst?: boolean;
 }) {
   const { t, locale } = useLang();
   const visibleProjects = webFilter
@@ -376,7 +377,7 @@ export default function ProjectsPage({
       {/* Desktop slider */}
       <section className="hidden md:block pb-24">
         <motion.div
-          className="w-full px-6 xl:px-12 2xl:px-20"
+          className="w-full"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
