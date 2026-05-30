@@ -18,12 +18,12 @@ We work with Bulgarian and international brands across e-commerce, hospitality, 
 
 ## Pages
 
-- Homepage: https://www.avivadigital.bg/
-- Services: https://www.avivadigital.bg/services/
-- Portfolio / Work: https://www.avivadigital.bg/work/
-- About: https://www.avivadigital.bg/about/
-- Clients: https://www.avivadigital.bg/clients/
-- Contact: https://www.avivadigital.bg/contact/
+- Homepage: https://avivadigital.bg/
+- Services: https://avivadigital.bg/services/
+- Portfolio / Work: https://avivadigital.bg/work/
+- About: https://avivadigital.bg/about/
+- Clients: https://avivadigital.bg/clients/
+- Contact: https://avivadigital.bg/contact/
 
 ## Contact
 

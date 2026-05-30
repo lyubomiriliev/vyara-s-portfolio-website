@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Общи условия за ползване на услугите на Aviva Digital — дигитален маркетинг, уеб разработка, AI съдържание и управление на социални мрежи. Terms of service for Aviva Digital.",
   alternates: {
-    canonical: "https://www.avivadigital.bg/terms",
+    canonical: "https://avivadigital.bg/terms",
   },
   robots: { index: false, follow: false },
 };

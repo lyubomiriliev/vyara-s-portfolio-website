@@ -11,17 +11,17 @@ export const metadata: Metadata = {
     'brand growth examples', 'digital marketing success stories',
   ],
   alternates: {
-    canonical: 'https://www.avivadigital.bg/clients',
+    canonical: 'https://avivadigital.bg/clients',
     languages: {
-      'bg': 'https://www.avivadigital.bg/clients',
-      'en': 'https://www.avivadigital.bg/clients',
-      'x-default': 'https://www.avivadigital.bg/clients',
+      'bg': 'https://avivadigital.bg/clients',
+      'en': 'https://avivadigital.bg/clients',
+      'x-default': 'https://avivadigital.bg/clients',
     },
   },
   openGraph: {
     title: 'Клиенти | Aviva Digital — Реални Резултати',
     description: '16+ бранда в България с реални резултати. 16+ brands across Bulgaria with measurable growth in social media, ads & web.',
-    url: 'https://www.avivadigital.bg/clients',
+    url: 'https://avivadigital.bg/clients',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Aviva Digital Clients — Real Brands, Real Results' }],
   },
 }

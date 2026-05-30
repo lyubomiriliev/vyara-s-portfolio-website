@@ -11,17 +11,17 @@ export const metadata: Metadata = {
     'about digital agency Sofia', 'marketing agency experience Bulgaria',
   ],
   alternates: {
-    canonical: 'https://www.avivadigital.bg/about',
+    canonical: 'https://avivadigital.bg/about',
     languages: {
-      'bg': 'https://www.avivadigital.bg/about',
-      'en': 'https://www.avivadigital.bg/about',
-      'x-default': 'https://www.avivadigital.bg/about',
+      'bg': 'https://avivadigital.bg/about',
+      'en': 'https://avivadigital.bg/about',
+      'x-default': 'https://avivadigital.bg/about',
     },
   },
   openGraph: {
     title: 'За нас | Aviva Digital — AI Дигитална Агенция',
     description: 'AI агенция от ново поколение в София. Опит, визия и реални резултати. Next-generation AI digital agency in Sofia — meet the team.',
-    url: 'https://www.avivadigital.bg/about',
+    url: 'https://avivadigital.bg/about',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Aviva Digital Team — AI Digital Agency Sofia' }],
   },
 }

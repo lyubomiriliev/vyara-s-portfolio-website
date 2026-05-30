@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { services } from '@/data/services'
 import { projects } from '@/data/projects'
 
-const BASE = 'https://www.avivadigital.bg'
+const BASE = 'https://avivadigital.bg'
 
 // trailingSlash: true is set in next.config — every URL must end with "/"
 const url = (path: string) => `${BASE}${path}`.replace(/([^/])$/, '$1/')

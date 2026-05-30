@@ -2,7 +2,7 @@
 Agency: Aviva Digital
 Location: Sofia, Bulgaria
 Contact: office@avivadigital.bg
-Website: https://www.avivadigital.bg
+Website: https://avivadigital.bg
 
 /* SITE */
 Last update: 2026-05-28

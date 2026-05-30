@@ -34,7 +34,8 @@
       "Bash(echo \"COMPRESS_EXIT=$?\")",
       "Bash(pkill -f \"compress-videos.sh\")",
       "Bash(pkill -f \"ffmpeg.*REELS\")",
-      "Bash(pkill ffmpeg *)"
+      "Bash(pkill ffmpeg *)",
+      "Bash(awk 'tolower\\($0\\) ~ /sitemap|^host|user-agent|^allow|^disallow/ {print NR\": \"$0}' /Users/lyubomirsmacbookpro/Desktop/PROJECTS/vyara/vyara-s-portfolio-website/public/robots.txt)"
     ]
   }
 }

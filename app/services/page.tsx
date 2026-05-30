@@ -14,17 +14,17 @@ export const metadata: Metadata = {
     'AI content generation', 'digital marketing services Bulgaria',
   ],
   alternates: {
-    canonical: 'https://www.avivadigital.bg/services',
+    canonical: 'https://avivadigital.bg/services',
     languages: {
-      'bg': 'https://www.avivadigital.bg/services',
-      'en': 'https://www.avivadigital.bg/services',
-      'x-default': 'https://www.avivadigital.bg/services',
+      'bg': 'https://avivadigital.bg/services',
+      'en': 'https://avivadigital.bg/services',
+      'x-default': 'https://avivadigital.bg/services',
     },
   },
   openGraph: {
     title: 'Услуги | Aviva Digital — AI Дигитална Агенция',
     description: '18 дигитални услуги: социални мрежи, Meta Ads, AI маркетинг, уеб разработка, дизайн и видео. 18 services: social media, Meta Ads, AI marketing, web development, design & video.',
-    url: 'https://www.avivadigital.bg/services',
+    url: 'https://avivadigital.bg/services',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Aviva Digital Services — AI Digital Marketing Agency' }],
   },
 }

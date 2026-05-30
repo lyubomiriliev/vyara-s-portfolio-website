@@ -11,17 +11,17 @@ export const metadata: Metadata = {
     'digital agency onboarding', 'Aviva Digital FAQ',
   ],
   alternates: {
-    canonical: "https://www.avivadigital.bg/faq",
+    canonical: "https://avivadigital.bg/faq",
     languages: {
-      'bg': 'https://www.avivadigital.bg/faq',
-      'en': 'https://www.avivadigital.bg/faq',
-      'x-default': 'https://www.avivadigital.bg/faq',
+      'bg': 'https://avivadigital.bg/faq',
+      'en': 'https://avivadigital.bg/faq',
+      'x-default': 'https://avivadigital.bg/faq',
     },
   },
   openGraph: {
     title: 'ЧЗВ | Aviva Digital — Въпроси и Отговори',
     description: 'Отговори на честите въпроси за Aviva Digital. Frequently asked questions about Aviva Digital services, pricing & AI approach.',
-    url: 'https://www.avivadigital.bg/faq',
+    url: 'https://avivadigital.bg/faq',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Aviva Digital FAQ — Questions & Answers' }],
   },
 };

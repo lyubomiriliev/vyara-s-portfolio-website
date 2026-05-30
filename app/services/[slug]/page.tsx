@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const service = services.find(s => s.id === slug)
   if (!service) return { title: 'Услуга — Aviva Digital' }
-  const canonicalUrl = `https://www.avivadigital.bg/services/${slug}`
+  const canonicalUrl = `https://avivadigital.bg/services/${slug}`
   return {
     title: `${service.title} | ${service.categoryLabel} — Aviva Digital`,
     description: `${service.description} Aviva Digital — AI дигитална агенция в София, България. Sofia, Bulgaria.`,

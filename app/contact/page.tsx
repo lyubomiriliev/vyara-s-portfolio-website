@@ -12,17 +12,17 @@ export const metadata: Metadata = {
     'digital marketing consultation', 'Aviva Digital contact',
   ],
   alternates: {
-    canonical: 'https://www.avivadigital.bg/contact',
+    canonical: 'https://avivadigital.bg/contact',
     languages: {
-      'bg': 'https://www.avivadigital.bg/contact',
-      'en': 'https://www.avivadigital.bg/contact',
-      'x-default': 'https://www.avivadigital.bg/contact',
+      'bg': 'https://avivadigital.bg/contact',
+      'en': 'https://avivadigital.bg/contact',
+      'x-default': 'https://avivadigital.bg/contact',
     },
   },
   openGraph: {
     title: 'Контакти | Aviva Digital — Безплатна Консултация',
     description: 'Свържете се с нас. Безплатна консултация, без ангажимент. Get in touch — free strategy call, no commitment.',
-    url: 'https://www.avivadigital.bg/contact',
+    url: 'https://avivadigital.bg/contact',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Contact Aviva Digital — Free Strategy Consultation' }],
   },
 }

@@ -13,17 +13,17 @@ export const metadata: Metadata = {
     'landing page development', 'web application development Sofia', 'fast website SEO optimized',
   ],
   alternates: {
-    canonical: 'https://www.avivadigital.bg/projects',
+    canonical: 'https://avivadigital.bg/projects',
     languages: {
-      'bg': 'https://www.avivadigital.bg/projects',
-      'en': 'https://www.avivadigital.bg/projects',
-      'x-default': 'https://www.avivadigital.bg/projects',
+      'bg': 'https://avivadigital.bg/projects',
+      'en': 'https://avivadigital.bg/projects',
+      'x-default': 'https://avivadigital.bg/projects',
     },
   },
   openGraph: {
     title: 'Уеб Проекти | Aviva Digital — Сайтове & Приложения',
     description: 'Персонализирани уебсайтове за бизнеса в България. Custom websites & web applications built for speed, SEO & conversions.',
-    url: 'https://www.avivadigital.bg/projects',
+    url: 'https://avivadigital.bg/projects',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Aviva Digital Web Projects — Custom Websites & Applications' }],
   },
 }

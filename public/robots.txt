@@ -80,4 +80,4 @@ Disallow: /
 User-agent: Nikto
 Disallow: /
 
-Sitemap: https://www.avivadigital.bg/sitemap.xml
+Sitemap: https://avivadigital.bg/sitemap.xml

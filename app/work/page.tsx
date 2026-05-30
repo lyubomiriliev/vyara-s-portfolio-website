@@ -14,17 +14,17 @@ export const metadata: Metadata = {
     'AI content examples', 'brand design portfolio',
   ],
   alternates: {
-    canonical: 'https://www.avivadigital.bg/work',
+    canonical: 'https://avivadigital.bg/work',
     languages: {
-      'bg': 'https://www.avivadigital.bg/work',
-      'en': 'https://www.avivadigital.bg/work',
-      'x-default': 'https://www.avivadigital.bg/work',
+      'bg': 'https://avivadigital.bg/work',
+      'en': 'https://avivadigital.bg/work',
+      'x-default': 'https://avivadigital.bg/work',
     },
   },
   openGraph: {
     title: 'Портфолио | Aviva Digital — AI Дигитална Агенция',
     description: 'Дизайн, социални мрежи, уеб и AI проекти за клиенти в България. Brand design, social media, web & AI projects for clients across Bulgaria.',
-    url: 'https://www.avivadigital.bg/work',
+    url: 'https://avivadigital.bg/work',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Aviva Digital Portfolio — Design, Social Media, Web & AI Projects' }],
   },
 }

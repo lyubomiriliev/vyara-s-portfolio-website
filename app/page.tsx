@@ -7,17 +7,17 @@ export const metadata: Metadata = {
   title: 'Aviva Digital — AI Дигитална Агенция | София, България',
   description: 'Aviva Digital — AI дигитална агенция в София. Социални мрежи, Meta Ads, уеб разработка, графичен дизайн и AI съдържание. AI-powered digital agency in Sofia, Bulgaria: social media management, Meta Ads, web development & AI content for brands that want to grow.',
   alternates: {
-    canonical: 'https://www.avivadigital.bg',
+    canonical: 'https://avivadigital.bg',
     languages: {
-      'bg': 'https://www.avivadigital.bg',
-      'en': 'https://www.avivadigital.bg',
-      'x-default': 'https://www.avivadigital.bg',
+      'bg': 'https://avivadigital.bg',
+      'en': 'https://avivadigital.bg',
+      'x-default': 'https://avivadigital.bg',
     },
   },
   openGraph: {
     title: 'Aviva Digital — AI Дигитална Агенция | София, България',
     description: 'AI дигитална агенция в София — социални мрежи, Meta Ads, уеб разработка. AI-powered digital agency in Sofia, Bulgaria.',
-    url: 'https://www.avivadigital.bg',
+    url: 'https://avivadigital.bg',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Aviva Digital — AI Дигитална Агенция | Sofia, Bulgaria' }],
   },
 }
