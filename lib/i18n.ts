@@ -742,6 +742,63 @@ export const translations = {
       browseWebsite: "Browse Website",
     },
 
+    // FAQ page
+    faq: {
+      nav: "FAQ",
+      pageLabel: "FREQUENTLY ASKED QUESTIONS",
+      pageTitle: "Everything You Want to",
+      pageTitleGradient: "Know About Us",
+      pageSub:
+        "Answers to the most common questions about working with Aviva Digital.",
+      ctaTitle: "Still have questions?",
+      ctaTitleAccent: "Let's talk.",
+      ctaSub:
+        "Book a free 30-minute strategy call and we'll answer everything personally.",
+      ctaButton: "Book a Free Call →",
+      items: [
+        {
+          q: "What services does Aviva Digital offer?",
+          a: "We offer 18 services across three disciplines: Digital Marketing (social media management, AI-powered marketing, Meta Ads), Creative & Content (graphic design, video filming & editing, copywriting, AI image/video generation), and Web & Development (custom websites, e-commerce, SaaS solutions, hosting). Everything under one roof — no handoffs, no gaps.",
+        },
+        {
+          q: "How long does it take to start seeing results?",
+          a: "It depends on the service. Social media and paid ads campaigns typically show measurable engagement within the first 30 days. SEO and organic brand building take 3–6 months to compound. Web projects are delivered in 2–6 weeks depending on scope. We set clear timelines before we start.",
+        },
+        {
+          q: "Do you work with small businesses or only large companies?",
+          a: "We work with ambitious brands of all sizes — from local startups to growing regional businesses. What matters is ambition, not budget tier. Our packages are structured so you get real value whether you're just launching or scaling aggressively.",
+        },
+        {
+          q: "How does your AI-powered approach actually work?",
+          a: "AI isn't a buzzword for us — it's embedded in our workflow. We use AI for content ideation and generation, predictive ad targeting, automated posting pipelines, A/B testing at scale, and photorealistic image and video production. This lets us move faster and deliver more for every budget.",
+        },
+        {
+          q: "What does the onboarding process look like?",
+          a: "We start with a free 30-minute strategy call to understand your goals, audience, and current situation. From there we build a custom proposal. Once agreed, onboarding takes 3–5 business days: brand deep-dive, access setup, and a kickoff meeting with your dedicated team.",
+        },
+        {
+          q: "Can I get a website built without taking other services?",
+          a: "Absolutely. Our web development service is fully standalone. You can commission a custom Next.js site, an e-commerce store, or a SaaS MVP without signing up for marketing services. Many clients later add marketing services once the site is live.",
+        },
+        {
+          q: "How do you price your services?",
+          a: "We work on monthly retainers for ongoing services (social media, marketing, ads) and fixed-scope quotes for one-off projects (websites, brand identity, video). Pricing is transparent — no hidden fees. Book a call and we'll put together a proposal tailored to your goals.",
+        },
+        {
+          q: "Will I have a dedicated point of contact?",
+          a: "Yes. Every client gets a direct communication line with the team leads working on their account. You're never passed between account managers or left chasing updates. We use Slack or WhatsApp depending on your preference, and you get weekly reports.",
+        },
+        {
+          q: "Do you offer one-time projects or only monthly retainers?",
+          a: "Both. One-time projects (a website, a brand identity package, a video shoot) are quoted as fixed-scope engagements. Ongoing services like social media management or Meta Ads are retainer-based. We also offer flexible 3-month starter packages for clients who want to test the waters.",
+        },
+        {
+          q: "Where is Aviva Digital based and do you work internationally?",
+          a: "We are based in Sofia, Bulgaria, and work with clients across Europe and beyond. All work is delivered remotely and digitally, so geography is never a barrier. Our content is localised per market — Bulgarian, English, or any language your audience speaks.",
+        },
+      ],
+    },
+
     // Language
     language: "Language",
   },
@@ -763,10 +820,10 @@ export const translations = {
     // Hero
     hero: {
       badge: "AI дигитална агенция",
-      line1: "Изграждаме",
+      line1: "Твоят бизнес заслужава...",
       line2: "Силни брандове",
-      line3: "които продават.",
-      sub: "Ново поколение дигитална агенция — където AI технологиите срещат истинска креативност. Правим брандове, на които хората обръщат внимание.",
+      line3: "",
+      sub: "Дигитална агенция от ново поколение - AI технологии, уебсайтове и социални мрежи, създадени за изживяването, което днешният потребител търси.",
       ctaPrimary: "Започни проекта си →",
       ctaSecondary: "Вижте нашата работа",
       stats: [
@@ -1493,6 +1550,62 @@ export const translations = {
       visitWebsite: "Разгледайте сайта",
       visit: "Посети",
       browseWebsite: "Разгледайте сайта",
+    },
+
+    // FAQ page
+    faq: {
+      nav: "ЧЗВ",
+      pageLabel: "ЧЕСТО ЗАДАВАНИ ВЪПРОСИ",
+      pageTitle: "Всичко, което искате да",
+      pageTitleGradient: "знаете за нас",
+      pageSub: "Отговори на най-честите въпроси за работата с Aviva Digital.",
+      ctaTitle: "Имате още въпроси?",
+      ctaTitleAccent: "Нека поговорим.",
+      ctaSub:
+        "Запишете безплатна 30-минутна стратегическа среща и ще отговорим на всичко лично.",
+      ctaButton: "Запишете безплатна среща →",
+      items: [
+        {
+          q: "Какви услуги предлага Aviva Digital?",
+          a: "Предлагаме 18 услуги в три направления: Дигитален маркетинг (управление на социални мрежи, AI маркетинг, Meta реклами), Криейтив и съдържание (графичен дизайн, видео заснемане и монтаж, копирайтинг, AI генериране на изображения и видео) и Уеб и разработка (персонализирани сайтове, е-commerce, SaaS решения, хостинг). Всичко под един покрив — без посредници.",
+        },
+        {
+          q: "Колко бързо ще видя резултати?",
+          a: "Зависи от услугата. Социалните мрежи и платената реклама показват измерима ангажираност в рамките на 30 дни. SEO и органичният растеж отнемат 3–6 месеца. Уеб проектите се доставят за 2–6 седмици в зависимост от обхвата. Задаваме ясни срокове преди да започнем.",
+        },
+        {
+          q: "Работите ли с малки бизнеси или само с големи компании?",
+          a: "Работим с амбициозни брандове от всякакъв размер — от малки местни стартъпи до разрастващи се регионални бизнеси. Важното е амбицията, не размерът на бюджета. Нашите пакети са структурирани така, че да получите реална стойност независимо дали тепърва стартирате или вече мащабирате.",
+        },
+        {
+          q: "Как реално работи AI подходът ви?",
+          a: "AI не е маркетингов термин за нас — вграден е в работния ни процес. Използваме AI за идеи и генериране на съдържание, предиктивно рекламно таргетиране, автоматизирани публикации, A/B тестване в мащаб и фотореалистично производство на изображения и видео. Това ни позволява да работим по-бързо и да доставяме повече за всеки бюджет.",
+        },
+        {
+          q: "Как изглежда процесът по онбординг?",
+          a: "Започваме с безплатна 30-минутна стратегическа среща, за да разберем целите, аудиторията и текущото ви положение. Оттам изграждаме персонализирано предложение. След съгласуване, онбордингът отнема 3–5 работни дни: задълбочено запознаване с бранда, настройка на достъп и встъпителна среща с вашия екип.",
+        },
+        {
+          q: "Мога ли да поръчам само уебсайт без другите услуги?",
+          a: "Разбира се. Уеб разработката ни е напълно самостоятелна услуга. Можете да поръчате персонализиран Next.js сайт, е-commerce магазин или SaaS MVP, без да се записвате за маркетингови услуги. Много клиенти добавят маркетингови услуги след пускането на сайта.",
+        },
+        {
+          q: "Как определяте цените на услугите?",
+          a: "Работим с месечни абонаменти за постоянни услуги (социални мрежи, маркетинг, реклами) и фиксирани оферти за еднократни проекти (уебсайтове, бранд идентичност, видео). Ценообразуването е прозрачно — без скрити такси. Запишете среща и ще изготвим предложение, съобразено с вашите цели.",
+        },
+        {
+          q: "Ще имам ли конкретен човек за контакт?",
+          a: "Да. Всеки клиент получава директна комуникационна линия с екипните ни ръководители, работещи по акаунта. Никога няма да бъдете прехвърляни между акаунт мениджъри. Работим чрез Slack или WhatsApp според предпочитанията ви и получавате седмични отчети.",
+        },
+        {
+          q: "Предлагате ли еднократни проекти или само месечни абонаменти?",
+          a: "И двете. Еднократните проекти (уебсайт, бранд идентичност, видео снимка) се котират като фиксирани ангажименти. Постоянните услуги като управление на социални мрежи или Meta реклами са абонаментни. Предлагаме и гъвкави 3-месечни стартови пакети за клиенти, които искат да тестват.",
+        },
+        {
+          q: "Къде се намирате и работите ли международно?",
+          a: "Базирани сме в София, България, и работим с клиенти из цяла Европа и по света. Цялата работа се доставя дистанционно и дигитално, така че географията никога не е пречка. Съдържанието ни е локализирано за съответния пазар — на български, английски или на езика на вашата аудитория.",
+        },
+      ],
     },
 
     // Language

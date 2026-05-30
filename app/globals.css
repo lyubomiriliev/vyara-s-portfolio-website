@@ -24,13 +24,6 @@
   background: rgba(255, 255, 255, 0.85);
 }
 
-@layer base {
-  /* Body text standard: 16px across the site */
-  .text-sm {
-    font-size: 1rem !important;
-    line-height: 1.625 !important;
-  }
-}
 
 /* No @import url() here — fonts load via next/font in layout.tsx */
 
@@ -235,19 +228,31 @@ body::before {
 }
 
 .section-padding {
-  padding-top: 96px;
-  padding-bottom: 96px;
-}
-@media (max-width: 768px) {
-  .section-padding {
-    padding-top: 56px;
-    padding-bottom: 56px;
-  }
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 @media (max-width: 480px) {
   .section-padding {
     padding-top: 40px;
     padding-bottom: 40px;
+  }
+}
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+@media (min-width: 1280px) {
+  .section-padding {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+@media (min-width: 1920px) {
+  .section-padding {
+    padding-top: 128px;
+    padding-bottom: 128px;
   }
 }
 @media (min-width: 2560px) {

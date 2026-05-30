@@ -1008,7 +1008,7 @@ export default function ClientsPage() {
 
       {/* ScrollStack — the showcase */}
       <section ref={stackSectionRef} className="relative">
-        <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8 xl:px-12">
+        <div className="container">
           <motion.div
             variants={staggerContainer}
             initial="hidden"

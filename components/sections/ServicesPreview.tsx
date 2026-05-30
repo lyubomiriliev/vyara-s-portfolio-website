@@ -179,7 +179,7 @@ export default function ServicesPreview() {
                   return (
                     <motion.div
                       key={service.id}
-                      className="group relative p-6 flex flex-col gap-3 overflow-hidden cursor-default flex-1 rounded-[16px]"
+                      className="group relative p-4 sm:p-5 md:p-6 flex flex-col gap-3 overflow-hidden cursor-default flex-1 rounded-[16px]"
                       style={
                         {
                           background: "rgba(8, 6, 18, 0.75)",

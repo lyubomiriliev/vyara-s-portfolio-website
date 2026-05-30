@@ -80,7 +80,7 @@ export default function Footer() {
 
       <div className="container relative z-10">
         {/* ── Links + social row ── */}
-        <div className="py-10 sm:py-12 md:py-14 flex flex-col md:flex-row justify-between gap-8 sm:gap-10 md:gap-12">
+        <div className="py-10 sm:py-12 md:py-14 3xl:py-20 4xl:py-28 flex flex-col md:flex-row justify-between gap-8 sm:gap-10 md:gap-12">
           {/* Brand + social */}
           <div className="flex flex-col gap-5 sm:gap-6 max-w-[220px]">
             <Link href="/">

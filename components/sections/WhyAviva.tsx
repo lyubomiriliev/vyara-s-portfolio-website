@@ -56,7 +56,7 @@ export default function WhyAviva() {
         transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
         viewport={{ once: true }}
         aria-hidden
-        className="absolute z-0 pointer-events-none"
+        className="hidden sm:block absolute z-0 pointer-events-none"
         style={{
           width: "auto",
           height: "100%",
@@ -69,6 +69,7 @@ export default function WhyAviva() {
         <Image
           src="/background-images/tool-stack.webp"
           alt=""
+          aria-hidden
           width={800}
           height={1200}
           className="h-full w-auto object-cover"
@@ -120,7 +121,7 @@ export default function WhyAviva() {
         aria-hidden
         className="absolute pointer-events-none z-0"
         style={{
-          width: "clamp(40%, 45vw, 70%)",
+          width: "clamp(65%, 55vw, 70%)",
           top: 0,
           bottom: 0,
           right: 0,

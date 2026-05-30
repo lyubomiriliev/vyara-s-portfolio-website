@@ -121,10 +121,11 @@ export default function WorkPage() {
   return (
     <div className="relative bg-bg-primary">
       <section className="section-padding">
-        {/* Filter bar — always centred */}
-        <div className="mb-14 flex flex-wrap justify-center items-end gap-4 sm:gap-6 px-4 overflow-x-auto">
+        <div className="container">
+        {/* Filter bar — always centred, horizontally scrollable on narrow screens */}
+        <div className="mb-14 flex flex-nowrap md:flex-wrap justify-start md:justify-center items-end gap-4 sm:gap-6 overflow-x-auto scrollbar-hide">
           {/* Social & Content group */}
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-2 flex-shrink-0">
             <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/30">
               {wf.socialContent}
             </span>
@@ -159,7 +160,7 @@ export default function WorkPage() {
           </div>
 
           {/* Web Development group */}
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-2 flex-shrink-0">
             <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/30">
               {wf.webDevelopment}
             </span>
@@ -209,7 +210,7 @@ export default function WorkPage() {
             </motion.div>
           </AnimatePresence>
         ) : (
-          <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8">
+          <>
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeFilter}
@@ -242,8 +243,9 @@ export default function WorkPage() {
                 />
               )}
             </AnimatePresence>
-          </div>
+          </>
         )}
+        </div>
       </section>
     </div>
   );

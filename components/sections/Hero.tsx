@@ -19,12 +19,12 @@ const CYCLING_WORDS: Record<"en" | "bg", string[]> = {
     "Lasting Impact,",
   ],
   bg: [
-    "Силни брандове,",
-    "Печеливши сайтове,",
-    "Реклами с резултати,",
-    "Онлайн магазини,",
-    "Успешни кампании,",
-    "Бързи решения,",
+    "По-бърз и модерен уебсайт",
+    "По-иновативни AI интеграции",
+    "По-красиви дизайни",
+    "По-развити социални мрежи",
+    "По-успешни Meta реклами",
+    "По-интересни Имейл кампании",
   ],
 };
 
@@ -82,6 +82,7 @@ function TypewriterCycle({
         display: "inline-block",
         whiteSpace: "nowrap",
         minWidth: "2ch",
+        paddingBottom: "0.15em",
       }}
     >
       {displayed}
@@ -123,17 +124,17 @@ function StatCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="relative group overflow-hidden rounded-2xl transition-transform duration-300 hover:-translate-y-1"
+      className="relative group rounded-2xl transition-transform duration-300 hover:-translate-y-1"
     >
       <div
-        className="relative rounded-2xl px-2.5 py-3 sm:px-3.5 sm:py-4 md:px-5 md:py-6 flex flex-col gap-1 sm:gap-2"
+        className="relative rounded-2xl px-4 py-3 sm:px-5 sm:py-4 md:px-6 md:py-6 flex flex-col gap-1 sm:gap-2"
         style={{
           background: "rgba(14,14,20,0.85)",
           border: `1px solid ${accent}30`,
         }}
       >
         <span
-          className="font-display font-extrabold leading-[1.05] tabular-nums text-lg sm:text-2xl md:text-3xl lg:text-4xl 3xl:text-5xl whitespace-nowrap"
+          className="font-display font-extrabold leading-[1.05] tabular-nums text-xl sm:text-2xl md:text-3xl lg:text-4xl 3xl:text-5xl whitespace-nowrap"
           style={{
             background: `linear-gradient(180deg, #fff 0%, ${accent} 100%)`,
             WebkitBackgroundClip: "text",
@@ -179,7 +180,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden min-h-screen flex items-center py-0 md:section-padding"
+      className="relative overflow-hidden min-h-screen flex items-center py-0 md:section-padding pt-14 md:pt-0"
     >
       {/* Layer 1 — full-bleed wave background. Native <picture> so mobile
          pulls the 14 KB version instead of the 52 KB desktop one. */}
@@ -196,6 +197,7 @@ export default function Hero() {
         <img
           src="/background-images/ai-master-wallpaper.webp"
           alt=""
+          aria-hidden="true"
           fetchPriority="high"
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover object-center"
@@ -213,9 +215,9 @@ export default function Hero() {
       />
 
       {/* ── Main content ── */}
-      <div className="container relative z-20 flex flex-col justify-center min-h-screen md:py-24 lg:py-28">
+      <div className="container relative z-20 flex flex-col justify-center min-h-[calc(100svh)] pt-16 pb-8 md:py-24 lg:pb-28 lg:pt-48">
         {/* Left-aligned text block — max ~55% width so the hand stays visible */}
-        <div className="flex flex-col items-start text-left gap-4 sm:gap-5 max-w-full md:max-w-[68%] lg:max-w-[58%] xl:max-w-[52%] 3xl:max-w-[46%] 4xl:max-w-[40%] overflow-visible">
+        <div className="flex flex-col items-start text-left gap-4 sm:gap-5 max-w-full md:max-w-[65%] lg:max-w-[75%] xl:max-w-[70%] 3xl:max-w-[50%] 4xl:max-w-[40%] overflow-visible">
           {/* H1 — three rows slide up in clean sequence, typewriter starts after row 2 settles */}
           <h1 className="font-display flex flex-col gap-2 sm:gap-3 font-extrabold leading-[1.22] text-white w-full tracking-tight">
             <motion.div
@@ -226,7 +228,7 @@ export default function Hero() {
                 delay: 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="block w-full text-left text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[4.25rem] 4xl:text-[5.25rem]"
+              className="block w-full text-left text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] xl:text-[2.5rem] 3xl:text-[3rem] 4xl:text-[3.75rem] whitespace-nowrap"
             >
               {t.hero.line1}
             </motion.div>
@@ -238,26 +240,28 @@ export default function Hero() {
                 delay: 0.35,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="block w-max max-w-full text-left text-3xl sm:text-4xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] 3xl:text-[6rem] 4xl:text-[7.5rem]"
-              style={{ minHeight: "1.15em" }}
+              className="block w-max max-w-full text-left text-2xl sm:text-3xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] 3xl:text-[4.75rem] 4xl:text-[6rem]"
+              style={{ minHeight: "1.15em", paddingBottom: "0.15em" }}
             >
               <TypewriterCycle
                 words={CYCLING_WORDS[locale]}
                 gradient="linear-gradient(135deg, #FFB76C 0%, #E040A0 100%)"
               />
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.65,
-                delay: 0.6,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="block w-full text-left text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[4.25rem] 4xl:text-[5.25rem]"
-            >
-              {t.hero.line3}
-            </motion.div>
+            {t.hero.line3 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.65,
+                  delay: 0.6,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="block w-full text-left text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] 3xl:text-[4.25rem] 4xl:text-[5.25rem]"
+              >
+                {t.hero.line3}
+              </motion.div>
+            )}
           </h1>
 
           {/* Subheading */}
@@ -265,7 +269,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-sm sm:text-base md:text-lg xl:text-lg 3xl:text-xl py-3 sm:py-4 md:py-6 text-white/65 max-w-md sm:max-w-lg 3xl:max-w-xl leading-relaxed text-left"
+            className="text-sm sm:text-base md:text-lg xl:text-lg 3xl:text-xl pb-3 sm:pb-4 md:pb-6 text-white/65 max-w-md sm:max-w-lg 3xl:max-w-xl leading-relaxed text-left"
           >
             {t.hero.sub}
           </motion.p>
@@ -278,10 +282,10 @@ export default function Hero() {
             className="flex flex-wrap items-center justify-start gap-3 sm:gap-4"
           >
             <Link href="/contact">
-              <ButtonPrimary size="lg">{t.hero.ctaPrimary}</ButtonPrimary>
+              <ButtonPrimary size="md">{t.hero.ctaPrimary}</ButtonPrimary>
             </Link>
             <Link href="/work">
-              <ButtonOutline size="lg">{t.hero.ctaSecondary}</ButtonOutline>
+              <ButtonOutline size="md">{t.hero.ctaSecondary}</ButtonOutline>
             </Link>
           </motion.div>
 
@@ -290,7 +294,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-2 sm:grid-cols-4 mt-6 sm:mt-8 gap-2 sm:gap-3 md:gap-4 w-full max-w-2xl"
+            className="grid grid-cols-2 sm:grid-cols-4 mt-6 sm:mt-8 4xl:mt-12 gap-2 sm:gap-3 md:gap-4 w-full"
           >
             {stats.map((s) => (
               <StatCard

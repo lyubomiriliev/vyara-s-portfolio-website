@@ -94,11 +94,11 @@ export default function ServicesPage() {
 
   return (
     <section className="section-padding">
-      <div className="max-w-[1600px] mx-auto">
-        {/* Tab filter */}
-        <div className="mb-14 flex justify-center">
+      <div className="container">
+        {/* Tab filter — horizontally scrollable on narrow screens */}
+        <div className="mb-14 flex justify-start sm:justify-center overflow-x-auto scrollbar-hide">
           <div
-            className="relative inline-flex flex-wrap items-center justify-center gap-1 p-1.5 rounded-full"
+            className="relative inline-flex flex-nowrap sm:flex-wrap items-center justify-center gap-1 p-1.5 rounded-full flex-shrink-0"
             style={{
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(255,255,255,0.08)",
@@ -141,7 +141,7 @@ export default function ServicesPage() {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.35 }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 items-start">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-3 gap-4 sm:gap-5 md:gap-6 items-start">
                 {/* Marketing */}
                 <div className="flex flex-col gap-4">
                   <CategoryHeader

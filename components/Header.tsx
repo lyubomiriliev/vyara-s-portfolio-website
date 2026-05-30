@@ -65,6 +65,7 @@ export default function Header() {
     { label: t.nav.work, href: "/work" },
     { label: t.nav.clients, href: "/clients" },
     { label: t.nav.about, href: "/about" },
+    { label: t.faq.nav, href: "/faq" },
     { label: t.nav.contact, href: "/contact" },
   ];
 

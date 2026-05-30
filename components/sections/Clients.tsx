@@ -115,7 +115,7 @@ export default function Clients() {
       id="clients"
       className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden"
     >
-      <div className="mx-auto max-w-[900px] 2xl:max-w-[1200px] 3xl:max-w-[1500px] relative z-10 px-4 sm:px-6 md:px-8">
+      <div className="container relative z-10">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -145,7 +145,7 @@ export default function Clients() {
 
         <div
           ref={gridRef}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-3 md:gap-4 mb-12 sm:mb-16"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 3xl:grid-cols-5 gap-2 sm:gap-3 md:gap-4 3xl:gap-5 4xl:gap-6 mb-12 sm:mb-16"
         >
           {clientLogos.map((client) => (
             <div
@@ -181,7 +181,7 @@ export default function Clients() {
                 src={client.logo}
                 alt={client.name}
                 loading="lazy"
-                className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto max-w-full object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                className="h-8 sm:h-10 md:h-12 lg:h-14 3xl:h-16 4xl:h-20 w-auto max-w-full object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300"
                 style={{ filter: "grayscale(0.2)" }}
               />
             </div>

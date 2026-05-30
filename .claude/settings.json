@@ -17,7 +17,10 @@
       "Bash(xargs '-I{}' bash -c 'f=\"out{}\"; size=$\\(stat -f%z \"$f\" 2>/dev/null\\); echo \"$size  $f\"')",
       "Bash(grep -oE \"[a-z]{4,}[A-Z][a-zA-Z]+\" out/_next/static/chunks/4bd1b696-ec67ac596534aad8.js)",
       "Bash(grep -oE \"[a-z]{4,}[A-Z][a-zA-Z]+\" out/_next/static/chunks/115-606ecf21265c6761.js)",
-      "Bash(python3 -c \"import json,sys; p=json.load\\(sys.stdin\\); print\\('framer-motion', p['version']\\)\")"
+      "Bash(python3 -c \"import json,sys; p=json.load\\(sys.stdin\\); print\\('framer-motion', p['version']\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"console.log\\('AI-powered digital agency in Sofia — social media, Meta Ads, web development & AI content. Full-circle solutions for brands that want to grow.'.length\\)\")",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/lyubomirsmacbookpro/Desktop/PROJECTS/vyara/vyara-s-portfolio-website/public/apple-touch-icon.png)"
     ]
   }
 }

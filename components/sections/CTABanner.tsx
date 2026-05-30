@@ -11,7 +11,7 @@ export default function CTABanner() {
   const { t } = useLang();
 
   return (
-    <section className="section-padding py-16 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden">
+    <section className="py-16 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden">
       {/* Subtle dot grid */}
       <div
         aria-hidden

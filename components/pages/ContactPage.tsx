@@ -259,7 +259,7 @@ export default function ContactPage() {
                         value={fields.name}
                         onChange={setField("name")}
                         placeholder={t.contactForm.firstNamePlaceholder}
-                        className="form-field"
+                        className="form-field min-h-[44px]"
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -277,7 +277,7 @@ export default function ContactPage() {
                         value={fields.phone}
                         onChange={setField("phone")}
                         placeholder={t.contactForm.phonePlaceholder}
-                        className="form-field"
+                        className="form-field min-h-[44px]"
                       />
                     </div>
                   </div>
@@ -299,7 +299,7 @@ export default function ContactPage() {
                         value={fields.email}
                         onChange={setField("email")}
                         placeholder={t.contactForm.emailPlaceholder2}
-                        className="form-field"
+                        className="form-field min-h-[44px]"
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -315,7 +315,7 @@ export default function ContactPage() {
                         value={fields.company}
                         onChange={setField("company")}
                         placeholder={t.contactForm.companyPlaceholder}
-                        className="form-field"
+                        className="form-field min-h-[44px]"
                       />
                     </div>
                   </div>
@@ -345,7 +345,7 @@ export default function ContactPage() {
                           );
                         setDropdownOpen((o) => !o);
                       }}
-                      className="form-field flex items-center justify-between gap-2 text-left cursor-pointer"
+                      className="form-field min-h-[44px] flex items-center justify-between gap-2 text-left cursor-pointer"
                     >
                       <span
                         className={

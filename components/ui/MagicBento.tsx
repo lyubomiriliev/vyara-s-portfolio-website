@@ -121,6 +121,10 @@ export default function MagicBento({
           .card-responsive { grid-template-columns: repeat(2, 1fr); }
         }
 
+        @media (min-width: 768px) {
+          .card-responsive { grid-template-columns: repeat(3, 1fr); }
+        }
+
         @media (min-width: 1024px) {
           .card-responsive { grid-template-columns: repeat(4, 1fr); }
           .card-responsive .card:nth-child(3) { grid-column: span 2; grid-row: span 2; }
@@ -145,7 +149,13 @@ export default function MagicBento({
         .text-clamp-2 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 
         @media (max-width: 599px) {
-          .card-responsive .card { width: 100%; min-height: 180px; }
+          .card-responsive .card { width: 100%; min-height: 200px; }
+        }
+        @media (min-width: 600px) and (max-width: 767px) {
+          .card-responsive .card { min-height: 240px; }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .card-responsive .card { min-height: 280px; }
         }
       `,
         }}
@@ -175,7 +185,7 @@ export default function MagicBento({
               return (
                 <div
                   key={index}
-                  className="card flex flex-col relative min-h-[220px] sm:min-h-[260px] md:min-h-[300px] w-full max-w-full rounded-[20px] border border-solid font-light overflow-hidden"
+                  className="card flex flex-col relative min-h-[200px] sm:min-h-[240px] md:min-h-[280px] w-full max-w-full rounded-[20px] border border-solid font-light overflow-hidden"
                   style={{
                     backgroundColor: "#0d0a14",
                     borderColor: "var(--border-color)",
@@ -201,6 +211,7 @@ export default function MagicBento({
                       <Image
                         src={bgImage}
                         alt=""
+                        aria-hidden
                         fill
                         loading="lazy"
                         className="object-cover opacity-[0.18]"
