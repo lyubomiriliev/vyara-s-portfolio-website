@@ -1,0 +1,128 @@
+# ─── Bot Access Control ────────────────────────────────────────────────────────
+# Allow good AI crawlers (improves AI search visibility / recommendations)
+# Block spam bots, scrapers, and malicious user agents
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # ── Spam / malicious bots — block with 403 ──────────────────────────────────
+    RewriteCond %{HTTP_USER_AGENT} (AhrefsBot|MJ12bot|DotBot|SemrushBot|BLEXBot|MegaIndex|Nikto|masscan|sqlmap|zgrab|python-requests|Go-http-client|curl\/[0-9]|libwww-perl|wget|scrapy|HTTrack|EmailCollector|EmailSiphon|EmailWolf|ExtractorPro|CherryPicker|WebEnhancer|SiteSnagger|TeleportPro|Xenu|WebCopier|WebReaper|WebStripper|WebZIP|Teleport|SurfBot|WebFetch|WebGo|WebLeacher|WebMirror|WebSucker|WebWhacker|WebZip|Widow|Zeus|virus|malware|phishing|spam|inject|crawler|harvest|extract|rip|mirror|steal|scrape|bot.aspx) [NC]
+    RewriteRule .* - [F,L]
+
+    # ── Requests with no user agent — block ─────────────────────────────────────
+    RewriteCond %{HTTP_USER_AGENT} ^-?$
+    RewriteRule .* - [F,L]
+
+    # ── Block common exploit scanners ────────────────────────────────────────────
+    RewriteCond %{QUERY_STRING} (union.*select|insert.*into|drop.*table|script.*alert|base64_encode|eval\() [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# ── Explicitly allow good AI crawlers (by not blocking them above) ──────────────
+# These bots crawl and index content for AI-powered search and recommendations:
+#   GPTBot          → ChatGPT / OpenAI
+#   Claude-Web      → Claude / Anthropic
+#   PerplexityBot   → Perplexity AI
+#   GoogleOther     → Google AI (Bard / Gemini grounding)
+#   Applebot        → Apple Intelligence / Siri suggestions
+#   YouBot          → You.com AI search
+#   CCBot           → Common Crawl (used by many LLMs for training)
+#   Bytespider      → ByteDance AI
+#   meta-externalagent → Meta AI
+# They are not matched by any block rule above and therefore pass through freely.
+
+# ─── Security Headers ──────────────────────────────────────────────────────────
+
+<IfModule mod_headers.c>
+    # Strict-Transport-Security (HSTS) — enforce HTTPS for 1 year
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    # Content-Security-Policy — restrict resource origins, block inline scripts/XSS
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https:; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https:;"
+
+    # Cross-Origin-Opener-Policy (COOP) — isolate browsing context from cross-origin windows
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+
+    # Cross-Origin-Embedder-Policy (COEP)
+    Header always set Cross-Origin-Embedder-Policy "unsafe-none"
+
+    # Cross-Origin-Resource-Policy (CORP)
+    Header always set Cross-Origin-Resource-Policy "same-origin"
+
+    # X-Frame-Options — prevent clickjacking (redundant with CSP frame-ancestors but belt-and-suspenders)
+    Header always set X-Frame-Options "DENY"
+
+    # X-Content-Type-Options — prevent MIME-type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Referrer-Policy — limit referrer leakage
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Permissions-Policy — disable browser features not used by the site
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=(), gyroscope=()"
+
+    # Remove server signature headers
+    Header always unset X-Powered-By
+    Header always unset Server
+</IfModule>
+
+# ─── HTTPS Redirect ─────────────────────────────────────────────────────────────
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+    # www → non-www (adjust if you prefer www)
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# ─── Static Export Routing ──────────────────────────────────────────────────────
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Serve pre-rendered HTML for clean URLs (Next.js static export with trailingSlash)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.*)$ $1.html [L]
+
+    # Fallback to index.html for SPA-style 404s
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ /index.html [L]
+</IfModule>
+
+# ─── Caching ────────────────────────────────────────────────────────────────────
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # HTML — short cache (content changes)
+    ExpiresByType text/html "access plus 1 hour"
+
+    # CSS / JS — long cache (Next.js content-hashes filenames)
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+
+    # Images
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # Fonts
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+</IfModule>
+
+# ─── Compression ────────────────────────────────────────────────────────────────
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml font/woff2
+</IfModule>

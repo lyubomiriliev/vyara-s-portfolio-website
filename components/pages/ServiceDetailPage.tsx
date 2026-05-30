@@ -2,8 +2,16 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import * as Icons from 'lucide-react'
-import { CheckCircle2, ArrowLeft } from 'lucide-react'
+import {
+  CheckCircle2, ArrowLeft,
+  Share2, Brain, Target, Mail, Palette, Printer, Video, Film, PenLine,
+  ImagePlay, Clapperboard, Search, Code2, Store, Smartphone, Layers, Server,
+} from 'lucide-react'
+
+const ICON_MAP: Record<string, React.ElementType> = {
+  Share2, Brain, Target, Mail, Palette, Printer, Video, Film, PenLine,
+  ImagePlay, Clapperboard, Search, Code2, Store, Smartphone, Layers, Server,
+}
 import type { Service } from '@/data/services'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 import { Glow } from '@/components/ui/Glow'
@@ -21,8 +29,7 @@ const categoryAccent: Record<string, string> = {
 }
 
 export default function ServiceDetailPage({ service }: Props) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const IconComp = (Icons as any)[service.icon] as React.ElementType | undefined
+  const IconComp = ICON_MAP[service.icon]
   const accent = categoryAccent[service.category] ?? '#E040A0'
 
   return (

@@ -1,0 +1,26 @@
+{
+  "name": "Aviva Digital",
+  "short_name": "Aviva Digital",
+  "description": "AI-Powered Digital Agency — Social Media, Ads, Web Development. Sofia, Bulgaria.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0F",
+  "theme_color": "#0A0A0F",
+  "lang": "bg",
+  "icons": [
+    {
+      "src": "/aviva-favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/aviva-favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "screenshots": []
+}

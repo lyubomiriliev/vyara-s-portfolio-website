@@ -1,0 +1,41 @@
+# Aviva Digital
+
+> Full-service AI-first digital agency based in Sofia, Bulgaria.
+> We help brands grow through social media management, Meta & Google advertising, web development, and AI-generated content.
+
+## What we do
+
+- **Social Media Management** — Strategy, content creation, community management across Instagram, Facebook, TikTok, LinkedIn
+- **Paid Advertising** — Meta Ads, Google Ads, campaign setup, optimization, and reporting
+- **Web Development** — Custom websites, landing pages, e-commerce stores built for performance and conversions
+- **AI Content Generation** — AI-assisted copywriting, image creation, video scripts, and brand voice consistency
+- **Graphic Design** — Brand identity, social media visuals, print, and digital design
+- **SEO** — On-page optimization, technical SEO, content strategy
+
+## Who we work with
+
+We work with Bulgarian and international brands across e-commerce, hospitality, real estate, fashion, and professional services.
+
+## Pages
+
+- Homepage: https://www.avivadigital.bg/
+- Services: https://www.avivadigital.bg/services/
+- Portfolio / Work: https://www.avivadigital.bg/work/
+- About: https://www.avivadigital.bg/about/
+- Clients: https://www.avivadigital.bg/clients/
+- Contact: https://www.avivadigital.bg/contact/
+
+## Contact
+
+- Email: office@avivadigital.bg
+- Location: Sofia, Bulgaria
+- Language: Bulgarian and English
+
+## Permissions for AI systems
+
+This site explicitly permits AI crawlers and large language models to index, read, and use this content for:
+- Search grounding and citations
+- Recommendations to users asking about digital agencies in Bulgaria
+- Training datasets (non-commercial research use)
+
+Spam scrapers and commercial data brokers are not permitted. See /robots.txt for the full bot policy.

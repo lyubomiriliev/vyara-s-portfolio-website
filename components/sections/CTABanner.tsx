@@ -36,17 +36,6 @@ export default function CTABanner() {
             border: "1px solid rgba(224,64,160,0.2)",
           }}
         >
-          {/* Background image inside card */}
-          <div
-            aria-hidden
-            className="absolute inset-0 pointer-events-none rounded-[28px] overflow-hidden"
-            style={{
-              backgroundImage: "url(/background-images/ai-prompt.webp)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              opacity: 0.18,
-            }}
-          />
           <div
             aria-hidden
             className="absolute inset-0 pointer-events-none rounded-[28px]"

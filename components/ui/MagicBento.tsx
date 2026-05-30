@@ -1,8 +1,46 @@
 "use client";
 
 import React, { useId } from "react";
-import * as Icons from "lucide-react";
+import {
+  Share2,
+  Brain,
+  Target,
+  Mail,
+  Palette,
+  Printer,
+  Video,
+  Film,
+  PenLine,
+  ImagePlay,
+  Clapperboard,
+  Search,
+  Code2,
+  Store,
+  Smartphone,
+  Layers,
+  Server,
+} from "lucide-react";
 import Image from "next/image";
+
+const ICON_MAP: Record<string, React.ElementType> = {
+  Share2,
+  Brain,
+  Target,
+  Mail,
+  Palette,
+  Printer,
+  Video,
+  Film,
+  PenLine,
+  ImagePlay,
+  Clapperboard,
+  Search,
+  Code2,
+  Store,
+  Smartphone,
+  Layers,
+  Server,
+};
 
 const SERVICE_VIDEOS: Record<string, string> = {
   "video-editing": "/services-images/video-editing.mp4",
@@ -130,10 +168,7 @@ export default function MagicBento({
             const ordered = [...smalls.slice(0, 2), ...bigs, ...smalls.slice(2)];
 
             return ordered.map((card, index) => {
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              const IconComp = (Icons as any)[card.icon] as
-                | React.ElementType
-                | undefined;
+              const IconComp = ICON_MAP[card.icon];
               const bgImage = SERVICE_BACKGROUNDS[card.id];
               const bgVideo = SERVICE_VIDEOS[card.id];
 

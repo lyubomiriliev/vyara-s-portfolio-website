@@ -1,0 +1,83 @@
+User-agent: *
+Allow: /
+
+# Block access to internal/non-content paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /404
+Disallow: /500
+
+# ── Explicitly allow all good AI crawlers ────────────────────────────────────
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+# Anthropic / Claude
+User-agent: Claude-Web
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI (Gemini / Bard grounding)
+User-agent: Google-Extended
+Allow: /
+User-agent: GoogleOther
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Apple Intelligence / Siri
+User-agent: Applebot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+# You.com AI search
+User-agent: YouBot
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+# ByteDance AI
+User-agent: Bytespider
+Allow: /
+
+# Common Crawl (used for LLM training datasets)
+User-agent: CCBot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# ── Block known spam / scraper bots ──────────────────────────────────────────
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: MegaIndex
+Disallow: /
+
+User-agent: Nikto
+Disallow: /
+
+Sitemap: https://www.avivadigital.bg/sitemap.xml

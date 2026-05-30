@@ -1,0 +1,15 @@
+/* TEAM */
+Agency: Aviva Digital
+Location: Sofia, Bulgaria
+Contact: office@avivadigital.bg
+Website: https://www.avivadigital.bg
+
+/* SITE */
+Last update: 2026-05-28
+Language: Bulgarian, English
+Standards: HTML5, CSS3, WCAG 2.1 AA
+Components: Next.js, React, Tailwind CSS, Framer Motion
+Hosted: Bulgaria
+
+/* THANKS */
+Built with passion for results-driven digital marketing.

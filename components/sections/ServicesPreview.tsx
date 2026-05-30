@@ -2,7 +2,25 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import * as Icons from "lucide-react";
+import {
+  Share2,
+  Brain,
+  Target,
+  Mail,
+  Palette,
+  Printer,
+  Video,
+  Film,
+  PenLine,
+  ImagePlay,
+  Clapperboard,
+  Search,
+  Code2,
+  Store,
+  Smartphone,
+  Layers,
+  Server,
+} from "lucide-react";
 import { fadeUp, staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ButtonOutline } from "@/components/ui/ButtonOutline";
@@ -10,6 +28,26 @@ import { Glow } from "@/components/ui/Glow";
 import { SectionBackground } from "@/components/ui/SectionBackground";
 import { services } from "@/data/services";
 import { useLang } from "@/lib/LanguageContext";
+
+const ICON_MAP: Record<string, React.ElementType> = {
+  Share2,
+  Brain,
+  Target,
+  Mail,
+  Palette,
+  Printer,
+  Video,
+  Film,
+  PenLine,
+  ImagePlay,
+  Clapperboard,
+  Search,
+  Code2,
+  Store,
+  Smartphone,
+  Layers,
+  Server,
+};
 
 const columnMeta = [
   {
@@ -54,15 +92,11 @@ export default function ServicesPreview() {
       {/* Atmospheric workflow background */}
       <SectionBackground
         src="/background-images/workflow.webp"
-        opacity={0.16}
+        opacity={0.12}
         position="right center"
         vignetteIntensity={0.7}
-        blur={4}
       />
-      {/* Background glows */}
-      <Glow color="pink" size={700} className="top-1/2 right-1/4" />
-      <Glow color="orange" size={500} className="top-1/4 left-0" />
-      <Glow color="pink" size={400} className="bottom-0 right-1/2" />
+      <Glow color="pink" size={500} className="top-1/2 right-1/4" />
 
       {/* Subtle dot grid overlay */}
       <div
@@ -140,10 +174,7 @@ export default function ServicesPreview() {
 
                 {/* Service cards */}
                 {categoryServices.map((service) => {
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  const IconComp = (Icons as any)[service.icon] as
-                    | React.ElementType
-                    | undefined;
+                  const IconComp = ICON_MAP[service.icon];
 
                   return (
                     <motion.div

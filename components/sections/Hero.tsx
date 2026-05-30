@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 
 import { ButtonPrimary } from "@/components/ui/ButtonPrimary";
 import { ButtonOutline } from "@/components/ui/ButtonOutline";
@@ -182,18 +181,26 @@ export default function Hero() {
       id="hero"
       className="relative overflow-hidden min-h-screen flex items-center py-0 md:section-padding"
     >
-      {/* Layer 1 — full-bleed wave background */}
-      <Image
-        src="/background-images/ai-master-wallpaper.webp"
-        alt=""
+      {/* Layer 1 — full-bleed wave background. Native <picture> so mobile
+         pulls the 14 KB version instead of the 52 KB desktop one. */}
+      <picture
         aria-hidden
-        fill
-        priority
-        fetchPriority="high"
-        sizes="100vw"
-        className="object-cover object-center pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{ opacity: 0.55 }}
-      />
+      >
+        <source
+          media="(max-width: 768px)"
+          srcSet="/background-images/ai-master-wallpaper-mobile.webp"
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/background-images/ai-master-wallpaper.webp"
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+      </picture>
 
       {/* Layer 2 — dark vignette, heavier on left for text legibility */}
       <div

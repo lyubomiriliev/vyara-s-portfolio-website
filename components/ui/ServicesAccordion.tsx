@@ -2,8 +2,16 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import * as Icons from "lucide-react";
-import { ChevronDown } from "lucide-react";
+import {
+  ChevronDown,
+  Share2, Brain, Target, Mail, Palette, Printer, Video, Film, PenLine,
+  ImagePlay, Clapperboard, Search, Code2, Store, Smartphone, Layers, Server,
+} from "lucide-react";
+
+const ICON_MAP: Record<string, React.ElementType> = {
+  Share2, Brain, Target, Mail, Palette, Printer, Video, Film, PenLine,
+  ImagePlay, Clapperboard, Search, Code2, Store, Smartphone, Layers, Server,
+};
 
 export interface AccordionService {
   id: string;
@@ -41,10 +49,7 @@ export default function ServicesAccordion({
       }}
     >
       {services.map((service, index) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const IconComp = (Icons as any)[service.icon] as
-          | React.ElementType
-          | undefined;
+        const IconComp = ICON_MAP[service.icon];
         const isOpen = open === service.id;
 
         return (
