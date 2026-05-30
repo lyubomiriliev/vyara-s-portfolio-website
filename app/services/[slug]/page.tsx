@@ -11,10 +11,21 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const service = services.find(s => s.id === slug)
-  if (!service) return { title: 'Service — Aviva Digital' }
+  if (!service) return { title: 'Услуга — Aviva Digital' }
+  const canonicalUrl = `https://www.avivadigital.bg/services/${slug}`
   return {
-    title: `${service.title} — Aviva Digital`,
-    description: service.description,
+    title: `${service.title} | ${service.categoryLabel} — Aviva Digital`,
+    description: `${service.description} Aviva Digital — AI дигитална агенция в София, България. Sofia, Bulgaria.`,
+    alternates: {
+      canonical: canonicalUrl,
+      languages: { 'bg': canonicalUrl, 'en': canonicalUrl, 'x-default': canonicalUrl },
+    },
+    openGraph: {
+      title: `${service.title} | Aviva Digital`,
+      description: service.description,
+      url: canonicalUrl,
+      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: `${service.title} — Aviva Digital` }],
+    },
   }
 }
 

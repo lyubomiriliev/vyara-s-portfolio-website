@@ -12,7 +12,7 @@ export interface Service {
 }
 
 export const services: Service[] = [
-  // ── Marketing (most important first) ──────────────────────────────────────
+  // ── Marketing ─────────────────────────────────────────────────────────────
   {
     id: "social-media-management",
     category: "marketing",
@@ -30,22 +30,6 @@ export const services: Service[] = [
     ],
   },
   {
-    id: "meta-ads-campaigns",
-    category: "marketing",
-    categories: ["marketing"],
-    categoryLabel: "Дигитален маркетинг",
-    icon: "Target",
-    title: "Meta Ads Campaigns",
-    description:
-      "High-converting Facebook and Instagram ad campaigns with precise targeting.",
-    benefits: [
-      "Campaign strategy",
-      "A/B testing",
-      "Retargeting funnels",
-      "ROAS optimization",
-    ],
-  },
-  {
     id: "ai-powered-marketing",
     category: "marketing",
     categories: ["marketing"],
@@ -59,6 +43,22 @@ export const services: Service[] = [
       "Real-time optimization",
       "AI copywriting",
       "Performance forecasting",
+    ],
+  },
+  {
+    id: "meta-ads-campaigns",
+    category: "marketing",
+    categories: ["marketing"],
+    categoryLabel: "Дигитален маркетинг",
+    icon: "Target",
+    title: "Meta Ads Campaigns",
+    description:
+      "High-converting Facebook and Instagram ad campaigns with precise targeting.",
+    benefits: [
+      "Campaign strategy",
+      "A/B testing",
+      "Retargeting funnels",
+      "ROAS optimization",
     ],
   },
   {
@@ -80,7 +80,7 @@ export const services: Service[] = [
   {
     id: "seo-optimization",
     category: "marketing",
-    categories: ["marketing", "web"],
+    categories: ["marketing"],
     categoryLabel: "Дигитален маркетинг",
     icon: "Search",
     title: "SEO Optimization",
@@ -109,23 +109,7 @@ export const services: Service[] = [
       "Brand voice guidelines",
     ],
   },
-  // ── Creative (most important first) ───────────────────────────────────────
-  {
-    id: "graphic-design",
-    category: "creative",
-    categories: ["creative"],
-    categoryLabel: "Дизайн и видео",
-    icon: "Palette",
-    title: "Graphic Design",
-    description:
-      "Digital creatives — brand-consistent design that stops the scroll.",
-    benefits: [
-      "Brand consistency",
-      "Digital formats",
-      "Animated assets",
-      "Unlimited revisions",
-    ],
-  },
+  // ── Creative ───────────────────────────────────────────────────────────────
   {
     id: "video-filming",
     category: "creative",
@@ -159,6 +143,22 @@ export const services: Service[] = [
     ],
   },
   {
+    id: "ai-video-generation",
+    category: "creative",
+    categories: ["creative"],
+    categoryLabel: "Дизайн и видео",
+    icon: "Clapperboard",
+    title: "AI Video Generation",
+    description:
+      "Cinematic AI video sequences — hours of production compressed into minutes of output.",
+    benefits: [
+      "Cinematic AI video",
+      "Brand-consistent style",
+      "Multiple aspect ratios",
+      "Platform-optimized exports",
+    ],
+  },
+  {
     id: "ai-image-generation",
     category: "creative",
     categories: ["creative"],
@@ -175,19 +175,19 @@ export const services: Service[] = [
     ],
   },
   {
-    id: "ai-video-generation",
+    id: "graphic-design",
     category: "creative",
     categories: ["creative"],
     categoryLabel: "Дизайн и видео",
-    icon: "Clapperboard",
-    title: "AI Video Generation",
+    icon: "Palette",
+    title: "Graphic Design",
     description:
-      "Cinematic AI video sequences — hours of production compressed into minutes of output.",
+      "Digital creatives — brand-consistent design that stops the scroll.",
     benefits: [
-      "Cinematic AI video",
-      "Brand-consistent style",
-      "Multiple aspect ratios",
-      "Platform-optimized exports",
+      "Brand consistency",
+      "Digital formats",
+      "Animated assets",
+      "Unlimited revisions",
     ],
   },
   {
@@ -206,7 +206,7 @@ export const services: Service[] = [
       "Unlimited revisions",
     ],
   },
-  // ── Web (most important first) ─────────────────────────────────────────────
+  // ── Web ────────────────────────────────────────────────────────────────────
   {
     id: "custom-websites-nextjs",
     category: "web",
@@ -240,6 +240,37 @@ export const services: Service[] = [
     ],
   },
   {
+    id: "web-applications",
+    category: "web",
+    categories: ["web"],
+    categoryLabel: "Уеб & Разработка",
+    icon: "Smartphone",
+    title: "Web Applications",
+    description: "Cross-platform apps built with React Native and Electron.",
+    benefits: [
+      "Cross-platform",
+      "Offline support",
+      "Push notifications",
+      "App store ready",
+    ],
+  },
+  {
+    id: "seo-optimization-web",
+    category: "web",
+    categories: ["web"],
+    categoryLabel: "Уеб & Разработка",
+    icon: "Search",
+    title: "SEO Optimization",
+    description:
+      "Technical and content SEO to dominate search rankings in your niche.",
+    benefits: [
+      "Keyword research",
+      "On-page optimization",
+      "Link building",
+      "Monthly reporting",
+    ],
+  },
+  {
     id: "saas-solutions",
     category: "web",
     categories: ["web"],
@@ -253,21 +284,6 @@ export const services: Service[] = [
       "Auth & billing",
       "Dashboard UI",
       "API integrations",
-    ],
-  },
-  {
-    id: "web-applications",
-    category: "web",
-    categories: ["web"],
-    categoryLabel: "Уеб & Разработка",
-    icon: "Smartphone",
-    title: "Web Applications",
-    description: "Cross-platform apps built with React Native and Electron.",
-    benefits: [
-      "Cross-platform",
-      "Offline support",
-      "Push notifications",
-      "App store ready",
     ],
   },
   {

@@ -20,15 +20,16 @@ export function ButtonPrimary({ children, size = 'md', className = '', onClick, 
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`inline-flex items-center gap-2 font-display font-semibold rounded-pill whitespace-nowrap
-        text-white
+      className={`relative inline-flex items-center gap-2 font-display font-semibold rounded-pill whitespace-nowrap
+        text-white overflow-hidden
         hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]
         transition-all duration-150 cursor-pointer
         disabled:opacity-50 disabled:cursor-not-allowed
         ${sizes[size]} ${className}`}
       style={{ background: 'linear-gradient(135deg, #E040A0 0%, #FFB76C 100%)' }}
     >
-      {children}
+      <span className="absolute inset-0 bg-black/20 rounded-pill" />
+      <span className="relative">{children}</span>
     </button>
   )
 }

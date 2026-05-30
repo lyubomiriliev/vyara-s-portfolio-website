@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/lib/LanguageContext";
 import { services } from "@/data/services";
@@ -50,6 +50,32 @@ function toBentoCards(svcs: typeof services) {
 export default function ServicesPage() {
   const { t } = useLang();
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Handle initial load with hash
+    const hash = window.location.hash.replace("#", "") as FilterCategory;
+    if (hash === "marketing" || hash === "creative" || hash === "web") {
+      setActiveFilter(hash);
+      history.replaceState(null, "", window.location.pathname);
+      setTimeout(() => {
+        sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+
+    // Handle subsequent category clicks from the header while already on /services
+    const onCategorySelect = (e: Event) => {
+      const category = (e as CustomEvent<string>).detail as FilterCategory;
+      if (category === "marketing" || category === "creative" || category === "web") {
+        setActiveFilter(category);
+        setTimeout(() => {
+          sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 50);
+      }
+    };
+    window.addEventListener("services:category", onCategorySelect);
+    return () => window.removeEventListener("services:category", onCategorySelect);
+  }, []);
 
   const tabs: { id: FilterCategory; label: string }[] = [
     { id: "all", label: t.services.allServices },
@@ -93,7 +119,7 @@ export default function ServicesPage() {
   const accordionMinHeight = maxRows * ROW_HEIGHT;
 
   return (
-    <section className="section-padding">
+    <section ref={sectionRef} className="section-padding">
       <div className="container">
         {/* Tab filter — horizontally scrollable on narrow screens */}
         <div className="mb-14 flex justify-start sm:justify-center overflow-x-auto scrollbar-hide">

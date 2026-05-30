@@ -87,7 +87,7 @@ export default function ServicesAccordion({
 
               {/* Title */}
               <span
-                className="flex-1 font-semibold text-[14px] sm:text-[15px] md:text-[16px] leading-tight transition-colors duration-200"
+                className="flex-1 font-semibold text-[14px] sm:text-[15px] md:text-[16px] leading-tight transition-colors duration-200 min-h-[2.5rem] flex items-center"
                 style={{ color: isOpen ? "#fff" : "rgba(255,255,255,0.75)" }}
               >
                 {service.title}

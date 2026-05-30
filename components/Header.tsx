@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   ArrowRight,
   Menu,
@@ -11,41 +11,41 @@ import {
   Share2,
   Brain,
   Target,
-  Printer,
-  Monitor,
   Video,
-  Globe,
+  Film,
+  Clapperboard,
   Code2,
-  ShoppingBag,
+  Store,
+  Smartphone,
 } from "lucide-react";
 import { useLang } from "@/lib/LanguageContext";
 
 const SERVICE_DROPDOWN_KEYS = [
   {
     categoryKey: "marketing" as const,
-    accent: "#E040A0",
+    accent: "#FF419D",
     services: [
-      { labelKey: "socialMedia" as const, id: "social-media-management", icon: Share2 },
-      { labelKey: "aiMarketing" as const, id: "ai-powered-marketing", icon: Brain },
-      { labelKey: "metaAds" as const, id: "meta-ads-campaigns", icon: Target },
+      { id: "social-media-management", icon: Share2 },
+      { id: "ai-powered-marketing", icon: Brain },
+      { id: "meta-ads-campaigns", icon: Target },
     ],
   },
   {
     categoryKey: "creative" as const,
-    accent: "#FFB76C",
+    accent: "#FF953C",
     services: [
-      { labelKey: "graphicPrint" as const, id: "graphic-design-print", icon: Printer },
-      { labelKey: "graphicDigital" as const, id: "graphic-design-digital", icon: Monitor },
-      { labelKey: "videoFilming" as const, id: "video-filming", icon: Video },
+      { id: "video-filming", icon: Video },
+      { id: "video-editing", icon: Film },
+      { id: "ai-video-generation", icon: Clapperboard },
     ],
   },
   {
     categoryKey: "web" as const,
-    accent: "#9B59F5",
+    accent: "#38BDF8",
     services: [
-      { labelKey: "websiteDev" as const, id: "website-creation", icon: Globe },
-      { labelKey: "customSolutions" as const, id: "custom-websites-nextjs", icon: Code2 },
-      { labelKey: "ecommerce" as const, id: "shopify-websites", icon: ShoppingBag },
+      { id: "custom-websites-nextjs", icon: Code2 },
+      { id: "online-store-ecommerce", icon: Store },
+      { id: "web-applications", icon: Smartphone },
     ],
   },
 ];
@@ -57,6 +57,7 @@ export default function Header() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const { locale, setLocale, t } = useLang();
   const lastY = useRef(0);
   const dropdownTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -85,6 +86,19 @@ export default function Header() {
     setServicesOpen(false);
   }, [pathname]);
 
+  // Close menus on Escape for keyboard users
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+        setServicesOpen(false);
+        setMobileServicesOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
   const isServicesActive = pathname.startsWith("/services");
@@ -97,9 +111,25 @@ export default function Header() {
     dropdownTimer.current = setTimeout(() => setServicesOpen(false), 150);
   };
 
+  const handleCategoryClick = (categoryKey: string) => {
+    setServicesOpen(false);
+    setMobileOpen(false);
+    if (pathname === "/services") {
+      window.dispatchEvent(new CustomEvent("services:category", { detail: categoryKey }));
+    } else {
+      router.push(`/services#${categoryKey}`);
+    }
+  };
+
   const gradientText = (label: string) => (
     <span style={{ color: "#fff" }}>{label}</span>
   );
+
+  const categoryIndexMap: Record<string, number> = { marketing: 0, creative: 1, web: 2 };
+  const getServiceLabel = (id: string) =>
+    t.servicesList.find((s) => s.id === id)?.title ?? id;
+  const getCategoryLabel = (key: string) =>
+    t.categoriesList[categoryIndexMap[key]]?.label ?? key;
 
   return (
     <>
@@ -166,6 +196,9 @@ export default function Header() {
               <Link
                 href="/services"
                 onClick={() => setServicesOpen(false)}
+                aria-haspopup="true"
+                aria-expanded={servicesOpen}
+                aria-controls="services-megamenu"
                 className={`relative flex items-center gap-1 px-3.5 py-1.5 rounded-xl text-[13px] font-semibold tracking-[0.08em] uppercase transition-all duration-200 ${
                   isServicesActive
                     ? "text-white"
@@ -223,6 +256,8 @@ export default function Header() {
               <button
                 key={lang}
                 onClick={() => setLocale(lang)}
+                aria-pressed={locale === lang}
+                aria-label={lang === "bg" ? "Български" : "English"}
                 className={`relative px-3 py-1 rounded-[10px] text-[13px] font-bold tracking-widest uppercase transition-all duration-200 ${
                   locale === lang
                     ? "text-white"
@@ -255,6 +290,7 @@ export default function Header() {
                 onMouseLeave={handleServicesLeave}
               />
               <div
+                id="services-megamenu"
                 className="absolute w-[min(820px,calc(100vw-2rem))] rounded-2xl overflow-hidden z-50"
                 style={{
                   top: "calc(100% + 16px)",
@@ -281,40 +317,48 @@ export default function Header() {
                   {SERVICE_DROPDOWN_KEYS.map((group) => (
                     <div key={group.categoryKey} className="px-4 flex flex-col">
                       <div
-                        className="text-[11px] font-bold uppercase tracking-[0.16em] mb-4 pb-3 border-b"
+                        className="text-[11px] font-bold uppercase tracking-[0.16em] mb-4 pb-3 border-b whitespace-nowrap"
                         style={{
                           color: group.accent,
                           borderColor: `${group.accent}25`,
                         }}
                       >
-                        {t.serviceDropdown.categories[group.categoryKey]}
+                        {getCategoryLabel(group.categoryKey)}
                       </div>
                       <div className="flex flex-col gap-1 flex-1">
                         {group.services.map((svc) => {
                           const Icon = svc.icon;
                           return (
-                            <Link
+                            <button
                               key={svc.id}
-                              href={`/services/${svc.id}`}
-                              onClick={() => setServicesOpen(false)}
-                              className="flex items-center gap-3 px-3 py-3 rounded-xl text-[15px] text-white/75 hover:text-white hover:bg-white/[0.04] transition-all duration-150 group"
+                              onClick={() => handleCategoryClick(group.categoryKey)}
+                              className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14px] text-white/75 hover:text-white hover:bg-white/[0.04] transition-all duration-150 group text-left"
                             >
                               <span
-                                className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity"
+                                className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity"
                                 style={{ background: `${group.accent}18` }}
                               >
                                 <Icon
-                                  size={15}
+                                  size={14}
                                   style={{ color: group.accent }}
                                 />
                               </span>
                               <span className="font-medium leading-snug">
-                                {t.serviceDropdown.services[svc.labelKey]}
+                                {getServiceLabel(svc.id)}
                               </span>
-                            </Link>
+                            </button>
                           );
                         })}
                       </div>
+                      <button
+                        onClick={() => handleCategoryClick(group.categoryKey)}
+                        className="mt-3 px-3 py-2 text-[12px] font-semibold tracking-wide transition-colors duration-150 text-left"
+                        style={{ color: `${group.accent}99` }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = group.accent)}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = `${group.accent}99`)}
+                      >
+                        {t.seeAll}
+                      </button>
                     </div>
                   ))}
                 </div>
@@ -349,14 +393,18 @@ export default function Header() {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="text-white/70 hover:text-white p-1.5 transition-colors"
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
         {mobileOpen && (
-          <div
+          <nav
+            id="mobile-nav"
+            aria-label="Mobile"
             className="px-5 pt-2 pb-7 flex flex-col gap-1"
             style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
           >
@@ -405,6 +453,13 @@ export default function Header() {
               <button
                 onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                 className="p-1"
+                aria-label={
+                  mobileServicesOpen
+                    ? "Collapse services"
+                    : "Expand services"
+                }
+                aria-expanded={mobileServicesOpen}
+                aria-controls="mobile-services-list"
               >
                 <ChevronDown
                   size={14}
@@ -418,27 +473,29 @@ export default function Header() {
               </button>
             </div>
             {mobileServicesOpen && (
-              <div className="ml-3 mb-1 flex flex-col gap-0.5">
+              <div
+                id="mobile-services-list"
+                className="ml-3 mb-1 flex flex-col gap-0.5"
+              >
                 {SERVICE_DROPDOWN_KEYS.map((group) => (
                   <div key={group.categoryKey} className="mb-2">
                     <div
                       className="text-[10px] font-bold uppercase tracking-[0.14em] px-3 py-1 mb-1"
                       style={{ color: group.accent }}
                     >
-                      {t.serviceDropdown.categories[group.categoryKey]}
+                      {getCategoryLabel(group.categoryKey)}
                     </div>
                     {group.services.map((svc) => {
                       const Icon = svc.icon;
                       return (
-                        <Link
+                        <button
                           key={svc.id}
-                          href={`/services/${svc.id}`}
-                          onClick={() => setMobileOpen(false)}
-                          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] text-white/50 hover:text-white transition-colors"
+                          onClick={() => handleCategoryClick(group.categoryKey)}
+                          className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] text-white/50 hover:text-white transition-colors text-left"
                         >
                           <Icon size={13} style={{ color: group.accent }} />
-                          {t.serviceDropdown.services[svc.labelKey]}
-                        </Link>
+                          {getServiceLabel(svc.id)}
+                        </button>
                       );
                     })}
                   </div>
@@ -489,6 +546,8 @@ export default function Header() {
                   <button
                     key={lang}
                     onClick={() => setLocale(lang)}
+                    aria-pressed={locale === lang}
+                    aria-label={lang === "bg" ? "Български" : "English"}
                     className={`px-4 py-1.5 rounded-[10px] text-[13px] font-bold tracking-widest uppercase transition-all duration-200 ${
                       locale === lang
                         ? "text-white"
@@ -520,7 +579,7 @@ export default function Header() {
             >
               {t.cta} <ArrowRight size={14} strokeWidth={2.5} />
             </Link>
-          </div>
+          </nav>
         )}
       </header>
     </>

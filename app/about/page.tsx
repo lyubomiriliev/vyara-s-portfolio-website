@@ -2,8 +2,28 @@ import type { Metadata } from 'next'
 import AboutPage from '@/components/pages/AboutPage'
 
 export const metadata: Metadata = {
-  title: 'About Us — Aviva Digital',
-  description: 'Meet the Aviva Digital team. AI-first agency combining creative vision with data-driven marketing. Learn who we are and how we work.',
+  title: 'За нас — Екип, Опит & Визия | Aviva Digital',
+  description: 'Aviva Digital — AI дигитална агенция от ново поколение в София. Запознайте се с основателите: Вяра Иванова-Илиева (8+ г. маркетинг) и Любомир Илиев (уеб разработка). Aviva Digital — next-generation AI digital agency in Sofia, Bulgaria. Real experience, AI-powered execution.',
+  keywords: [
+    'авива дигитал екип', 'дигитална агенция основатели', 'AI агенция ново поколение',
+    'маркетинг агенция история', 'дигитален маркетинг опит България',
+    'Aviva Digital team', 'digital agency founders Sofia', 'AI marketing agency Bulgaria',
+    'about digital agency Sofia', 'marketing agency experience Bulgaria',
+  ],
+  alternates: {
+    canonical: 'https://www.avivadigital.bg/about',
+    languages: {
+      'bg': 'https://www.avivadigital.bg/about',
+      'en': 'https://www.avivadigital.bg/about',
+      'x-default': 'https://www.avivadigital.bg/about',
+    },
+  },
+  openGraph: {
+    title: 'За нас | Aviva Digital — AI Дигитална Агенция',
+    description: 'AI агенция от ново поколение в София. Опит, визия и реални резултати. Next-generation AI digital agency in Sofia — meet the team.',
+    url: 'https://www.avivadigital.bg/about',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Aviva Digital Team — AI Digital Agency Sofia' }],
+  },
 }
 
 export default function About() {

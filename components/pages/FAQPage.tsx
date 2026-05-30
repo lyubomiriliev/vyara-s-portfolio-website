@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown, ArrowUpRight, MessageCircle } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/lib/LanguageContext";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -22,16 +22,16 @@ function FAQItem({
   question,
   answer,
   index,
-  globalIndex,
   accentColor,
+  defaultOpen,
 }: {
   question: string;
   answer: string;
   index: number;
-  globalIndex: number;
   accentColor: string;
+  defaultOpen?: boolean;
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(defaultOpen ?? false);
 
   return (
     <motion.div
@@ -54,12 +54,6 @@ function FAQItem({
           }}
         >
           <div className="flex items-start gap-4 min-w-0">
-            <span
-              className="flex-shrink-0 text-[10px] font-bold tabular-nums mt-0.5"
-              style={{ color: open ? accentColor : "rgba(255,255,255,0.18)" }}
-            >
-              {String(globalIndex + 1).padStart(2, "0")}
-            </span>
             <span
               className="font-semibold text-[14.5px] leading-snug transition-colors duration-200 text-left"
               style={{ color: open ? "#fff" : "rgba(255,255,255,0.72)" }}
@@ -98,7 +92,7 @@ function FAQItem({
                 background: "rgba(224,64,160,0.02)",
               }}
             >
-              <div className="ml-8 pt-3.5" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+              <div className="pt-3.5" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
                 <p
                   className="text-[13.5px] leading-[1.8]"
                   style={{ color: "rgba(255,255,255,0.52)" }}
@@ -145,15 +139,9 @@ export default function FAQPage() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10.5px] font-semibold uppercase tracking-[0.18em] mb-7"
-            style={{
-              background: "rgba(224,64,160,0.08)",
-              border: "1px solid rgba(224,64,160,0.2)",
-              color: "#E040A0",
-            }}
+            className="mb-7"
           >
-            <MessageCircle size={11} />
-            {t.faq.pageLabel}
+            <SectionLabel>{t.faq.pageLabel}</SectionLabel>
           </motion.div>
 
           <motion.h1
@@ -234,30 +222,6 @@ export default function FAQPage() {
                 })}
               </nav>
 
-              {/* Count badge */}
-              <div
-                className="mt-8 px-4 py-3 rounded-xl hidden lg:block"
-                style={{
-                  background: "rgba(255,255,255,0.02)",
-                  border: "1px solid rgba(255,255,255,0.05)",
-                }}
-              >
-                <p
-                  className="text-[11px] font-semibold uppercase tracking-[0.16em] mb-1"
-                  style={{ color: "rgba(255,255,255,0.18)" }}
-                >
-                  {isBg ? "Общо" : "Total"}
-                </p>
-                <p className="font-display font-bold text-2xl text-white">
-                  {items.length}
-                </p>
-                <p
-                  className="text-[11px] mt-0.5"
-                  style={{ color: "rgba(255,255,255,0.3)" }}
-                >
-                  {isBg ? "отговорени въпроса" : "questions answered"}
-                </p>
-              </div>
             </aside>
 
             {/* Right — questions */}
@@ -273,12 +237,12 @@ export default function FAQPage() {
                 >
                   {visibleItems.map(({ item, globalIndex }, localIdx) => (
                     <FAQItem
-                      key={globalIndex}
+                      key={`${activeCategory}-${globalIndex}`}
                       question={item.q}
                       answer={item.a}
                       index={localIdx}
-                      globalIndex={globalIndex}
                       accentColor="#E040A0"
+                      defaultOpen={localIdx === 0}
                     />
                   ))}
                 </motion.div>
@@ -373,7 +337,7 @@ export default function FAQPage() {
                   <div className="flex items-center gap-5">
                     <Link href="/contact">
                       <ButtonPrimary size="lg">
-                        {t.faq.ctaButton} <ArrowUpRight size={16} />
+                        {t.faq.ctaButton}
                       </ButtonPrimary>
                     </Link>
                   </div>

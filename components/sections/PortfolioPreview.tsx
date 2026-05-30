@@ -11,18 +11,18 @@ import { useLang } from "@/lib/LanguageContext";
 
 const previewProjects = [
   projects.find((p) => p.id === "v1")!,
-  projects.find((p) => p.id === "r1")!,
-  projects.find((p) => p.id === "c1")!,
+  projects.find((p) => p.id === "r14")!,
+  projects.find((p) => p.id === "ai4")!,
 ];
 
 const categoryAccent: Record<
   string,
   { color: string; border: string; glow: string }
 > = {
-  Designs: {
-    color: "#E040A0",
-    border: "rgba(224,64,160,0.3)",
-    glow: "rgba(224,64,160,0.12)",
+  Visual: {
+    color: "#9B59F5",
+    border: "rgba(155,89,245,0.3)",
+    glow: "rgba(155,89,245,0.12)",
   },
   Print: {
     color: "#9B59F5",
@@ -45,6 +45,17 @@ const categoryAccent: Record<
     glow: "rgba(251,146,60,0.12)",
   },
 };
+
+function categoryToParam(category: string, type: string): string {
+  if (type === "video") return "reels";
+  const map: Record<string, string> = {
+    Visual: "visual",
+    Print: "print",
+    Reels: "reels",
+    AI: "ai",
+  };
+  return map[category] ?? "visual";
+}
 
 export default function PortfolioPreview() {
   const { t } = useLang();
@@ -91,7 +102,8 @@ export default function PortfolioPreview() {
           {previewProjects.map((project) => {
             const accentKey =
               project.type === "carousel" ? "carousel" : project.category;
-            const accent = categoryAccent[accentKey] ?? categoryAccent.Designs;
+            const accent = categoryAccent[accentKey] ?? categoryAccent.Visual;
+            const catParam = categoryToParam(project.category, project.type);
             const isVideo = project.type === "video" || !!project.videoSrc;
             const badgeLabel =
               project.type === "carousel"
@@ -107,7 +119,7 @@ export default function PortfolioPreview() {
                 className="group relative rounded-[20px] overflow-hidden cursor-pointer transition-transform duration-300 ease-out hover:-translate-y-1.5 will-change-transform"
                 style={{ border: `1px solid ${accent.border}`, aspectRatio: "4/5" }}
               >
-                <Link href="/work" className="block h-full">
+                <Link href={`/work?cat=${catParam}`} className="block h-full">
                   {/* Media */}
                   {isVideo && project.videoSrc ? (
                     <video

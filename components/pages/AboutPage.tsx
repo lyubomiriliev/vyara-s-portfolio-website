@@ -73,15 +73,21 @@ function ScrollableBio({
       if (!el || !track || !thumb) return;
       const delta = ev.clientY - dragStartY.current;
       const ratio = delta / (track.clientHeight - thumb.clientHeight);
-      el.scrollTop = dragStartScroll.current + ratio * (el.scrollHeight - el.clientHeight);
+      el.scrollTop =
+        dragStartScroll.current + ratio * (el.scrollHeight - el.clientHeight);
     };
-    const onUp = () => { isDragging.current = false; };
+    const onUp = () => {
+      isDragging.current = false;
+    };
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseup", onUp, { once: true });
   }, []);
 
   return (
-    <div className="relative flex gap-2" style={{ flex: "1 1 0px", minHeight: 0 }}>
+    <div
+      className="relative flex gap-2"
+      style={{ flex: "1 1 0px", minHeight: 0 }}
+    >
       {/* Scrollable content — native scrollbar hidden */}
       <div
         ref={contentRef}
@@ -97,7 +103,9 @@ function ScrollableBio({
       {/* Bottom fade overlay */}
       <div
         className="absolute bottom-0 left-0 right-4 h-14 pointer-events-none"
-        style={{ background: `linear-gradient(to bottom, transparent, ${fadeColor})` }}
+        style={{
+          background: `linear-gradient(to bottom, transparent, ${fadeColor})`,
+        }}
       />
 
       {/* Custom scrollbar track */}
@@ -176,20 +184,35 @@ export default function AboutPage() {
                 className="font-display font-extrabold leading-[0.92] tracking-tight"
                 style={{ letterSpacing: "-0.03em" }}
               >
-                {/* First two words — big warm gradient */}
+                {/* Line 1 — "Млади." */}
                 <span
                   className="block"
                   style={{
                     fontSize: "clamp(56px, 8vw, 112px)",
-                    background: "linear-gradient(135deg, #FFB76C 0%, #FF5E9E 100%)",
+                    background:
+                      "linear-gradient(135deg, #FFB76C 0%, #FF5E9E 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
                   }}
                 >
-                  {t.about.pageTitle.split(". ").slice(0, 2).join(". ")}.
+                  {t.about.pageTitle.split(". ")[0]}.
                 </span>
-                {/* Rest of title — smaller, white */}
+                {/* Line 2 — "С богат опит." */}
+                <span
+                  className="block"
+                  style={{
+                    fontSize: "clamp(56px, 8vw, 112px)",
+                    background:
+                      "linear-gradient(135deg, #FFB76C 0%, #FF5E9E 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  {t.about.pageTitle.split(". ")[1]}.
+                </span>
+                {/* Line 3 — smaller, white */}
                 <span
                   className="block text-white mt-1"
                   style={{ fontSize: "clamp(28px, 3.8vw, 54px)" }}
@@ -211,34 +234,6 @@ export default function AboutPage() {
                   <ButtonPrimary size="lg">{t.about.ctaButton}</ButtonPrimary>
                 </Link>
               </motion.div>
-
-              {/* Stats row */}
-              <div className="grid grid-cols-3 gap-px w-full mt-6 rounded-2xl overflow-hidden" style={{ background: "rgba(255,255,255,0.05)" }}>
-                {[
-                  { value: "8г+", label: t.clients.stats[1].label, accent: "#E040A0" },
-                  { value: "16+", label: t.clients.stats[0].label, accent: "#4A9EFF" },
-                  { value: "100%", label: t.clients.stats[2].label, accent: "#FFB76C" },
-                ].map((s, i) => (
-                  <motion.div
-                    key={s.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.5 + i * 0.1 }}
-                    className="flex flex-col items-center gap-1 py-7 px-4"
-                    style={{ background: "rgb(10,8,18)" }}
-                  >
-                    <span
-                      className="font-display font-extrabold leading-none"
-                      style={{ fontSize: "clamp(32px, 3.5vw, 52px)", letterSpacing: "-0.04em", color: s.accent }}
-                    >
-                      {s.value}
-                    </span>
-                    <span className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: "rgba(255,255,255,0.35)" }}>
-                      {s.label}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
             </motion.div>
           </div>
         </div>
@@ -309,81 +304,6 @@ export default function AboutPage() {
             </motion.div>
           </motion.div>
 
-          {/* Divider */}
-          <div className="h-px bg-white/[0.06] mb-16" />
-
-          {/* Three-column value cards — same pattern as screenshot */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-px mb-24"
-            style={{
-              background: "rgba(255,255,255,0.05)",
-              borderRadius: "20px",
-              overflow: "hidden",
-            }}
-          >
-            {[
-              {
-                number: "01",
-                iconColor: "#E040A0",
-                border: "rgba(224,64,160,0.3)",
-                glow: "rgba(224,64,160,0.15)",
-                title: t.whyAviva.cards[0].title,
-                body: t.whyAviva.cards[0].body,
-              },
-              {
-                number: "02",
-                iconColor: "#9B59F5",
-                border: "rgba(155,89,245,0.3)",
-                glow: "rgba(155,89,245,0.15)",
-                title: t.whyAviva.cards[1].title,
-                body: t.whyAviva.cards[1].body,
-              },
-              {
-                number: "03",
-                iconColor: "#4A9EFF",
-                border: "rgba(74,158,255,0.3)",
-                glow: "rgba(74,158,255,0.15)",
-                title: t.whyAviva.cards[2].title,
-                body: t.whyAviva.cards[2].body,
-              },
-            ].map((card) => (
-              <motion.div
-                key={card.number}
-                variants={fadeUp}
-                className="group relative p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col gap-5 cursor-default min-h-[320px] md:min-h-[360px]"
-                style={{ background: "rgb(13,10,24)" }}
-                whileHover={{
-                  background: `radial-gradient(circle at 30% 0%, ${card.glow} 0%, rgb(13,10,24) 60%)`,
-                  transition: { duration: 0.4 },
-                }}
-              >
-                <div
-                  className="absolute top-0 left-0 right-0 h-[1px] opacity-30 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: `linear-gradient(90deg, transparent, ${card.iconColor}, transparent)`,
-                  }}
-                />
-                <span
-                  className="font-display font-extrabold text-[80px] leading-none select-none opacity-[0.06] group-hover:opacity-[0.12] transition-opacity duration-300 absolute top-6 right-8"
-                  style={{ color: card.iconColor }}
-                >
-                  {card.number}
-                </span>
-                <div className="flex flex-col gap-5 pt-8">
-                  <h3 className="font-display font-bold text-xl sm:text-2xl text-white leading-snug">
-                    {card.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-white/50 leading-relaxed">
-                    {card.body}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
@@ -422,45 +342,6 @@ export default function AboutPage() {
         />
 
         <div className="container relative z-10">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="text-center max-w-2xl mx-auto mb-16 md:mb-20"
-          >
-            <motion.div variants={fadeUp}>
-              <SectionLabel>{t.about.teamSectionLabel}</SectionLabel>
-            </motion.div>
-            <motion.h2
-              variants={fadeUp}
-              className="font-display font-extrabold text-white mt-5 leading-[0.95] tracking-tight"
-              style={{
-                fontSize: "clamp(40px, 5vw, 72px)",
-                letterSpacing: "-0.03em",
-              }}
-            >
-              {t.about.teamSectionTitle}{" "}
-              <span
-                style={{
-                  background:
-                    "linear-gradient(135deg, #FFB76C 0%, #FF6B6B 50%, #E040A0 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                {t.about.teamSectionAccent}
-              </span>
-            </motion.h2>
-            <motion.p
-              variants={fadeUp}
-              className="text-white/45 text-base sm:text-lg leading-relaxed mt-5"
-            >
-              {t.about.teamSectionSub}
-            </motion.p>
-          </motion.div>
-
           {/* Founder cards — full-width, image panel left, bio right */}
           <motion.div
             variants={staggerContainer}
@@ -481,35 +362,81 @@ export default function AboutPage() {
             >
               <div
                 className="absolute top-0 left-0 right-0 h-[1px] z-10"
-                style={{ background: "linear-gradient(90deg, transparent 0%, #E040A0 20%, rgba(224,64,160,0.3) 55%, transparent 100%)" }}
+                style={{
+                  background:
+                    "linear-gradient(90deg, transparent 0%, #E040A0 20%, rgba(224,64,160,0.3) 55%, transparent 100%)",
+                }}
               />
               <div
                 aria-hidden
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{ background: "radial-gradient(ellipse at 0% 50%, rgba(224,64,160,0.06) 0%, transparent 60%)" }}
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 0% 50%, rgba(224,64,160,0.06) 0%, transparent 60%)",
+                }}
               />
 
               <div className="relative grid grid-cols-1 lg:grid-cols-[30%_1fr] h-full">
                 <div className="relative hidden lg:block overflow-hidden">
-                  <Image src="/profile/vyara-ilieva.png" alt="Vyara Ivanova-Ilieva" fill className="object-cover object-top" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, transparent 40%, rgb(13,10,24) 100%)" }} />
+                  <Image
+                    src="/profile/vyara-ilieva.png"
+                    alt="Vyara Ivanova-Ilieva"
+                    fill
+                    className="object-cover object-top"
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, transparent 40%, rgb(13,10,24) 100%)",
+                    }}
+                  />
                 </div>
 
-                <div className="flex flex-col p-6 sm:p-8 lg:p-10 lg:pl-6 overflow-hidden" style={{ height: "520px" }}>
+                <div
+                  className="flex flex-col p-6 sm:p-8 lg:p-10 lg:pl-6 overflow-hidden"
+                  style={{ height: "520px" }}
+                >
                   <div className="flex-shrink-0 mb-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em]" style={{ color: "#E040A0" }}>{t.about.founder1Role}</p>
-                    <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-white leading-tight mt-1">{t.about.founder1Name}</h3>
+                    <p
+                      className="text-xs font-semibold uppercase tracking-[0.22em]"
+                      style={{ color: "#E040A0" }}
+                    >
+                      {t.about.founder1Role}
+                    </p>
+                    <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-white leading-tight mt-1">
+                      {t.about.founder1Name}
+                    </h3>
                   </div>
 
                   <ScrollableBio thumbColor="#E040A0">
                     {t.about.founder1Bio.split("\n\n").map((para, i) => (
-                      <p key={i} className="text-sm sm:text-base text-white/55 leading-relaxed">{para}</p>
+                      <p
+                        key={i}
+                        className="text-sm sm:text-base text-white/55 leading-relaxed"
+                      >
+                        {para}
+                      </p>
                     ))}
                   </ScrollableBio>
 
                   <div className="flex-shrink-0 flex flex-wrap gap-2 pt-4">
-                    {[t.about.founder1Tag1, t.about.founder1Tag2, t.about.founder1Tag3].map((tag) => (
-                      <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full" style={{ background: "rgba(224,64,160,0.08)", border: "1px solid rgba(224,64,160,0.22)", color: "rgba(224,64,160,0.85)" }}>{tag}</span>
+                    {[
+                      t.about.founder1Tag1,
+                      t.about.founder1Tag2,
+                      t.about.founder1Tag3,
+                    ].map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs font-medium px-3 py-1 rounded-full"
+                        style={{
+                          background: "rgba(224,64,160,0.08)",
+                          border: "1px solid rgba(224,64,160,0.22)",
+                          color: "rgba(224,64,160,0.85)",
+                        }}
+                      >
+                        {tag}
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -528,40 +455,155 @@ export default function AboutPage() {
             >
               <div
                 className="absolute top-0 left-0 right-0 h-[1px] z-10"
-                style={{ background: "linear-gradient(90deg, transparent 0%, #FFB76C 20%, rgba(255,183,108,0.3) 55%, transparent 100%)" }}
+                style={{
+                  background:
+                    "linear-gradient(90deg, transparent 0%, #FFB76C 20%, rgba(255,183,108,0.3) 55%, transparent 100%)",
+                }}
               />
               <div
                 aria-hidden
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{ background: "radial-gradient(ellipse at 0% 50%, rgba(255,183,108,0.06) 0%, transparent 60%)" }}
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 0% 50%, rgba(255,183,108,0.06) 0%, transparent 60%)",
+                }}
               />
 
               <div className="relative grid grid-cols-1 lg:grid-cols-[30%_1fr] h-full">
                 <div className="relative hidden lg:block overflow-hidden">
-                  <Image src="/team/lyubomir-iliev.webp" alt="Lyubomir Iliev" fill className="object-cover object-top" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, transparent 55%, rgb(13,10,24) 100%)" }} />
+                  <Image
+                    src="/team/lyubomir-iliev.webp"
+                    alt="Lyubomir Iliev"
+                    fill
+                    className="object-cover object-top"
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, transparent 55%, rgb(13,10,24) 100%)",
+                    }}
+                  />
                 </div>
 
                 <div className="flex flex-col h-full p-6 sm:p-8 lg:p-10 lg:pl-6 overflow-hidden">
                   <div className="flex-shrink-0 mb-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em]" style={{ color: "#FFB76C" }}>{t.about.founder2Role}</p>
-                    <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-white leading-tight mt-1">{t.about.founder2Name}</h3>
+                    <p
+                      className="text-xs font-semibold uppercase tracking-[0.22em]"
+                      style={{ color: "#FFB76C" }}
+                    >
+                      {t.about.founder2Role}
+                    </p>
+                    <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-white leading-tight mt-1">
+                      {t.about.founder2Name}
+                    </h3>
                   </div>
 
-                  <div className="flex flex-col gap-3 overflow-hidden" style={{ flex: "1 1 0px", minHeight: 0 }}>
+                  <div
+                    className="flex flex-col gap-3 overflow-hidden"
+                    style={{ flex: "1 1 0px", minHeight: 0 }}
+                  >
                     {t.about.founder2Bio.split("\n\n").map((para, i) => (
-                      <p key={i} className="text-sm sm:text-base text-white/55 leading-relaxed">{para}</p>
+                      <p
+                        key={i}
+                        className="text-sm sm:text-base text-white/55 leading-relaxed"
+                      >
+                        {para}
+                      </p>
                     ))}
                   </div>
 
                   <div className="flex-shrink-0 flex flex-wrap gap-2 pt-4">
-                    {[t.about.founder2Tag1, t.about.founder2Tag2, t.about.founder2Tag3].map((tag) => (
-                      <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full" style={{ background: "rgba(255,183,108,0.08)", border: "1px solid rgba(255,183,108,0.22)", color: "rgba(255,183,108,0.85)" }}>{tag}</span>
+                    {[
+                      t.about.founder2Tag1,
+                      t.about.founder2Tag2,
+                      t.about.founder2Tag3,
+                    ].map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs font-medium px-3 py-1 rounded-full"
+                        style={{
+                          background: "rgba(255,183,108,0.08)",
+                          border: "1px solid rgba(255,183,108,0.22)",
+                          color: "rgba(255,183,108,0.85)",
+                        }}
+                      >
+                        {tag}
+                      </span>
                     ))}
                   </div>
                 </div>
               </div>
             </motion.div>
+          {/* Three-column value cards */}
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-px mt-6"
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              borderRadius: "20px",
+              overflow: "hidden",
+            }}
+          >
+            {[
+              {
+                number: "01",
+                iconColor: "#E040A0",
+                glow: "rgba(224,64,160,0.15)",
+                title: t.whyAviva.cards[0].title,
+                body: t.whyAviva.cards[0].body,
+              },
+              {
+                number: "02",
+                iconColor: "#9B59F5",
+                glow: "rgba(155,89,245,0.15)",
+                title: t.whyAviva.cards[1].title,
+                body: t.whyAviva.cards[1].body,
+              },
+              {
+                number: "03",
+                iconColor: "#4A9EFF",
+                glow: "rgba(74,158,255,0.15)",
+                title: t.whyAviva.cards[2].title,
+                body: t.whyAviva.cards[2].body,
+              },
+            ].map((card) => (
+              <motion.div
+                key={card.number}
+                variants={fadeUp}
+                className="group relative p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col gap-5 cursor-default min-h-[320px] md:min-h-[360px]"
+                style={{ background: "rgb(10,8,18)" }}
+                whileHover={{
+                  background: `radial-gradient(circle at 30% 0%, ${card.glow} 0%, rgb(10,8,18) 60%)`,
+                  transition: { duration: 0.4 },
+                }}
+              >
+                <div
+                  className="absolute top-0 left-0 right-0 h-[1px] opacity-30 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `linear-gradient(90deg, transparent, ${card.iconColor}, transparent)`,
+                  }}
+                />
+                <span
+                  className="font-display font-extrabold text-[80px] leading-none select-none opacity-[0.06] group-hover:opacity-[0.12] transition-opacity duration-300 absolute top-6 right-8"
+                  style={{ color: card.iconColor }}
+                >
+                  {card.number}
+                </span>
+                <div className="flex flex-col gap-5 pt-8">
+                  <h3 className="font-display font-bold text-xl sm:text-2xl text-white leading-snug">
+                    {card.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-white/50 leading-relaxed">
+                    {card.body}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
           </motion.div>
         </div>
       </section>
@@ -619,50 +661,30 @@ export default function AboutPage() {
                   letterSpacing: "-0.03em",
                 }}
               >
-                {t.about.aiTitle}{" "}
-                <span
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #FFB76C 0%, #E040A0 55%, #9B59F5 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  {t.about.aiTitleAccent}
-                </span>
+                {t.about.aiTitle}
               </motion.h2>
             </div>
 
-            {/* Right — two body paragraphs */}
+            {/* Right — three body paragraphs */}
             <motion.div
               variants={staggerContainer}
               className="flex flex-col gap-6"
             >
-              <motion.div
-                variants={fadeUp}
-                className="p-6 sm:p-8 rounded-2xl"
-                style={{
-                  background: "rgba(255,255,255,0.025)",
-                  border: "1px solid rgba(255,255,255,0.06)",
-                }}
-              >
-                <p className="text-white/55 leading-relaxed text-base sm:text-lg">
-                  {t.about.aiBody1}
-                </p>
-              </motion.div>
-              <motion.div
-                variants={fadeUp}
-                className="p-6 sm:p-8 rounded-2xl"
-                style={{
-                  background: "rgba(255,255,255,0.025)",
-                  border: "1px solid rgba(255,255,255,0.06)",
-                }}
-              >
-                <p className="text-white/55 leading-relaxed text-base sm:text-lg">
-                  {t.about.aiBody2}
-                </p>
-              </motion.div>
+              {[t.about.aiBody1, t.about.aiBody2, t.about.aiBody3].map((body, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  className="p-6 sm:p-8 rounded-2xl"
+                  style={{
+                    background: "rgba(255,255,255,0.025)",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                  }}
+                >
+                  <p className="text-white/55 leading-relaxed text-base sm:text-lg">
+                    {body}
+                  </p>
+                </motion.div>
+              ))}
             </motion.div>
           </motion.div>
         </div>

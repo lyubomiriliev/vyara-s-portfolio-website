@@ -23,7 +23,18 @@
       "Bash(sips -g pixelWidth -g pixelHeight /Users/lyubomirsmacbookpro/Desktop/PROJECTS/vyara/vyara-s-portfolio-website/public/apple-touch-icon.png)",
       "Bash(node -e \"console.log\\('lenis version:', require\\('./node_modules/lenis/package.json'\\).version\\)\")",
       "Bash(echo \"exit: $?\")",
-      "Bash(ffmpeg -i /Users/lyubomirsmacbookpro/Desktop/PROJECTS/vyara/vyara-s-portfolio-website/public/team/lyubomir-iliev.jpg -q:v 85 /Users/lyubomirsmacbookpro/Desktop/PROJECTS/vyara/vyara-s-portfolio-website/public/team/lyubomir-iliev.webp)"
+      "Bash(ffmpeg -i /Users/lyubomirsmacbookpro/Desktop/PROJECTS/vyara/vyara-s-portfolio-website/public/team/lyubomir-iliev.jpg -q:v 85 /Users/lyubomirsmacbookpro/Desktop/PROJECTS/vyara/vyara-s-portfolio-website/public/team/lyubomir-iliev.webp)",
+      "Bash(git restore *)",
+      "Bash(echo \"BUILD_EXIT=$?\")",
+      "Bash(grep -rzoP '<Image\\\\b\\(?:\\(?!alt=\\)[\\\\s\\\\S]\\){0,400}?/>' app components --include=\"*.tsx\")",
+      "Bash(chmod +x scripts/compress-videos.sh)",
+      "Bash(command -v ffmpeg)",
+      "Bash(bash scripts/compress-videos.sh)",
+      "Bash(bash scripts/compress-videos.sh --run)",
+      "Bash(echo \"COMPRESS_EXIT=$?\")",
+      "Bash(pkill -f \"compress-videos.sh\")",
+      "Bash(pkill -f \"ffmpeg.*REELS\")",
+      "Bash(pkill ffmpeg *)"
     ]
   }
 }

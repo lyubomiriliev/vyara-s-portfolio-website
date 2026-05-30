@@ -2,10 +2,28 @@ import type { Metadata } from "next";
 import FAQPage from "@/components/pages/FAQPage";
 
 export const metadata: Metadata = {
-  title: "FAQ — Aviva Digital",
-  description:
-    "Answers to the most common questions about working with Aviva Digital — services, pricing, timelines, AI approach, and onboarding.",
-  alternates: { canonical: "https://www.avivadigital.bg/faq" },
+  title: "ЧЗВ — Въпроси и Отговори | Aviva Digital",
+  description: "Отговори на честите въпроси за Aviva Digital: услуги, цени, срокове, AI подход и онбординг. Answers to common questions about working with Aviva Digital — services, pricing, timelines, AI approach & onboarding.",
+  keywords: [
+    'въпроси дигитална агенция', 'цени дигитален маркетинг', 'как работи AI маркетинг',
+    'онбординг маркетинг агенция', 'FAQ агенция България',
+    'digital agency FAQ', 'marketing agency pricing Bulgaria', 'how AI marketing works',
+    'digital agency onboarding', 'Aviva Digital FAQ',
+  ],
+  alternates: {
+    canonical: "https://www.avivadigital.bg/faq",
+    languages: {
+      'bg': 'https://www.avivadigital.bg/faq',
+      'en': 'https://www.avivadigital.bg/faq',
+      'x-default': 'https://www.avivadigital.bg/faq',
+    },
+  },
+  openGraph: {
+    title: 'ЧЗВ | Aviva Digital — Въпроси и Отговори',
+    description: 'Отговори на честите въпроси за Aviva Digital. Frequently asked questions about Aviva Digital services, pricing & AI approach.',
+    url: 'https://www.avivadigital.bg/faq',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Aviva Digital FAQ — Questions & Answers' }],
+  },
 };
 
 const faqSchema = {

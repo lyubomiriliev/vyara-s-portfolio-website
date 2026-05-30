@@ -13,9 +13,20 @@ export async function generateMetadata(
   const { slug } = await params
   const project = projects.find(p => p.slug === slug)
   if (!project) return {}
+  const canonicalUrl = `https://www.avivadigital.bg/work/${slug}`
   return {
-    title: `${project.title} — Aviva Digital`,
-    description: project.description,
+    title: `${project.title} | Портфолио — Aviva Digital`,
+    description: `${project.description} Aviva Digital — AI дигитална агенция в София, България. Sofia, Bulgaria.`,
+    alternates: {
+      canonical: canonicalUrl,
+      languages: { 'bg': canonicalUrl, 'en': canonicalUrl, 'x-default': canonicalUrl },
+    },
+    openGraph: {
+      title: `${project.title} | Aviva Digital`,
+      description: project.description,
+      url: canonicalUrl,
+      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: `${project.title} — Aviva Digital Portfolio` }],
+    },
   }
 }
 

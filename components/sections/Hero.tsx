@@ -11,12 +11,12 @@ import { useLang } from "@/lib/LanguageContext";
 
 const CYCLING_WORDS: Record<"en" | "bg", string[]> = {
   en: [
-    "Iconic Brands,",
-    "Bold Visions,",
-    "Digital Leaders,",
-    "Viral Stories,",
-    "Market Leaders,",
-    "Lasting Impact,",
+    "A faster, modern website",
+    "More innovative AI integrations",
+    "More beautiful designs",
+    "A stronger social media presence",
+    "More successful Meta ads",
+    "More engaging email campaigns",
   ],
   bg: [
     "По-бърз и модерен уебсайт",
@@ -185,7 +185,6 @@ export default function Hero() {
       {/* Layer 1 — full-bleed wave background. Native <picture> so mobile
          pulls the 14 KB version instead of the 52 KB desktop one. */}
       <picture
-        role="presentation"
         className="absolute inset-0 pointer-events-none"
         style={{ opacity: 0.55 }}
       >
@@ -285,7 +284,7 @@ export default function Hero() {
               <ButtonPrimary size="lg">{t.hero.ctaPrimary}</ButtonPrimary>
             </Link>
             <Link href="/work">
-              <ButtonOutline size="lg">{t.hero.ctaSecondary}</ButtonOutline>
+              <ButtonOutline size="lg" className="!border-[#FFB76C] !text-[#FFB76C] hover:!bg-[#FFB76C]/10">{t.hero.ctaSecondary}</ButtonOutline>
             </Link>
           </motion.div>
 

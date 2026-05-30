@@ -44,7 +44,12 @@ export function PageHero({
       <div className="container relative z-10 text-center max-w-3xl 3xl:max-w-4xl 4xl:max-w-5xl mx-auto">
         <SectionLabel>{label}</SectionLabel>
         <h1 className={titleClass}>
-          {titleWithout}
+          {titleWithout.split("\n").map((line, i, arr) => (
+            <span key={i}>
+              {line}
+              {i < arr.length - 1 && <br />}
+            </span>
+          ))}
           {titleGradient && (
             <>
               <br />

@@ -18,10 +18,10 @@ export const translations = {
     // Hero
     hero: {
       badge: "AI-Powered Digital Agency",
-      line1: "Crafting",
-      line2: "Iconic Brands",
-      line3: "Engineered",
-      sub: "A new breed of digital agency — fusing AI intelligence with award-winning craft. We design, build, and scale brands the world stops to look at.",
+      line1: "Your business deserves...",
+      line2: "Strong Brands",
+      line3: "",
+      sub: "A new-generation digital agency — AI technology, Websites and Social Media, built for the experience today's consumer expects.",
       ctaPrimary: "What We Offer →",
       ctaSecondary: "See Our Portfolio",
       stats: [
@@ -126,8 +126,8 @@ export const translations = {
       ctaButton: "Start a Project",
       ctaCall: "Or call us →",
       stats: [
-        { value: "10+", label: "Brands Scaled" },
-        { value: "3 yrs", label: "Experience" },
+        { value: "16+", label: "Brands Scaled" },
+        { value: "8 yrs", label: "Experience" },
         { value: "100%", label: "Committed" },
       ],
     },
@@ -222,14 +222,16 @@ export const translations = {
       whyTitle:
         "Consumers no longer choose a business only because they need its product.",
       whySub:
-        "They choose it for the way it looks, communicates, and the experience it offers. Old practices and established approaches in marketing, business and websites no longer work the way they used to.\n\nWe know this from both sides — as professionals with years of experience and as consumers from the same generation. That's why we don't work from a template. Every client gets an approach built around their business and what actually works today.",
+        "They choose it for the way it looks, communicates, and the experience it offers. Old practices and established approaches in marketing, business and websites no longer work the way they used to.\n\nWe know this from both sides, as professionals with years of experience and as consumers from the same generation. That's why we don't work from a template. Every client gets an approach built around their business and what actually works today.",
       aiLabel: "AI — A TOOL, NOT A REPLACEMENT",
       aiTitle: "AI entered the digital world just a year or two ago.",
-      aiTitleAccent: "We were already here.",
+      aiTitleAccent: "",
       aiBody1:
-        "We already had years of real work with real businesses — in marketing, design and web development — behind us. When AI became accessible, we didn't treat it as a replacement. We embraced it as a tool that elevates our work to a completely different level.",
+        "We already had years of real work with real businesses — in marketing, design and web development — behind us.",
       aiBody2:
-        "More precise visuals, smarter content, faster and more intelligent websites, more personalised communication for our clients' customers. The combination of years of experience and mastery of the latest AI technologies is something most agencies are still developing. For us, it's already everyday practice.",
+        "When AI became accessible, we didn't treat it as a replacement. We embraced it as a tool that elevates our work to a completely different level — more precise visuals, smarter content, faster and more intelligent websites, more personalised communication for our clients' customers.",
+      aiBody3:
+        "The combination of years of experience and mastery of the latest AI technologies is something most agencies are still developing. For us, it's already everyday practice.",
       ctaTitle: "Want to work together?",
       ctaButton: "Get a Free Consultation →",
       teamSectionLabel: "THE FOUNDERS",
@@ -499,8 +501,8 @@ export const translations = {
     // Service dropdown
     serviceDropdown: {
       categories: {
-        marketing: "Marketing & Social",
-        creative: "Creative & Content",
+        marketing: "Digital Marketing",
+        creative: "Design & Video",
         web: "Web & Development",
       },
       services: {
@@ -536,18 +538,6 @@ export const translations = {
         ],
       },
       {
-        id: "meta-ads-campaigns",
-        title: "Meta Ads Campaigns",
-        description:
-          "High-converting Facebook and Instagram ad campaigns with precise targeting.",
-        benefits: [
-          "Campaign strategy",
-          "A/B testing",
-          "Retargeting funnels",
-          "ROAS optimization",
-        ],
-      },
-      {
         id: "ai-powered-marketing",
         title: "AI-Powered Marketing",
         description:
@@ -557,6 +547,18 @@ export const translations = {
           "Real-time optimization",
           "AI copywriting",
           "Performance forecasting",
+        ],
+      },
+      {
+        id: "meta-ads-campaigns",
+        title: "Meta Ads Campaigns",
+        description:
+          "High-converting Facebook and Instagram ad campaigns with precise targeting.",
+        benefits: [
+          "Campaign strategy",
+          "A/B testing",
+          "Retargeting funnels",
+          "ROAS optimization",
         ],
       },
       {
@@ -596,18 +598,6 @@ export const translations = {
         ],
       },
       {
-        id: "graphic-design",
-        title: "Graphic Design",
-        description:
-          "Digital creatives — brand-consistent design that stops the scroll.",
-        benefits: [
-          "Brand consistency",
-          "Digital formats",
-          "Animated assets",
-          "Unlimited revisions",
-        ],
-      },
-      {
         id: "video-filming",
         title: "Video Filming",
         description:
@@ -632,6 +622,18 @@ export const translations = {
         ],
       },
       {
+        id: "ai-video-generation",
+        title: "AI Video Generation",
+        description:
+          "Cinematic AI video sequences — hours of production compressed into minutes of output.",
+        benefits: [
+          "Cinematic AI video",
+          "Brand-consistent style",
+          "Multiple aspect ratios",
+          "Platform-optimized exports",
+        ],
+      },
+      {
         id: "ai-image-generation",
         title: "AI Image Generation",
         description:
@@ -644,15 +646,15 @@ export const translations = {
         ],
       },
       {
-        id: "ai-video-generation",
-        title: "AI Video Generation",
+        id: "graphic-design",
+        title: "Graphic Design",
         description:
-          "Cinematic AI video sequences — hours of production compressed into minutes of output.",
+          "Digital creatives — brand-consistent design that stops the scroll.",
         benefits: [
-          "Cinematic AI video",
-          "Brand-consistent style",
-          "Multiple aspect ratios",
-          "Platform-optimized exports",
+          "Brand consistency",
+          "Digital formats",
+          "Animated assets",
+          "Unlimited revisions",
         ],
       },
       {
@@ -692,18 +694,6 @@ export const translations = {
         ],
       },
       {
-        id: "saas-solutions",
-        title: "SaaS Solutions",
-        description:
-          "Scalable SaaS products from MVP to production-ready platform.",
-        benefits: [
-          "Scalable architecture",
-          "Auth & billing",
-          "Dashboard UI",
-          "API integrations",
-        ],
-      },
-      {
         id: "web-applications",
         title: "Web Applications",
         description:
@@ -713,6 +703,30 @@ export const translations = {
           "Offline support",
           "Push notifications",
           "App store ready",
+        ],
+      },
+      {
+        id: "seo-optimization-web",
+        title: "SEO Optimization",
+        description:
+          "Technical and content SEO to dominate search rankings in your niche.",
+        benefits: [
+          "Keyword research",
+          "On-page optimization",
+          "Link building",
+          "Monthly reporting",
+        ],
+      },
+      {
+        id: "saas-solutions",
+        title: "SaaS Solutions",
+        description:
+          "Scalable SaaS products from MVP to production-ready platform.",
+        benefits: [
+          "Scalable architecture",
+          "Auth & billing",
+          "Dashboard UI",
+          "API integrations",
         ],
       },
       {
@@ -802,6 +816,42 @@ export const translations = {
       ],
     },
 
+    // SEO — page meta titles & descriptions (used in page.tsx metadata exports)
+    seo: {
+      home: {
+        title: "Aviva Digital — AI Digital Agency | Sofia, Bulgaria",
+        description: "AI-powered digital agency in Sofia, Bulgaria: social media management, Meta Ads, custom websites, AI marketing & content. Full-service solutions for brands that want to grow.",
+      },
+      services: {
+        title: "Services — Digital Marketing, Web & AI | Aviva Digital",
+        description: "18 digital marketing services: social media management, Meta Ads, AI marketing, web development, graphic design & video production. Full-service digital agency in Sofia, Bulgaria.",
+      },
+      work: {
+        title: "Portfolio — Design, Social Media & Web | Aviva Digital",
+        description: "Browse our portfolio: brand identities, social media campaigns, web development & AI-generated content for clients across Bulgaria.",
+      },
+      contact: {
+        title: "Contact — Free Strategy Consultation | Aviva Digital",
+        description: "Get in touch with Aviva Digital, Sofia. Free strategy call, no commitment — we respond within 24 hours.",
+      },
+      about: {
+        title: "About Us — Team, Experience & Vision | Aviva Digital",
+        description: "Aviva Digital — next-generation AI digital agency in Sofia, Bulgaria. Real experience, AI-powered execution. Meet the founders.",
+      },
+      clients: {
+        title: "Clients — Real Brands, Real Results | Aviva Digital",
+        description: "Real brands, real results: see how Aviva Digital delivered measurable growth for 16+ clients across Bulgaria.",
+      },
+      faq: {
+        title: "FAQ — Questions & Answers | Aviva Digital",
+        description: "Answers to common questions about working with Aviva Digital — services, pricing, timelines, AI approach & onboarding.",
+      },
+      projects: {
+        title: "Web Projects — Websites & Applications | Aviva Digital",
+        description: "Custom-built websites & web applications: landing pages, e-commerce stores, SaaS platforms — speed, SEO & conversion-optimized.",
+      },
+    },
+
     // Language
     language: "Language",
   },
@@ -815,7 +865,7 @@ export const translations = {
       projects: "Проекти",
       clients: "Клиенти",
       about: "За нас",
-      contact: "Контакт",
+      contact: "Контакти",
     },
     cta: "Свържете се",
     seeAll: "Вижте всички →",
@@ -826,8 +876,8 @@ export const translations = {
       line1: "Твоят бизнес заслужава...",
       line2: "Силни брандове",
       line3: "",
-      sub: "Дигитална агенция от ново поколение - AI технологии, уебсайтове и социални мрежи, създадени за изживяването, което днешният потребител търси.",
-      ctaPrimary: "Какво предлагаме →",
+      sub: "Дигитална агенция от ново поколение - AI технологии, Уебсайтове и Социални мрежи, създадени за изживяването, което днешният потребител търси.",
+      ctaPrimary: "Какво предлагаме",
       ctaSecondary: "Вижте портфолиото ни",
       stats: [
         { label: "Поста и сторита" },
@@ -879,7 +929,7 @@ export const translations = {
       sub: "От AI съдържание до уеб разработка — работим по целия процес, не само по части от него.",
       seeAll: "Вижте всички услуги →",
       learnMore: "Научете повече →",
-      getStarted: "Започни →",
+      getStarted: "Започнете →",
       across3: "18 услуги в 3 направления",
       allServices: "Всички услуги",
       columns: [
@@ -924,7 +974,7 @@ export const translations = {
       pageTitleAccent: "открояват",
       pageSub:
         "Десет бизнеса. Десет трансформации. Всеки превърнат в разпознаваема марка чрез стратегия, дизайн и AI изпълнение.",
-      scrollCue: "Скролни надолу",
+      scrollCue: "Скролирайте надолу",
       curvedText: "ИЗДИГНИ ПРИСЪСТВИЕТО НА СВОЯ БРАНД",
       showcaseLabel: "РАЗГЛЕДАЙТЕ ВСИЧКИ",
       showcaseTitle: "Всеки бранд —",
@@ -936,11 +986,11 @@ export const translations = {
       ctaTitleAccent: "да расте така?",
       ctaSub:
         "Безплатна 30-минутна стратегическа среща. Без ангажимент. Конкретни идеи.",
-      ctaButton: "Започни проект",
-      ctaCall: "Или се обади →",
+      ctaButton: "Започнете проект",
+      ctaCall: "Или се обадете →",
       stats: [
-        { value: "10+", label: "Обслужени бранда" },
-        { value: "3 год.", label: "Опит" },
+        { value: "16+", label: "Обслужени бранда" },
+        { value: "8 год.", label: "Опит" },
         { value: "100%", label: "Ангажираност" },
       ],
     },
@@ -1021,27 +1071,30 @@ export const translations = {
       ctaTitle: "Искате сайт, който",
       ctaTitleAccent: "наистина работи?",
       ctaSub: "Разкажете ни за проекта си и ще се свържем с вас до 24 часа.",
-      ctaButton: "Започни проекта →",
+      ctaButton: "Започнете проекта →",
     },
 
     // About page
     about: {
       pageLabel: "КОИ СМЕ НИЕ",
-      pageTitle: "Млади. Опитни. Винаги една крачка пред дигиталния свят.",
+      pageTitle:
+        "Млади. С богат опит. Винаги една крачка пред дигиталния свят.",
       pageDescription:
         "Дигитална агенция от ново поколение, създадена от хора с дългогодишен опит, дълбока експертиза в AI технологиите и ясна визия за това как трябва да изглежда дигиталното присъствие на един съвременен бизнес.",
       whyLabel: "ЗАЩО СМЕ РАЗЛИЧНИ",
       whyTitle:
-        "Потребителите вече не избират бизнес само защото имат нужда от него.",
+        "Потребителите вече не избират бизнес само защото имат нужда от продукта или услугите му.",
       whySub:
-        "Избират го заради начина, по който изглежда, комуникира и какво изживяване предлага. Старите практики и утвърдени подходи в маркетинга, бизнеса и уебсайтовете вече не работят както преди.\n\nНие познаваме това от двете страни — като професионалисти с години опит и като потребители от същото поколение. Затова не работим по шаблон. Всеки клиент получава подход, изграден около неговия бизнес и това, което наистина работи днес.",
-      aiLabel: "AI — ИНСТРУМЕНТ, НЕ ЗАМЕСТИТЕЛ",
+        "Избират го заради начина, по който изглежда, комуникира и какво изживяване предлага. Старите практики и утвърдени подходи в маркетинга, бизнеса и уебсайтовете вече не работят както преди.\n\nНие познаваме това от двете страни, като професионалисти с години опит и като потребители от същото поколение. Затова не работим по шаблон. Всеки клиент получава подход, изграден около неговия бизнес и това, което наистина работи днес.",
+      aiLabel: "AI - ИНСТРУМЕНТ, НЕ ЗАМЕСТИТЕЛ",
       aiTitle: "AI навлезе активно в дигиталния свят едва преди година-две.",
-      aiTitleAccent: "Ние вече бяхме тук.",
+      aiTitleAccent: "",
       aiBody1:
-        "Вече имахме зад гърба си години реална работа с истински бизнеси — в маркетинга, дизайна и уеб разработката. Когато AI стана достъпен, не го приехме като заместител. Приехме го като инструмент, който вдига работата ни на съвсем различно ниво.",
+        "Ние вече имахме зад гърба си години реална работа с истински бизнеси, в маркетинга, дизайна и уеб разработката.",
       aiBody2:
-        "По-прецизни визии, по-умно съдържание, по-бързи и по-интелигентни уебсайтове, по-персонална комуникация с клиентите на нашите клиенти. Комбинацията от дългогодишен опит и владеене на най-новите AI технологии е нещо, което повечето агенции все още развиват. За нас вече е ежедневие.",
+        "Когато AI стана достъпен, не го приехме като заместител. Приехме го като инструмент, който вдига работата ни на съвсем различно ниво - по-прецизни визии, по-умно съдържание, по-бързи и по-интелигентни уебсайтове, по-персонална комуникация с клиентите на нашите клиенти.",
+      aiBody3:
+        "Комбинацията от дългогодишен опит и владеене на най-новите AI технологии е нещо, което повечето агенции все още развиват. За нас вече е ежедневие.",
       ctaTitle: "Искате да работим заедно?",
       ctaButton: "Безплатна консултация →",
       teamSectionLabel: "ОСНОВАТЕЛИТЕ",
@@ -1099,7 +1152,7 @@ export const translations = {
     pageHeroes: {
       services: {
         label: "КАКВО ПРАВИМ",
-        title: "Всичко, от което брандът ви се нуждае, за да",
+        title: "Всичко, от което брандът\nви се нуждае, за да",
         titleGradient: "доминира онлайн",
         description:
           "От AI маркетинг до уеб разработка — 18 услуги в три направления, всички под един покрив.",
@@ -1312,9 +1365,9 @@ export const translations = {
     // Service dropdown
     serviceDropdown: {
       categories: {
-        marketing: "Маркетинг и социални мрежи",
-        creative: "Криейтив и съдържание",
-        web: "Уеб и разработка",
+        marketing: "Дигитален маркетинг",
+        creative: "Дизайн и видео",
+        web: "Уебсайтове и приложения",
       },
       services: {
         socialMedia: "Управление на социални мрежи",
@@ -1349,18 +1402,6 @@ export const translations = {
         ],
       },
       {
-        id: "meta-ads-campaigns",
-        title: "Meta Ads кампании",
-        description:
-          "Високоефективни рекламни кампании във Facebook и Instagram с прецизно таргетиране.",
-        benefits: [
-          "Стратегия на кампанията",
-          "A/B тестване",
-          "Ретаргетинг фунии",
-          "ROAS оптимизация",
-        ],
-      },
-      {
         id: "ai-powered-marketing",
         title: "Маркетинг с изкуствен интелект",
         description:
@@ -1370,6 +1411,18 @@ export const translations = {
           "Оптимизация в реално време",
           "AI копирайтинг",
           "Прогнозиране на резултати",
+        ],
+      },
+      {
+        id: "meta-ads-campaigns",
+        title: "Meta Ads кампании",
+        description:
+          "Високоефективни рекламни кампании във Facebook и Instagram с прецизно таргетиране.",
+        benefits: [
+          "Стратегия на кампанията",
+          "A/B тестване",
+          "Ретаргетинг фунии",
+          "ROAS оптимизация",
         ],
       },
       {
@@ -1409,18 +1462,6 @@ export const translations = {
         ],
       },
       {
-        id: "graphic-design",
-        title: "Графичен дизайн",
-        description:
-          "Дигитални визии — дизайн, съответстващ на бранда, който спира скролването.",
-        benefits: [
-          "Консистентност на бранда",
-          "Дигитални формати",
-          "Анимирани активи",
-          "Неограничени корекции",
-        ],
-      },
-      {
         id: "video-filming",
         title: "Видео заснемане",
         description:
@@ -1445,6 +1486,18 @@ export const translations = {
         ],
       },
       {
+        id: "ai-video-generation",
+        title: "AI генериране на видео съдържание",
+        description:
+          "Кинематографични AI видео последователности — часове продукция, компресирани в минути изпълнение.",
+        benefits: [
+          "Кинематографично AI видео",
+          "Стил, съответстващ на бранда",
+          "Множество съотношения на екрана",
+          "Оптимизиран експорт за платформи",
+        ],
+      },
+      {
         id: "ai-image-generation",
         title: "AI генериране на изображения",
         description:
@@ -1457,15 +1510,15 @@ export const translations = {
         ],
       },
       {
-        id: "ai-video-generation",
-        title: "AI генериране на видео",
+        id: "graphic-design",
+        title: "Графичен дизайн",
         description:
-          "Кинематографични AI видео последователности — часове продукция, компресирани в минути изпълнение.",
+          "Дигитални визии — дизайн, съответстващ на бранда, който спира скролването.",
         benefits: [
-          "Кинематографично AI видео",
-          "Стил, съответстващ на бранда",
-          "Множество съотношения на екрана",
-          "Оптимизиран експорт за платформи",
+          "Консистентност на бранда",
+          "Дигитални формати",
+          "Анимирани активи",
+          "Неограничени корекции",
         ],
       },
       {
@@ -1484,7 +1537,7 @@ export const translations = {
         id: "custom-websites-nextjs",
         title: "Персонализирани уебсайтове",
         description:
-          "Уникални React / Next.js разработки с архитектура, ориентирана към производителност.",
+          "React / Next.js сайтове с архитектура за максимална производителност.",
         benefits: [
           "99+ Lighthouse резултат",
           "TypeScript кодова база",
@@ -1505,18 +1558,6 @@ export const translations = {
         ],
       },
       {
-        id: "saas-solutions",
-        title: "SaaS решения",
-        description:
-          "Мащабируеми SaaS продукти — от MVP до производствено-готова платформа.",
-        benefits: [
-          "Мащабируема архитектура",
-          "Автентикация & фактуриране",
-          "Dashboard интерфейс",
-          "API интеграции",
-        ],
-      },
-      {
         id: "web-applications",
         title: "Уеб приложения",
         description:
@@ -1526,6 +1567,30 @@ export const translations = {
           "Офлайн поддръжка",
           "Push известия",
           "Готовност за App Store",
+        ],
+      },
+      {
+        id: "seo-optimization-web",
+        title: "SEO оптимизация",
+        description:
+          "Техническо и съдържателно SEO за доминиране в резултатите от търсене във вашата ниша.",
+        benefits: [
+          "Проучване на ключови думи",
+          "On-page оптимизация",
+          "Изграждане на връзки",
+          "Месечни отчети",
+        ],
+      },
+      {
+        id: "saas-solutions",
+        title: "SaaS решения",
+        description:
+          "Мащабируеми SaaS продукти — от MVP до производствено-готова платформа.",
+        benefits: [
+          "Мащабируема архитектура",
+          "Автентикация & фактуриране",
+          "Dashboard интерфейс",
+          "API интеграции",
         ],
       },
       {
@@ -1612,6 +1677,42 @@ export const translations = {
           a: "Базирани сме в София, България, и работим с клиенти из цяла Европа и по света. Цялата работа се доставя дистанционно и дигитално, така че географията никога не е пречка. Съдържанието ни е локализирано за съответния пазар — на български, английски или на езика на вашата аудитория.",
         },
       ],
+    },
+
+    // SEO — page meta titles & descriptions (BG version; static metadata uses bilingual format)
+    seo: {
+      home: {
+        title: "Aviva Digital — AI Дигитална Агенция | София, България",
+        description: "AI дигитална агенция в София — социални мрежи, Meta Ads, уеб разработка и AI съдържание. Пълни дигитални решения за брандове, които искат да растат.",
+      },
+      services: {
+        title: "Услуги — Дигитален маркетинг, Уеб & AI | Aviva Digital",
+        description: "18 дигитални услуги: управление на социални мрежи, Meta Ads, AI маркетинг, уеб разработка, графичен дизайн и видео продукция. Пълна агенция в София, България.",
+      },
+      work: {
+        title: "Портфолио — Дизайн, Социални мрежи & Уеб | Aviva Digital",
+        description: "Разгледайте портфолиото на Aviva Digital — бранд дизайн, социални мрежи, уеб разработка и AI съдържание за клиенти в България.",
+      },
+      contact: {
+        title: "Контакти — Безплатна Консултация | Aviva Digital",
+        description: "Свържете се с Aviva Digital в София. Безплатна стратегическа консултация, без ангажимент. Отговаряме до 24 часа.",
+      },
+      about: {
+        title: "За нас — Екип, Опит & Визия | Aviva Digital",
+        description: "Aviva Digital — AI дигитална агенция от ново поколение в София. Реален опит, AI изпълнение. Запознайте се с основателите.",
+      },
+      clients: {
+        title: "Клиенти — Реални Брандове, Реални Резултати | Aviva Digital",
+        description: "Реални брандове, реални резултати: вижте как Aviva Digital постигна измерим ръст за 16+ клиента в България.",
+      },
+      faq: {
+        title: "ЧЗВ — Въпроси и Отговори | Aviva Digital",
+        description: "Отговори на честите въпроси за Aviva Digital: услуги, цени, срокове, AI подход и онбординг.",
+      },
+      projects: {
+        title: "Уеб Проекти — Сайтове & Приложения | Aviva Digital",
+        description: "Персонализирани уебсайтове и уеб приложения: landing pages, e-commerce магазини, SaaS платформи — скорост, SEO и конверсии.",
+      },
     },
 
     // Language

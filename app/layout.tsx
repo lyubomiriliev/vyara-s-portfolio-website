@@ -13,23 +13,56 @@ const tenorSans = Tenor_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Aviva Digital — AI-Powered Digital Agency | Sofia, Bulgaria',
-  description: 'AI-powered digital agency in Sofia — social media, Meta Ads, web development & AI content. Full-circle solutions for brands that want to grow.',
-  keywords: 'digital agency Bulgaria, AI marketing, social media management, web development Sofia, Meta Ads, SEO',
+  metadataBase: new URL('https://www.avivadigital.bg'),
+  title: {
+    template: '%s | Aviva Digital',
+    default: 'Aviva Digital — AI Дигитална Агенция | София, България',
+  },
+  description: 'AI дигитална агенция в София — социални мрежи, Meta Ads, уеб разработка и AI съдържание. Full-service digital agency in Sofia, Bulgaria: social media management, Meta Ads, custom websites, AI marketing. Пълни дигитални решения за брандове, които искат да растат.',
+  keywords: [
+    // Bulgarian primary keywords
+    'дигитална агенция', 'дигитална агенция София', 'маркетинг агенция България',
+    'AI маркетинг агенция', 'управление на социални мрежи', 'Meta реклами',
+    'уеб разработка София', 'SEO оптимизация', 'AI съдържание',
+    'социални мрежи агенция', 'графичен дизайн', 'видео продукция',
+    // English primary keywords
+    'digital agency Sofia', 'digital agency Bulgaria', 'AI marketing agency',
+    'social media management Sofia', 'Meta Ads Bulgaria', 'web development Sofia',
+    'AI content generation', 'SEO Bulgaria', 'graphic design agency Sofia',
+    'full service digital agency', 'marketing agency Bulgaria',
+  ],
+  authors: [{ name: 'Aviva Digital', url: 'https://www.avivadigital.bg' }],
+  creator: 'Aviva Digital',
+  publisher: 'Aviva Digital',
   openGraph: {
-    title: 'Aviva Digital — AI-Powered Digital Agency',
-    description: 'Full-circle digital solutions: marketing, advertising, and web development powered by AI.',
-    type: 'website', url: 'https://www.avivadigital.bg', locale: 'bg_BG',
-    images: [{ url: 'https://www.avivadigital.bg/aviva-digital-logo.png', width: 1200, height: 630, alt: 'Aviva Digital' }],
+    title: 'Aviva Digital — AI Дигитална Агенция | Sofia, Bulgaria',
+    description: 'AI дигитална агенция в София: социални мрежи, Meta Ads, уеб разработка. Full-service digital agency in Sofia, Bulgaria — social media, Meta Ads, web development & AI content.',
+    type: 'website',
+    url: 'https://www.avivadigital.bg',
+    siteName: 'Aviva Digital',
+    locale: 'bg_BG',
+    alternateLocale: 'en_US',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Aviva Digital — AI Дигитална Агенция | Sofia, Bulgaria' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aviva Digital — AI-Powered Digital Agency',
-    description: 'Full-circle digital solutions: marketing, advertising, and web development powered by AI.',
-    images: ['https://www.avivadigital.bg/aviva-digital-logo.png'],
+    title: 'Aviva Digital — AI Дигитална Агенция | Sofia, Bulgaria',
+    description: 'AI дигитална агенция в София: социални мрежи, Meta Ads, уеб разработка. Full-service digital solutions powered by AI.',
+    images: ['/og-image.jpg'],
   },
-  robots: { index: true, follow: true },
-  alternates: { canonical: 'https://www.avivadigital.bg' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
+  },
+  alternates: {
+    canonical: 'https://www.avivadigital.bg',
+    languages: {
+      'bg': 'https://www.avivadigital.bg',
+      'en': 'https://www.avivadigital.bg',
+      'x-default': 'https://www.avivadigital.bg',
+    },
+  },
   manifest: '/site.webmanifest',
   icons: {
     icon: [
@@ -45,14 +78,22 @@ export const metadata: Metadata = {
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "ProfessionalService"],
   name: "Aviva Digital",
+  alternateName: "Авива Дигитал",
   url: "https://www.avivadigital.bg",
-  logo: "https://www.avivadigital.bg/aviva-digital-white-logo.png",
-  description: "AI-powered full-service digital agency based in Sofia, Bulgaria. Social media management, Meta Ads, web development, graphic design, video production and AI content generation.",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://www.avivadigital.bg/aviva-digital-white-logo.png",
+    width: 400,
+    height: 400,
+  },
+  description: "AI дигитална агенция в София — социални мрежи, Meta Ads, уеб разработка, графичен дизайн, видео продукция и AI съдържание. AI-powered full-service digital agency in Sofia, Bulgaria.",
+  foundingDate: "2024",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Sofia",
+    addressRegion: "Sofia",
     addressCountry: "BG",
   },
   contactPoint: {
@@ -65,32 +106,39 @@ const organizationSchema = {
     "https://www.facebook.com/avivadigital.bg",
     "https://www.instagram.com/avivadigital",
   ],
-  knowsAbout: [
-    "Social Media Marketing",
-    "AI Marketing",
-    "Meta Ads",
-    "Web Development",
-    "Graphic Design",
-    "Video Production",
-    "SEO",
-    "E-commerce",
-  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Дигитални маркетинг услуги / Digital Marketing Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Управление на социални мрежи", alternateName: "Social Media Management" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Meta Ads кампании", alternateName: "Meta Ads Campaigns" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Уеб разработка", alternateName: "Website Development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI маркетинг", alternateName: "AI-Powered Marketing" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO оптимизация", alternateName: "SEO Optimization" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Графичен дизайн", alternateName: "Graphic Design" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Видео продукция", alternateName: "Video Production" } },
+    ],
+  },
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Aviva Digital",
+  alternateName: "Авива Дигитал",
   url: "https://www.avivadigital.bg",
-  image: "https://www.avivadigital.bg/aviva-digital-white-logo.png",
-  description: "Full-service AI-powered digital agency in Sofia, Bulgaria.",
+  image: "https://www.avivadigital.bg/og-image.jpg",
+  description: "AI дигитална агенция в София — пълни дигитални решения за съвременния бизнес. Full-service AI-powered digital agency in Sofia, Bulgaria.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Sofia",
+    addressRegion: "Sofia",
     addressCountry: "BG",
   },
   priceRange: "$$",
   openingHours: "Mo-Fr 09:00-18:00",
+  email: "office@avivadigital.bg",
+  areaServed: ["Bulgaria", "Europe"],
 };
 
 const websiteSchema = {

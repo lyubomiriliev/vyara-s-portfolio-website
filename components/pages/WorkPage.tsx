@@ -18,7 +18,7 @@ type Category = SocialCategory | "Custom Websites" | "E-Commerce";
 const SOCIAL_CATEGORIES = projectCategories as readonly SocialCategory[];
 
 // How many social items to show before "Show More"
-const SOCIAL_PAGE_SIZE = 8;
+const SOCIAL_PAGE_SIZE = 16;
 
 // CSS columns fills top-to-bottom per column, so with 4 columns:
 // visual row N = items at flat indices [N*4, N*4+1, N*4+2, N*4+3].
