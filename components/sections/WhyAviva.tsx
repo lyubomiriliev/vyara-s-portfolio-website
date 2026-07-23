@@ -81,7 +81,9 @@ export default function WhyAviva() {
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[1px] opacity-30 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: `linear-gradient(90deg, transparent, ${iconColor}, transparent)` }}
+                  style={{
+                    background: `linear-gradient(90deg, transparent, ${iconColor}, transparent)`,
+                  }}
                 />
                 <span
                   className="font-display font-extrabold text-[80px] leading-none select-none opacity-[0.06] group-hover:opacity-[0.12] transition-opacity duration-300 absolute top-6 right-8"
@@ -93,7 +95,9 @@ export default function WhyAviva() {
                   <h3 className="font-display font-bold text-xl sm:text-2xl text-white leading-snug">
                     {title}
                   </h3>
-                  <p className="text-sm sm:text-base text-white/50 leading-relaxed">{body}</p>
+                  <p className="text-sm sm:text-base text-white/50 leading-relaxed">
+                    {body}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -103,47 +107,98 @@ export default function WhyAviva() {
 
       {/* ── Section 2: Tools & CTA — with background image ── */}
       <section
-        className="section-padding relative overflow-hidden"
+        className="py-14 sm:py-20 lg:py-28 relative overflow-hidden"
         style={{ isolation: "isolate", background: BG }}
       >
-        {/* Tool-stack decorative background image */}
+        {/* Tool-stack decorative background image — full-width, subtle */}
         <motion.div
-          initial={{ opacity: 0, x: 80 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          initial={{ opacity: 0, scale: 1.06 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
           viewport={{ once: true }}
           aria-hidden
-          className="hidden sm:block absolute z-0 pointer-events-none"
-          style={{
-            width: "auto",
-            height: "100%",
-            right: "clamp(-8%, -3vw, -3%)",
-            top: 0,
-            bottom: 0,
-            opacity: 0.5,
-          }}
+          className="hidden sm:block absolute inset-0 z-0 pointer-events-none"
+          style={{ opacity: 0.35 }}
         >
           <Image
-            src="/background-images/tool-stack.webp"
+            src="/services-images/ai-marketing.webp"
             alt=""
             aria-hidden
-            width={800}
+            width={1600}
             height={1200}
-            className="h-full w-auto object-cover"
+            className="h-full w-full object-cover object-center"
           />
         </motion.div>
 
-        {/* Edge fades */}
-        <div aria-hidden className="absolute pointer-events-none z-0" style={{ width: "120px", top: 0, bottom: 0, right: 0, background: `linear-gradient(to left, ${BG} 0%, transparent 100%)` }} />
-        <div aria-hidden className="absolute pointer-events-none z-0" style={{ height: "80px", left: 0, right: 0, top: 0, background: `linear-gradient(to bottom, ${BG} 0%, transparent 100%)` }} />
-        <div aria-hidden className="absolute pointer-events-none z-0" style={{ height: "120px", left: 0, right: 0, bottom: 0, background: `linear-gradient(to top, ${BG} 0%, transparent 100%)` }} />
-        <div aria-hidden className="absolute pointer-events-none z-0" style={{ width: "clamp(65%, 55vw, 70%)", top: 0, bottom: 0, right: 0, background: `linear-gradient(to right, ${BG} 0%, ${BG} 25%, rgba(10,10,15,0.85) 48%, rgba(10,10,15,0.4) 72%, transparent 100%)` }} />
+        {/* Dark overlay above the image */}
+        <div
+          aria-hidden
+          className="absolute inset-0 z-0 pointer-events-none"
+          style={{ background: "rgba(10,10,15,0.62)" }}
+        />
+
+        {/* Edge fades — soften into the section on all sides */}
+        <div
+          aria-hidden
+          className="absolute pointer-events-none z-0"
+          style={{
+            height: "120px",
+            left: 0,
+            right: 0,
+            top: 0,
+            background: `linear-gradient(to bottom, ${BG} 0%, transparent 100%)`,
+          }}
+        />
+        <div
+          aria-hidden
+          className="absolute pointer-events-none z-0"
+          style={{
+            height: "120px",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: `linear-gradient(to top, ${BG} 0%, transparent 100%)`,
+          }}
+        />
+        <div
+          aria-hidden
+          className="absolute pointer-events-none z-0"
+          style={{
+            width: "160px",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            background: `linear-gradient(to right, ${BG} 0%, transparent 100%)`,
+          }}
+        />
+        <div
+          aria-hidden
+          className="absolute pointer-events-none z-0"
+          style={{
+            width: "160px",
+            top: 0,
+            bottom: 0,
+            right: 0,
+            background: `linear-gradient(to left, ${BG} 0%, transparent 100%)`,
+          }}
+        />
         {/* Ambient glow */}
-        <div aria-hidden className="absolute pointer-events-none z-0" style={{ width: "clamp(500px, 55vw, 800px)", height: "clamp(500px, 55vw, 800px)", right: "-15%", top: "-20%", background: "radial-gradient(ellipse at 65% 45%, rgba(155,89,245,0.14) 0%, rgba(224,64,160,0.08) 45%, transparent 70%)" }} />
+        <div
+          aria-hidden
+          className="absolute pointer-events-none z-0"
+          style={{
+            width: "clamp(500px, 55vw, 800px)",
+            height: "clamp(500px, 55vw, 800px)",
+            right: "-15%",
+            top: "-20%",
+            background:
+              "radial-gradient(ellipse at 65% 45%, rgba(155,89,245,0.14) 0%, rgba(224,64,160,0.08) 45%, transparent 70%)",
+          }}
+        />
 
         <div className="container relative z-10">
           {/* Divider + label */}
-          <div className="flex items-center gap-6 mb-16">
+          <div className="flex items-center gap-6 mb-10 sm:mb-14 lg:mb-16">
             <div className="flex-1 h-px bg-white/[0.06]" />
             <motion.div
               variants={fadeUp}
@@ -158,7 +213,7 @@ export default function WhyAviva() {
           </div>
 
           {/* Tools grid */}
-          <div className="relative mb-16">
+          <div className="relative mb-10 sm:mb-14 lg:mb-16">
             <ToolsGrid variant="bordered" />
           </div>
 

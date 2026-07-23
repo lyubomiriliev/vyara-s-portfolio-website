@@ -2,10 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
 import {
-  ArrowRight,
   ExternalLink,
   ChevronLeft,
   ChevronRight,
@@ -14,6 +12,7 @@ import {
 } from "lucide-react";
 import { useLang } from "@/lib/LanguageContext";
 import { ProcessSection } from "./ProcessSection";
+import { WebsiteInquiryForm } from "./WebsiteInquiryForm";
 
 interface WebProject {
   id: string;
@@ -377,7 +376,7 @@ export default function ProjectsPage({
       {/* Desktop slider */}
       <section className="hidden md:block pb-24">
         <motion.div
-          className="w-full"
+          className="container"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -411,7 +410,7 @@ export default function ProjectsPage({
                   style={{
                     minWidth: isActive ? 0 : 116,
                     boxShadow: isActive
-                      ? "0 24px 80px rgba(0,0,0,0.6), 0 0 40px rgba(224,64,160,0.18)"
+                      ? "0 24px 80px rgba(0,0,0,0.6)"
                       : "0 4px 24px rgba(0,0,0,0.4)",
                   }}
                   whileHover={!isActive ? { opacity: 0.9, scale: 1.01 } : {}}
@@ -784,71 +783,8 @@ export default function ProjectsPage({
       {/* Process section */}
       <ProcessSection locale={locale} />
 
-      {/* CTA */}
-      <section className="section-padding">
-        <div className="container">
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 24 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-            }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="relative rounded-3xl overflow-hidden p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 text-center"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(224,64,160,0.18) 0%, rgba(255,183,108,0.18) 100%)",
-              border: "1px solid rgba(255,183,108,0.15)",
-            }}
-          >
-            <div
-              className="absolute inset-0 opacity-20 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255,183,108,0.4), transparent)",
-              }}
-            />
-            <p
-              className="text-xs font-bold tracking-[0.2em] uppercase mb-4"
-              style={{
-                background: "linear-gradient(135deg, #E040A0, #FFB76C)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              {t.projects.pageLabel}
-            </p>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl font-bold text-white mb-3 leading-tight">
-              {t.projects.ctaTitle}{" "}
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #E040A0, #FFB76C)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                {t.projects.ctaTitleAccent}
-              </span>
-            </h2>
-            <p className="text-white/55 max-w-lg mx-auto mb-8">
-              {t.projects.ctaSub}
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.03] active:scale-[0.97]"
-              style={{
-                background: "linear-gradient(135deg, #E040A0, #FFB76C)",
-              }}
-            >
-              {t.projects.ctaButton}
-              <ArrowRight size={16} strokeWidth={2.5} />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      {/* Website inquiry form */}
+      <WebsiteInquiryForm />
 
       {/* Full-website preview modal */}
       <AnimatePresence>

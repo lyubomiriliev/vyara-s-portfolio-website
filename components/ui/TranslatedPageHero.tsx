@@ -1,17 +1,17 @@
-'use client'
+"use client";
 
-import { useLang } from '@/lib/LanguageContext'
-import { PageHero } from './PageHero'
-import { ServicesHeroFloatingCards } from './ServicesHeroFloatingCards'
+import { useLang } from "@/lib/LanguageContext";
+import { PageHero } from "./PageHero";
+import { ServicesHeroFloatingCards } from "./ServicesHeroFloatingCards";
 
-type HeroKey = keyof ReturnType<typeof useLang>['t']['pageHeroes']
+type HeroKey = keyof ReturnType<typeof useLang>["t"]["pageHeroes"];
 
 export function TranslatedPageHero({ heroKey }: { heroKey: HeroKey }) {
-  const { t } = useLang()
-  const h = t.pageHeroes[heroKey]
+  const { t } = useLang();
+  const h = t.pageHeroes[heroKey];
   const bgImageMap: Partial<Record<HeroKey, string>> = {
-    work: '/background-images/rule-your-brand.webp',
-  }
+    work: "/services-images/social-media-management.webp",
+  };
 
   return (
     <PageHero
@@ -21,8 +21,9 @@ export function TranslatedPageHero({ heroKey }: { heroKey: HeroKey }) {
       description={h.description}
       titleSize={heroKey === "services" ? "sm" : "default"}
       bgImage={bgImageMap[heroKey]}
+      fullHeight={heroKey === "work"}
     >
-      {heroKey === 'services' && <ServicesHeroFloatingCards />}
+      {heroKey === "services" && <ServicesHeroFloatingCards />}
     </PageHero>
-  )
+  );
 }

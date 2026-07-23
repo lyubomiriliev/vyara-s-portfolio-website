@@ -594,7 +594,7 @@ function ClientCard({ client }: { client: ClientStory }) {
 
       <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-0">
         {/* Left — image */}
-        <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[400px] xl:min-h-[460px] 2xl:min-h-[520px] overflow-hidden">
+        <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[360px] xl:min-h-[440px] 2xl:min-h-[960px] 3xl:min-h-[920px] 4xl:min-h-[1100px] overflow-hidden">
           <Image
             src={client.image}
             alt={client.name}
@@ -618,10 +618,10 @@ function ClientCard({ client }: { client: ClientStory }) {
         </div>
 
         {/* Right — content */}
-        <div className="p-4 sm:p-6 md:p-7 lg:p-8 xl:p-10 flex flex-col justify-between gap-4 md:gap-5">
+        <div className="p-4 sm:p-6 md:p-7 lg:p-6 xl:p-8 3xl:p-14 4xl:p-20 flex flex-col justify-between gap-4 md:gap-5 lg:gap-4 xl:gap-5 3xl:gap-8">
           {/* Top: name + industry pill + tagline + description + service tags */}
-          <div className="flex flex-col gap-4">
-            <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-[1.05]">
+          <div className="flex flex-col gap-4 lg:gap-3 xl:gap-4 3xl:gap-6">
+            <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 3xl:text-6xl 4xl:text-7xl text-white leading-[1.05]">
               {client.name}
             </h3>
 
@@ -639,7 +639,7 @@ function ClientCard({ client }: { client: ClientStory }) {
               <Sparkles size={11} />
               {client.industry}
             </span>
-            <p className="text-base sm:text-lg md:text-xl font-display">
+            <p className="text-base sm:text-lg md:text-xl lg:text-lg xl:text-xl 3xl:text-2xl 4xl:text-3xl font-display">
               <span
                 style={{
                   background: `linear-gradient(135deg, #fff, ${client.accent})`,
@@ -651,7 +651,7 @@ function ClientCard({ client }: { client: ClientStory }) {
                 {client.tagline}
               </span>
             </p>
-            <p className="text-white/60 text-sm md:text-base lg:text-lg leading-relaxed">
+            <p className="text-white/60 text-sm md:text-base lg:text-sm xl:text-base 3xl:text-xl 4xl:text-2xl leading-relaxed lg:leading-snug xl:leading-relaxed">
               {client.description}
             </p>
 
@@ -681,13 +681,13 @@ function ClientCard({ client }: { client: ClientStory }) {
               if (grouped.length === 0) return null;
               return (
                 <div
-                  className="grid gap-x-4 gap-y-3 mt-1"
+                  className="grid gap-x-4 gap-y-3 lg:gap-y-2 xl:gap-y-3 mt-1"
                   style={{
                     gridTemplateColumns: `repeat(${grouped.length}, minmax(0,1fr))`,
                   }}
                 >
                   {grouped.map((group) => (
-                    <div key={group.label} className="flex flex-col gap-1.5">
+                    <div key={group.label} className="flex flex-col gap-1.5 lg:gap-1 xl:gap-1.5">
                       <span className="text-[10px] uppercase tracking-[0.16em] font-semibold text-white/30 mb-0.5">
                         {group.label}
                       </span>
@@ -696,7 +696,7 @@ function ClientCard({ client }: { client: ClientStory }) {
                         return (
                           <span
                             key={id}
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-[14px] tracking-wide font-medium text-white"
+                            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 lg:py-1 xl:py-1.5 3xl:px-3.5 3xl:py-2 rounded-xl text-[14px] lg:text-[13px] xl:text-[14px] 3xl:text-[17px] 4xl:text-[20px] tracking-wide font-medium text-white"
                             style={{
                               background: "rgba(255,255,255,0.06)",
                               border: "1px solid rgba(255,255,255,0.15)",
@@ -720,7 +720,7 @@ function ClientCard({ client }: { client: ClientStory }) {
           </div>
 
           {/* Bottom: social links */}
-          <div className="flex flex-col gap-5 pt-6 border-t border-white/[0.08]">
+          <div className="flex flex-col gap-5 pt-6 lg:pt-4 xl:pt-6 border-t border-white/[0.08]">
             {/* Social / website buttons */}
             <div className="flex flex-wrap items-center gap-2 sm:gap-3 self-start sm:self-end">
               {client.instagram && (
@@ -947,7 +947,7 @@ export default function ClientsPage() {
 
       {/* ScrollStack — the showcase */}
       <section className="relative">
-        <div className="container">
+        <div className="bigContainer">
           <motion.div
             variants={staggerContainer}
             initial="hidden"

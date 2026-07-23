@@ -95,7 +95,9 @@ export default function WorkPage() {
   );
 
   const filtered =
-    activeFilter === "All" || activeFilter === "Custom Websites" || activeFilter === "E-Commerce"
+    activeFilter === "All" ||
+    activeFilter === "Custom Websites" ||
+    activeFilter === "E-Commerce"
       ? projects
       : projects.filter((p) => p.category === activeFilter);
 
@@ -155,7 +157,9 @@ export default function WorkPage() {
   const isWebFilter =
     activeFilter === "Custom Websites" || activeFilter === "E-Commerce";
   const isSocialFilter =
-    !isWebFilter && activeFilter !== "All" && SOCIAL_CATEGORIES.includes(activeFilter as SocialCategory);
+    !isWebFilter &&
+    activeFilter !== "All" &&
+    SOCIAL_CATEGORIES.includes(activeFilter as SocialCategory);
 
   // For social filters, apply pagination
   const socialFiltered =
@@ -172,16 +176,16 @@ export default function WorkPage() {
   return (
     <div className="relative bg-bg-primary">
       <section className="section-padding">
-        <div className="container">
+        <div className="px-4 md:px-0 2xl:px-20">
           {/* Filter bar — Web Development group FIRST, then Social */}
           <div className="mb-14 flex flex-nowrap md:flex-wrap justify-start md:justify-center items-end gap-4 sm:gap-6 overflow-x-auto scrollbar-hide">
             {/* Web Development group — first */}
-            <div className="flex flex-col items-center gap-2 flex-shrink-0">
-              <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/30">
+            <div className="flex flex-col items-center gap-2 lg:gap-3 3xl:gap-3.5 flex-shrink-0">
+              <span className="text-xs lg:text-[13px] 3xl:text-sm font-bold uppercase tracking-[0.16em] text-white/50">
                 {wf.webDevelopment}
               </span>
               <div
-                className="relative inline-flex items-center gap-1 p-1.5 rounded-full"
+                className="relative inline-flex items-center gap-1 p-2 lg:p-2.5 3xl:p-3 rounded-full"
                 style={{
                   background: "rgba(255,255,255,0.04)",
                   border: "1px solid rgba(255,255,255,0.08)",
@@ -196,12 +200,12 @@ export default function WorkPage() {
                     <button
                       key={cat}
                       onClick={() => handleFilterChange(cat)}
-                      className="relative z-10 py-2 px-5 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer whitespace-nowrap"
+                      className="relative z-10 py-2 lg:py-2.5 3xl:py-3 px-5 lg:px-6 3xl:px-8 rounded-full text-sm lg:text-base 3xl:text-lg font-medium transition-colors duration-200 cursor-pointer whitespace-nowrap"
                       style={{
                         color:
                           activeFilter === cat
                             ? "#fff"
-                            : "rgba(255,255,255,0.45)",
+                            : "rgba(255,255,255,0.6)",
                       }}
                     >
                       {activeFilter === cat && (
@@ -227,12 +231,12 @@ export default function WorkPage() {
             </div>
 
             {/* Social & Content group — second */}
-            <div className="flex flex-col items-center gap-2 flex-shrink-0">
-              <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/30">
+            <div className="flex flex-col items-center gap-2 lg:gap-3 3xl:gap-3.5 flex-shrink-0">
+              <span className="text-xs lg:text-[13px] 3xl:text-sm font-bold uppercase tracking-[0.16em] text-white/50">
                 {wf.socialContent}
               </span>
               <div
-                className="relative inline-flex items-center gap-1 p-1.5 rounded-full"
+                className="relative inline-flex items-center gap-1 p-2 lg:p-2.5 3xl:p-3 rounded-full"
                 style={{
                   background: "rgba(255,255,255,0.04)",
                   border: "1px solid rgba(255,255,255,0.08)",
@@ -250,12 +254,12 @@ export default function WorkPage() {
                     <button
                       key={cat}
                       onClick={() => handleFilterChange(cat)}
-                      className="relative z-10 py-2 px-5 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer whitespace-nowrap"
+                      className="relative z-10 py-2 lg:py-2.5 3xl:py-3 px-5 lg:px-6 3xl:px-8 rounded-full text-sm lg:text-base 3xl:text-lg font-medium transition-colors duration-200 cursor-pointer whitespace-nowrap"
                       style={{
                         color:
                           activeFilter === cat
                             ? "#fff"
-                            : "rgba(255,255,255,0.45)",
+                            : "rgba(255,255,255,0.6)",
                       }}
                     >
                       {activeFilter === cat && (

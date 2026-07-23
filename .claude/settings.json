@@ -35,7 +35,13 @@
       "Bash(pkill -f \"compress-videos.sh\")",
       "Bash(pkill -f \"ffmpeg.*REELS\")",
       "Bash(pkill ffmpeg *)",
-      "Bash(awk 'tolower\\($0\\) ~ /sitemap|^host|user-agent|^allow|^disallow/ {print NR\": \"$0}' /Users/lyubomirsmacbookpro/Desktop/PROJECTS/vyara/vyara-s-portfolio-website/public/robots.txt)"
+      "Bash(awk 'tolower\\($0\\) ~ /sitemap|^host|user-agent|^allow|^disallow/ {print NR\": \"$0}' /Users/lyubomirsmacbookpro/Desktop/PROJECTS/vyara/vyara-s-portfolio-website/public/robots.txt)",
+      "Bash(npx eslint *)",
+      "Bash(grep -c '\\\\b__TRACKED_VAR__\\\\b' components/pages/FAQPage.tsx)",
+      "Bash(grep -n '\\\\b__TRACKED_VAR__\\\\b' components/pages/FAQPage.tsx)",
+      "Bash(awk 'NR>=300 && NR<=786 && /locale/' components/pages/ProjectsPage.tsx)",
+      "Bash(perl -i -ne 'print unless /^\\\\s*requiredLabel=\\\\{wi\\\\.required\\\\}\\\\s*$/' components/pages/WebsiteInquiryForm.tsx)",
+      "Bash(perl -0pi -e ' *)"
     ]
   }
 }

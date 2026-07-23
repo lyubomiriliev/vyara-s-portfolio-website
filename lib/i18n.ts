@@ -191,6 +191,92 @@ export const translations = {
       responseNote: "We respond within 24 hours on business days.",
     },
 
+    // Website inquiry form (Projects page / ProcessSection)
+    websiteInquiry: {
+      label: "WEB DEVELOPMENT",
+      title: "Want a website that",
+      titleAccent: "actually works?",
+      sub: "Tell us about your project and we'll get back to you within 24 hours.",
+
+      typeLabel: "What kind of website do you need?",
+      types: [
+        { id: "custom", title: "Custom Website", desc: "Bespoke, built for you" },
+        { id: "ecommerce", title: "Online Store", desc: "Shopify / e-commerce" },
+        { id: "webapp", title: "Web Application", desc: "SaaS or custom platform" },
+        { id: "landing", title: "Landing Page", desc: "Single high-converting page" },
+        { id: "redesign", title: "Redesign", desc: "Rebuild an existing site" },
+        { id: "notsure", title: "Not sure yet", desc: "Help me decide" },
+      ],
+
+      industryLabel: "Industry / business type",
+      industryPlaceholder: "e.g. fitness, automotive, retail, services...",
+
+      featuresLabel: "Features you need",
+      features: [
+        { id: "ecommerce", title: "Online payments / store" },
+        { id: "booking", title: "Booking & reservations" },
+        { id: "multilang", title: "Multi-language" },
+        { id: "cms", title: "Content management (CMS)" },
+        { id: "blog", title: "Blog / news" },
+        { id: "accounts", title: "User accounts & login" },
+        { id: "seo", title: "SEO & performance" },
+        { id: "analytics", title: "Analytics & tracking" },
+        { id: "integrations", title: "Integrations & automations" },
+        { id: "animations", title: "Animations & motion" },
+        { id: "ai", title: "AI features" },
+        { id: "copywriting", title: "Copywriting" },
+        { id: "branding", title: "Branding & logo" },
+        { id: "maintenance", title: "Maintenance & support" },
+      ],
+
+      timelineLabel: "Estimated timeline",
+      timelines: [
+        { id: "asap", title: "ASAP" },
+        { id: "1to3m", title: "1–3 months" },
+        { id: "3to6m", title: "3–6 months" },
+        { id: "flexible", title: "Flexible" },
+      ],
+
+      pagesLabel: "Approximate number of pages",
+      pages: [
+        { id: "1", title: "1 (landing)" },
+        { id: "2to5", title: "2–5" },
+        { id: "6to15", title: "6–15" },
+        { id: "15plus", title: "15+" },
+        { id: "unsure", title: "Not sure" },
+      ],
+
+      hasContentLabel: "Do you already have content (text & images)?",
+      hasContent: [
+        { id: "yes", title: "Yes, ready" },
+        { id: "partial", title: "Partially" },
+        { id: "no", title: "No, need help" },
+      ],
+
+      referenceLabel: "Reference website (optional)",
+      referencePlaceholder: "A site you like, or your current one...",
+
+      nameLabel: "Your name",
+      namePlaceholder: "Full name",
+      emailLabel: "Email",
+      emailPlaceholder: "you@company.com",
+      phoneLabel: "Phone",
+      phonePlaceholder: "Your phone number",
+      companyLabel: "Company (optional)",
+      companyPlaceholder: "Company name",
+
+      detailsLabel: "Tell us about the project",
+      detailsPlaceholder: "Goals, pages, anything important we should know...",
+
+      submit: "Send Inquiry",
+      sending: "Sending...",
+      successTitle: "Inquiry Sent!",
+      successSub: "We'll review your project and get back to you within 24 hours.",
+      sendAnother: "Send another inquiry →",
+      errorFull:
+        "Something went wrong. Please try again or email us directly at office@avivadigital.bg.",
+    },
+
     // Projects page (web dev)
     projects: {
       pageLabel: "WEB DEVELOPMENT",
@@ -820,35 +906,43 @@ export const translations = {
     seo: {
       home: {
         title: "Aviva Digital — AI Digital Agency | Sofia, Bulgaria",
-        description: "AI-powered digital agency in Sofia, Bulgaria: social media management, Meta Ads, custom websites, AI marketing & content. Full-service solutions for brands that want to grow.",
+        description:
+          "AI-powered digital agency in Sofia, Bulgaria: social media management, Meta Ads, custom websites, AI marketing & content. Full-service solutions for brands that want to grow.",
       },
       services: {
         title: "Services — Digital Marketing, Web & AI | Aviva Digital",
-        description: "18 digital marketing services: social media management, Meta Ads, AI marketing, web development, graphic design & video production. Full-service digital agency in Sofia, Bulgaria.",
+        description:
+          "18 digital marketing services: social media management, Meta Ads, AI marketing, web development, graphic design & video production. Full-service digital agency in Sofia, Bulgaria.",
       },
       work: {
         title: "Portfolio — Design, Social Media & Web | Aviva Digital",
-        description: "Browse our portfolio: brand identities, social media campaigns, web development & AI-generated content for clients across Bulgaria.",
+        description:
+          "Browse our portfolio: brand identities, social media campaigns, web development & AI-generated content for clients across Bulgaria.",
       },
       contact: {
         title: "Contact — Free Strategy Consultation | Aviva Digital",
-        description: "Get in touch with Aviva Digital, Sofia. Free strategy call, no commitment — we respond within 24 hours.",
+        description:
+          "Get in touch with Aviva Digital, Sofia. Free strategy call, no commitment — we respond within 24 hours.",
       },
       about: {
         title: "About Us — Team, Experience & Vision | Aviva Digital",
-        description: "Aviva Digital — next-generation AI digital agency in Sofia, Bulgaria. Real experience, AI-powered execution. Meet the founders.",
+        description:
+          "Aviva Digital — next-generation AI digital agency in Sofia, Bulgaria. Real experience, AI-powered execution. Meet the founders.",
       },
       clients: {
         title: "Clients — Real Brands, Real Results | Aviva Digital",
-        description: "Real brands, real results: see how Aviva Digital delivered measurable growth for 16+ clients across Bulgaria.",
+        description:
+          "Real brands, real results: see how Aviva Digital delivered measurable growth for 16+ clients across Bulgaria.",
       },
       faq: {
         title: "FAQ — Questions & Answers | Aviva Digital",
-        description: "Answers to common questions about working with Aviva Digital — services, pricing, timelines, AI approach & onboarding.",
+        description:
+          "Answers to common questions about working with Aviva Digital — services, pricing, timelines, AI approach & onboarding.",
       },
       projects: {
         title: "Web Projects — Websites & Applications | Aviva Digital",
-        description: "Custom-built websites & web applications: landing pages, e-commerce stores, SaaS platforms — speed, SEO & conversion-optimized.",
+        description:
+          "Custom-built websites & web applications: landing pages, e-commerce stores, SaaS platforms — speed, SEO & conversion-optimized.",
       },
     },
 
@@ -974,7 +1068,7 @@ export const translations = {
       pageTitleAccent: "открояват",
       pageSub:
         "Десет бизнеса. Десет трансформации. Всеки превърнат в разпознаваема марка чрез стратегия, дизайн и AI изпълнение.",
-      scrollCue: "Скролирайте надолу",
+      scrollCue: "Плъзнете надолу",
       curvedText: "ИЗДИГНИ ПРИСЪСТВИЕТО НА СВОЯ БРАНД",
       showcaseLabel: "РАЗГЛЕДАЙТЕ ВСИЧКИ",
       showcaseTitle: "Всеки бранд —",
@@ -1052,6 +1146,92 @@ export const translations = {
       locationLabel: "Локация",
       location: "София, България",
       responseNote: "Отговаряме до 24 часа.",
+    },
+
+    // Website inquiry form (Projects page / ProcessSection)
+    websiteInquiry: {
+      label: "УЕБ РАЗРАБОТКА",
+      title: "Искате сайт, който",
+      titleAccent: "наистина работи?",
+      sub: "Разкажете ни за проекта си и ще се свържем с вас до 24 часа.",
+
+      typeLabel: "Какъв сайт ви трябва?",
+      types: [
+        { id: "custom", title: "Сайт по поръчка", desc: "Изработен изцяло за вас" },
+        { id: "ecommerce", title: "Онлайн магазин", desc: "Shopify / e-commerce" },
+        { id: "webapp", title: "Уеб приложение", desc: "SaaS или платформа" },
+        { id: "landing", title: "Landing страница", desc: "Една конвертираща страница" },
+        { id: "redesign", title: "Редизайн", desc: "Обновяване на съществуващ сайт" },
+        { id: "notsure", title: "Още не съм сигурен", desc: "Помогнете ми да реша" },
+      ],
+
+      industryLabel: "Индустрия / тип бизнес",
+      industryPlaceholder: "напр. фитнес, автомобили, търговия, услуги...",
+
+      featuresLabel: "Функционалности",
+      features: [
+        { id: "ecommerce", title: "Онлайн плащания / магазин" },
+        { id: "booking", title: "Резервации и записвания" },
+        { id: "multilang", title: "Многоезичност" },
+        { id: "cms", title: "Управление на съдържание (CMS)" },
+        { id: "blog", title: "Блог / новини" },
+        { id: "accounts", title: "Потребителски профили и вход" },
+        { id: "seo", title: "SEO и производителност" },
+        { id: "analytics", title: "Анализи и проследяване" },
+        { id: "integrations", title: "Интеграции и автоматизации" },
+        { id: "animations", title: "Анимации и движение" },
+        { id: "ai", title: "AI функции" },
+        { id: "copywriting", title: "Копирайтинг" },
+        { id: "branding", title: "Брандинг и лого" },
+        { id: "maintenance", title: "Поддръжка и обслужване" },
+      ],
+
+      timelineLabel: "Ориентировъчен срок",
+      timelines: [
+        { id: "asap", title: "Възможно най-скоро" },
+        { id: "1to3m", title: "1–3 месеца" },
+        { id: "3to6m", title: "3–6 месеца" },
+        { id: "flexible", title: "Гъвкав" },
+      ],
+
+      pagesLabel: "Приблизителен брой страници",
+      pages: [
+        { id: "1", title: "1 (landing)" },
+        { id: "2to5", title: "2–5" },
+        { id: "6to15", title: "6–15" },
+        { id: "15plus", title: "15+" },
+        { id: "unsure", title: "Не съм сигурен" },
+      ],
+
+      hasContentLabel: "Имате ли вече съдържание (текст и снимки)?",
+      hasContent: [
+        { id: "yes", title: "Да, готово е" },
+        { id: "partial", title: "Частично" },
+        { id: "no", title: "Не, нужна е помощ" },
+      ],
+
+      referenceLabel: "Референтен сайт (по желание)",
+      referencePlaceholder: "Сайт, който харесвате, или вашия настоящ...",
+
+      nameLabel: "Вашето име",
+      namePlaceholder: "Име и фамилия",
+      emailLabel: "Имейл",
+      emailPlaceholder: "email@gmail.com",
+      phoneLabel: "Телефон",
+      phonePlaceholder: "+359 XXX XX XX XX",
+      companyLabel: "Компания (по желание)",
+      companyPlaceholder: "Име на компанията",
+
+      detailsLabel: "Разкажете ни за проекта",
+      detailsPlaceholder: "Цели, страници, всичко важно, което трябва да знаем...",
+
+      submit: "Изпратете запитване",
+      sending: "Изпращане...",
+      successTitle: "Запитването е изпратено!",
+      successSub: "Ще разгледаме проекта ви и ще се свържем с вас до 24 часа.",
+      sendAnother: "Изпратете ново запитване →",
+      errorFull:
+        "Нещо се обърка. Опитайте отново или ни пишете директно на office@avivadigital.bg",
     },
 
     // Projects page (web dev)
@@ -1683,35 +1863,43 @@ export const translations = {
     seo: {
       home: {
         title: "Aviva Digital — AI Дигитална Агенция | София, България",
-        description: "AI дигитална агенция в София — социални мрежи, Meta Ads, уеб разработка и AI съдържание. Пълни дигитални решения за брандове, които искат да растат.",
+        description:
+          "AI дигитална агенция в София — социални мрежи, Meta Ads, уеб разработка и AI съдържание. Пълни дигитални решения за брандове, които искат да растат.",
       },
       services: {
         title: "Услуги — Дигитален маркетинг, Уеб & AI | Aviva Digital",
-        description: "18 дигитални услуги: управление на социални мрежи, Meta Ads, AI маркетинг, уеб разработка, графичен дизайн и видео продукция. Пълна агенция в София, България.",
+        description:
+          "18 дигитални услуги: управление на социални мрежи, Meta Ads, AI маркетинг, уеб разработка, графичен дизайн и видео продукция. Пълна агенция в София, България.",
       },
       work: {
         title: "Портфолио — Дизайн, Социални мрежи & Уеб | Aviva Digital",
-        description: "Разгледайте портфолиото на Aviva Digital — бранд дизайн, социални мрежи, уеб разработка и AI съдържание за клиенти в България.",
+        description:
+          "Разгледайте портфолиото на Aviva Digital — бранд дизайн, социални мрежи, уеб разработка и AI съдържание за клиенти в България.",
       },
       contact: {
         title: "Контакти — Безплатна Консултация | Aviva Digital",
-        description: "Свържете се с Aviva Digital в София. Безплатна стратегическа консултация, без ангажимент. Отговаряме до 24 часа.",
+        description:
+          "Свържете се с Aviva Digital в София. Безплатна стратегическа консултация, без ангажимент. Отговаряме до 24 часа.",
       },
       about: {
         title: "За нас — Екип, Опит & Визия | Aviva Digital",
-        description: "Aviva Digital — AI дигитална агенция от ново поколение в София. Реален опит, AI изпълнение. Запознайте се с основателите.",
+        description:
+          "Aviva Digital — AI дигитална агенция от ново поколение в София. Реален опит, AI изпълнение. Запознайте се с основателите.",
       },
       clients: {
         title: "Клиенти — Реални Брандове, Реални Резултати | Aviva Digital",
-        description: "Реални брандове, реални резултати: вижте как Aviva Digital постигна измерим ръст за 16+ клиента в България.",
+        description:
+          "Реални брандове, реални резултати: вижте как Aviva Digital постигна измерим ръст за 16+ клиента в България.",
       },
       faq: {
         title: "ЧЗВ — Въпроси и Отговори | Aviva Digital",
-        description: "Отговори на честите въпроси за Aviva Digital: услуги, цени, срокове, AI подход и онбординг.",
+        description:
+          "Отговори на честите въпроси за Aviva Digital: услуги, цени, срокове, AI подход и онбординг.",
       },
       projects: {
         title: "Уеб Проекти — Сайтове & Приложения | Aviva Digital",
-        description: "Персонализирани уебсайтове и уеб приложения: landing pages, e-commerce магазини, SaaS платформи — скорост, SEO и конверсии.",
+        description:
+          "Персонализирани уебсайтове и уеб приложения: landing pages, e-commerce магазини, SaaS платформи — скорост, SEO и конверсии.",
       },
     },
 
