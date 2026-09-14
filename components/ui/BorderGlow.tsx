@@ -9,6 +9,10 @@ interface BorderGlowProps {
   edgeSensitivity?: number;
   glowColor?: string;
   backgroundColor?: string;
+  /** Card fill. Defaults to backgroundColor; pass 'transparent' to show what's behind. */
+  fillColor?: string;
+  /** Blur radius in px applied to whatever sits behind the card. */
+  backdropBlur?: number;
   borderRadius?: number;
   glowRadius?: number;
   glowIntensity?: number;
@@ -76,6 +80,8 @@ const BorderGlow: React.FC<BorderGlowProps> = ({
   edgeSensitivity = 30,
   glowColor = '40 80 80',
   backgroundColor = '#120F17',
+  fillColor,
+  backdropBlur,
   borderRadius = 28,
   glowRadius = 40,
   glowIntensity = 1.0,
@@ -155,6 +161,8 @@ const BorderGlow: React.FC<BorderGlowProps> = ({
       className={`border-glow-card ${className}`}
       style={{
         '--card-bg': backgroundColor,
+        '--card-fill': fillColor ?? backgroundColor,
+        '--card-backdrop': backdropBlur ? `blur(${backdropBlur}px)` : 'none',
         '--edge-sensitivity': edgeSensitivity,
         '--border-radius': `${borderRadius}px`,
         '--glow-padding': `${glowRadius}px`,

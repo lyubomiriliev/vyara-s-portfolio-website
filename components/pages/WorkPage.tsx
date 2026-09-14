@@ -445,6 +445,8 @@ function FeedCard({
               muted
               loop
               playsInline
+              preload="none"
+              poster={project.coverImage || undefined}
               className="absolute inset-0 w-full h-full object-cover"
               suppressHydrationWarning
               onLoadedData={() => setVideoLoaded(true)}

@@ -571,27 +571,9 @@ function ClientCard({ client }: { client: ClientStory }) {
         background: `#0B0B12`,
         backgroundImage: `linear-gradient(135deg, ${client.accentRgb}0.10), rgba(11,11,18,1) 60%)`,
         border: `1px solid ${client.accentRgb}0.35)`,
-        boxShadow: `0 40px 100px rgba(0,0,0,0.7), 0 0 80px ${client.accentRgb}0.18), inset 0 1px 0 rgba(255,255,255,0.06)`,
+        boxShadow: `0 40px 100px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.06)`,
       }}
     >
-      {/* Corner glows */}
-      <div
-        aria-hidden
-        className="absolute -top-32 -right-32 w-96 h-96 rounded-full pointer-events-none"
-        style={{
-          background: `radial-gradient(circle, ${client.accentRgb}0.30), transparent 70%)`,
-          filter: "blur(60px)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full pointer-events-none opacity-50"
-        style={{
-          background: `radial-gradient(circle, ${client.accentRgb}0.20), transparent 70%)`,
-          filter: "blur(60px)",
-        }}
-      />
-
       <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-0">
         {/* Left — image */}
         <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[360px] xl:min-h-[440px] 2xl:min-h-[960px] 3xl:min-h-[920px] 4xl:min-h-[1100px] overflow-hidden">

@@ -13,7 +13,9 @@
   transform: translate3d(0, 0, 0.01px);
   display: grid;
   border: 1px solid rgb(255 255 255 / 15%);
-  background: var(--card-bg, #120F17);
+  background: var(--card-fill, var(--card-bg, #120F17));
+  backdrop-filter: var(--card-backdrop, none);
+  -webkit-backdrop-filter: var(--card-backdrop, none);
   overflow: visible;
   box-shadow:
     rgba(0, 0, 0, 0.1) 0px 1px 2px,

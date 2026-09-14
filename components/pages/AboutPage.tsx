@@ -721,6 +721,7 @@ export default function AboutPage() {
               loop
               muted
               playsInline
+              preload="none"
               suppressHydrationWarning
               className="absolute inset-0 w-full h-full object-cover rounded-[28px] pointer-events-none"
               style={{ opacity: 0.4 }}

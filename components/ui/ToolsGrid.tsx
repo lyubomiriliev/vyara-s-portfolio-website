@@ -73,6 +73,8 @@ export default function ToolsGrid({ variant = "bordered" }: ToolsGridProps) {
       <BorderGlow
         borderRadius={24}
         backgroundColor="rgb(18,14,32)"
+        fillColor="rgba(18,14,32,0.18)"
+        backdropBlur={20}
         colors={["#9B59F5", "#E040A0", "#c084fc"]}
         glowColor="270 80 70"
         glowIntensity={1.2}

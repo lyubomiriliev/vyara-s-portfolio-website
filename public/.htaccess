@@ -1,3 +1,16 @@
+# ─── Canonical Host ─────────────────────────────────────────────────────────────
+# cPanel auto-creates a technical subdomain for addon domains
+# (avivadigital.bg.metaxiart.com) pointing at the same document root.
+# 301 it to the real domain so search engines only index avivadigital.bg.
+# NOTE: do NOT remove the addon domain in cPanel — that unlinks the real domain.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{HTTP_HOST} ^(?:www\.)?avivadigital\.bg\.metaxiart\.com$ [NC]
+    RewriteRule ^ https://avivadigital.bg%{REQUEST_URI} [R=301,L]
+</IfModule>
+
 # ─── Bot Access Control ────────────────────────────────────────────────────────
 # Allow good AI crawlers (improves AI search visibility / recommendations)
 # Block spam bots, scrapers, and malicious user agents

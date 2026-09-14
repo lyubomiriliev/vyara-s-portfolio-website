@@ -51,15 +51,15 @@ export const translations = {
       cards: [
         {
           title: "Experience as Both Business & Client",
-          body: "We know the digital world from both sides — as professionals with marketing and development expertise, and as next-gen consumers. That's why we know what works today and what the modern customer really needs.",
+          body: "We know the digital world from both sides — as marketing and development professionals, and as next-gen consumers. So we know what actually works today.",
         },
         {
           title: "We Are the New Generation",
-          body: "Consumers no longer choose a business just because they need its product. They choose it for how it looks, communicates, and the experience it offers. We understand this in detail — because we're part of that generation.",
+          body: "People don't choose a business for its product alone — they choose how it looks, speaks and feels. We get that, because we're part of that generation.",
         },
         {
           title: "Reaching New Heights Through AI",
-          body: "AI doesn't replace our work — it elevates it to a completely different level. Every modern business needs AI innovation to stay competitive today. We know how to apply it correctly, because we do it every day.",
+          body: "AI doesn't replace our work — it takes it to another level. We know how to apply it properly, because we do it every day.",
         },
       ],
     },
@@ -1003,15 +1003,15 @@ export const translations = {
       cards: [
         {
           title: "Опит като бизнес и като клиент",
-          body: "Познаваме дигиталния свят от двете страни — като професионалисти с опит в маркетинга и програмирането и като потребители от новото поколение. Затова знаем какво работи днес и от какво има нужда съвременният клиент.",
+          body: "Познаваме дигиталния свят от двете страни — като професионалисти в маркетинга и програмирането и като потребители от новото поколение. Затова знаем какво работи днес.",
         },
         {
           title: "Ние сме новото поколение",
-          body: "Потребителите вече не избират бизнес само защото имат нужда от продукта или услугите му. Избират го заради начина, по който изглежда, комуникира и какво изживяване предлага. Ние го познаваме в детайл, защото сме част от това поколение.",
+          body: "Хората не избират бизнес само заради продукта му, а заради това как изглежда, комуникира и какво изживяване предлага. Познаваме го добре, защото сме част от това поколение.",
         },
         {
           title: "Достигаме ново ниво чрез AI",
-          body: "AI не замества работата ни — той я вдига на съвсем различно ниво. Вярваме, че всеки съвременен бизнес има нужда от AI иновации, за да е конкурентен днес. Ние знаем как да го приложим правилно, защото го правим всеки ден.",
+          body: "AI не замества работата ни — вдига я на съвсем различно ниво. Знаем как да го приложим правилно, защото го правим всеки ден.",
         },
       ],
     },

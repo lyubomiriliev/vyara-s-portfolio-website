@@ -10,9 +10,9 @@ import { useLang } from "@/lib/LanguageContext";
 import ToolsGrid from "@/components/ui/ToolsGrid";
 
 const cardMeta = [
-  { glow: "rgba(224,64,160,0.15)", iconColor: "#E040A0", number: "01" },
-  { glow: "rgba(255,183,108,0.15)", iconColor: "#FFB76C", number: "02" },
-  { glow: "rgba(155,89,245,0.15)", iconColor: "#9B59F5", number: "03" },
+  { glow: "rgba(224,64,160,0.15)", iconColor: "#E040A0" },
+  { glow: "rgba(255,183,108,0.15)", iconColor: "#FFB76C" },
+  { glow: "rgba(155,89,245,0.15)", iconColor: "#9B59F5" },
 ];
 
 const BG = "#0a0a0f";
@@ -68,30 +68,22 @@ export default function WhyAviva() {
             className="grid grid-cols-1 md:grid-cols-3"
             style={{ borderRadius: "20px", overflow: "hidden" }}
           >
-            {cards.map(({ title, body, iconColor, glow, number }) => (
+            {cards.map(({ title, body, iconColor, glow }) => (
               <motion.div
                 key={title}
                 variants={fadeUp}
                 className="group relative p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col gap-5 cursor-default min-h-[300px] md:min-h-[340px] [&:not(:last-child)]:border-b md:[&:not(:last-child)]:border-b-0 md:[&:not(:last-child)]:border-r border-white/[0.06]"
-                style={{ background: BG }}
-                whileHover={{
+                style={{
                   background: `radial-gradient(circle at 30% 0%, ${glow} 0%, ${BG} 60%)`,
-                  transition: { duration: 0.4 },
                 }}
               >
                 <div
-                  className="absolute top-0 left-0 right-0 h-[1px] opacity-30 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute top-0 left-0 right-0 h-[1px]"
                   style={{
                     background: `linear-gradient(90deg, transparent, ${iconColor}, transparent)`,
                   }}
                 />
-                <span
-                  className="font-display font-extrabold text-[80px] leading-none select-none opacity-[0.06] group-hover:opacity-[0.12] transition-opacity duration-300 absolute top-6 right-8"
-                  style={{ color: iconColor }}
-                >
-                  {number}
-                </span>
-                <div className="flex flex-col gap-5 pt-8">
+                <div className="flex flex-col gap-5">
                   <h3 className="font-display font-bold text-xl sm:text-2xl text-white leading-snug">
                     {title}
                   </h3>
